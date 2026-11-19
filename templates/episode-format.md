@@ -1,155 +1,155 @@
-# 单集剧本标准排版（Episode Format · v4.9 升级版）
+# Single-Episode Script Standard Layout (Episode Format · v4.9 upgrade)
 
-> 交付格式模板。写完必须过 `python scripts/validate_episode.py <文件>`（`--format standard|long|manju`，默认自动分档）。
+> Delivery format template. After writing, the file must pass `python scripts/validate_episode.py <file>` (`--format standard|long|comic`, auto-detected by default).
 
-**先定档位再动笔**（篇幅制式，三选一；规格见 `references/hongguo-beat-sheet.md` §三）：
+**Pick the tier before drafting** (length format, choose one of three; spec in `references/hongguo-beat-sheet.md` §3):
 
-| 档位 | 时长（典型值；可调整） | 正文体量【参考·随时长换算】 | 场景 | 单集拍数 | 机检 |
+| Tier | Duration (typical; adjustable) | Body Length 【Reference · Scaled to Length】 (words) | Scenes | Beats per Episode | Machine Check |
 |---|---|---|---|---|---|
-| 标准档（默认） | 90～120 秒 | 480～850 / 330～620 | ≤2 | 1 拍（内部 15s 四挡推进） | `--format standard` |
-| 长档 | 150～195 秒 | 820～1400 / 660～1150 | ≤3 | 2 拍 + 中段小钩 | `--format long` |
-| 漫剧档 | 60～90 秒 | 330～620 | ≤2 | 1 拍 | `--format manju` |
+| Standard (default) | 90~120 s | 320~570 / 220~415 | ≤2 | 1 beat (internal 15-s four-step pacing) | `--format standard` |
+| Long | 150~195 s | 550~930 / 440~765 | ≤3 | 2 beats + mid-episode hook | `--format long` |
+| Comic-drama | 60~90 s | 220~415 | ≤2 | 1 beat | `--format comic` |
 
-## 一、 标准档 / 漫剧档模板
-
-```text
-第【XX】集：【集名/核心爽点标签】
-【所属阶段】：第X幕・（第 X/80 集 ｜ 往返第 N 回合・证据档X/反驳档X）
-【黄金前3秒钩子】：六母型之一（生死绝境/极端羞辱/身份暴涨/物证背叛/规则悬念/萌系治愈反差）
-【冲突形态】：对话型／行动坚持型／身份错位型／关系情感型／规则谜题型／混合（选对骨架与断章公式；**仅行动坚持型放宽机检**，见 references/conflict-modes.md）
-【情绪流变】：A ➔ B ➔ C ➔ 绝命断章
-【本集物证】：1~2 个贯穿本集的物件（情绪落点：碗/账本/鱼竿/群聊截图/到账页；特写好拍、AI 生图友好，情绪都落在物证上）  ← v4.1 新增
-【质疑者配角】：本集替观众说狠话/发问的人设位（借配角之口把憋屈说出口，主角保持冷静逼格；无则填"无"）  ← v4.1 新增
-【本集执念】：一句话——本单元/本集要守住或讨回的那件事（与全剧情绪契约同源）
-【对手要什么】：反派在本集的即时目标（他图什么、拿什么当筹码）——防"动机悬空"
-【本集主角主动目标】：主角本集要做的**选择/行动**（不是被动挨打；节拍卡硬要求）
-【本集改变了什么】：信息/关系/资源/位置/危险 至少一项的可见变化
-【本集结算】：主角本集的可见反将 + 反派为本次施压付出的可见代价（禁"只受辱不结算"，写后门禁 · 见 SKILL Step 3）
-【本集时长】：__ 秒（按台词量倒推：纯台词÷**4.5 字/s（参考语速）** ＋ △动作行数×动作拍权重（①对话型1.5s／混合2.5s／②行动型4.0s）＋ 留白；E16 容差 ±20%，禁注水虚标）
-
-[场景]：内景/外景・地点・日/夜        ← 全集 ≤2 个
-[人物]：名（状态标签）、名（标签）      ← 名字须在人物账
-
-△ 特写/中景：只写三大视觉锚点（物理结果/身份反差动作/物证亮牌对抗），禁抽象心理词与无效微动作（E26）。
-角色名（神态短语：画面词｜语气词）：
-"台词。"                              ← 快慢变速（3~6字快刀句 + 8~16字直给算账句），单气口上限 ≤25 字（E2）；每 2~4 句对白必穿插 △ 动作行，连续纯对白 ≤6 行（E24）；物证与大白话结论同轮直给，禁未翻译黑话（E25）
-
-（可选·≤1 处）内心独白：≤25 字，写「具体的账」不写抽象情绪
-（可选·≤1 处）旁白：≤12 字，只用于点题转折/时间锚
-                                      ← 独白不计对白行；前3秒与断章处禁用；两条独白不得相邻
-
-【本集断章卡点】：画面停格描述。（黑屏：下滑立即解锁第XX集）
-```
-
-## 二、 长档模板（150~195 秒弹性）
+## 1. Standard / Comic-Drama Tier Template
 
 ```text
-第【XX】集：【集名/核心爽点标签】（长档·150~195 秒弹性）
-【所属阶段】：第X幕・（第 X/40 集 ｜ 单元A ｜ 往返第 N 回合・证据档X/反驳档X）
-【黄金前3秒钩子】：六母型之一
-【冲突形态】：对话型／行动坚持型／身份错位型／关系情感型／规则谜题型／混合（见 references/conflict-modes.md）
-【情绪流变】：A ➔ B ➔ C ➔ D ➔ 绝命断章
-【本集物证】：1~2 个贯穿本集的物件（同标准档；长档建议物证贯穿双回合）  ← v4.1 新增
-【质疑者配角】：本集替观众说狠话/发问的人设位（长档可在回合A/回合B各设一个）  ← v4.1 新增
-【本集执念】：一句话——本单元/本集要守住或讨回的那件事
-【对手要什么】：反派在本集的即时目标（他图什么、拿什么当筹码）
-【本集主角主动目标】：主角本集要做的**选择/行动**（不是被动挨打）
-【本集改变了什么】：信息/关系/资源/位置/危险 至少一项的可见变化  ← 写前门禁四项，缺一不许开写（见 SKILL Step 3）
-【本集结算】：主角本集的可见反将 + 反派为本次施压付出的可见代价（禁"只受辱不结算"）
-【本集时长】：__ 秒   ← 必由台词量倒推（纯台词÷**4.5 字/s（参考语速，含动作/留白占比）** ＋ △动作行数×动作拍权重（①1.5s／混合2.5s／②行动型4.0s）＋ 留白 3~5s；E16 容差 ±20%），禁按总字数虚标；量化【参考中值】：纯台词 ≈**670** 字（150 秒）／≈**800** 字（180 秒）／≈**870** 字（195 秒封顶）＋12~15 动作行（②行动型：纯台词 ≥450 字＋动作 15~22 行）（机检 E16 拦虚标、E17 拦"标短降级"——长档不得低于 150 秒）
-【本集结构】：双回合（回合A ____ ➔ 回合B ____）    ← 时间骨架（弹性·按内容量伸缩）：钩 0~8s / 回合A 8~80s / 小钩≈90s / 回合B 95~170s / 断章 170~195s
+Episode 【XX】: 【Episode Title / Core Payoff Tag】
+【Stage】: Act X · (Ep X/80 | back-and-forth Round N · Evidence Slot X / Rebuttal Slot X)
+【Golden 3-Second Hook】: one of six archetypes (Life-or-Death Crisis / Extreme Humiliation / Sudden Identity Surge / Physical-Evidence Betrayal / Rule Mystery / Cute-Healing Contrast)
+【Conflict Mode】: Dialogue / Action-Persistence / Identity-Mismatch / Relationship-Emotion / Rule-Puzzle / Mixed (choose the right skeleton and cliffhanger formula; **only Action-Persistence gets relaxed machine checks**, see references/conflict-modes.md)
+【Emotion Shift】: A ➔ B ➔ C ➔ Last-Gasp Cliffhanger
+【Episode Evidence】: 1~2 physical objects that run through this episode (emotional anchor: bowl / ledger / fishing rod / group-chat screenshot / payment-received page; close-ups shoot well and are AI-image friendly, emotion lands on the evidence)  ← new in v4.1
+【Skeptic Supporting Character】: the character slot that voices the audience's anger/questions in this episode (let a supporting character say what viewers are holding back so the protagonist stays cool; write "None" if absent)  ← new in v4.1
+【Episode Obsession】: one sentence — the thing this unit/episode must hold onto or win back (same source as the series Emotion Contract)
+【What the Opponent Wants】: the villain's immediate goal in this episode (what he wants, what chips he puts up) — prevents a floating motive
+【Protagonist Active Goal】: the **choice/action** the protagonist takes this episode (not passively taking hits; a hard requirement of the beat sheet)
+【What Changes This Episode】: at least one visible change in information / relationship / resources / position / danger
+【Episode Payoff】: the protagonist's visible counterstrike this episode + the villain's visible cost for this pressure (no "humiliation with no payoff"; post-write gate · see SKILL Step 3)
+【Episode Length】: __ seconds (back-calculate from dialogue volume: pure dialogue ÷ **3.0 words/s (Reference Speech Rate)** + △ action lines × action-beat weight (①Dialogue 1.5s / Mixed 2.5s / ②Action 4.0s) + pauses; E16 tolerance ±20%, no padding or inflated labels)
 
-[场景]：内景/外景・地点・日/夜        ← 全集 ≤3 个，第 2/3 场必须是升级场（换空间/换对手/换压力等级）
-[人物]：名（状态标签）、名（标签）
+[Scene]: Interior/Exterior · Location · Day/Night        ← max 2 per episode
+[Cast]: Name (status tag), Name (tag)      ← names must be in the Character Ledger
 
-△ 特写/中景：钩子——直接切入冲突顶点，禁铺垫。
-角色名（神态短语：画面词｜语气词）：
-"台词。"                              ← 回合A：施压 ➔ 反驳，反驳必须带代价或新信息；对白行 ≥8；每 2~4 句穿插强视觉 △（连续对白 ≤6 行，E24）
+△ Close-up/Medium shot: write only the three visual anchors (physical result / identity-contrast action / evidence-reveal confrontation); no abstract psychological words or ineffective micro-gestures (E26).
+Character Name (expression phrase: visual cue｜vocal tone):
+"Line."                              ← vary the pace (2~4-word quick-cut lines + 5~11-word direct, account-settling lines); max 17 words per breath (E2); every 2~4 dialogue lines must interleave a △ action line, no more than 6 consecutive pure-dialogue lines (E24); evidence and plain-language conclusions in the same turn, no untranslated jargon (E25)
 
-【本集中段小钩】：≈90 秒处的新信息/新威胁/反转半步，只抬价不爆点。（机检必查）
+(Optional, ≤1) Inner Monologue: ≤17 words, write the concrete tally, not abstract emotion
+(Optional, ≤1) Narration: ≤8 words, only for theme-pointing turns / time anchors
+                                      ← monologue does not count as a dialogue line; banned in the first 3 seconds and at cliffhangers; two monologues may not be adjacent
 
-△ 中景：回合B —— 升级施压（新证据/新代价/新人证）。
-角色名（神态短语：画面词｜语气词）：
-"台词。"                              ← 升级反驳/翻盘未遂，禁复读回合A 话术；神态短语规格见 §四
-（可选·≤2 处）内心独白：≤30 字，写「具体的账」不写抽象情绪
-（可选·≤1 处）旁白：≤12 字，只用于点题转折/时间锚
-                                      ← 独白不计对白行；前3秒与断章处禁用；两条独白不得相邻
-△ 中景：情绪顶点落地 + 静默反应镜头
-
-【本集断章卡点】：画面停格描述。（黑屏：下滑立即解锁第XX集）
+【Episode Cliffhanger】: Freeze-frame description. (Black screen: swipe down to unlock Episode XX at once)
 ```
 
-**生产端校验 · 15 秒窗口台词 ≤95 字 + 连续对白 ≤6 行**（v4.0 E19 + v4.9 E24）：任何连续 15 秒片段里的台词净字数不得超过 95 字（E19），且连续纯对白不得超过 6 行无 `△` 动作支撑（E24）。连续对白块中间夹实质性 `△` 动作行即视为视觉断点、重置累积。
+## 2. Long Tier Template (150~195 s flexible)
 
-**现实治愈慢档（长档子变体，v4.0 新增）**：150~195 秒 / **480~850 字**（不是 820~1400），适用治愈系赛道（成年人离婚治愈系、成年人情感/治愈系、银发婚恋）。对白密度低、留白多、空镜多，断章强度降低、情绪密度升高——断章用第五公式"情绪反差落地"（克制型情绪切黑）而非强悬念公式。**不适用标准档/长档的字数上限**，按本变体独立计体量。
+```text
+Episode 【XX】: 【Episode Title / Core Payoff Tag】 (Long tier · 150~195 s flexible)
+【Stage】: Act X · (Ep X/40 | Unit A | back-and-forth Round N · Evidence Slot X / Rebuttal Slot X)
+【Golden 3-Second Hook】: one of six archetypes
+【Conflict Mode】: Dialogue / Action-Persistence / Identity-Mismatch / Relationship-Emotion / Rule-Puzzle / Mixed (see references/conflict-modes.md)
+【Emotion Shift】: A ➔ B ➔ C ➔ D ➔ Last-Gasp Cliffhanger
+【Episode Evidence】: 1~2 physical objects that run through this episode (same as standard tier; long tier should run the evidence through both rounds)  ← new in v4.1
+【Skeptic Supporting Character】: the character slot that voices the audience's anger/questions in this episode (long tier may set one in Round A and one in Round B)  ← new in v4.1
+【Episode Obsession】: one sentence — the thing this unit/episode must hold onto or win back
+【What the Opponent Wants】: the villain's immediate goal in this episode (what he wants, what chips he puts up)
+【Protagonist Active Goal】: the **choice/action** the protagonist takes this episode (not passively taking hits)
+【What Changes This Episode】: at least one visible change in information / relationship / resources / position / danger  ← four pre-write gates; if any is missing, do not start writing (see SKILL Step 3)
+【Episode Payoff】: the protagonist's visible counterstrike this episode + the villain's visible cost for this pressure (no "humiliation with no payoff")
+【Episode Length】: __ seconds   ← must be back-calculated from dialogue volume (pure dialogue ÷ **3.0 words/s (Reference Speech Rate, including action/pause share)** + △ action lines × action-beat weight (①1.5s / Mixed 2.5s / ②Action 4.0s) + pauses 3~5s; E16 tolerance ±20%); no inflating via total word count. Quantified 【Reference Median】: pure dialogue ≈ **447** words (150 s) / ≈ **533** words (180 s) / ≈ **580** words (195 s cap) + 12~15 action lines (②Action: pure dialogue ≥300 words + 15~22 action lines) (machine check E16 blocks inflated labels; E17 blocks "labeling short to downgrade" — long tier may not drop below 150 s)
+【Episode Structure】: Two rounds (Round A ____ ➔ Round B ____)    ← time skeleton (flexible, scales with content): hook 0~8s / Round A 8~80s / mid-episode hook ≈90s / Round B 95~170s / cliffhanger 170~195s
 
-**写前**：读台账 + 回合表定位本集档位与拍数；**写后**：更新台账四账 + 按档跑机检。
+[Scene]: Interior/Exterior · Location · Day/Night        ← max 3 per episode; scenes 2 and 3 must be escalation scenes (new space / new opponent / new pressure level)
+[Cast]: Name (status tag), Name (tag)
+
+△ Close-up/Medium shot: hook — cut straight into the conflict's peak; no setup.
+Character Name (expression phrase: visual cue｜vocal tone):
+"Line."                              ← Round A: pressure ➔ rebuttal; the rebuttal must carry a cost or new information; ≥8 dialogue lines; interleave a strong-visual △ every 2~4 lines (no more than 6 consecutive dialogue lines, E24)
+
+【Mid-Episode Hook】: at ≈90 s, new information / a new threat / half a twist; raise the stakes, don't detonate the payoff yet. (Machine-checked)
+
+△ Medium shot: Round B — escalated pressure (new evidence / new cost / new witness).
+Character Name (expression phrase: visual cue｜vocal tone):
+"Line."                              ← escalated rebuttal / failed reversal; do not repeat Round A's lines; expression-phrase spec see §4
+(Optional, ≤2) Inner Monologue: ≤20 words, write the concrete tally, not abstract emotion
+(Optional, ≤1) Narration: ≤8 words, only for theme-pointing turns / time anchors
+                                      ← monologue does not count as a dialogue line; banned in the first 3 seconds and at cliffhangers; two monologues may not be adjacent
+△ Medium shot: emotional peak lands + silent reaction shot
+
+【Episode Cliffhanger】: Freeze-frame description. (Black screen: swipe down to unlock Episode XX at once)
+```
+
+**Production check · 15-second window dialogue ≤63 words + consecutive dialogue ≤6 lines** (v4.0 E19 + v4.9 E24): within any consecutive 15-second span, net dialogue words may not exceed 63 (E19), and consecutive pure dialogue may not exceed 6 lines without a `△` action beat (E24). A substantive `△` action line inside a dialogue block counts as a visual break and resets the count.
+
+**Realistic healing slow tier (long sub-variant, new in v4.0)**: 150~195 s / **320~570 words** (not 550~930), for healing tracks (adult divorce-healing, adult emotional/healing, silver-age romance). Low dialogue density, lots of white space and empty shots; cliffhangers are softer and emotional density is higher. Cliffhangers use Formula 5, "Emotion Contrast Landing" (restrained emotional cut-to-black), not a strong-suspense formula. **The standard/long word caps do not apply**; measure volume independently under this variant.
+
+**Before writing**: read the ledger + round table to locate this episode's tier and beat count; **after writing**: update the four ledgers and run the machine check for the tier.
 
 ---
 
-## 三、 独白 / 旁白配额（配额制工具，规格见 `references/inner-monologue-vo.md`）
+## 3. Monologue / Narration Quotas (quota tool; spec in `references/inner-monologue-vo.md`)
 
-| 档位 | 内心独白 | 旁白 / 字幕 | 硬约束 |
+| Tier | Inner Monologue | Narration / Caption | Hard Constraints |
 |---|---|---|---|
-| 标准档 | ≤1 处 · ≤25 字 | ≤1 处 · ≤12 字 | 前 3 秒禁用 · 断章禁用 · 禁连排 · 不计对白行 |
-| 长档 | ≤2 处 · ≤30 字 | ≤1 处 · ≤12 字 | 同上 |
-| 漫剧档 | ≤1 处 · ≤20 字 | ≤1 处 · ≤12 字 | 同上 |
+| Standard | ≤1 instance · ≤17 words | ≤1 instance · ≤8 words | first 3 s banned · cliffhangers banned · no back-to-back placement · not counted as dialogue lines |
+| Long | ≤2 instances · ≤20 words | ≤1 instance · ≤8 words | same as above |
+| Comic-drama | ≤1 instance · ≤13 words | ≤1 instance · ≤8 words | same as above |
 
-**三通道分工**：台词＝场内攻防回合；内心独白＝只有观众听见的委屈/心事/立人设；旁白＝点题转折与时间锚。
-**两条铁线**：独白**不承担交代设定**（红线 2 同样管独白，且管得更严）；△ 动作行**仍然只写生理可观测动作**，不得把心理描写塞进动作行充数。
-**可用的三类写法**：委屈账（我给他生了五个孩子）／点题句（老实人反抗了）／立人设句（上山能打野猪）。
+**Three-channel split**: dialogue = in-scene offense/defense rounds; inner monologue = grievances and thoughts only the audience hears, establishing the character; narration = theme-pointing turns and time anchors.
+**Two hard lines**: monologue **does not carry exposition** (Red Line 2 also covers monologue, and governs it more strictly); △ action lines **still describe only physiologically observable actions**, and psychological description may not be stuffed into action lines to pad them.
+**Three usable forms**: a grievance tally (I bore him five children) / a theme-pointing line (the honest man finally fought back) / a character-establishing line (can take down a wild boar on the mountain).
 
 ---
 
-## 四、 神态短语规格（画面词｜语气词 · v3.4.3 新增）
+## 4. Expression Phrase Spec (visual cue｜vocal tone · new in v3.4.3)
 
-> 对白行 `角色名（神态短语）：` 的括号不是杂物筐——它是下游 AI 制作的**表演指示供给源**。
-> Seedance 官方对白三要素 = **谁说 + 说什么 + 怎么说**（HOW THEY SOUND）：前两项台词天然携带，
-> 第三项全靠神态短语供给；不写语气，模型生成的**声音和表情会一并变扁**。
-> 下游导演端（short-drama-director V6.9.3 §5.2 分流表）按本规格机械分流：语气词原文搬进台词语气位，画面词进画面段——**所以这里写得越规整，下游转译损耗越小**。
+> The parentheses on a dialogue line `Character Name (expression phrase):` are not a junk drawer. They are the **performance-direction source** for downstream AI production.
+> Seedance's official three dialogue elements = **who speaks + what they say + how they say it** (HOW THEY SOUND). The first two come naturally with the line;
+> the third depends entirely on the expression phrase. Without tone, the model's generated **voice and expression both flatten**.
+> The downstream director side (short-drama-director V6.9.3 §5.2 routing table) routes mechanically by this spec: vocal-tone words are moved verbatim into the line's tone slot, visual words go into the visual segment. **So the more regular the writing here, the less loss in downstream translation.**
 
-### 4.1 二分规则（一句话判据：麦克风能录到的 → 语气词；摄像机拍得到的 → 画面词）
+### 4.1 Binary Rule (one-line test: what the microphone picks up → vocal tone; what the camera sees → visual cue)
 
-**画面词在前、语气词在后，中间用全角 `｜` 分界；词项之间用 `·` 连接。**
+**Visual cue comes first, vocal tone second, separated by a fullwidth `｜`; terms are joined with `·`.**
 
-| 形态 | 写法 | 示例 |
+| Form | Format | Example |
 |---|---|---|
-| 纯画面 | `（画面词·画面词）` | `（俯身逼近·笑意不达眼底）` |
-| 纯语气 | `（语气词·语气词）` | `（气音·发颤）` |
-| 混合 | `（画面词｜语气词·语气词）` | `（俯身转着玉佩｜甜笑·柔声·话里有刀）` |
+| Visual only | `(visual·visual)` | `(leans in·smile not reaching the eyes)` |
+| Tone only | `(tone·tone)` | `(breathy·trembling)` |
+| Mixed | `(visual｜tone·tone)` | `(leans in, turning a jade pendant｜sweet smile·soft voice·knife in every word)` |
 
-旧写法（`（嘶哑）`、`（俯身，把玩玉佩，笑）`）**依然合法**——纯语气、纯画面无需 `｜`；
-只有**混合式必须用 `｜` 分界**（这是下游唯一能机械识别的分界记号）。逗号分隔也合法，但推荐 `·`。
+Old forms (`(hoarse)`, `(leans in, toys with a jade pendant, smiles)`) **remain valid**: pure tone or pure visual needs no `｜`;
+only **the mixed form must use `｜`** as the separator (the one marker downstream can recognize mechanically). Comma separation is also valid, but `·` is recommended.
 
-### 4.2 语气词表（发声方式，按四维收敛；与导演端 §5.2 同口径）
+### 4.2 Vocal Tone List (how the voice is produced, narrowed to four dimensions; same basis as director-side §5.2)
 
-| 维度 | 可用词 |
+| Dimension | Usable Terms |
 |---|---|
-| 嗓音质地 | 嘶哑 / 沙哑 / 气音 / 颤声 / 哭腔 / 哽咽 / 气若游丝 / 有气无力 |
-| 力度 | 低语 / 轻声 / 柔声 / 厉声 / 嘶吼 / 低吼 / 一字一顿 / 拖长音 / 压低声音 |
-| 方式 | 冷笑（修饰"说"）/ 嗤笑 / 讥诮 / 阴阳怪气 / 咬牙切齿 / 咬着牙说 |
-| 节奏 | 急促 / 一字一顿 / 字字如刀 |
+| Voice texture | hoarse / husky / breathy / trembling / sobbing / choking / barely audible / weak and faint |
+| Force | whisper / soft / gentle / sharp-toned / roaring / low growl / word by word / drawn-out / lowered voice |
+| Manner | coldly sneering (modifies "say") / scoffing / sardonic / sarcastic / teeth-gritted / says through gritted teeth |
+| Rhythm | rushed / word by word / each word a blade |
 
-**兼类词**（冷笑/嗤笑）：修饰"说"→ 语气词；修饰神态表情 → 画面词。
-**禁写空泛情绪结果词**：开心 / 难过 / 愤怒 / 激动 / 邪魅 等——模型无法执行的"结果词"，
-要写就写四维可执行词（`压着怒·低语` 而非 `愤怒`）。机检 E18a 拦。
-**全篇对白零语气词**会被 E18b 提示——每集至少给关键对白（钩子、交锋、断章前）配上语气。
+**Dual-class words** (coldly sneering / scoffing): when modifying "say", they are vocal tone; when modifying facial expression, they are visual cue.
+**Banned: vague emotion-result words**: happy / sad / angry / excited / seductive, etc. These are "result words" the model cannot execute.
+Write four-dimension executable words instead (`suppressed anger·low murmur`, not `angry`). Machine check E18a blocks them.
+**A script with zero vocal-tone words across all dialogue** triggers E18b. Every episode must give key lines (hook, confrontation, just before the cliffhanger) a tone.
 
-### 4.3 画面词边界（与既有规则衔接）
+### 4.3 Visual-Cue Boundaries (aligned with existing rules)
 
-画面词仍受 △ 行同一纪律约束：只写生理可观测的**动作与表情变化**（瞳孔骤缩 / 指节泛白 / 喉头滚动），
-禁抽象心理词。示例：`林薇薇（俯身，指尖转着玉佩，笑意不达眼底｜甜笑·柔声）："姐姐，你妈当年不是病死的。"`
+Visual cues remain bound by the same discipline as △ lines: write only physiologically observable **actions and expression changes** (pupils contract / knuckles whiten / throat bobs),
+no abstract psychological words. Example: `Lin Weiwei (leans in, fingertip turning a jade pendant, smile not reaching the eyes｜sweet smile·soft voice): "Sis, your mother didn't die of illness back then."`
 
 ---
 
-## 五、 强画面支撑 + 15秒换挡 + 大白话直给速查（v4.9 新增 · E24~E26）
+## 5. Strong-Visual Support + 15-Second Pacing + Plain-Language Quick Reference (new in v4.9 · E24~E26)
 
-1. **强画面支撑（防 E24 干聊断层 / 防 E26 无效微动作）**：
-   - 每 **2~4 句对白**必插 1 条 `△` 动作行，连续纯对白严禁超过 **6 行**；
-   - 每条 `△` 必须命中三大视觉锚点之一：① **物理结果与视觉奇观**；② **身份反差与手头忙活**；③ **物证亮牌与肢体对抗**；
-   - 严禁单独写 `△ 他眼神微动` / `△ 她微微一怔` / `△ 把杯子推了半寸` 等无效微动作（触发 E26 WARN）。
-2. **大白话同轮直给（防 E25 谜语人黑话）**：
-   - 凡指认物证，必须在同一轮对话里用大白话挑明结论，禁“只说物证不说结论”；
-   - 凡出现专业术语/古语/玄学设定词，当句必须跟世俗计价翻译（换算成多少钱、判几年、谁死谁活）。
-3. **15 秒换挡四拍推进**：
-   - `0~15s` 强视觉抓人 + 报出数字/死线立事 ➔ `15~45s` 正面交锋与施压 ➔ `45~85s` 亮底牌翻转完成【本集结算】 ➔ `85~110s` 余波抛新危机切断章。
+1. **Strong-visual support (prevents E24 talk-only gaps / E26 ineffective micro-gestures)**:
+   - Every **2~4 dialogue lines** must include 1 `△` action line; consecutive pure dialogue must never exceed **6 lines**;
+   - each `△` must hit one of the three visual anchors: ① **physical results and visual spectacle**; ② **identity contrast and hands-on busywork**; ③ **evidence reveal and physical confrontation**;
+   - never write standalone `△ His eyes flicker` / `△ She stiffens slightly` / `△ Pushes the cup half an inch` or other ineffective micro-gestures (triggers E26 WARN).
+2. **Plain language, same turn (prevents E25 riddling jargon)**:
+   - whenever evidence is pointed to, the conclusion must be stated in plain language in the same dialogue turn; never "mention the evidence without stating the conclusion";
+   - whenever professional terms, archaic phrasing, or mystical setting words appear, the same sentence must be followed by a worldly translation (converted into how much money, how many years, who lives or dies).
+3. **15-second four-beat pacing shift**:
+   - `0~15s` strong visual to grab attention + state a number/deadline to set the stakes ➔ `15~45s` head-on confrontation and pressure ➔ `45~85s` trump card revealed, the reversal completes【Episode Payoff】 ➔ `85~110s` aftershock throws a new crisis, cut to cliffhanger.

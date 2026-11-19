@@ -1,150 +1,151 @@
-# 情绪流单元链往返法引擎（Emotion-Flow Roundtrip Engine）
+# Emotion-Flow Unit-Chain Round-Trip Engine
 
-> ★权威（v3.0·2026-09-15 按粉丝意见修订）：情绪流的锚是**情绪契约**（观众每集要续期的那种情绪体验），**不是钉死的单一矛盾**。本文件管两件事：①一个矛盾单元内如何 6 回合高烈度拉扯（中观层）；②60～100 集全剧如何用 2～3 个单元串成链、情绪不变换战场（宏观层）。**单个矛盾硬拉超过 30 集=剧本废稿**。
+> ★ Authoritative (v3.0 · 2026-09-15, revised per fan feedback): the anchor of emotion flow is the **emotion contract** (the emotional experience the audience must keep renewing each episode), **not a fixed single conflict**. This file covers two things: ① how to run 6 high-intensity rounds of tug-of-war inside one conflict unit (mid-level); ② how a 60–100-episode full series chains 2–3 units together while the emotion never changes battlefield (macro-level). **Dragging a single conflict past 30 episodes = a failed script.**
 
 ---
 
-## 一、 流派判定二分法（立项第一道门，判错全白写）
+## I. Approach Classification Dichotomy (the first gate of the project; a wrong call wastes all the writing)
 
-| | 情绪流 | 剧情流 |
+| | Emotion Flow | Plot Flow |
 |---|---|---|
-| 代表 | 大众看到的"无脑爽剧"几乎全是 | 悬疑、规则怪谈、强情节智斗 |
-| 全剧锚点 | **情绪契约不变**（如"让欺压我们的人低头"）；矛盾按单元跑，一单元 20～30 集闭环后**换矛盾不换情绪** | 信息阶梯推进，矛盾随真相转移 |
-| 快节奏本质 | **情绪叠情绪**，不是事件叠事件 | 事件叠事件（每事件改写信息格局） |
-| 观众动力 | 憋屈→期待释放 的循环加压；单元闭环前观众要的就是"这口气什么时候吐" | 好奇→解谜→新谜 的信息牵引 |
-| 骨架工具 | 本文件§二往返公式 + §二·五单元链 | 事件链+信息阶梯（`hongguo-beat-sheet.md`） |
-| 判定问句 | "能不能用一句话说清观众追的是哪种情绪？"能→情绪流 | "观众追的是'接下来发生什么'还是'他什么时候信/认/跪'？"后者→情绪流 |
+| Representative | Nearly all of what the public sees as "mindless payoff dramas" | Suspense, rule horror, plot-heavy wit battles |
+| Series anchor | **The emotion contract does not change** (e.g., "make the people who oppressed us kneel"); conflicts run in units, and after a unit closes at 20–30 episodes **the conflict changes but the emotion does not** | Information ladder advances; the conflict shifts as the truth shifts |
+| Essence of fast pacing | **Emotion stacked on emotion**, not event stacked on event | Event stacked on event (each event rewrites the information landscape) |
+| Audience drive | A loop of humiliation → anticipated release that keeps adding pressure; before the unit closes, the audience wants to know "when will this breath finally come out" | Curiosity → puzzle-solving → a new puzzle: information pulls the audience along |
+| Skeleton tools | This file's §II round-trip formula + §II·5 unit-chain | Event chain + information ladder (`hongguo-beat-sheet.md`) |
+| Diagnostic question | "Can you state in one sentence what emotion the audience is chasing?" If yes → emotion flow | "Is the audience chasing 'what happens next,' or 'when will he believe / admit / kneel'?" The latter → emotion flow |
 
-混合剧：主线走情绪流（情绪契约贯穿），支线走剧情流（信息推进调味）。
+Hybrid drama: the main line follows emotion flow (the emotion contract runs throughout), and the side line follows plot flow (information advancement as seasoning).
 
 ---
 
-## 二、 单一矛盾往返法核心公式（单元内用，一单元一个矛盾）
+## II. Core Formula of the Single-Conflict Round-Trip (used within a unit; one conflict per unit)
 
 ```text
-找准本单元核心执念（一句话：谁，坚决不信/不认/不服的那件事）
-→ 外界施压（证据/人证/压力升级一档）
-→ 主角反驳/自证（代价或策略升级一档）
-→ 形成往返回合（几集一回合，全单元 6 回合上下）
-→ 层层递进直至：心理防线崩溃 或 真相反转闭环 → 单元收束
+Pin down this unit's core obsession (one sentence: who, and the thing they absolutely refuse to believe / admit / accept)
+→ External pressure (evidence / witness / pressure escalates one tier)
+→ Protagonist's rebuttal / self-proof (cost or strategy escalates one tier)
+→ Form round-trips (one round every few episodes; 6 rounds across the whole unit)
+→ Layer by layer until: the psychological defense collapses OR the truth reverses and closes the loop → the unit wraps up
 ```
 
-四条铁律：
-1. **单元时长帽**：一个矛盾最多烧 20～30 集（6 回合×3～5 集；**长档按内容量折算为 10～15 集**）。到点必须闭环——要么真相落地要么防线崩塌，**不许拖着再拉一个阶梯**；拖过 30 集观众从"憋屈"变"疲劳"，剧本废（2026-09-15 粉丝意见，采纳为硬规）；
-2. **换矛盾不换情绪**：下一单元换新矛盾、新对手、新战场，但兑现的必须是同一份情绪契约（见§二·五）；
-3. **每回合双升档**：证据烈度升一档 + 反驳成本升一档，两档都不升=废回合；
-4. **快节奏=情绪叠情绪**：回合内不塞新事件凑数，把本回合情绪打穿比推进剧情重要。
+Four iron rules:
+1. **Unit duration cap**: a single conflict can burn at most 20–30 episodes (6 rounds × 3–5 episodes; **the long tier, converted by content volume, is 10–15 episodes**). It must close on time — either the truth lands or the defense collapses; **do not drag it on to pull yet another step**. Past 30 episodes, the audience shifts from "humiliated" to "fatigued," and the script fails (fan feedback of 2026-09-15, adopted as a hard rule);
+2. **Change the conflict, not the emotion**: the next unit brings a new conflict, new opponent, and new battlefield, but what it pays off must be the same emotion contract (see §II·5);
+3. **Each round escalates on both sides**: evidence intensity goes up one tier + rebuttal cost goes up one tier; if neither escalates, the round is a failure;
+4. **Fast pacing = emotion stacked on emotion**: do not pad a round with new events to fill space; breaking through this round's emotion matters more than advancing the plot.
 
 ---
 
-## 二·五、 单元链法（60～100 集情绪流的全剧骨架）
+## II·5. Unit-Chain Method (the full-series skeleton for 60–100-episode emotion flow)
 
-**情绪契约**：立项时一句话说死的观众情绪体验，贯穿全剧不换。例：
-- 《被造谣后我以身入局》＝"让诬陷我的人当众跪着道歉"；
-- 赘婿战神＝"让看不起我的人一个个高攀不起"。
+**Emotion contract**: the audience's emotional experience, stated in one sentence at project setup, that runs through the whole series without changing. Examples:
+- *Framed by Rumors, I Step Into the Game Myself* = "make the person who framed me kneel publicly and apologize";
+- *Live-In Son-in-Law War God* = "make everyone who looked down on me unable to reach up to me."
 
-**单元链结构**（80 集标准）：
+**Unit-chain structure** (80-episode standard):
 
-| | 单元 A（1～25） | 单元 B（26～52） | 单元 C（53～80） |
+| | Unit A (1–25) | Unit B (26–52) | Unit C (53–80) |
 |---|---|---|---|
-| 矛盾 | 执念1（如造谣构陷） | 执念2（如身份被窃/财产侵吞） | 执念3（终极对手总清算） |
-| 对手 | 前台反派（造谣者） | 换层升级（幕后+制度帮凶） | 终极反派（契约总根源） |
-| 闭环 | 反杀+当众认罪 | 夺回实体利益 | 彻底翻盘+情绪封顶 |
-| 情绪 | 憋屈→吐气 | 憋屈2.0（更亲更狠） | 大爽大释放 |
+| Conflict | Obsession 1 (e.g., rumor-driven framing) | Obsession 2 (e.g., identity stolen / assets embezzled) | Obsession 3 (ultimate reckoning with the final opponent) |
+| Opponent | Front-stage villain (the rumor-spreader) | Layer escalates (behind-the-scenes + institutional accomplices) | Ultimate villain (the root of the contract) |
+| Closure | Counter-kill + public confession | Recover material interests | Full reversal + emotional peak |
+| Emotion | Humiliation → breath released | Humiliation 2.0 (closer and harsher) | Big payoff, full release |
 
-三缝合一规则（单元接缝处理，做不好=断追）：
-1. **旧单元残渣生出新矛盾**：A 闭环时的爽点余温里必须埋 B 的火种（反杀时当众暴露出更大的黑手/被吞掉的更贵的东西），观众情绪无缝续期，付费墙不塌；
-2. **对手换层不换欲**：新对手是旧对手背后的层级（造谣者→指使人→吃人的规则），贪/势/妒同一种逻辑，情绪烈度天然升档；
-3. **主角弧光跟着单元走**：A 被动自证→B 主动设局→C 掌控规则，每个单元换一次打法（对应§五攻守转换从"全剧中点"改挂"单元 B 开局"）。
+Three-seam rules (handling unit seams; done badly = the audience stops following):
+1. **Residue of the old unit births the new conflict**: the afterglow of Unit A's payoff must bury Unit B's ember (during the counter-kill, expose a bigger hidden hand, or something more valuable that was swallowed), so the audience's emotion renews seamlessly and the paywall does not collapse;
+2. **The opponent changes layer, not desire**: the new opponent is the layer behind the old one (rumor-spreader → instigator → the rule that devours people); greed, power, and envy follow the same logic, so emotional intensity naturally escalates;
+3. **The protagonist's arc moves with the units**: A is passive self-proof → B is active scheming → C controls the rules; each unit switches tactics once (this maps the full-series offense-defense shift from "series midpoint" to "start of Unit B," see §V).
 
-**60 集=2～3 单元；80 集=3 单元；100 集=3～4 单元**。付费墙重排：一级墙≈单元A中点（10～15），二级墙≈A/B 接缝（28～32，断在"新矛盾露头、主角还没接招"），三级墙≈C 开局前最低谷。**每单元内部各跑一张§六回合表**。
+**60 episodes = 2–3 units; 80 episodes = 3 units; 100 episodes = 3–4 units.** Paywall rearrangement: Tier 1 wall ≈ midpoint of Unit A (10–15); Tier 2 wall ≈ the A/B seam (28–32, cut at the moment "a new conflict surfaces and the protagonist hasn't answered it yet"); Tier 3 wall ≈ the lowest point right before Unit C opens. **Each unit runs its own §VI round table.**
 
 ---
 
-## 三、 证据烈度六档阶梯（施压方模板）
+## III. Six-Tier Evidence Intensity Ladder (pressure-side template)
 
-外界向主角执念砸的证据，按可抵赖程度递减分六档。**任何执念题材按序拉一遍即得 6 回合骨架**：
+The evidence that the outside world throws at the protagonist's obsession is ranked in six tiers by decreasing deniability. **Running any obsession-driven track through this list in order yields the 6-round skeleton:**
 
-| 档 | 证据类型 | 可抵赖性 | 观众预期 |
+| Tier | Evidence Type | Deniability | Audience Expectation |
 |---|---|---|---|
-| 1 | 道听途说/旁人告知 | 极高（"他们懂什么"） | 起步：执念合理 |
-| 2 | 可抵赖的物证（随身物品等） | 高（"物在≠人在"） | 微皱 |
-| 3 | 看似铁证但有程序/外观漏洞（体貌吻合的遗体） | 中（"外观不能定论"） | 着急 |
-| 4 | 权威技术证据（DNA/鉴定）但可质疑程序 | 中低（"样本污染，复检！"） | 憋屈峰值 |
-| 5 | 多重证据合围（人证+记录+轨迹全吻合） | 低（"仍未见确凿死讯"） | 怒其不醒 |
-| 6 | 不可推翻的专属铁证 + **主角亲历确证**（亲自验看专属特征） | 零 | 防线崩溃/闭环 |
+| 1 | Hearsay / told by others | Very high ("what do they know?") | Start: the obsession is reasonable |
+| 2 | Deniable physical evidence (personal belongings, etc.) | High ("the object being there doesn't mean the person is") | Slight frown |
+| 3 | Seemingly solid proof with procedural or surface gaps (a body that matches in build and appearance) | Medium ("appearance can't settle it") | Anxious |
+| 4 | Authoritative technical evidence (DNA / appraisal), but the procedure can be challenged ("sample contaminated, retest!") | Medium-low | Peak of humiliation |
+| 5 | Multiple pieces of evidence closing in (witnesses + records + movement traces all align) | Low ("still no confirmed death") | Fury that she won't wake up |
+| 6 | Irrefutable, exclusive hard evidence + **protagonist's first-hand confirmation** (personally inspecting an exclusive physical trait) | Zero | Defense collapses / loop closes |
 
-**实例 A（《错位的母爱》·执念=母亲不信女儿已死）**：回合1旁人告知→回合2随身物品→回合3体貌吻合遗体→回合4DNA（要求复检）→回合5人证通话轨迹全合围→回合6亲自验看专属身体特征，防线瓦解。——恰好六档逐档走完。
-**实例 B（《被造谣后我以身入局》·反向使用）**：反派施压同样按 1→5 走（当众控诉→编造细节引站队→抱假孩子索赔→伪造亲子鉴定），但主角在第 4 拍攻守转换，第 6 档换成**主角亮官方身份证明**反杀闭环。——证明阶梯双方可用。
+**Example A (*Misplaced Mother's Love* · obsession = the mother refuses to believe her daughter is dead)**: Round 1 hearsay from others → Round 2 personal belongings → Round 3 a body matching in build and appearance → Round 4 DNA (retest demanded) → Round 5 witness and phone-call traces all close in → Round 6 she personally inspects the exclusive body feature, and the defense crumbles. Exactly the six tiers walked in order.
 
-**单元帽提醒**：两案例都是 6 回合≈20 集量级的**单元级**结构——这正是"一个矛盾只能烧一个单元"的证据；把它们硬拉 80 集不换矛盾，就是在写第 7、8、9 回合重复阶梯，观众必疲（参§二铁律 1）。
+**Example B (*Framed by Rumors, I Step Into the Game Myself* · used in reverse)**: the villain's pressure follows the same 1→5 path (public accusation → fabricated details to force sides → holding a fake child to demand compensation → forging a paternity test), but at round 4 the protagonist flips the offense and defense, and at tier 6 **the protagonist shows official identification** to close the loop with a counter-kill. This proves the ladder can be used by both sides.
+
+**Unit-cap reminder**: both examples are **unit-scale** structures of 6 rounds ≈ 20 episodes — this is the evidence that "one conflict can burn only one unit." Forcing them to 80 episodes without changing the conflict means writing rounds 7, 8, and 9 as repeats of the ladder, and the audience will inevitably tire (see §II iron rule 1).
 
 ---
 
-## 四、 反驳成本六档阶梯（自证方模板）
+## IV. Rebuttal Cost Six-Tier Ladder (self-proof side template)
 
-主角每回合的反驳必须比上一回合付出更多或冒更大风险，**反驳话术禁止复读**（validate_episode 复读检测对应）：
+Each of the protagonist's rebuttals must cost more or carry more risk than the previous round, and **rebuttal lines may not be copied** (corresponds to the validate_episode repetition check):
 
-| 档 | 反驳形态 | 代价 |
+| Tier | Rebuttal Form | Cost |
 |---|---|---|
-| 1 | 口头否认（"不可能"） | 零 |
-| 2 | 质疑证据效力（"说明不了什么"） | 零，但开始得罪施压方 |
-| 3 | 挑战权威程序（"样本污染，复检"） | 消耗人情/金钱 |
-| 4 | 对抗体制/求助更高层（复检、找律师、公开对质） | 社会成本 |
-| 5 | 赌上一切（当众立誓、押上财产/名分/自由） | 不可逆风险 |
-| 6 | 无牌可打 → 崩溃 或 最后一搏（以身入局/反守为攻） | 剧情转折点 |
+| 1 | Verbal denial ("impossible") | Zero |
+| 2 | Challenging the evidence's validity ("proves nothing") | Zero, but begins to offend the pressure side |
+| 3 | Challenging authority's procedure ("sample contaminated, retest") | Spends favors / money |
+| 4 | Confronting the system / seeking higher authority (retest, hire a lawyer, public confrontation) | Social cost |
+| 5 | All-in (public oath, staking property / status / freedom) | Irreversible risk |
+| 6 | No cards left → collapse, or a last stand (step into the game personally / turn defense into offense) | Plot turning point |
 
-**增量铁律**：第 N 回合的反驳必须含 新信息/新行动/新代价 至少其一；只重复第 N-1 回合话术的回合直接作废重写。
+**Iron rule of escalation**: the rebuttal in round N must contain at least one of: new information / new action / new cost. A round that only repeats round N-1's lines is void and must be rewritten.
 
 ---
 
-## 五、 攻守转换（防疲劳阀；全剧挂单元B开局，单元内可小转换）
+## V. Offense-Defense Shift (fatigue valve; full-series shift is placed at the start of Unit B; small shifts allowed within a unit)
 
-一味挨打到第 4 回合观众就疲了。标准做法（实例 B 第 4 回合）：
+If the protagonist keeps taking hits until round 4, the audience gets tired. The standard fix (Example B, round 4):
 
 ```text
-被动反驳 ×3 回合 → 【转换：主角改变策略】假意认下/以身入局/主动设局
-→ 反派误判得逞、变本加厉（施压方反成暴露方）
-→ 主角收集反证 → 闭环反杀
+Passive rebuttal × 3 rounds → [Shift: Protagonist Changes Tactics] feigns acceptance / steps into the game personally / sets a trap actively
+→ The villain misjudges, succeeds, and escalates (the pressure side becomes the exposed side)
+→ The protagonist gathers counter-evidence → counter-kill closes the loop
 ```
 
-- 单元A（被动憋屈期）：可以不大转换，但**代价必须见血**（卖房自证、当众下跪要说法），用自毁式执念加压；
-- **全剧级攻守转换放在单元 B 开局**：A 单元反杀成功后，主角从"自证者"变"追债者"，主动查向幕后——这一转换本身就是 A/B 接缝的引擎；
-- 单元内小转换（如§二·五 B 单元中段）按实例 B 打：转换点≈该单元第 4 回合，且转换瞬间必须可断章（付费墙对位见§二·五）。
+- Unit A (passive humiliation phase): no major shift is required, but **the cost must draw blood** (selling a house to prove oneself, kneeling publicly to demand an explanation); use self-destructive obsession to add pressure;
+- **The full-series offense-defense shift is placed at the start of Unit B**: after Unit A's counter-kill succeeds, the protagonist goes from "the one proving himself" to "the one collecting debts," and actively digs into the figures behind the scenes — this shift itself is the engine of the A/B seam;
+- Small shifts within a unit (e.g., mid-Unit B in §II·5) follow Example B: the shift point ≈ round 4 of the unit, and the moment of the shift must be cuttable for a cliffhanger (for the paywall alignment see §II·5).
 
 ---
 
-## 六、 回合表输出格式（情绪流项目 /全剧大纲 必产：**每单元一张**）
+## VI. Round-Table Output Format (emotion-flow projects must produce one per unit from `/series-outline`)
 
 ```text
-【情绪契约】：一句话（观众每集要续的那口气）
-【单元 A】执念=____ ｜对手=____ ｜闭环=____
-  【回合 1】（第 1-3 集）：证据=档1 ____ ｜反驳=档1 ____ ｜回合尾断章：____
-  【回合 2】（第 4-6 集）：证据=档2 ____ ｜反驳=档2 ____ ｜回合尾断章：____
-  …（6 回合，总长 ≤25~30 集）
-  【A 闭环+火种】（第 __ 集）：反杀兑现情绪 ｜但当场暴露 ____ → 单元B矛盾立项
-【单元 B】执念=____ ｜对手=____（A 的对手背后一层）｜打法=主动入局
-  …同构 6 回合，证据/反驳阶梯可从档2起步（主角已会战）
-【单元 C】执念=____ ｜终极清算 ｜弧光封顶
+[Emotion Contract]: one sentence (the breath the audience must keep renewing each episode)
+[Unit A] Obsession=____ ｜Opponent=____ ｜Closure=____
+  [Round 1] (Ep. 1–3): Evidence=Tier 1 ____ ｜Rebuttal=Tier 1 ____ ｜Round-end cliffhanger: ____
+  [Round 2] (Ep. 4–6): Evidence=Tier 2 ____ ｜Rebuttal=Tier 2 ____ ｜Round-end cliffhanger: ____
+  …(6 rounds, total length ≤25–30 episodes)
+  [A Closed Loop + Ember] (Ep. __): counter-kill pays off the emotion ｜ but on the spot exposes ____ → Unit B conflict is set up
+[Unit B] Obsession=____ ｜Opponent=____ (one layer behind A's opponent) ｜Approach=Actively step in
+  …same 6-round structure; the evidence/rebuttal ladder can start from Tier 2 (the protagonist is already fighting)
+[Unit C] Obsession=____ ｜Ultimate reckoning ｜Arc capped
 ```
 
-与付费墙挂线：单元内墙断在"回合末尾+证据刚升档+反驳未出口"的缝上；二级墙断在 A/B 接缝"新矛盾露头"瞬间（详见 `hongguo-beat-sheet.md` §二）。
+Paywall alignment: within a unit, the wall cuts on the seam of "end of round + evidence just escalated + rebuttal not yet delivered"; the Tier 2 wall cuts at the instant of "new conflict surfaces" at the A/B seam (see `hongguo-beat-sheet.md` §II).
 
-**长档项目（150~195 秒/集）**：回合表填法不变，只把集区间按「1 长档集 ≈ 2 标准集」折算（同一回合跨的集数减半，如回合1 由 1-3 集变为 1-2 集）；单元硬帽同步折半为 10～15 长档集。长档一集内同时容纳施压拍与反驳拍，故单集正文必须写出"回合A ➔ 中点小钩 ➔ 回合B"三段（见 `hongguo-beat-sheet.md` §四）。
+**Long-tier projects (150–195 seconds per episode)**: the round-table format stays the same, but the episode ranges are converted at "1 long-tier episode ≈ 2 standard episodes" (the episodes spanned by a round are halved, e.g., Round 1 changes from Ep. 1–3 to Ep. 1–2); the unit hard cap is halved in step to 10–15 long-tier episodes. A long-tier episode holds both a pressure beat and a rebuttal beat, so the episode body must show three segments: "Round A ➔ midpoint hook ➔ Round B" (see `hongguo-beat-sheet.md` §IV).
 
 ---
 
-## 七、 下沉题材批量生成器（六档阶梯模板套用示范）
+## VII. Batch Generator for Downmarket Subjects (demonstration of applying the six-tier ladder template)
 
-任何"一方死活不认、另一方反复自证"的题材都能 10 分钟拉出 6 回合：
+Any subject where "one side refuses to accept, and the other side repeatedly proves itself" can produce 6 rounds in ten minutes:
 
-**身份错位**（执念：明明是男生，对方偏说是女生）：
-口头条约争执→体检单据被指造假→同性衣物在其房中发现→医院旧档案疑遭涂改→当事人当众自证反被解读→决定性生物证据落地。
+**Identity mismatch** (obsession: he is clearly a boy, yet the other side insists he is a girl):
+Verbal agreement dispute → a medical check-up record is claimed to be forged → same-sex clothing is found in his room → old hospital records are suspected of being altered → the person proves themselves publicly and is misread → a decisive biological evidence lands.
 
-**邻里噪音**（楼下非说你家吵）：
-**注意：单一噪音指控最多烧 25～30 集，硬拉到 60 集即废稿（粉丝意见 2026-09-15）。** 60 集应拆三单元，情绪契约="让不信我的人亲耳听见真相"：A 单元（1-22）噪音构陷→六档阶梯→第22集示证翻案收小尾；B 单元（23-44）反查发现"被针对"另有利益动机（开发商逼迁/老徐收好处），新矛盾新对手换层；C 单元（45-60）真凶浮出：楼栋结构病害+物业隐瞒维修基金，从自证变成全楼维权。每单元内部各跑一张六档表。
+**Neighborhood noise** (the downstairs neighbor insists your home is the source of the noise):
+**Note: a single noise accusation can burn at most 25–30 episodes; dragging it to 60 episodes makes it a failed draft (fan feedback 2026-09-15).** A 60-episode series should be split into three units, with the emotion contract = "make the people who don't believe me hear the truth with their own ears": Unit A (1–22) noise framing → six-tier ladder → episode 22 shows the evidence and overturns the case, closing the tail; Unit B (23–44) investigation reveals that the "targeting" has another interest motive (developer pushing relocation / Old Xu took kickbacks), a new conflict and new opponent after a layer shift; Unit C (45–60) the real culprit surfaces: structural defects in the building + property management concealing the maintenance fund, moving from self-proof to a whole-building rights campaign. Each unit runs its own six-tier table.
 
-**健身房退卡**（商家坚决不退）：
-合同条款扯皮→口头承诺录音→会员卡被暗停→市监投诉被"合规"驳回→集体受害者联署→监管现场检查一锤定音。
+**Gym membership refund** (the business refuses to refund):
+Contract-clause dispute → recording of a verbal promise → membership card suspended → complaint to the market supervision bureau rejected on "compliance" grounds → collective co-signing by victims → regulator's on-site inspection settles it.
 
-生成口诀：**契约一句话 → 单元切两三块 → 每单元：执念一句话 → 证据升六档 → 反驳付六次代价 → 闭环留火种 → 换矛盾不换情绪**。
+Generator mantra: **one-sentence contract → cut the series into two or three units → each unit: one-sentence obsession → escalate evidence through six tiers → rebuttals pay six times over in cost → close the loop and leave an ember → change the conflict, not the emotion.**

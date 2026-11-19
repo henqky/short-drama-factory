@@ -1,69 +1,71 @@
-# 前三集节拍卡（First-Three-Episode Beat Card · v4.1 新增）
+# First-Three-Episode Beat Card (v4.1 new)
 
-> 依据六部已跑出成绩的实拍剧 S 本拆解归纳（《敢泼我馄饨》《奶团糖宝是锦鲤》《五十岁爷们闪婚了》《瘦身归来》《黄昏散场》《三分钱的取舍》）。用途：立项后、写正文前，先用本卡锁定前三集结构；写完后逐集对照核查。
+> Distilled from the S-grade breakdowns of six live-action dramas that performed well: *Dare to Splash My Wonton*, *Milk-Dumpling Candy Baby Is a Lucky Charm*, *The Fifty-Year-Old Man Married in a Flash*, *Back After Slimming Down*, *Dusk Curtain Call*, and *The Three-Cent Choice*. Use: after greenlighting and before drafting body text, lock the three-episode structure with this card. After writing, check each episode against it.
 
 ---
 
-## 一、三集骨架（所有跑出来的剧共同遵守）
+## I. Three-Episode Skeleton (shared by every drama that performed)
 
-| 集 | 任务 | 必达结果 | 禁止 |
+| Episode | Task | Must-deliver result | Forbidden |
 |---|---|---|---|
-| 第 1 集 | **受害/损失事件 + 主角立场**双重锁定 | 90 秒内观众知道"帮谁、恨谁"；主角有明确表态/行动（不辩解但不退让） | 只铺背景不立冲突；主角被打不还手也不立 flag |
-| 第 2 集 | **证据回放 / 考验递进** | 每 1~2 条恩情账/付出账/考验加一笔（物证特写穿插）；对立势力加码施压 | 重复第 1 集话术；无新信息空转 |
-| 第 3 集 | **冲突升级** | 矛盾从"私人摩擦"升级到"公开/金钱/关系"层面，观众情绪被吊到付费墙 | 第三集还在铺垫日常 |
+| Episode 1 | **Lock in both the victim / loss event and the protagonist's stance** | Within 90 seconds the audience knows "who to root for, who to hate"; the protagonist makes a clear statement or action (no excuses, no backing down) | Setting up background without conflict; the protagonist takes a beating without striking back and takes no stand |
+| Episode 2 | **Evidence replay / escalating tests** | Add one entry to the ledger of favors, sacrifices, or tests for every 1-2 entries (physical-evidence close-ups interspersed); the opposing faction escalates pressure | Repeating Episode 1's talking points; spinning wheels with no new information |
+| Episode 3 | **Conflict escalation** | The conflict moves from "private friction" to "public / money / relationship" stakes; audience emotion is pulled up to the paywall | Still laying down everyday setup in Episode 3 |
 
-**共同手法**：
-- **物证叙事**：每集 1~2 个贯穿物件（碗/账本/鱼竿/桃筐/群聊截图/到账页），情绪落在物证上而非空口控诉。特写即拍，AI 生图友好。
-- **VO 内心独白当情绪引导器**：主角全程冷静不辩解，独白替观众算账站队（注意独白配额，见 `inner-monologue-vo.md`）。
-- **质疑者配角**：反派阵营或主角阵营里设一个"替观众说狠话/发问"的人设位（儿子/宴会同伴/妻儿），主角保持冷静逼格。
-- **断章统一"反差金句落地"**：承诺式反差（"三天收回所有铺位"）或掉马前一秒（"沈知枝。"）；治愈系用"情绪反差落地"切黑。**不用悬念问句断章**。
+**Shared techniques**:
+- **Physical-evidence storytelling**: 1-2 recurring objects per episode (bowl / ledger / fishing rod / peach basket / group-chat screenshot / bank-deposit page). Emotion lands on the object, not on empty accusation. Shoot it as a close-up; AI image generation handles it well.
+- **Voiceover inner monologue as emotional guide**: the protagonist stays calm and never explains. The monologue tallies the account for the audience and takes sides. (Mind the monologue quota; see `inner-monologue-vo.md`.)
+- **Skeptic supporting character**: put in the villain's camp or the protagonist's camp a role that "says the harsh things and asks the questions for the audience" (a son, a banquet companion, a wife or child), while the protagonist keeps cool and commanding.
+- **Cliffhangers standardized to "Contrast Punchline Landing"**: a promise-style contrast ("Every stall taken back in three days") or the second before a reveal ("Shen Zhizhi."). Healing dramas cut to black with "Emotion Contrast Landing." **Never end on a suspense question.**
 
 ---
 
-## 二、四类节奏型（按赛道与制作成本选）
+## II. Four Pacing Types (choose by track and production cost)
 
-| 节奏型 | 集时长曲线 | 结构特征 | 适用赛道 | 实剧对照 |
+| Pacing type | Episode-length curve | Structural traits | Suitable tracks | Live-action reference |
 |---|---|---|---|---|
-| **递减派** | E1 最长 → 逐集收窄加压（86→72→58s） | 单场景为主+回忆插叙；信息密度逐集递增 | 都市商战/恩人反杀/家庭反击 | 敢泼我馄饨（86/72/58）、黄昏散场（53/46/39） |
-| **波动派** | 铺垫集给足时长、短集快推进（82→115→69s） | 多场景碎片（4 场景×15~30s）；"画饼-兑现"交替 | 萌宝锦鲤/治愈家庭 | 奶团糖宝（82/115/69） |
-| **V 型派** | 第一集给满（羞辱+回忆+立誓）→ 第二集短促过场 → 第三集拉回（89→47→82s） | 火力集中在 E1；蒙太奇开场+打脸进度条逐集推进 | 逆袭打脸/校园/瘦身变美 | 瘦身归来（89/47/82） |
-| **微集派** | E1 立规矩后全剧 30~40 秒微集（76→40→41s） | 单场景长对话；一集只推一个情绪点；超长续航 | 乡村现实/情绪流慢剧 | 三分钱的取舍（76/40/41，全剧 58 集均 32s） |
+| **Descending** | Episode 1 longest → narrower and more pressure each episode (86→72→58 s) | Mainly single-location with flashback inserts; information density rises each episode | Urban business / benefactor's revenge / family counterattack | *Dare to Splash My Wonton* (86/72/58), *Dusk Curtain Call* (53/46/39) |
+| **Wave** | Setup episodes get full runtime; short episodes push fast (82→115→69 s) | Fragmented multi-scene (4 scenes × 15-30 s); alternating "promise–payoff" | Cute baby / lucky-charm / healing family | *Milk-Dumpling Candy Baby Is a Lucky Charm* (82/115/69) |
+| **V-Shape** | Episode 1 at full length (humiliation + flashback + vow) → Episode 2 a brief bridge → Episode 3 pulls back (89→47→82 s) | Firepower concentrated in Episode 1; montage opening + payoff progress bar advances each episode | Comeback and face-slapping / campus / slim-down makeover | *Back After Slimming Down* (89/47/82) |
+| **Micro-Episode** | After Episode 1 sets the rules, the rest of the series runs on 30-40 second micro-episodes (76→40→41 s) | Single-location long dialogue; one emotional beat per episode; very long runway | Rural realism / slow emotional drama | *The Three-Cent Choice* (76/40/41; the whole 58-episode series averages 32 s) |
 
-**选型判据**：单场景低成本实拍 → 递减派；萌宝/治愈多场景 → 波动派；逆袭打脸强冲突 → V 型派；现实题材长续航 → 微集派。
+**Selection criteria**: low-cost single-location live shoot → Descending; cute-baby / healing multi-scene → Wave; comeback and face-slapping with strong conflict → V-Shape; realistic subject with long runway → Micro-Episode.
 
 ---
 
-## 三、六部实剧前三集速查（拆解样本）
+## III. Quick Reference: First Three Episodes of Six Live-Action Dramas (breakdown samples)
 
-| 剧 | 节奏型 | E1 双重锁定点 | E2 加笔 | E3 升级 | 断章 |
+| Drama | Pacing type | Episode 1 dual-lock point | Episode 2 addition | Episode 3 escalation | Cliffhanger |
 |---|---|---|---|---|---|
-| 敢泼我馄饨 | 递减 | 泼馄饨+免单争执+十年恩情 VO | 三回援助逐条回放+15 元结清 | 公开追讨十年旧账 | E7「三天，把所有铺位全部收回来」 |
-| 奶团糖宝是锦鲤 | 波动 | 小女婴降生+山货福星传言 | 取名逗弄（宠溺萌点） | 好运兑现推进 | E4 大鱼「未完待续」 |
-| 五十岁爷们闪婚了 | 递减 | 相亲+双向马甲当场揭破 | 20 万考验+儿子劝阻+反转 | 赶走阻拦者约定领证 | E2「冬雪。」「二十万，给咱妈看病」 |
-| 瘦身归来 | V 型 | 赌局羞辱（群聊字幕）+回忆付出+立誓 | 集体下注加码 | 反杀进度条推进 | E7「沈知枝。」掉马前一秒 |
-| 黄昏散场 | 递减 | 800 元鱼竿被摔+宣布离家+冻结卡 | 兄弟相助+回家取物遭冷待 | 逼迫低头+递离婚协议 | E5「这张卡被冻结了」 |
-| 三分钱的取舍 | 微集 | 直收提价撤掉十年代办 | 三分钱争执+妻子抱不平 | 人情反转 | 事实/情绪反转型（第五公式） |
+| *Dare to Splash My Wonton* | Descending | Wonton splashed + dispute over a free meal + ten years of kindness in VO | Three rounds of help replayed item by item + $2 repaid | Publicly collecting ten-year-old debts | E7 "Three days. Take back every stall." |
+| *Milk-Dumpling Candy Baby Is a Lucky Charm* | Wave | Baby girl born + rumor she's a mountain-produce lucky star | Name-giving teasing (doting cute moments) | Good-luck payoffs advance | E4 "Big Catch" — "To be continued" |
+| *The Fifty-Year-Old Man Married in a Flash* | Descending | Blind date + both sides' disguises exposed on the spot | A $200K test + son's objection + twist | Driving off the blocker; agreeing to get the marriage certificate | E2 "Dong Xue." "$200K, for Mom's treatment." |
+| *Back After Slimming Down* | V-Shape | Betting humiliation (group-chat captions) + flashback of sacrifices + vow | Group bets escalate | Counterattack progress bar advances | E7 "Shen Zhizhi." the second before the reveal |
+| *Dusk Curtain Call* | Descending | A $110 fishing rod smashed + announcement of leaving + card frozen | Brothers help + fetching belongings meets a cold shoulder | Pressure to bow + divorce papers handed over | E5 "This card has been frozen." |
+| *The Three-Cent Choice* | Micro-Episode | Direct fee hike cancels ten years of brokering | Dispute over three cents + wife's outrage | Reversal of favors | Fact/emotion reversal type (the fifth formula) |
 
 ---
 
-## 三·补、行动坚持型变体（② 型专用）
+## III·Supplement. Action-Persistence Variant (for ② type only)
 
-前三集的任务不变（E1 受害+立场／E2 证据回放或考验递进／E3 冲突升级），但**素材换成行动型**：
+The three-episode tasks stay the same (Episode 1 victim + stance / Episode 2 evidence replay or escalating tests / Episode 3 conflict escalation), but the material switches to action type:
 
-| 集 | 对话型写法 | **②行动型写法** |
+| Episode | Dialogue-type approach | ② Action-type approach |
 |---|---|---|
-| E1 | 当众受辱 + 口头表态 | **预知灾变（受害）＋ 开始准备（立场）**；90 秒锁站队靠“**他为什么疯了一样囤货**”的反常动作，不是嘴仗 |
-| E2 | 逐条回放恩情账 | **准备升级 × 质疑阻挠**：准备从“买十箱水”升到“封门窗”；质疑者从嘲笑升到举报/偷拍 |
-| E3 | 冲突升级到公开/金钱/关系 | **第一次验证前兆**（停电/断网/涨价）+ 质疑者开始慌；断章卡在“更大灾难前一秒” |
+| Episode 1 | Public humiliation + verbal stance | **Foresees the disaster (victim) + starts preparing (stance)**. Locks the audience's side within 90 seconds through an abnormal action ("Why is he stockpiling like a madman?"), not through a shouting match |
+| Episode 2 | Replay the ledger of favors item by item | **Escalating preparation × doubt and obstruction**. Preparation rises from "buys ten crates of water" to "seals the doors and windows"; the skeptic escalates from mockery to reporting him or secretly filming |
+| Episode 3 | Conflict escalates to public / money / relationship | **The first omen is verified** (power cut / network outage / price hike), and the skeptic starts to panic. The cliffhanger lands on "the second before the bigger disaster" |
 
-**行动型前三集自检**：①E1 是否用“反常动作+他为什么”立住钩子（而不靠骂仗）？②E2 的阻挠是否升了一档？③E3 是否已出现**第一次验证**？④主角是否存在**辩解**（有＝跑型）？
+**Action-type three-episode self-check**: ① Does Episode 1 anchor the hook with "abnormal action + why is he doing it" (rather than yelling)? ② Did Episode 2's obstruction escalate one tier? ③ Has the first verification appeared by Episode 3? ④ Does the protagonist make any excuses? (Yes = the "runner" failure mode.)
 
-## 四、前三集自检清单（写完逐条核对）
+---
 
-1. E1 是否在 90 秒内同时完成"受害事件"和"主角立场/行动"？
-2. E2 是否有新信息（恩情账加笔/考验加码/新物证），而非重复 E1？
-3. E3 是否已从私人摩擦升级到公开/金钱/关系层面？
-4. 前三集是否有 1~2 个贯穿物证？每集是否有特写落点？
-5. 是否有质疑者配角替观众把狠话/疑问说出口？主角是否保持冷静？
-6. 断章是否为反差金句落地/掉马前一秒/情绪切黑？是否没用悬念问句？
-7. 节奏型是否与赛道匹配（对照 §二选型判据）？
+## IV. Three-Episode Self-Check List (verify each item after writing)
+
+1. Does Episode 1 complete both the "victim event" and the "protagonist's stance / action" within 90 seconds?
+2. Does Episode 2 bring new information (a new ledger entry, an escalated test, new physical evidence) rather than repeating Episode 1?
+3. Has Episode 3 escalated from private friction to public / money / relationship stakes?
+4. Do the first three episodes have 1-2 recurring physical pieces of evidence? Does each episode have a close-up landing point?
+5. Does a skeptic supporting character voice the harsh lines and questions for the audience? Does the protagonist stay calm?
+6. Are the cliffhangers contrast punchline landings, the second before a reveal, or emotional cut-to-black? Are none of them suspense questions?
+7. Does the pacing type match the track (check the selection criteria in §II)?

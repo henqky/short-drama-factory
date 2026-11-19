@@ -39,29 +39,29 @@
   <rect width="1280" height="320" fill="url(#glowA)"/>
   <rect width="1280" height="320" fill="url(#glowB)"/>
 
-  <!-- 左侧竖条 -->
+  <!-- Left accent bar -->
   <rect x="64" y="74" width="7" height="172" rx="3.5" fill="url(#bar)"/>
 
-  <!-- 主标题 -->
+  <!-- Main title -->
   <text x="104" y="126" font-family="Segoe UI, Arial, Helvetica, sans-serif" font-size="60" font-weight="800" fill="#ffffff" letter-spacing="1.5">SHORT-DRAMA FACTORY</text>
 
-  <!-- 中文副标题（金色） -->
-  <text x="106" y="176" font-family="Microsoft YaHei, PingFang SC, Heiti SC, sans-serif" font-size="30" font-weight="700" fill="url(#gold)">短剧工业化编剧引擎 · <tspan fill="#ff8aa6">v4.9</tspan></text>
+  <!-- Subtitle (gold) -->
+  <text x="106" y="176" font-family="Microsoft YaHei, PingFang SC, Heiti SC, sans-serif" font-size="30" font-weight="700" fill="url(#gold)">Short-Drama Script Engine · <tspan fill="#ff8aa6">v4.9</tspan></text>
 
-  <!-- 核心卖点 -->
-  <text x="106" y="216" font-family="Microsoft YaHei, PingFang SC, Heiti SC, sans-serif" font-size="19" fill="#aab3c2">一句创意 / 一部网文 / 一个脑洞  →  强画面支撑 · 15秒换挡 · 大白话同轮直给</text>
+  <!-- Core pitch -->
+  <text x="106" y="216" font-family="Microsoft YaHei, PingFang SC, Heiti SC, sans-serif" font-size="19" fill="#aab3c2">One idea / one web novel / one hook  →  strong visuals · 15-sec beats · same-round plain talk</text>
 
-  <!-- 能力胶囊 -->
+  <!-- Capability pill -->
   <g filter="url(#glow)">
     <rect x="104" y="240" width="760" height="34" rx="17" fill="#141a26" stroke="url(#crimson)" stroke-width="1.4"/>
     <circle cx="128" cy="257" r="4" fill="url(#gold)"/>
-    <text x="144" y="263" font-family="Microsoft YaHei, PingFang SC, Heiti SC, sans-serif" font-size="16" fill="#ffc4d5">情绪契约单元链 · 40 赛道全图 · 剥壳留核仿写 · 台词七维直给 · 机检 E1~E26</text>
+    <text x="144" y="263" font-family="Microsoft YaHei, PingFang SC, Heiti SC, sans-serif" font-size="16" fill="#ffc4d5">Emotion-contract chains · 40 tracks · shell-stripping imitation · checks E1~E26</text>
   </g>
 
-  <!-- 右侧电影胶片 + 播放键装置 -->
+  <!-- Right-side film strip + play-button device -->
   <g transform="translate(1004,58)">
     <rect x="0" y="0" width="212" height="204" rx="14" fill="#0f1420" stroke="#2c3346" stroke-width="1.5"/>
-    <!-- 上下齿孔 -->
+    <!-- Sprocket holes top and bottom -->
     <g fill="#232a3a">
       <rect x="16" y="14" width="20" height="12" rx="3"/>
       <rect x="48" y="14" width="20" height="12" rx="3"/>
@@ -76,16 +76,16 @@
       <rect x="144" y="178" width="20" height="12" rx="3"/>
       <rect x="176" y="178" width="20" height="12" rx="3"/>
     </g>
-    <!-- 画面区 -->
+    <!-- Screen area -->
     <rect x="26" y="38" width="160" height="128" rx="8" fill="#161d2b" stroke="#2c3346" stroke-width="1"/>
-    <!-- 播放三角 -->
+    <!-- Play triangle -->
     <g filter="url(#glow)">
       <path d="M92 84 L134 102 L92 120 Z" fill="url(#crimson)"/>
     </g>
-    <!-- 情绪曲线（下沿） -->
+    <!-- Emotion curve (bottom edge) -->
     <path d="M30 150 L60 132 L86 144 L112 108 L138 128 L166 100 L182 112" fill="none" stroke="url(#gold)" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/>
   </g>
 
-  <!-- 右下角署名 -->
-  <text x="1006" y="286" font-family="Microsoft YaHei, PingFang SC, Heiti SC, sans-serif" font-size="13" fill="#9aa6bd">动态按需挂载 · 防 Context 爆炸　|　红果付费生态</text>
+  <!-- Bottom-right credit -->
+  <text x="1006" y="286" font-family="Microsoft YaHei, PingFang SC, Heiti SC, sans-serif" font-size="13" fill="#9aa6bd">On-demand modules · Hongguo ecosystem</text>
 </svg>

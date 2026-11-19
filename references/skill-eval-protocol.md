@@ -1,71 +1,71 @@
-# Skill 升级评测规程（Skill Eval Protocol）
+# Skill Upgrade Evaluation Protocol (Skill Eval Protocol)
 
-> **用途**：本 skill 每次升级后，如何**证明它真的变好了**，而不是"改完感觉更顺了"。
-> 本规程是 `skill-package-upgrade-review` 的"复查五层校验"在**产物层**的延伸：五层校验管**包自身的一致性**，本规程管**产出质量有没有真的提高**。
-
----
-
-## 一、五条铁律（违反其一，评测结论作废）
-
-1. **固定用例先行** —— 升级**之前**就冻结一组用例集（题材、档位、集号、要求），升级前后跑同一组，逐条对照。
-2. **不把"调规则用过的样本"当独立验收** —— 你为了调规则而反复看的那个样本，已经**泄漏**了，不能再用它证明泛化能力。必须留**保留题**。
-3. **盲评优先于自评** —— 让评审者（人或另一个模型）**不知道**哪份是升级前后的稿子，只按 `script-doctor-protocol.md` 的问题卡评"戏是否成立"。
-4. **证据分层标注** —— 每条结论必须标清来源级别：**程序化**（机检可复现）> **模型判断**（同题两跑一致性）> **真人反馈**。三者不得混写成一句"效果更好"。
-5. **回归不许裸放** —— 允许"某些用例分数下降"，但必须**说明为什么可接受**（例如：新规则收紧了配额，导致某样本被判 FAIL——若该样本确实注水，则是改进）。
+> **Purpose**: after every upgrade of this skill, how to **prove it actually got better**, rather than "it feels smoother after the edit."
+> This protocol extends the "five-layer re-check" of `skill-package-upgrade-review` to the output layer. The five layers check the package's own consistency. This protocol checks whether output quality actually improved.
 
 ---
 
-## 二、用例集构成（三件套）
+## I. Five Iron Rules (violate any one and the evaluation conclusion is void)
 
-| 类型 | 数量 | 作用 | 是否允许用于调规则 |
+1. **Fixed cases first**: before the upgrade, freeze a case set (genre, tier, episode number, requirements). Run the same set before and after, and compare item by item.
+2. **Don't treat a sample used for rule-tuning as independent acceptance**: any sample you repeatedly reviewed while tuning rules is already leaked, and it cannot prove generalization. You must keep holdout questions.
+3. **Blind review over self-review**: reviewers (human or another model) must not know which draft is pre- or post-upgrade. They judge only "does the drama hold up" using the issue cards in `script-doctor-protocol.md`.
+4. **Layered evidence labels**: every conclusion must state its source level: **programmatic** (validator-reproducible) > **model judgment** (consistency across two runs of the same prompt) > **human feedback**. Never blend the three into one sentence like "works better."
+5. **No bare regressions**: some scores may drop, but you must explain why that is acceptable. (E.g., a new rule tightened the quota, so a sample now FAILs. If that sample really was padded, it is an improvement.)
+
+---
+
+## II. Case-Set Composition (three parts)
+
+| Type | Count | Purpose | Allowed for rule-tuning? |
 |---|---|---|---|
-| **固定用例**（regression） | 5～8 条 | 每次升级必跑，防倒退 | 可以（就是要盯住它们不退步） |
-| **保留题**（holdout） | 2～3 条 | 只在**最终验收**跑一次，验泛化 | **禁止**——升级过程中不许看 |
-| **对抗用例**（adversarial） | 3～5 条 | 专打"规则能不能被绕" | 可以 |
+| **Fixed cases** (regression) | 5-8 | Run on every upgrade to prevent backsliding | Yes (the whole point is to watch them for regressions) |
+| **Holdout questions** (holdout) | 2-3 | Run once, at final acceptance only, to test generalization | **No**. They must not be viewed during the upgrade |
+| **Adversarial cases** (adversarial) | 3-5 | Designed to test whether the rules can be circumvented | Yes |
 
-**对抗用例的构造方向**（本项目踩过的真坑）：
-- 用独白充对白行数绕开攻防结构检查（v3.4 已堵，见 `inner-monologue-vo.md`）
-- 在字段行里塞正文撑体量（v3.2 已堵）
-- 剁碎长句绕开单句字数上限（N12 保护性反例覆盖）
-- 堆低信息动作行凑体量（N13 覆盖）
-- 长档把中段小钩写成高潮、用回合A 话术填满 3 分钟（E11 + 红线 9 覆盖）
+**Directions for building adversarial cases** (real pitfalls this project has hit):
+- Using monologue to pad dialogue-line counts and bypass the exchange-structure check (closed in v3.4; see `inner-monologue-vo.md`)
+- Stuffing body text into field lines to inflate volume (closed in v3.2)
+- Chopping long sentences to dodge the single-line length cap (covered by the N12 protective counterexample)
+- Piling up low-information action lines to pad volume (covered by N13)
+- Long tier: writing the mid-episode hook as a climax, or filling three minutes with Round A rhetoric (covered by E11 + red line 9)
 
-**用例集的存法**：固定用例与对抗用例随包交付（`examples/` 可扩展为 `examples/eval-cases/`）；保留题由使用者自行保管，**不写进包**。
+**Where the case set lives**: fixed and adversarial cases ship with the package (`examples/` can be extended to `examples/eval-cases/`). Holdout questions are kept by the user and are **not** written into the package.
 
 ---
 
-## 三、评测流程（六步）
+## III. Evaluation Workflow (six steps)
 
 ```text
-冻结用例集 → 跑基线(旧版) → 跑候选(新版) → 机检回归(程序化) → 盲评(模型/人) → 出对照报告
+Freeze case set → run baseline (old version) → run candidate (new version) → validator regression (programmatic) → blind review (model / human) → produce comparison report
 ```
 
-1. **冻结用例集**：写清题材、档位、集号、输入（脑洞/原著概况）、交付要求。
-2. **跑基线**：用**旧版**跑完整套用例，留档（这一份是后面所有比较的锚）。
-3. **跑候选**：用**新版**跑同一套用例，同样留档。
-4. **机检回归（程序化证据）**：两个脚本 `--self-test` 必须 PASSED；所有用例跑 `validate_episode.py`，记录 FAIL/WARN/NOTE 数变化。**这一层是硬证据，不参与打分。**
-5. **盲评（判断层）**：把新旧稿**去标识、打乱顺序**，交评审者按问题卡评：P0/P1 问题数、因果链是否成立、情绪有没有落地。**禁止**在这一层给"爆款预测"或总分。
-6. **出对照报告**：一页纸，三块——程序化差异（可复现）、盲评差异（标级别）、保留题结论（只此一次）。
+1. **Freeze the case set**: specify genre, tier, episode number, input (premise / source-novel summary), and delivery requirements.
+2. **Run the baseline**: run the full case set on the old version and archive it. This becomes the anchor for all later comparisons.
+3. **Run the candidate**: run the same set on the new version and archive it likewise.
+4. **Validator regression (programmatic evidence)**: both scripts' `--self-test` must PASS. Run `validate_episode.py` on all cases and record changes in FAIL / WARN / NOTE counts. This layer is hard evidence and takes no part in scoring.
+5. **Blind review (judgment layer)**: strip identifiers from the old and new drafts and shuffle their order. Reviewers score using the issue cards: P0/P1 issue counts, whether the causal chain holds, and whether emotion lands. Never give a "hit prediction" or total score at this layer.
+6. **Produce the comparison report**: one page, three sections: programmatic differences (reproducible), blind-review differences (level-labeled), and the holdout conclusion (given only once).
 
 ---
 
-## 四、判优标准（不设总分）
+## IV. Judging Criteria (no total score)
 
-**不问"哪个更好"，只问四个可回答的问题**：
+**Don't ask "which is better." Ask only four answerable questions:**
 
-| 问题 | 判定方式 |
+| Question | How to judge |
 |---|---|
-| 新版**多修好了**什么？ | 旧版有、新版没有的问题卡（列出具体条目） |
-| 新版**多制造**了什么？ | 新版有、旧版没有的问题卡（这是升级的代价，必须显式列出） |
-| **保留题**上新版是否仍成立？ | 成立 / 部分成立 / 不成立（不成立即本次升级不算成功） |
-| 新规则**能不能被绕**？ | 对抗用例是否全部被拦；漏拦的写进下一轮 |
+| What did the new version **fix**? | Issue cards present in the old version but absent in the new (list each item) |
+| What did the new version **introduce**? | Issue cards present in the new version but absent in the old (this is the cost of the upgrade and must be listed explicitly) |
+| Does the new version still hold on the **holdout** questions? | Holds / partly holds / doesn't hold (doesn't hold = this upgrade is not a success) |
+| Can the new rules **be circumvented**? | Were all adversarial cases blocked? Log any misses for the next round |
 
-**禁止输出**：总分、星级、"爆款率提升 X%"。分数会给假精确感，且本项目无平台级回流数据支撑——**热度口径不一，只作趋势参考**。
+**Forbidden outputs**: total scores, star ratings, "hit rate up X%." Numbers create false precision, and this project has no platform-level feedback data to back them. Popularity metrics are inconsistent and serve only as trend references.
 
 ---
 
-## 五、与源资料的边界
+## V. Boundaries with Source Material
 
-- 本规程的"盲评 / 保留题 / 证据分层"来自外部包（JYY v3.8）的评测实践，属**方法迁移**，不是本项目的实测结论。
-- 本规程**不引入**"用模型评分替代机检"的做法：机检能判的可数项（体量/条数/字数/位置）永远走脚本，模型只判"戏是否成立"。
-- 保留题跑一次即**作废**（看过一次就不再是保留题），下一轮升级须换新题。
+- The "blind review / holdout / evidence layering" in this protocol comes from evaluation practice in the external JYY v3.8 package. It is a transferred method, not a measured conclusion of this project.
+- This protocol does **not** adopt "replace validators with model scoring." Countable items the validator can judge (volume / counts / length / position) always go through the script. The model judges only "does the drama hold up."
+- A holdout question is burned after one run (once seen, it is no longer a holdout). The next upgrade must use new questions.

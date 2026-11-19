@@ -2,165 +2,166 @@
 name: short-drama-factory
 version: 4.9.1
 updated: 2026-10-24
-description: "抖音/红果爆款短剧工业化编剧超级系统 v4.9.1。纯剧本引擎（全赛道公开通用版，不含制作衔接）。核心：动态按需挂载矩阵（8交互模式x仅挂载核心文件，防Context爆炸）、情绪契约单元链往返法、40赛道题材全图（男频12/女频14/中性14）、六母型钩子库（含核心底牌不可逆剥夺型）+五大断章公式、A~I九类反转手段轮换矩阵+冷热台账分层、三档篇幅（标准 90~120 秒/正文480~850字 / 长档 150~195 秒弹性/820~1400字 / 漫剧 60~90 秒/330~620字）、单集15秒换挡四拍推进表（抓人立事->正面交锋->亮牌翻转->余波钩子）、强画面支撑三大视觉锚点（每2~4句必插强视觉△，E24拦干聊断层/E26拦无效微动作）、大白话同轮直给与快慢变速铁律（物证+结论同轮挑明/设定词当句人话翻译，E25拦谜语黑话）、神似而非形似三层抽离仿写法（剥离外壳禁用词->提炼戏剧算式->跨维换皮）、时长换算锚点（目标语速4.5字/s写作+4.5字/s校验下限防虚标）、15秒窗口<=95字生产端校验、动作单段<=40字软约束、对白/动作黄金比25%~70%、前三集节拍卡、付费墙四变体、跨集连续性台账、网文改编流水线、人物圣经、戏剧工艺层、独白与旁白受控规程、神态短语规格（画面词｜语气词）、评审与修复问题卡、保护性反例集、广电16号令合规红线11条、分档剧本机检（E1~E26）+全剧台账机检（S1~S8）。触发：写短剧/短剧大纲/立项/卡点/分集/写长档/剧本医生/精修/内心独白/旁白/画外音/极速短剧/合规审核/连写"
+description: "Industrialized screenwriting super-system for Douyin/Hongguo viral short dramas, v4.9.1. Pure script engine (public all-track general edition, excludes production handoff). Core: on-demand dynamic mounting matrix (8 interaction modes x mount only core files, to prevent context explosion); emotion-contract unit-chain round-trip method; 40-track genre map (male-skewing 12 / female-skewing 14 / neutral 14); six-archetype hook library (including the core-trump irreversible-deprivation type) + five master cliffhanger formulas; A~I nine-type twist-device rotation matrix + hot/cold ledger tiering; three length tiers (standard 90~120 seconds / body 320~570 words; long 150~195 seconds, flexible / 550~930 words; comic 60~90 seconds / 220~415 words); single-episode 15-second four-shift progression table (hook and establish -> frontal clash -> reveal and flip -> aftershock hook); three visual anchors for strong-visual support (a strong visual △ every 2~4 lines; E24 blocks talking-only gaps, E26 blocks ineffective micro-actions); plain-language same-round delivery and fast/slow pacing iron rules (physical evidence + conclusion stated in the same round / setting terms translated into plain sentences; E25 blocks riddle-jargon); three-layer imitation method 'resemblance in spirit, not in form' (strip shell banned words -> distill dramatic formula -> re-skin across dimensions); duration-conversion anchor (3.0 words/s writing rate + 3.0 words/s lower-bound check to prevent inflated durations); 15-second window <=63 words production-side check; single action block <=27 words soft constraint; dialogue/action golden ratio 25%~70%; first-three-episode beat card; four paywall variants; cross-episode continuity ledger; web-novel adaptation pipeline; character bible; craft layer; controlled monologue and narration protocol; expression-phrase spec (visual cue｜tone cue); review and repair issue cards; protective counterexample set; 11 compliance red lines under Radio and Television Order No. 16; per-tier self-check (E1~E26) + full-series ledger self-check (S1~S8). Triggers: write a short drama / short-drama outline / setup / cliffhanger / episode planning / write long / script doctor / polish / inner monologue / narration / voiceover / rapid drama / compliance check / serial write"
 ---
 
-# 抖音/红果爆款短剧工业化编剧超级系统 (Short-Drama Factory v4.9.1)
+# Douyin/Hongguo Viral Short-Drama Industrialized Screenwriting Super-System (Short-Drama Factory v4.9.1)
 
-> **情绪契约单元链**：全剧锚定情绪契约而非单一矛盾 - 矛盾按单元跑（单矛盾硬帽 20~30 集必闭环），三缝合一换矛盾不断气，付费墙挂单元接缝。本引擎覆盖立项分流 -> 人物体系 -> 60/80/100 集大纲 -> 分集正文 -> 机器自检全链路。
+> **Emotion-Contract Unit Chain**: the full series is anchored to an emotion contract rather than a single conflict. Conflicts run in units (a hard cap of 20~30 episodes per single conflict, which must close). The three-way stitch swaps the conflict without breaking the breath, and paywalls attach at unit seams. This engine covers the full pipeline: setup triage -> character system -> 60/80/100-episode outline -> episode scripts -> machine self-check.
 >
-> **v4.9（2026-10-22 · 实战观众反馈重铸升级 · 强画面 + 15秒换挡 + 大白话直给 + 剥壳仿写）**：针对真实观众核心痛点（「说的话想半天才能明白什么意思」「没有画面支撑」「节奏不对」）及对标仿写防撞车需求，完成五大工业级升级：
-> 1. **台词七维补全「大白话同轮直给 + 快慢变速」**（`references/dialogue-doctor-anti-ai.md`）：新增维度5「物证+大白话结论同轮直给」（废除只给物证不给结论的谜语人潜台词）、维度6「设定词与行业黑话当句人话翻译」（当句换算成多少钱/判几年/谁死谁活）、维度7「3~6字短促快刀句 + 8~16字直给算账句交替变速」，根治 AI 台词绕弯子与匀速念经感；
-> 2. **强画面支撑「三大视觉锚点」**（`references/craft-quality-layer.md` §四·补）：要求每 2~4 句对白必穿插 1 条强视觉 `△`（①物理结果与视觉奇观 / ②身份反差与手头忙活 / ③物证亮牌与肢体对抗），封杀“眼神微动/推了半寸”等镜头拍不出来的无效微动作；
-> 3. **单集「15秒换挡」四拍推进表**（`references/hongguo-beat-sheet.md` §三·补）：标准档单集按 `0~15s` 抓人立事 -> `15~45s` 正面交锋 -> `45~85s` 亮牌翻转（完成本集结算） -> `85~110s` 余波钩子四挡推进，严禁同集同场景原地踏步干聊；
-> 4. **机制级仿写升级「剥壳留核·神似而非形似」三层抽离工程规程**（`references/mechanism-imitation.md`）：建立《对标原剧外壳禁用词表》（剥壳） -> 提炼四维戏剧算式（留核） -> 换皮三连与四问防撞车自检，做到爽感算式一致而表面字词零重合；
-> 5. **机检扩编 `E1~E23` -> `E1~E26` + 标杆样章校准**（`scripts/validate_episode.py`）：新增 **E24 干聊断层检测**（连续纯对白 >6 行无 `△` 告警）、**E25 谜语黑话告警**（未翻译晦涩玄学/行话告警）、**E26 无效微动作告警**（`△` 仅含眼神微动/微微一怔等假动作告警）；校准 `examples/ep01-longwang-demo.md` 与 `examples/long-format-3min-demo.md` 全量零告警通过。
+> **v4.9 (2026-10-22 · rebuilt from real viewer feedback · strong visuals + 15-second shifts + plain-language delivery + shell-stripping imitation)**: Targeting the core viewer pain points ("I have to think for ages to get what they mean," "no visual support," "the pacing is off") and the need to avoid collisions in benchmark imitation, five industrial-grade upgrades were completed:
+> 1. **Seven dialogue dimensions completed with "plain-language same-round delivery + fast/slow pacing"** (`references/dialogue-doctor-anti-ai.md`): added Dimension 5 "physical evidence + plain-language conclusion delivered in the same round" (abolishes riddle-style subtext that gives the evidence but not the conclusion), Dimension 6 "setting terms and industry jargon translated into plain words within the sentence" (converted on the spot into how much money / how many years / who lives or dies), and Dimension 7 "alternating 2~4-word quick-cut lines with 5~11-word direct arithmetic lines," curing AI dialogue's roundabout talk and metronomic delivery;
+> 2. **Strong-visual support via "three visual anchors"** (`references/craft-quality-layer.md` §4 add-on): every 2~4 dialogue lines must interleave one strong visual `△` (① physical results and visual spectacle / ② identity contrast and hands-on busywork / ③ evidence reveal and physical confrontation), banning micro-actions the camera cannot shoot, such as "eyes subtly shift" or "pushed half an inch";
+> 3. **Single-episode "15-second shift" four-beat progression table** (`references/hongguo-beat-sheet.md` §3 add-on): standard-tier episodes advance through four shifts: `0~15s` hook and establish -> `15~45s` frontal clash -> `45~85s` reveal and flip (completes the episode payoff) -> `85~110s` aftershock hook. Standing still and talking-only scenes in the same location within one episode are forbidden;
+> 4. **Mechanism-level imitation upgrade: "strip the shell, keep the core, resemble in spirit not in form" three-layer abstraction protocol** (`references/mechanism-imitation.md`): establish a *Shell Banned-Word List for the Benchmark Show* (strip the shell) -> distill a four-dimension dramatic formula (keep the core) -> re-skin triad and four-question anti-collision self-check, so the thrill formula stays consistent while surface wording has zero overlap;
+> 5. **Self-check expanded from `E1~E23` to `E1~E26` + benchmark sample calibration** (`scripts/validate_episode.py`): added **E24 talking-only gap detection** (more than 6 consecutive pure-dialogue lines with no `△` triggers a warning), **E25 riddle-jargon warning** (untranslated obscure mystical or industry jargon triggers a warning), and **E26 ineffective micro-action warning** (an `△` containing only fake actions such as "eyes subtly shift" or "a slight stunned pause" triggers a warning). `examples/ep01-longwang-demo.md` and `examples/long-format-3min-demo.md` were calibrated to pass with zero warnings across the board.
 >
-> **v4.3 体量与语速重校（2026-09-28）**：实拍生视频实测 ≈ **15 秒 / 95 字**（6.33 字/s 触顶）。95 字/15 秒是「连续对白时的局部上限」、不是全片均值；全片对白时间占比宜 60~75%，其余留给动作/留白/转场 -> **参考语速 4.5 字/s**；**E16 按 4.5 字/s 比对、容差放宽到 ±20%**（动作拍权重：对话型 1.5s / 混合 2.5s / 行动型 4.0s）；体量改为**宽参考带**（只抓极端）：标准 480~850 / 长档 820~1400 / 漫剧 330~620（长档漫剧 660~1150）；DLG_TARGET 参考中值 -> 90s:400 / 120s:540 / 150s:670 / 180s:800 / 195s:870。**密度原则：密度由戏定** - 防注水靠失衡阀 E19（连续对白<=95字）+ E21（对白占比<=70%）+ E24（连续对白<=6行），不靠堆字数。
+> **v4.3 Length and Speech-Rate Recalibration (2026-09-28)**: Live-action AI-video tests measured ≈ **15 seconds / 63 words** (4.2 words/s ceiling). 63 words per 15 seconds is the *local ceiling during continuous dialogue*, not a full-episode average. Dialogue should take about 60~75% of total runtime, with the rest left for action / pauses / transitions -> **reference speech rate 3.0 words/s**. **E16 checks against 3.0 words/s, with tolerance widened to ±20%** (action-beat weights: Dialogue 1.5s / Mixed 2.5s / Action 4.0s). Body length switched to **wide reference bands** (catch extremes only): standard 320~570 / long 550~930 / comic 220~415 (long comic 440~765). DLG_TARGET reference medians -> 90s:267 / 120s:360 / 150s:447 / 180s:533 / 195s:580. **Density principle: density is set by the drama.** Guard against padding with the imbalance valves E19 (continuous dialogue <=63 words) + E21 (dialogue share <=70%) + E24 (continuous dialogue <=6 lines), not by piling on word count.
 >
-> **v4.0 ~ v4.2 历次核心基线**：40 赛道全图（男频12/女频14/中性14）+ 六母型钩子库 + 五大断章公式 + 前三集节拍卡 + A~I 九类反转手段轮换矩阵（相邻 3 集禁复用，S8 机检）+ 冷热台账分层 + 动态按需挂载矩阵（8 交互模式懒加载）+ 冲突形态五型（仅②行动坚持型放宽机检）+ 广电16号令11条合规红线。
+> **v4.0 ~ v4.2 Core Baselines**: 40-track full genre map (male-skewing 12 / female-skewing 14 / neutral 14) + six-archetype hook library + five master cliffhanger formulas + first-three-episode beat card + A~I nine-type twist-device rotation matrix (the same device may not be reused in 3 adjacent episodes, S8 self-check) + hot/cold ledger tiering + on-demand dynamic mounting matrix (8 interaction modes, lazy loaded) + five conflict-mode types (only ② Action-Persistence has relaxed self-checks) + the 11 compliance red lines of Radio and Television Order No. 16.
 >
-> **v3.2 ~ v3.4.3 工艺与长档基线**：戏剧工艺层（因果链/单场七问/三线变化）、独白与旁白受控规程（配额制 E12~E15）、神态短语规格（`画面词｜语气词`，对白语气上游供给 E18a/E18b）、长档双回合 + 中段小钩（时长守恒双闸门 E16 防虚标 / E17 防降级）、评审问题卡与保护性反例（N12~N14 NOTE 级不要求修改）。
+> **v3.2 ~ v3.4.3 Craft and Long-Tier Baseline**: craft layer (causal chain / seven questions per scene / three-line change); controlled monologue and narration protocol (quota system E12~E15); expression-phrase spec (`visual cue｜tone cue`, with upstream tone supply for dialogue E18a/E18b); long-tier double round + mid-episode hook (dual-gate duration conservation: E16 against inflated durations / E17 against downgrades); review issue cards and protective counterexamples (N12~N14, NOTE level, no revision required).
 >
-> **定位不变：本 skill 只产出剧本层内容，不含分镜/资产/视频制作衔接。**
+> **Positioning unchanged: this skill produces only script-layer content; it does not include storyboarding, asset, or video-production handoff.**
 
 ---
 
-## 档位（篇幅制式，先定档再动笔）
+## Tiers (Length Format: Set the Tier Before Drafting)
 
-| 档位 | 时长（典型值；可按用户指定/内容调整） | 正文体量【参考·随【本集时长】换算】 | 场景 | 单集拍数 | 全剧集数档 | 机检 |
+| Tier | Duration (typical; adjustable per user request or content) | Body length (words) 【Reference · Scaled to Length】 | Scenes | Beats per episode | Full-series episode counts | Self-check |
 |---|---|---|---|---|---|---|
-| **标准档**（默认） | 90~120 秒 | 480~850 / 330~620 | <=2 | 1 拍（内含15s四挡推进） | 60 / 80 / 100 | `--format standard` |
-| **长档** | **150~195 秒（约 2 分半~3 分钟，按内容密度倒推）** | **820~1400 / 660~1150** | **<=3** | **2 拍 + 中段小钩** | **30 / 40 / 50** | `--format long` |
-| 漫剧档 | 60~90 秒 | 330~620 | <=2 | 1 拍 | 60 / 80 / 100 | `--format manju` |
+| **Standard tier** (default) | 90~120 seconds | 320~570 / 220~415 | <=2 | 1 beat (includes the 15-second four-shift progression) | 60 / 80 / 100 | `--format standard` |
+| **Long tier** | **150~195 seconds (about 2.5~3 minutes, back-calculated from content density)** | **550~930 / 440~765** | **<=3** | **2 beats + mid-episode hook** | **30 / 40 / 50** | `--format long` |
+| Comic-drama tier | 60~90 seconds | 220~415 | <=2 | 1 beat | 60 / 80 / 100 | `--format comic` |
 
-未指定档位默认标准档；用户说"长档 / 3 分钟 / 一集三分钟"即切长档。**时长可由用户直接指定（如“我这集 4 分钟”）或按内容判断** - 正文体量只是**参考**，按【本集时长】x 5.0~7.6 字/秒换算（**按形态微调：①对话型 5.0~7.6 / 混合 4.2~6.5 / ②行动型 3.5~5.5**），超参考带仅提示、不拦；**自定义时长（>195 秒）时场景上限随集长放宽（≈每 75 秒 1 场）**。档位一旦定下，全剧不混用。规格权威：`references/hongguo-beat-sheet.md` §三、§四。
+If no tier is specified, the standard tier is the default. If the user says "long tier / 3 minutes / three minutes per episode," switch to the long tier. **Duration may be set directly by the user (e.g., "I want this episode to be 4 minutes") or judged from the content.** Body length is only a **reference**: convert using 【Episode Length】 x 3.3~5.1 words/s (**fine-tuned by mode: ① Dialogue 3.3~5.1 / Mixed 2.8~4.3 / ② Action 2.3~3.7**). Exceeding the reference band only triggers a notice, not a block. **For custom durations (>195 seconds), the scene cap loosens with episode length (≈1 scene per 75 seconds).** Once a tier is set, the full series does not mix tiers. Authoritative specs: `references/hongguo-beat-sheet.md` §3, §4.
 
 ---
 
-## 交互模式（显式触发指令，共 8 个）
+## Interaction Modes (Explicit Trigger Commands, 8 Total)
 
-| 模式 | 指令 | 输入 | 核心产出 |
+| Mode | Command | Input | Core output |
 |---|---|---|---|
-| 0. 商业立项 | `/立项大纲` `/策划` | 脑洞/题材/原著概况 | **流派判定（情绪流⇄剧情流）**+**档位判定** -> 赛道锚定 -> 人物体系 -> 四幕大纲 + 1~3 个二选一 |
-| 1. 全剧节奏 | `/全剧大纲` `/卡点规划` `/长档大纲` | 已确认大纲（可带档位与集数，如 `/长档大纲 40集`） | 60/80/100（长档 30/40/50）集节奏曲线 + 付费墙卡点排布 + **情绪契约单元链 + 每单元一张往返回合表** |
-| 2. 分集规划 | `/分集规划 [范围]` | 如 `/分集规划 1-10` | 单集冲突、15秒四挡铺排、情绪流变词、集尾钩子 + **台账更新（伏笔+反转标签登记）**；长档须标出每集中段小钩 |
-| 3. 单集撰写 | `/写剧本 [第N集]` `/写长档 [第N集]` | 集数+情节（可带档位，如 `/写剧本 长档 第3集`） | 标准档 90~120 秒 / **长档 150~195 秒双回合**正文（强画面△支撑+15秒换挡+大白话直给+断章） -> **过 validate_episode 机检** |
-| 4. 剧本医生 | `/剧本医生` `/精修` | 草稿 | **台词七维暴改（含物证结论同轮直给/黑话翻译/快慢变速）** + 强画面△补齐 + 断章打磨 + 复读检测 |
-| 5. 极速直出 | `/极速短剧` `/直接写` | 小说片段/梗概 | 静默全门控，直出 1~5 集足额剧本（按档出对应体量） |
-| 6. 合规自检 | `/合规审核` `/自检` | 剧本正文 | 平台红线排查 + 敏感词转译 |
-| 7. **批量连写** | `/连写 [N-M]` `/连写 长档 [N-M]` | 集数区间 | **带台账的逐集生产**：每集写前读热台账、写后更新，伏笔/人物/道具/反转标签全程对账 |
+| 0. Commercial Setup | `/project-outline` `/plan` | Premise ideas / genre / source-material overview | **Genre determination (emotion-flow ⇄ plot-flow)** + **tier determination** -> track anchoring -> character system -> four-act outline + 1~3 binary choices |
+| 1. Full-Series Pacing | `/series-outline` `/cliffhanger-plan` `/long-outline` | Confirmed outline (may include tier and episode count, e.g., `/long-outline 40`) | 60/80/100 (long tier 30/40/50) episode pacing curve + paywall cliffhanger placement + **emotion-contract unit chain + one round-trip round table per unit** |
+| 2. Episode Planning | `/episode-plan [range]` | e.g., `/episode-plan 1-10` | Single-episode conflict, 15-second four-shift layout, emotion-shift terms, episode-end hook + **ledger update (foreshadowing + twist-tag registration)**; long tier must mark each episode's mid-episode hook |
+| 3. Single-Episode Writing | `/write-episode [N]` `/write-long [N]` | Episode number + plot (may include tier, e.g., `/write-episode long 3`) | Standard tier 90~120 seconds / **long tier 150~195 seconds, two-round** body (strong-visual △ support + 15-second shifts + plain-language delivery + cliffhanger) -> **passes the validate_episode self-check** |
+| 4. Script Doctor | `/script-doctor` `/polish` | Draft | **Seven-dimension dialogue overhaul (incl. same-round physical-evidence conclusions / jargon translation / fast-slow pacing)** + fill in missing strong-visual △ + cliffhanger polish + repetition detection |
+| 5. Rapid Output | `/rapid-drama` `/direct-write` | Novel excerpt / synopsis | Fully silent gating; directly outputs 1~5 complete episodes (body sized to the tier) |
+| 6. Compliance Self-Check | `/compliance-check` `/self-check` | Script body | Platform red-line screening + sensitive-word rewording |
+| 7. **Batch Serial Writing** | `/serial-write [N-M]` `/serial-write long [N-M]` | Episode range | **Ledger-backed episode-by-episode production**: read the hot ledger before each episode and update it after; foreshadowing / characters / props / twist tags are reconciled throughout |
 
-### 动态参考库按需挂载矩阵（Lazy Loading Router · v4.2 新增）
+### On-Demand Reference Mounting Matrix (Lazy Loading Router · added in v4.2)
 
-为保证长文本生成稳定性、杜绝 Context Window 爆炸与指令稀释，**严禁一次性全量载入 references/**。必须根据交互模式严格按需读取对应文件：
+To keep long-form generation stable and avoid context-window explosion and instruction dilution, **never load all of references/ at once**. You must read only the files for the current interaction mode, strictly on demand:
 
-| 交互模式 | 仅需挂载的核心文件（其余严禁加载） |
+| Interaction Mode | Core files to mount (all others strictly not loaded) |
 |---|---|
-| 0. 商业立项 | `references/emotion-flow-roundtrip.md` · `references/genre-map.md` · `references/hongguo-beat-sheet.md` · `references/character-bible.md` · `references/first-three-eps-beat-card.md`（若涉及对标仿写加挂 `references/mechanism-imitation.md`；若输入为网文/小说改编加挂 `references/webnovel-adaptation.md`） |
-| 1. 全剧节奏 | `references/hongguo-beat-sheet.md` · `references/emotion-flow-roundtrip.md` |
-| 2. 分集规划 | `references/golden-3s-hook-library.md` · `references/cliffhanger-master-formulas.md` · `references/continuity-ledger.md` |
-| 3. 单集撰写 | `references/golden-3s-hook-library.md` · `references/cliffhanger-master-formulas.md` · `references/dialogue-doctor-anti-ai.md` · `references/craft-quality-layer.md` · `references/inner-monologue-vo.md` · `references/conflict-modes.md` |
-| 4. 剧本医生 | `references/dialogue-doctor-anti-ai.md` · `references/script-doctor-protocol.md` · `references/protective-counterexamples.md` · `references/craft-quality-layer.md` · `references/inner-monologue-vo.md` |
-| 5. 极速直出 | 静默加载模式 1 与模式 3 最小规则子集（输入为网文/小说片段时必加挂 `references/webnovel-adaptation.md`） |
-| 6. 合规自检 | `references/screenplay-compliance-rules.md` |
-| 7. 批量连写 | `references/continuity-ledger.md`（仅挂载热台账区）· `references/cliffhanger-master-formulas.md` · `references/golden-3s-hook-library.md` · `references/dialogue-doctor-anti-ai.md` · `references/craft-quality-layer.md` · `references/conflict-modes.md`（v4.9.1 补挂：连写逐集产正文，须与模式 3 同规） |
+| 0. Commercial Setup | `references/emotion-flow-roundtrip.md` · `references/genre-map.md` · `references/hongguo-beat-sheet.md` · `references/character-bible.md` · `references/first-three-eps-beat-card.md` (if the project involves benchmark imitation, also mount `references/mechanism-imitation.md`; if the input is a web-novel or novel adaptation, also mount `references/webnovel-adaptation.md`) |
+| 1. Full-Series Pacing | `references/hongguo-beat-sheet.md` · `references/emotion-flow-roundtrip.md` |
+| 2. Episode Planning | `references/golden-3s-hook-library.md` · `references/cliffhanger-master-formulas.md` · `references/continuity-ledger.md` |
+| 3. Single-Episode Writing | `references/golden-3s-hook-library.md` · `references/cliffhanger-master-formulas.md` · `references/dialogue-doctor-anti-ai.md` · `references/craft-quality-layer.md` · `references/inner-monologue-vo.md` · `references/conflict-modes.md` |
+| 4. Script Doctor | `references/dialogue-doctor-anti-ai.md` · `references/script-doctor-protocol.md` · `references/protective-counterexamples.md` · `references/craft-quality-layer.md` · `references/inner-monologue-vo.md` |
+| 5. Rapid Output | Silently load the minimal rule subsets of Mode 1 and Mode 3 (when the input is a web-novel or novel excerpt, `references/webnovel-adaptation.md` must also be mounted) |
+| 6. Compliance Self-Check | `references/screenplay-compliance-rules.md` |
+| 7. Batch Serial Writing | `references/continuity-ledger.md` (hot-ledger section only) · `references/cliffhanger-master-formulas.md` · `references/golden-3s-hook-library.md` · `references/dialogue-doctor-anti-ai.md` · `references/craft-quality-layer.md` · `references/conflict-modes.md` (added in v4.9.1: serial writing produces episode body text one episode at a time and must follow the same rules as Mode 3) |
 
 ---
 
-## 唯一执行顺序
+## Single Execution Order
 
 ```text
-任务理解 -> 流派判定 -> 档位判定 -> 赛道锚定 -> 人物圣经 -> 全剧结构(含回合表) -> 分集规划 -> 单集撰写(15秒四挡推进; 每2~4句穿插强视觉△; 台词大白话同轮直给+快慢变速; 三通道分流; 神态短语按 画面词｜语气词 规格) -> 医生精修(问题卡: 工艺层+台词七维) -> 机检(单集 E1~E26 + 台账 S1~S8) -> 合规 -> 升级后走评测规程
+Task understanding -> genre determination -> tier determination -> track anchoring -> character bible -> full-series structure (incl. round table) -> episode planning -> single-episode writing (15-second four-shift progression; a strong-visual △ every 2~4 lines; plain-language same-round delivery in dialogue + fast/slow pacing; three-channel split; expression phrases per the visual cue｜tone cue spec) -> doctor polish (issue cards: craft layer + seven dialogue dimensions) -> self-check (per-episode E1~E26 + ledger S1~S8) -> compliance -> after upgrades, run the evaluation protocol
 ```
 
-冲突裁决顺序：当前用户明确要求 > 本文件 > 对应权威 reference > 其他。
+Conflict resolution order: the user's explicit request in the current turn > this file > the governing reference > everything else.
 
 ---
 
-## 核心工作流要点（详细规则进对应 reference）
+## Core Workflow Points (detailed rules are in the matching reference)
 
-### Step 0 立项：先判流派（v3.0）、再定档位（v3.2）
-读 `references/emotion-flow-roundtrip.md` §一：情绪流的锚是**情绪契约**（观众每集要续的那口气），不是钉死的单一矛盾 - **契约贯穿全剧，矛盾按单元跑**（一单元 20~30 集、6 回合闭环，换矛盾不换情绪）；剧情流（悬疑/规则怪谈）走信息阶梯。同一步定档位（标准/长档/漫剧，见上表），同时出人物圣经（`character-bible.md`）。**前三集动笔前先读 `first-three-eps-beat-card.md`（v4.1）**：锁定 E1 受害+立场 / E2 证据回放 / E3 冲突升级骨架，并按赛道选定节奏型。若为对标爆款仿写项目，必读 `references/mechanism-imitation.md`，先列《对标原剧外壳禁用词表》，按「剥壳留核三层抽离法」提炼底层戏剧算式，严禁换皮抄袭。
+### Step 0 Setup: Determine Genre First (v3.0), Then Tier (v3.2)
+Read `references/emotion-flow-roundtrip.md` §1. In emotion-flow stories the anchor is the **emotion contract** (the breath the audience needs to keep coming back for each episode), not a single fixed conflict. **The contract runs through the whole series; conflicts run in units** (one unit = 20~30 episodes, closed over 6 rounds; the conflict changes, the emotion does not). Plot-flow stories (suspense / rule-based horror) use an information ladder. In the same step, set the tier (standard / long / comic; see the table above) and produce the character bible (`character-bible.md`). **Before drafting the first three episodes, read `first-three-eps-beat-card.md` (v4.1)**: lock the E1 victimization + stance / E2 evidence replay / E3 conflict-escalation skeleton, and choose the pacing type by track. For benchmark-imitation projects, you must read `references/mechanism-imitation.md`, first list a *Shell Banned-Word List for the Benchmark Show*, then distill the underlying dramatic formula using the "strip the shell, keep the core" three-layer abstraction method. Wholesale copying is forbidden.
 
-### Step 1 全剧大纲：结构+回合+卡点三件套
-读 `references/hongguo-beat-sheet.md`（标准 60/80/100 三档、**长档 30/40/50 三档**、免费集与付费墙联动）；情绪流项目必须产出**情绪契约 + 单元链（60集=2~3单元/80集=3单元）+ 每单元一张往返回合表**（几集一回合、证据/反驳双升档、单元闭环留火种）。长档项目：集区间按"1 长档集 ≈ 2 标准集"折算，单元硬帽折半为 10~15 长档集，并守住两条不变量（中点转换落在一级墙区间内、三级墙落在单元C开局前的至暗）。
+### Step 1 Full-Series Outline: Structure + Round Table + Cliffhanger Trio
+Read `references/hongguo-beat-sheet.md` (standard 60/80/100 tiers, **long-tier 30/40/50 tiers**, free episodes linked to paywalls). Emotion-flow projects must produce an **emotion contract + unit chain (60 episodes = 2~3 units / 80 episodes = 3 units) + one round-trip round table per unit** (how many episodes per round, evidence and rebuttal escalating in tandem, the unit closes while leaving an ember). Long-tier projects: episode ranges are converted at "1 long-tier episode ≈ 2 standard episodes," the hard per-unit cap is halved to 10~15 long-tier episodes, and two invariants must hold (the midpoint turn falls within the first paywall range; the third-tier paywall falls at the darkest point just before Unit C opens).
 
-### Step 2 分集：每集入台账
-读 `references/continuity-ledger.md`。分集时同步登记：伏笔（埋于哪集/拟收哪集/状态）、人物存活与关系变化、道具状态机、世界观规则引用、A~I 反转手段轮换标签。**无台账不开写**。长档项目：台账头部"档位"行标长档、总集数填 30/40/50，分集规划里标出每集的**中段小钩**内容。
+### Step 2 Episodes: Log Each Episode to the Ledger
+Read `references/continuity-ledger.md`. While planning episodes, log in sync: foreshadowing (planted in which episode / planned payoff episode / status), character survival and relationship changes, prop state machine, worldbuilding rule references, and A~I twist-device rotation tags. **No ledger, no drafting.** Long-tier projects: in the ledger header, mark the tier row as long and set the total episode count to 30/40/50; in episode planning, mark each episode's **mid-episode hook** content.
 
-### Step 3 单集：硬体量 + 15秒换挡 + 强画面支撑 + 大白话直给 + 断章
-- **写前门禁（硬）**：动笔前必须具备【情绪契约】【本单元执念】【反派赌注】【主角主动目标】【本单元回合表】五项 - 缺任一项先补齐上游，**不许开写**。
-- **先定冲突形态**：动笔前定 `【冲突形态】` - ①对话型（嘴仗回合制）/ ②行动坚持型（准备x质疑，主角沉默做事、不辩解）/ ③身份错位型（掉马前一秒）/ ④关系情感型（情绪反差落地）/ ⑤规则谜题型（信息阶梯）/ 混合（行动外壳+对话火力）。**只有②对白天然少需要放宽机检**（E9 减半 / E21 下限 10% / E16 动作拍x4.0s / E23 必须有质疑者 / N13 豁免），③④⑤按对话框准（详见 `references/conflict-modes.md`）。
-- **单集 15 秒换挡四拍推进（v4.9 新增 · 防原地踏步）**：标准档单集内部必须完成四次换挡 - **第1挡（0~15s 抓人立事：强视觉开场+报出具体数字/死线） -> 第2挡（15~45s 正面交锋：施压加码+首轮反制） -> 第3挡（45~85s 亮牌翻转：亮物证/底牌完成本集结算） -> 第4挡（85~110s 余波钩子：抛新危机切断章）**。严禁同集内同场景原地踏步反复争吵同一件事（详见 `hongguo-beat-sheet.md` §三·补）。
-- **强画面支撑三大锚点（v4.9 新增 · 机检 E24/E26）**：**每 2~4 句对白必穿插 1 条强视觉 `△` 动作行**，连续纯对白严禁超过 6 行（`E24` 拦干聊断层）。每条 `△` 必须命中三大视觉锚点之一：① **物理结果与视觉奇观**；② **身份反差与手头忙活**；③ **物证亮牌与肢体对抗**。严禁单写“眼神微动/微微一怔/推了半寸”等无效微动作充数（`E26` 告警）。
-- **大白话同轮直给与快慢变速（v4.9 新增 · 机检 E25）**：① **物证 + 大白话结论同轮直给**（严禁只点物证不挑明结论，严禁问A答B打哑谜）；② **设定词/行业黑话当句人话翻译**（当句换算成多少钱/判几年/谁死谁活，未翻译晦涩词触发 `E25` 告警）；③ **快慢变速句群**（每场交替使用 `3~6字` 短促快刀句与 `8~16字` 大白话算账句，打破匀速念经感）。
-- **写后门禁（硬 · 集内结算）**：每集必须有一个**集内结算** - 主角有一次可见的**反将**，且**反派为本次施压付出可见代价**（当众失面/盘算落空/被架住进退两难）；任何伏笔或异能信号必须给「**信号 -> 当场可验证 -> 产生作用**」闭环。
-- **独白/旁白（v3.4）**：走 `inner-monologue-vo.md` 的三通道分工 - 按档位守配额（标准 1 处·<=25 字 / 长档 2 处·<=30 字 / 漫剧 1 处·<=20 字；旁白 <=1 处·<=12 字），前 3 秒与断章处禁用、两条不得相邻，独白只写"具体的账"，不承担交代设定（机检 E12~E15）。
-- **长档追加三条**：①一集两拍（回合A/回合B），回合B 施压与反驳各升一档；②≈90 秒处必设【本集中段小钩】（只抬价不爆点）；③每 30 秒一个新增量，场景 <=3 且第 2/3 场必须是升级场。
-- **时长换算锚点（参考语速 4.5 字/s · E16/E17/E19）**：**可拆时长 ≈ 纯台词字数÷4.5 字/s + △动作行数x动作拍权重（①对话型1.5s/混合2.5s/②行动型4.0s） + 留白 3~5s**；机检 E16 按 4.5 字/s 比对（容差 ±20%）防虚标，E17 规定长档【本集时长】不得低于 150 秒防降级交付，E19 校验任何连续对白块 <=95 字。
+### Step 3 Single Episode: Hard Length + 15-Second Shifts + Strong-Visual Support + Plain-Language Delivery + Cliffhanger
+- **Pre-writing gate (hard)**: before drafting, all five items must be in place: 【Emotion Contract】【Unit Obsession】【Villain's Stake】【Protagonist Active Goal】【Unit Round Table】. If any is missing, fill in the upstream first; **no drafting allowed**.
+- **Set the conflict mode first**: before drafting, set `【Conflict Mode】`: ① Dialogue (verbal sparring, turn-based) / ② Action-Persistence (preparation x skepticism; the protagonist works quietly and does not argue back) / ③ Identity Mismatch (the second before the mask slips) / ④ Relationship-Emotion (emotional contrast lands) / ⑤ Rule-Puzzle (information ladder) / Mixed (action shell + dialogue firepower). **Only ② Action-Persistence, which naturally has less dialogue, needs relaxed self-checks** (E9 halved / E21 floor 10% / E16 action beat x4.0s / E23 must include a skeptic / N13 exempt). ③④⑤ are held to the dialogue standard (see `references/conflict-modes.md`).
+- **Single-episode 15-second four-shift progression (added in v4.9 · prevents spinning in place)**: a standard-tier episode must complete four shifts internally. **Shift 1 (0~15s hook and establish: strong-visual opener + a concrete number or deadline stated) -> Shift 2 (15~45s frontal clash: escalating pressure + first counterstrike) -> Shift 3 (45~85s reveal and flip: show evidence or a trump card to complete the episode payoff) -> Shift 4 (85~110s aftershock hook: drop a new crisis to cut the chapter)**. Forbidden: repeatedly arguing about the same thing in the same location within one episode, i.e., spinning in place (see `hongguo-beat-sheet.md` §3 add-on).
+- **Three strong-visual anchors (added in v4.9 · self-check E24/E26)**: **every 2~4 dialogue lines must interleave one strong-visual `△` action line**. More than 6 consecutive pure-dialogue lines is forbidden (`E24` blocks talking-only gaps). Each `△` must hit one of the three visual anchors: ① **physical results and visual spectacle**; ② **identity contrast and hands-on busywork**; ③ **evidence reveal and physical confrontation**. Do not pad with ineffective micro-actions such as "eyes subtly shift," "a slight stunned pause," or "pushed half an inch" (`E26` warning).
+- **Plain-language same-round delivery and fast/slow pacing (added in v4.9 · self-check E25)**: ① **physical evidence + plain-language conclusion delivered in the same round** (never point at evidence without stating the conclusion; never ask one question and answer another in riddles); ② **setting terms and industry jargon translated into plain words within the sentence** (converted on the spot into how much money / how many years / who lives or dies; untranslated obscure terms trigger an `E25` warning); ③ **fast/slow pacing line groups** (each scene alternates `2~4`-word quick-cut lines with `5~11`-word plain-language arithmetic lines, breaking up metronomic delivery).
+- **Post-writing gate (hard · in-episode payoff)**: every episode must contain an **in-episode payoff**. The protagonist gets one visible **counter-move**, and **the villain pays a visible price for this round of pressure** (publicly losing face / the scheme falling through / being pinned in a dilemma). Any foreshadowing or power signal must close the loop: **signal -> instantly verifiable on screen -> produces an effect**.
+- **Monologue / narration (v3.4)**: follow the three-channel split in `inner-monologue-vo.md`. Keep to the tier quota (standard 1 instance·<=17 words / long 2 instances·<=20 words / comic 1 instance·<=13 words; narration <=1 instance·<=8 words). Banned in the first 3 seconds and at cliffhangers; two of them may not be adjacent. Monologue carries only concrete reckonings and does not carry exposition (self-check E12~E15).
+- **Three additions for long tier**: ① two beats per episode (Round A / Round B), with pressure and rebuttal each escalating one notch in Round B; ② at about 90 seconds, a 【Mid-Episode Hook】 must be set (it raises the stakes without detonating the payoff); ③ a new increment every 30 seconds, scenes <=3, and scenes 2 and 3 must be escalation scenes.
+- **Duration conversion anchor (reference speech rate 3.0 words/s · E16/E17/E19)**: **runtime breakdown ≈ pure dialogue word count ÷ 3.0 words/s + number of △ action lines x action-beat weight (① Dialogue 1.5s / Mixed 2.5s / ② Action 4.0s) + pauses of 3~5s**. Self-check E16 compares against 3.0 words/s (tolerance ±20%) to prevent inflated durations; E17 requires that long-tier 【Episode Length】 be no less than 150 seconds to prevent downgraded delivery; E19 checks that any continuous dialogue block is <=63 words.
 
-### Step 4 医生：台词七维 + 问题卡规程
-`dialogue-doctor-anti-ai.md`：完整执行**台词七维重构**（①角色语言指纹 / ②反向灌输死刑法 / ③攻防回合制 / ④单句气口限额 / ⑤物证+大白话结论同轮直给 / ⑥设定词与黑话当句人话翻译 / ⑦快慢变速句群）。精修走 `script-doctor-protocol.md` 的**评审官/修复器**双角色流程，意见先核验再采纳。
+### Step 4 Doctor: Seven Dialogue Dimensions + Issue-Card Protocol
+`dialogue-doctor-anti-ai.md`: fully execute the **seven-dimension dialogue rebuild** (① character language fingerprint / ② anti-exposition death penalty / ③ attack-and-defense turn-taking / ④ single-line breath limit / ⑤ physical evidence + plain-language conclusion delivered in the same round / ⑥ setting terms and jargon translated into plain words within the sentence / ⑦ fast/slow pacing line groups). Polishing follows the **reviewer / fixer** two-role process in `script-doctor-protocol.md`; each comment is verified before it is accepted.
 
-### Step 5 机检（v4.9 分档 E1~E26 + 台账 S1~S8）
+### Step 5 Self-Check (v4.9 tiered E1~E26 + ledger S1~S8)
 ```bash
-python scripts/validate_episode.py <单集剧本文件> [--format auto|standard|long|manju]   # 单集 E1~E26 + N12~N14
-python scripts/validate_series.py <台账文件> [--episodes 30|40|50|60|80|100]            # 台账 S1~S8
-# 命令按 Windows 写 python；macOS / Linux 用 python3
+python scripts/validate_episode.py <episode-script-file> [--format auto|standard|long|comic]   # per-episode E1~E26 + N12~N14
+python scripts/validate_series.py <ledger-file> [--episodes 30|40|50|60|80|100]            # ledger S1~S8
+# Windows: write python; macOS / Linux: use python3
 ```
-- **三级输出语义**：`FAIL` 必须修 / `WARN` 需人工复核（生产时应优先消除） / `NOTE` **不要求修改**（N12 碎句化 / N13 堆动作 / N14 贴下限，详见 `protective-counterexamples.md`）。
-- **v4.9 新增机检（E24~E26，WARN 级）**：
-  - **E24 干聊断层检测**：连续纯对白 >6 行无 `△` 动作支撑即告警，杜绝“站桩广播剧”；
-  - **E25 谜语黑话告警**：对白出现未翻译的晦涩玄学/公文黑话（如气运锚点/因果闭环/火漏等）即告警；
-  - **E26 无效微动作告警**：单条 `△` 仅含“眼神微动/微微一怔/若有所思/推了半寸”等拍不出物理结果的微动作即告警。
-- **既有核心机检（E1~E23 & S1~S8）**：E1 体量参考带、E2 单气口<=25字、E3 场景上限、E4 黄金前3秒冲突、E5 开篇禁词、E6 断章卡点、E7 情绪流变链、E8 跨集复读、E9 对白行下限、E10 合规红线词、E11 长档中段小钩、E12~E15 独白旁白配额与禁区、E16 时长虚标（v4.9.1 全档生效：凡标注【本集时长】即按 4.5 字/s 比对，带不带「秒」字均可识别）、E17 长档降级、E18a/b 神态语气供给、E19 15秒窗口<=95字、E20 动作单段<=40字、E21 对白动作黄金比25%~70%、E22 台词错别字、E23 行动型质疑者位；S1~S8 台账四表与 A~I 反转手段轮换检测。
 
-### Step 6 合规
-`screenplay-compliance-rules.md`（广电16号令备案分类+11条内容红线+暴力复仇/封建糟粕专项治理+敏感词转译表）。
+- **Three-level output semantics**: `FAIL` must be fixed / `WARN` needs manual review (should be eliminated first during production) / `NOTE` **requires no change** (N12 sentence fragmentation / N13 action stacking / N14 hugging the lower bound; see `protective-counterexamples.md`).
+- **New self-checks in v4.9 (E24~E26, WARN level)**:
+  - **E24 talking-only gap detection**: more than 6 consecutive pure-dialogue lines with no `△` action support triggers a warning, preventing a "stationary radio drama";
+  - **E25 riddle-jargon warning**: obscure mystical or official jargon left untranslated in dialogue (e.g., fate anchor / karmic loop / ember leak) triggers a warning;
+  - **E26 ineffective micro-action warning**: a single `△` containing only micro-actions that produce no physical result, such as "eyes subtly shift," "a slight stunned pause," "lost in thought," or "pushed half an inch," triggers a warning.
+- **Existing core self-checks (E1~E23 & S1~S8)**: E1 body-length reference band; E2 single breath <=17 words; E3 scene cap; E4 golden first-3-seconds conflict; E5 banned opening words; E6 cliffhanger hook; E7 emotion-shift chain; E8 cross-episode repetition; E9 dialogue-line floor; E10 compliance red-line words; E11 long-tier mid-episode hook; E12~E15 monologue/narration quotas and forbidden zones; E16 duration inflation (active across all tiers as of v4.9.1: any episode labeled 【Episode Length】 is compared at 3.0 words/s, whether or not "seconds" is written); E17 long-tier downgrade; E18a/b expression and tone supply; E19 15-second window <=63 words; E20 single action block <=27 words; E21 dialogue-to-action golden ratio 25%~70%; E22 dialogue typos; E23 skeptic slot in Action-type episodes; S1~S8: the four ledger tables and A~I twist-device rotation check.
 
----
-
-## 绝对红线（10 条）
-
-1. **严禁开篇铺垫**：前 3 秒必须见冲突、见危机、见反差强动作；前 15 秒内必须用大白话挑明具体死线或赌注。
-2. **严禁台词讲设定与打哑谜**：背景走物证/反差/反转；凡指认物证必须**同轮大白话直给结论**，凡出现设定词/行业黑话必须**当句翻译成人话后果（钱/命/地位）**。
-3. **单集正文体量【参考】**（随【本集时长】换算；超参考带不拦截）：标准档 实拍 480~850 / 漫剧 330~620，场景 <=2；长档 实拍 820~1400 / 漫剧 660~1150，场景 <=3；长档对话型纯台词 >=670 字（150s）/ >=800字（180s）/ >=870字（195s）、△动作行 <=15 行（②行动型：纯台词 >=450 字+动作 15~22 行）。
-4. **严禁站桩干聊与无效微动作**：每 2~4 句对白必穿插 1 条强视觉 `△`（命中物理结果/身份反差/物证对抗三大锚点之一），连续纯对白严禁超过 6 行（E24），严禁单写“眼神微动/推半寸”充数（E26）。
-5. **严禁全员播音腔与匀速念经**：反派要市井刻薄，主角要隐忍冷酷/爆发霸道；每场对白必须有 `3~6字` 快刀句与 `8~16字` 算账句的快慢变速。
-6. **情绪流项目：情绪契约贯穿全剧，但单一矛盾单元严禁烧过 30 集**（长档折半为 10~15 集） - 到点必须闭环、换新矛盾（换矛盾不换情绪）。
-7. **严禁同集原地踏步与回合复读**：单集严格执行 15 秒四挡推进，每回合反驳/反击必须带新增量（新信息/新行动/新代价），复读前一回合话术即废稿。
-8. **合规一票否决类不碰**：暴力用"受力震飞/骨裂/倒地"写意替代直观血腥；恶行不过 3 集受惩，严禁私刑致命救济。
-9. **长档单集必设中段小钩（≈90 秒）且守住时长双闸门**：回合B 必须双升级；【本集时长】必须按"台词÷4.5字/s+动作拍"倒推（E16），且长档不得低于 150 秒（E17）。
-10. **独白/旁白纪律（v3.4）**：独白是配额制工具 - 不许用独白代替对抗、不许交代设定与前情、不许复述动作、不许连排；前 3 秒与断章处禁用；独白只写"具体的账"（机检 E12~E15）。
+### Step 6 Compliance
+`screenplay-compliance-rules.md` (Radio and Television Order No. 16 filing categories + 11 content red lines + special governance of violent revenge and feudal dross + sensitive-word rewording table).
 
 ---
 
-## 文件索引
+## Absolute Red Lines (10)
 
-| 文件 | 职责 |
+1. **No opening setup**: within the first 3 seconds, conflict, crisis, or a contrasting strong action must appear; within the first 15 seconds, plain language must state a concrete deadline or stake.
+2. **No dialogue that explains setup or speaks in riddles**: background comes through evidence, contrast, and twists. Whenever evidence is pointed out, the conclusion must be **stated in plain language in the same round**; whenever a setting term or industry jargon appears, it must be **translated within the sentence into its plain consequence (money / life / status)**.
+3. **Single-episode body length [reference]** (scaled to 【Episode Length】; exceeding the reference band does not block): standard tier live-action 320~570 / comic 220~415 words, scenes <=2; long tier live-action 550~930 / comic 440~765 words, scenes <=3; long-tier Dialogue-type pure dialogue >=447 words (150s) / >=533 words (180s) / >=580 words (195s), with △ action lines <=15 (② Action: pure dialogue >=300 words + 15~22 action lines).
+4. **No stationary talking-only scenes or ineffective micro-actions**: every 2~4 dialogue lines must interleave one strong-visual `△` (hitting one of the three anchors: physical results, identity contrast, or evidence confrontation). More than 6 consecutive pure-dialogue lines is forbidden (E24), and padding with "eyes subtly shift" or "pushed half an inch" is forbidden (E26).
+5. **No uniform broadcast-anchor voice or metronomic delivery**: villains must be streetwise and caustic; protagonists must be restrained and cold, or domineering when they erupt. Every scene's dialogue must alternate `2~4`-word quick-cut lines with `5~11`-word arithmetic lines for fast/slow pacing.
+6. **Emotion-flow projects: the emotion contract runs through the whole series, but no single-conflict unit may burn past 30 episodes** (halved to 10~15 episodes for long tier). It must close on time and be replaced by a new conflict (the conflict changes, the emotion does not).
+7. **No spinning in place or repeated rounds within an episode**: strictly execute the 15-second four-shift progression in each episode. Every round's rebuttal or counterstrike must bring something new (new information / new action / new cost); a draft that repeats the previous round's lines is scrapped.
+8. **Never touch automatic-veto compliance issues**: depict violence through stylized substitutes such as "knocked flying by force / bone fracture / collapsing to the ground" instead of graphic gore. Villainous acts must face punishment within 3 episodes at most, and lethal vigilante remedies are forbidden.
+9. **Long-tier episodes must set a mid-episode hook (≈90 seconds) and hold the double duration gate**: Round B must escalate on both fronts, with pressure and rebuttal both rising. 【Episode Length】 must be back-calculated as "dialogue ÷ 3.0 words/s + action beats" (E16), and long tier may not fall below 150 seconds (E17).
+10. **Monologue and narration discipline (v3.4)**: monologue is a quota-based tool. Never use monologue in place of confrontation, never use it to deliver setup or backstory, never narrate actions it is already showing, and never stack lines back to back. It is banned in the first 3 seconds and at cliffhangers. Monologue carries only concrete reckonings (self-check E12~E15).
+
+---
+
+## File Index
+
+| File | Role |
 |---|---|
-| `references/emotion-flow-roundtrip.md` | ★情绪流单元链往返法引擎（流派判定/情绪契约/六档证据x六档反驳/单元链三缝合一/题材批量生成） |
-| `references/hongguo-beat-sheet.md` | ★全剧结构：标准 60/80/100 + 长档 30/40/50 四幕与付费墙换算、**§三·补 单集15秒换挡四拍推进表**、长档单集写法 |
-| `references/continuity-ledger.md` | ★跨集连续性台账（伏笔/人物/道具/规则四类账+A~I九类反转手段轮换矩阵+冷热台账分层+读写规程+长档折算） |
-| `references/character-bible.md` | 人物圣经四件套（动机/秘密/弧光/语言指纹）+全员名册 |
-| `references/webnovel-adaptation.md` | 网文->分集改编流水线（抽取/砍并/每集保一爽点/章改集映射） |
-| `references/mechanism-imitation.md` | ★**机制级仿写与版权边界（v4.9 升级）**：剥壳留核「神似而非形似」三层抽离法 + 四维戏剧算式提炼 + 防撞车四问自检 |
-| `references/genre-map.md` | 男频/女频/中性全赛道题材图（40 赛道：男频12/女频14/中性14 x 心理/曲线/爽点密度 + §五 赛道知识速查） |
-| `references/golden-3s-hook-library.md` | 黄金前3秒六母型 · 20+变体 + 开篇禁令（含极端羞辱强度降级分级、萌系治愈反差母型、账本清算式/双向马甲/核心底牌不可逆剥夺型） |
-| `references/first-three-eps-beat-card.md` | ★前三集节拍卡（v4.1）：E1 受害+立场 / E2 证据回放或考验递进 / E3 冲突升级；四类节奏型+六部实拍样本对照 |
-| `references/cliffhanger-master-formulas.md` | 五大断章公式+生活化短句金句子类+漫剧宝物认主断章+标准格式 |
-| `references/dialogue-doctor-anti-ai.md` | ★**台词七维诊断与直给变速手册（v4.9 升级）**：语言指纹/反灌输/攻防回合/气口限额 + **物证结论大白话同轮直给/黑话当句翻译/快慢变速句群** |
-| `references/inner-monologue-vo.md` | ★独白与旁白受控规程（三通道分工/五类正当用途/四条禁令/配额/位置纪律/三种写法模板/E12~E15 口径） |
-| `references/craft-quality-layer.md` | ★戏剧工艺层（因果生成链/单场七问/三线变化 + **§四·补 强画面三大视觉锚点** + **§六·补 大白话同轮直给**） |
-| `references/conflict-modes.md` | ★冲突形态五型（战场决定引擎）：①对话型/②行动坚持型/③身份错位型/④关系情感型/⑤规则谜题型；仅②放宽机检 |
-| `references/script-doctor-protocol.md` | 评审官与修复器双角色+问题卡十一字段+P0/P1/P2 定级+修复回退判定 |
-| `references/protective-counterexamples.md` | 保护性反例集（安静场/直说/长句不被误判 + E24~E26 反例边界）+ NOTE 级三级语义 |
-| `references/skill-eval-protocol.md` | 升级评测规程（固定用例/保留题/盲评/证据分层/不设总分） |
-| `references/screenplay-compliance-rules.md` | 广电16号令备案分类+11条内容红线+暴力复仇/封建糟粕专项治理+反拜金/恶行3集受惩/公权力威严/严禁私刑+敏感词替换库 |
-| `templates/ledger.md` | 台账空表模板（含档位行与单元划分+A~I反转轮换矩阵表+热台账/冷归档分区） |
-| `templates/episode-format.md` | 单集剧本标准排版（标准档 / 长档双模板 + 独白/旁白配额表 + §四 神态短语规格 + **§五 强画面+15秒换挡+大白话直给速查**） |
-| `examples/ep01-longwang-demo.md` | 标准档单集示例（**E1~E26 零告警全通过范式**） |
-| `examples/long-format-3min-demo.md` | 长档单集示例（**150~195 秒弹性 · E1~E26 零告警全通过范式**） |
-| `scripts/validate_episode.py` | 单集机检（分档 **E1~E26** + N12~N14 保护性反例，含 self-test） |
-| `scripts/validate_series.py` | 全剧台账机检（**S1~S8**：伏笔超期/死人开口/断章缺失/付费墙落位/四表齐全/反转手段轮换，含 self-test） |
+| `references/emotion-flow-roundtrip.md` | ★Emotion-flow unit-chain round-trip engine (genre determination / emotion contract / six evidence tiers x six rebuttal tiers / three-way unit-chain stitch / batch genre generation) |
+| `references/hongguo-beat-sheet.md` | ★Full-series structure: standard 60/80/100 + long 30/40/50 four acts and paywall conversion, **§3 add-on: single-episode 15-second four-shift progression table**, long-tier episode writing |
+| `references/continuity-ledger.md` | ★Cross-episode continuity ledger (four ledgers: foreshadowing / characters / props / rules + A~I nine-type twist-device rotation matrix + hot/cold ledger tiering + read/write protocol + long-tier conversion) |
+| `references/character-bible.md` | Character bible four-part set (motivation / secret / arc / language fingerprint) + full roster |
+| `references/webnovel-adaptation.md` | Web-novel-to-episode adaptation pipeline (extraction / merge-and-cut / keep one payoff per episode / chapter-to-episode mapping) |
+| `references/mechanism-imitation.md` | ★**Mechanism-level imitation and copyright boundaries (upgraded in v4.9)**: "strip the shell, keep the core, resemble in spirit not in form" three-layer abstraction + four-dimension dramatic formula extraction + four-question anti-collision self-check |
+| `references/genre-map.md` | Full genre map for male-skewing / female-skewing / neutral tracks (40 tracks: male 12 / female 14 / neutral 14 x psychology / curve / payoff density + §5 track knowledge quick reference) |
+| `references/golden-3s-hook-library.md` | Golden first-3-seconds six archetypes, 20+ variants, + opening prohibitions (includes extreme-humiliation intensity downgrade tiers, cute-healing contrast archetype, ledger-settlement style, dual-identity mask, core-trump irreversible-deprivation type) |
+| `references/first-three-eps-beat-card.md` | ★First-three-episodes beat card (v4.1): E1 victimization + stance / E2 evidence replay or escalating test / E3 conflict escalation; four pacing types + six live-action sample comparisons |
+| `references/cliffhanger-master-formulas.md` | Five master cliffhanger formulas + everyday short-line golden-line subcategories + comic-drama treasure-recognition cliffhanger + standard format |
+| `references/dialogue-doctor-anti-ai.md` | ★**Seven-dimension dialogue diagnosis and direct-delivery/pacing handbook (upgraded in v4.9)**: language fingerprint / anti-exposition / attack-and-defense turns / breath limits + **physical-evidence conclusions delivered plainly in the same round / jargon translated within the sentence / fast-slow pacing line groups** |
+| `references/inner-monologue-vo.md` | ★Controlled monologue and narration protocol (three-channel split / five legitimate uses / four prohibitions / quotas / position discipline / three writing templates / E12~E15 criteria) |
+| `references/craft-quality-layer.md` | ★Dramatic craft layer (causal generation chain / seven questions per scene / three-line change + **§4 add-on: three strong-visual anchors** + **§6 add-on: same-round plain-language delivery**) |
+| `references/conflict-modes.md` | ★Five conflict-mode types (the battlefield determines the engine): ① Dialogue / ② Action-Persistence / ③ Identity Mismatch / ④ Relationship-Emotion / ⑤ Rule-Puzzle; only ② relaxes self-checks |
+| `references/script-doctor-protocol.md` | Reviewer and fixer two-role system + issue card with eleven fields + P0/P1/P2 severity grading + fix rollback criteria |
+| `references/protective-counterexamples.md` | Protective counterexample set (quiet scenes / direct speech / long sentences not misjudged + E24~E26 counterexample boundaries) + NOTE-level three-tier semantics |
+| `references/skill-eval-protocol.md` | Upgraded evaluation protocol (fixed cases / held-out questions / blind review / tiered evidence / no total score) |
+| `references/screenplay-compliance-rules.md` | Radio and Television Order No. 16 filing categories + 11 content red lines + special governance of violent revenge and feudal dross + anti-materialism / 3-episode punishment for villainy / public-authority dignity / no vigilante justice + sensitive-word replacement library |
+| `templates/ledger.md` | Blank ledger template (with tier row, unit division, A~I twist-rotation matrix table, and hot-ledger / cold-archive sections) |
+| `templates/episode-format.md` | Standard single-episode layout (standard-tier and long-tier dual templates + monologue/narration quota table + §4 expression-phrase spec + **§5 strong visuals + 15-second shifts + plain-language delivery quick reference**) |
+| `examples/ep01-longwang-demo.md` | Standard-tier single-episode example (**E1~E26 zero-warning all-pass model**) |
+| `examples/long-format-3min-demo.md` | Long-tier single-episode example (**150~195 seconds, flexible · E1~E26 zero-warning all-pass model**) |
+| `scripts/validate_episode.py` | Per-episode self-check (tiered **E1~E26** + N12~N14 protective counterexamples; includes self-test) |
+| `scripts/validate_series.py` | Full-series ledger self-check (**S1~S8**: foreshadowing overdue / dead characters speaking / missing cliffhangers / paywall placement / four tables complete / twist-device rotation; includes self-test) |

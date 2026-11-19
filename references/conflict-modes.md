@@ -1,81 +1,83 @@
-# 冲突形态五型：战场决定引擎（Conflict Modes）
+# Five Conflict Modes: The Battlefield Sets the Engine (Conflict Modes)
 
-> **定位**：本库答的是"冲突**放在哪个战场上打**"。此前全库的攻防规则（`dialogue-doctor-anti-ai.md` 维度3 回合制、`emotion-flow-roundtrip.md` 往返回合）默认冲突发生在**语言**里——那只覆盖五型中的一型。认型＝选对**骨架工具与断章公式**；**只有当对白天然稀少时才放宽机检**。
+> **Purpose**: this library answers "which battlefield is the conflict fought on?" Until now, the exchange rules across the library (the turn-taking in `dialogue-doctor-anti-ai.md` Dimension 3, and the round trips in `emotion-flow-roundtrip.md`) assumed the conflict happens in language. That covers only one of the five modes. Identifying the mode means choosing the right skeleton tools and cliffhanger formula. **Only when dialogue is naturally sparse is the validator relaxed.**
 >
-> **触发**：立项/分集/单集撰写先定 `【冲突形态】`；写"主角闷头做事被嘲讽"（②）**必读**。
+> **Trigger**: before greenlighting, episode planning, or writing an episode, set the 【Conflict Mode】 first. Writing "the protagonist quietly works and gets mocked" (②) requires reading this file.
 
 ---
 
-## 〇 共同引擎（五型都靠这两条驱动）
+## 〇 Shared Engine (both drive all five modes)
 
-1. **信息差**：观众与场内人的知道程度不同（观众全知／主角预知／双方各知一半）——看点就是**差**。
-2. **每个节拍必须改变权力格局／状态／认知**：原地踏步＝流失。
+1. **Information gap**: the audience and the people in the scene know different amounts (audience omniscient / protagonist foresees / each side knows half). The hook is the gap.
+2. **Every beat must shift the balance of power, the state, or the understanding**: standing still = leakage.
 
-> 五型的区别只在**战场放哪**：语言／行为错位／身份认知／关系情绪／谜题信息。
+> The five modes differ only in where the battlefield is: language / behavioral mismatch / identity perception / relationship emotion / puzzle information.
 
 ---
 
-## 一 五型对照表
+## I. Five-Mode Comparison Table
 
-| # | 型 | 战场 | 钩子 | 节拍 | 断章 | 机检 |
+| # | Mode | Battlefield | Hook | Beat | Cliffhanger | Validator |
 |---|---|---|---|---|---|---|
-| ① | **对话型**（嘴上见血） | 语言 | 一句台词顶顶点 | 回合制攻防（施压→反驳→刺探→绝杀） | 公式3 反差金句／当场打脸 | **不放宽** |
-| ② | **行动坚持型**（手上见血、嘴上闭嘴） | 行为×质疑错位 | **反常动作** + "他为什么这样" | 准备→阻挠升档循环 | **验证前一秒**（灾难前兆兑现） | **放宽**（见 §四） |
-| ③ | **身份错位型**（认知≠真相）★最大主流 | 身份 vs 认知 | 身份反转预兆 | 他何时暴露／认不认 | **公式1 掉马前一秒** | 不放宽（对白正常） |
-| ④ | **关系情感型**（情绪债拉扯） | 关系里的情绪债 | 关系破裂的临界画面 | 要不要原谅／敢不敢靠近 | **公式5 情绪反差落地** | 不放宽（对白多） |
-| ⑤ | **规则谜题型**（信息阶梯） | 谜与解 | 反常规则 | 新线索→误判→翻案→更大谜团 | 中段小钩＝误判坐实半秒；断章＝真相揭晓一半 | 不放宽（剧情流） |
+| ① | **Dialogue** (blood on the lips) | Language | One line at the peak | Turn-based exchange (pressure → rebuttal → probing → final blow) | Formula 3 contrast punchline / public face-slap | **No relaxation** |
+| ② | **Action-Persistence** (blood on the hands, lips shut) | Behavior × mismatched doubt | **Abnormal action** + "why is he doing this?" | Preparation → obstruction escalation loop | **The second before verification** (the omen pays off) | **Relaxed** (see §IV) |
+| ③ | **Identity-Gap** (perception ≠ truth) ★ largest mainstream | Identity vs. perception | An omen of an identity reversal | When will he be exposed / will they accept him | **Formula 1: the second before the reveal** | No relaxation (dialogue is normal) |
+| ④ | **Relationship-Emotion** (emotional-debt tug-of-war) | Emotional debt in the relationship | The breaking-point image of the relationship | Forgive or not / dare to get close | **Formula 5: Emotion Contrast Landing** | No relaxation (lots of dialogue) |
+| ⑤ | **Rule-Puzzle** (information ladder) | Puzzle and solution | An anomalous rule | New clue → misjudgment → case reversed → bigger mystery | Mid-episode hook = the misjudgment confirmed for half a beat; cliffhanger = half the truth revealed | No relaxation (plot-driven) |
 
-**记法**：①嘴上见血 ｜ ②手上见血嘴上闭嘴 ｜ ③他到底是谁 ｜ ④还要不要他 ｜ ⑤这到底怎么回事。
+**Mnemonic**: ① blood on the lips | ② blood on the hands, lips shut | ③ who is he, really? | ④ do I still want him? | ⑤ what is going on here?
 
-**混合**：**行动外壳＋对话火力**——主角在围攻里**不解释只做事**，只在关键一拍开口如刀（一集 2~3 句硬话）。这是②与①的常用组合（如"囤货者被全楼嘲讽，只在最后一拍冷话收口"）。
+**Mixed**: **action shell + dialogue firepower**. The protagonist, under siege, doesn't explain and just acts. He speaks only at the key beat, with cutting lines (2-3 hard lines per episode). This is a common combination of ② and ① (e.g., "a hoarder gets mocked by the whole building and closes with one cold line on the final beat").
 
-> ⚠️ **认型 ≠ 都放宽机检**。③④⑤对白量正常，**不需要开任何放宽开关**，只需要形态标签来**选对骨架工具与断章公式**。只有②（对白天然少）才放宽。
+> ⚠️ Identifying the mode ≠ relaxing the validator. ③④⑤ have normal dialogue volume and need no relaxation switches. The mode tag is only there to choose the right skeleton tools and cliffhanger formula. Only ② (naturally sparse dialogue) is relaxed.
 
 ---
 
-## 二 ②行动坚持型的循环骨架
+## II. The Action-Persistence (②) Loop Skeleton
 
 ```text
-反常准备（钩子：他为什么这样）
-  ➔ 质疑/阻挠①（邻居/亲戚/家人；理由：丢人/浪费/挡道）
-  ➔ 主角不解释，继续准备②（升级：规模/精度/不可逆）
-  ➔ 质疑/阻挠②（升一档：从嘴到行动——举报/偷拍/断水断电）
-  ➔ 准备③（把命脉握死：钥匙/水/电/门）
-  ➔ 验证时刻（前兆兑现，质疑者傻眼）
-  ➔ 断章：卡在"验证前一秒"（更大灾变／发电机没响）
+Abnormal preparation (hook: why is he doing this?)
+  ➔ Doubt / obstruction ① (neighbors / relatives / family; reasons: embarrassing / wasteful / in the way)
+  ➔ Protagonist doesn't explain, keeps preparing ② (escalation: scale / precision / irreversibility)
+  ➔ Doubt / obstruction ② (escalate one tier: from mouth to action — reporting / secretly filming / cutting water and power)
+  ➔ Preparation ③ (lock down the lifelines: keys / water / power / doors)
+  ➔ Verification moment (the omen pays off; the skeptic is stunned)
+  ➔ Cliffhanger: lands on the "second before verification" (a bigger catastrophe / the generator doesn't start)
 ```
 
-**三条铁律**：① **解释即泄气**（用动作回答，不辩解）② **每次阻挠升一档**（复读＝废拍）③ **准备必须"可拍"**（每个准备动作改变处境）。
+**Three iron rules**: ① explaining = losing steam (answer with action, never excuse). ② Each obstruction escalates one tier (repetition = a dead beat). ③ Preparation must be **filmable** (every preparation action changes the situation).
 
 ---
 
-## 三 长档（3 分钟）落地公式
+## III. Long-Tier (3-Minute) Implementation Formulas
 
-| 型 | 骨架 | 对白／动作配比（参考） |
+| Mode | Skeleton | Dialogue / action ratio (reference) |
 |---|---|---|
-| ① 对话型 | 双回合：回合A 嘴仗 ➔ 中段小钩 ➔ 回合B 升级嘴仗 ➔ 断章金句 | 对白为主（E9 ≥8 行、占比 25~70%） |
-| ② 行动型 | 准备×2 ＋ 质疑阻挠×2 ＋ **验证段**（末段小钩抛前兆，断章卡"验证前一秒"） | **纯台词 ≥450 字 ＋ 动作行 15~22 行 ≈150 秒**（另可垫长至 195 秒） |
-| 混合 | 行动外壳＋对话火力 | 对白 6~8 行、占比 ≥15% |
-| ③④⑤ | 沿用各自骨架（身份／关系／谜题） | 对白正常，按对话框准 |
+| ① Dialogue | Two rounds: Round A shouting match ➔ mid-episode hook ➔ Round B escalated shouting match ➔ cliffhanger punchline | Dialogue-led (E9 ≥8 lines, 25-70% share) |
+| ② Action | Preparation ×2 + doubt/obstruction ×2 + **verification segment** (the final-stretch hook drops an omen; the cliffhanger lands on "the second before verification") | **Spoken dialogue ≥300 words + 15-22 action lines ≈150 s** (can stretch to 195 s) |
+| Mixed | Action shell + dialogue firepower | 6-8 dialogue lines, ≥15% share |
+| ③④⑤ | Keep each one's own skeleton (identity / relationship / puzzle) | Dialogue is normal; judged by the dialogue standard |
 
-> ②的 E16：机检按 **动作拍 ×4.0s**（对话型 ×1.5s、**混合型 ×2.5s**）计——准备动作承载叙事、占时长更重，否则行动型会被“标长报虚标／标短报降级”两头夹死。
+> E16 for ②: the validator counts each action beat as ×4.0 s (×1.5 s for Dialogue, ×2.5 s for Mixed). Preparation actions carry the narrative and take up more time. Otherwise the Action type gets squeezed from both sides: "tagged long → reported as inflated; tagged short → reported as downgraded."
 
 ---
 
-## 四 机检口径（**只有②放宽**）
+## IV. Validator Rules (**only ② is relaxed**)
 
-- 单集**必填字段**：`【冲突形态】：对话型／行动坚持型／身份错位型／关系情感型／规则谜题型／混合`（缺省＝对话型）。
-- **②行动型**：E9 对白行下限减半（长档 8→4）；E21 对白占比下限 25%→**10%**；**E16 动作拍权重 ×4.0s**；**E23 必须设【质疑者配角】（无对手位＝行动流水账，FAIL）**；**N13 堆动作豁免**。
-- **混合**：E9 长档 8→**6**；E21 下限 **15%**；**E16 动作拍权重 ×2.5s**；N13 豁免。
-- **③④⑤**：**一律按对话框准**（只需形态标签，不必开放宽）。
-- **场景上限随集长放宽**：自定义时长（>195s）时，场景上限 = max(档位值, 约每 75 秒 1 场)；例 300s → 4 场。
-- **E4 前3秒**：②行动型的钩子是「反常动作」（囤/搬/焊/封/锁/发电机…），已并入 E4 信号词，不按嘴仗型误杀。
-- 其余（E19 连续对白≤95字、E2 单句≤25字、E16 时长匹配、E17 长档下限、E22 用语）**照常适用**。
+- Required field per episode: 【Conflict Mode】: Dialogue / Action-Persistence / Identity-Gap / Relationship-Emotion / Rule-Puzzle / Mixed (default = Dialogue).
+- **② Action**: E9 dialogue-line floor halved (long tier 8→4); E21 dialogue-share floor 25%→**10%**; E16 action-beat weight ×4.0 s; E23 requires 【Skeptic Supporting Character】 (no opponent slot = action log, FAIL); N13 action-padding exemption.
+- **Mixed**: E9 long tier 8→**6**; E21 floor **15%**; E16 action-beat weight ×2.5 s; N13 exempt.
+- **③④⑤**: always judged by the dialogue standard (the mode tag alone is enough; no relaxation needed).
+- **Scene cap scales with episode length**: for custom durations (>195 s), scene cap = max(tier value, about 1 scene per 75 seconds). Example: 300 s → 4 scenes.
+- **E4 first 3 seconds**: ② Action hooks are "abnormal actions" (stockpile / move / weld / seal / lock / generator, etc.). These are now part of the E4 signal words, so they are not falsely flagged as the shouting-match type.
+- The rest (E19 consecutive dialogue ≤63 words, E2 single line ≤17 words, E16 duration match, E17 long-tier floor, E22 terminology) applies as usual.
 
-## 五 写后自检
+---
 
-1. 观众与场内人的**信息差**是什么？（答不上＝没有引擎）
-2. 本集**每个节拍**是否改变了权力格局／认知？（不改变＝删）
-3. ②：主角有没有**辩解**？（辩解＝跑型）｜ 质疑者是否**每次升一档**？｜ 有没有**验证段**？
-4. ③：他有没有**在"掉马前一秒"被切断**？｜ ④：有没有**情绪反差落地**？｜ ⑤：有没有**误判坐实**？
-5. 认型是否选对了**骨架工具与断章公式**？（这才是认型的主要目的——**不是**为了放宽机检）
+## V. Post-Writing Self-Check
+
+1. What is the information gap between the audience and the people in the scene? (Can't answer = no engine.)
+2. Does every beat in this episode shift the balance of power or the understanding? (No change = cut it.)
+3. ②: Does the protagonist make excuses? (Excuses = the runner type.) | Does the skeptic escalate one tier each time? | Is there a verification segment?
+4. ③: Is he cut off at "the second before the reveal"? | ④: Is there an emotion contrast landing? | ⑤: Is a misjudgment confirmed?
+5. Did the mode identification select the right skeleton tools and cliffhanger formula? (That is the main purpose of identifying the mode. It is **not** to relax the validator.)

@@ -1,84 +1,84 @@
-# 短剧剧本医生：台词七维诊断、大白话直给与快慢变速手册（v4.9 升级版）
+# Short-Drama Script Doctor: Seven-Dimension Dialogue Diagnosis, Plain-Speech Delivery, and Variable-Speed Cadence Handbook (v4.9 Upgrade)
 
-本模块专用于对剧本台词进行外科手术式精修，彻底拔除 AI 生成中常见的“说明书味、播音腔、假大空、反向灌输、谜语人绕弯、行话堆砌与匀速念经感”。
-
----
-
-## 一、 台词七维诊断与重构法则
-
-### 维度 1：角色辨识度与语言指纹 (Voice Print)
-* **诊断核心**：遮住人名，能否一眼看出是谁在说话？
-* **重构法则**：
-  * **恶霸/市井反派**：用短促施压词、命令句、市井俚语（“老子”“听懂没有”“跪下说话”“少废话”）；
-  * **隐忍/上位主角**：字数精炼、情绪克制、字字如刀，用反问与具体代价制造威慑（“你确定？”“最后一次机会”“这笔账，现在算”）；
-  * **质疑者/捧哏配角**：替观众把常识疑问、憋屈或震惊直接喊出口（“他疯了吧？”“这怎么可能！”）；
-  * **谋士/助理/管家**：用恭敬短句、带具体数字与时间死线（“三分钟内办妥”“资金已冻结”）。
-* **红线**：严禁全员文绉绉、全员播音腔、全员心理分析师。
-
-### 维度 2：反向灌输死刑法 (Anti-Exposition)
-* **病灶表现**：角色对着对手念出双方本来就清楚的背景设定（如“三年前你害死了我爸，侵占了我们林家三千万财产……”）。
-* **外科手术改写法**：
-  * ❌ *病灶台词*：“三年前你害死了我爸，侵占了我们林家三千万财产，今天我一定要让你血债血偿！”
-  * ✅ *爆款台词*：
-    `△ 林辰将染血的旧怀表重重拍在桌上，表盖弹开。`
-    `林辰（冷声）：三年前林家老宅那场火，烧得挺旺啊，赵董。`
-    `林辰：你吞下去的三千万，今天连本带利吐出来！`
-
-### 维度 3：攻防对白回合制 (Conflict & Turn-Taking)
-* **诊断核心**：拒绝单方面说教或站桩抒情，每轮对话必须形成**「施压 ➔ 反刺探/亮牌 ➔ 恼羞加码 ➔ 绝杀算账」**的实质推进。
-* **结构示例**：
-  * 反派（施压）：“十万块，签了这份谅解书。”
-  * 主角（反刺探）：“十万？你儿子的前途，就值这点？”
-  * 反派（恼羞）：“你别给脸不要脸！”
-  * 主角（绝杀）：“明早九点前不凑齐五百万，咱们法庭见。”
-* **与中观层挂线**：单场攻防四拍就是 `emotion-flow-roundtrip.md` 往返回合的缩时版——施压=本集证据落档一拍，绝杀=反驳升档一拍；单场内解决不了就留到下一回合或断章，不许一场戏把六档烧完。
-
-### 维度 4：单句气口限额 (Breath & Clause Limit)
-* **短剧配音气口铁律**：
-  * **常规攻防句**：单气口严格控制在 **12 ～ 18 字** 以内；
-  * **短促快刀句**：控制在 **3 ～ 6 字**（用于打断、喝止、反问、抢白）；
-  * **爆发金句**：控制在 **8 ～ 12 字**（短促有力，如“今天，谁来也保不住你！”）；
-  * **硬红线**：单气口上限 **≤25 字**（超长触发机检 `E2` 告警），一行内若含两层意思，优先拆成上下两行或短分句。
-
-### 维度 5：物证 + 大白话结论「同轮直给」(Zero Comprehension Delay · v4.9 核心新增)
-* **病灶表现（粉丝头号差评：“说的话想半天才能明白什么意思”）**：
-  AI 常把“潜台词”误解成**谜语人打哑谜**——只给一个隐晦物证（“这碗底是干的”“把油灯往那边推推”“今天多备了第七份碗筷”），却不挑明是什么意思；或者问 A 答 B 搞文艺留白，导致刷竖屏短视频的观众反应不过来直接划走。
-* **外科手术改写法（「物证动作 + 利害结论」同轮落地）**：
-  * **铁律**：短剧的潜台词靠神态与反差动作演，但**事实与利害结论必须在同一轮对话（1~2 句内）用大白话直接挑明**！
-  * ❌ *谜语人写法（听不懂）*：
-    `△ 她摸了摸碗边。`
-    `女主：这碗边没水印。你还是老样子。`（观众懵：到底吃没吃？什么老样子？）
-  * ✅ *大白话直给写法（一秒听懂）*：
-    `△ 她一把将粗瓷碗翻过来，手指在干巴巴的碗底抹出一层干面粉！`
-    `女主（眼圈发红｜急促）：刚洗过的碗，碗底哪来的干面粉？`
-    `女主：你早上根本没吃饭，把最后两个馍全留给我了！`
-
-### 维度 6：设定词与行业黑话「当句人话翻译」(Instant Secular Translation · v4.9 新增)
-* **病灶表现**：商战、医疗、律政、古装、玄幻、系统题材里，角色满嘴专业术语或自造玄学黑话（“触发二级穿仓条款”“气海逆行火漏”“因果锚点坍缩”），观众对抽象名词毫无痛感。
-* **外科手术改写法（专名后当句跟「钱 / 命 / 刑期 / 地位」大白话锚点）**：
-  * **铁律**：任何专业术语、古语或设定词出现时，**当句或紧接着下一句必须立刻翻译成大白话后果（多少钱、判几年、谁死谁活、归谁管）**。未翻译的伪高深黑话触发机检 `E25` 告警。
-  * ❌ *黑话堆砌（无痛感）*：“林总，对方启动了交叉违约触发机制，我们的流动性敞口已经彻底暴露了！”
-  * ✅ *当句人话翻译（痛感拉满）*：“林总，银行刚刚抽贷了！今晚十二点前凑不出三千万现金，明早公司大楼直接被查封拍卖！”
-
-### 维度 7：快慢变速句群 (Variable-Speed Cadence · v4.9 新增)
-* **病灶表现**：全篇台词每句都是 12~15 字的标准主谓宾长句，节奏像节拍器一样匀速念经，缺乏真吵架、真博弈的呼吸感。
-* **外科手术改写法（短促快刀句 + 直给算账句交替咬合）**：
-  * **铁律**：每场戏的对白必须有**快慢变速**——先用 **3~6 字短促快刀句**（“住手！”“你敢？”“看清楚！”“那又怎样？”）劈开局面，再跟 **8~16 字大白话算账句**亮出筹码与后果。
-  * ❌ *匀速念经*：
-    `甲：你今天如果不把这份合同签了，我就让你在江城混不下去。`
-    `乙：你不要以为你有几个臭钱了不起，我根本就不会怕你的威胁。`
-  * ✅ *快慢变速*：
-    `甲（拍桌｜厉声）：签了它！不签，明天让你滚出江城！`
-    `乙（掀起眼皮｜冷笑）：滚出江城？`
-    `乙（甩出股权书｜一字一顿）：睁大眼看看，这栋楼现在的房东是谁！`
+This module performs surgical-grade refinement of script dialogue. Its job is to remove the hallmarks of AI-generated writing: "instruction-manual flavor, newsreader cadence, empty grandiosity, reverse exposition, riddle-speak detours, jargon piles, and metronome-like recitation."
 
 ---
 
-## 二、 剧本医生实战改写案例库（全赛道通用）
+## I. Seven-Dimension Dialogue Diagnosis and Rebuilding Rules
 
-| 赛道题材 | AI 常见病灶台词（说明书/谜语人/匀速腔） | 剧本医生暴改后台词（强画面+大白话直给+变速） | 诊断依据 |
+### Dimension 1: Character Distinctness and Speech Fingerprint (Voice Print)
+* **Diagnostic core**: Cover the character names. Can you tell at a glance who is speaking?
+* **Rebuilding rules**:
+  * **Bully / street villain**: short, pressuring words; imperatives; street slang ("Listen up, you hear me?" "Kneel and talk." "Less talk.");
+  * **Restrained / rising protagonist**: tight word count, controlled emotion, every word a blade; deters with rhetorical questions and concrete costs ("You sure about that?" "Last chance." "Let's settle this account now.");
+  * **Skeptic / foil supporting character**: says out loud the common-sense doubt, the indignation, or the shock the audience is feeling ("Is he crazy?" "That's impossible!");
+  * **Strategist / assistant / steward**: respectful short sentences with concrete numbers and deadlines ("Done within three minutes." "The funds are frozen.").
+* **Red line**: no one may talk in florid prose, everyone may not sound like a newsreader, and no one may be a therapist-in-character.
+
+### Dimension 2: Anti-Exposition Death Penalty (Anti-Exposition)
+* **Symptom**: a character recites to the opponent background that both sides already know (e.g., "Three years ago you killed my father and seized three million dollars of our Lin family's assets...").
+* **Surgical rewrite method**:
+  * ❌ *Symptom line*: "Three years ago you killed my father, seized thirty million dollars of our Lin family's assets, and today I will make you pay back every drop of blood!"
+  * ✅ *Viral line*:
+    `△ Lin Chen slams a bloodstained old pocket watch onto the table; the lid pops open.`
+    `Lin Chen (cold): That fire at the Lin family estate three years ago burned pretty bright, didn't it, Chairman Zhao.`
+    `Lin Chen: The thirty million you swallowed, you're spitting it back out today, with interest!`
+
+### Dimension 3: Turn-Taking in Conflict and Dialogue (Conflict & Turn-Taking)
+* **Diagnostic core**: No one-sided lecturing and no standing around emoting. Every round of dialogue must form a substantive advance: **pressure ➔ counter-probe / reveal a card ➔ flustered escalation ➔ final blow and settling accounts**.
+* **Structural example**:
+  * Villain (pressure): "A hundred thousand. Sign this settlement agreement."
+  * Protagonist (counter-probe): "A hundred thousand? Your son's future is worth that little?"
+  * Villain (flustered): "Don't you dare get smart with me!"
+  * Protagonist (final blow): "Not five million by nine tomorrow morning? See you in court."
+* **Link to the mid-level framework**: a single scene's four-beat exchange is a compressed version of the round trip in `emotion-flow-roundtrip.md`. Pressure = one beat where this episode's evidence is entered on the record; final blow = one beat where a rebuttal escalates a tier. If a scene can't resolve the conflict, carry it to the next round or the cliffhanger. Never burn all six tiers in one scene.
+
+### Dimension 4: Breath and Clause Limits (Breath & Clause Limit)
+* **Iron rules for breath in short-drama voice lines**:
+  * **Regular exchange lines**: keep each breath strictly within **8-12 words**;
+  * **Short, sharp lines**: keep to **2-4 words** (for interrupting, shutting someone down, counter-questions, cutting in);
+  * **Explosive punchlines**: keep to **5-8 words** (short and forceful, e.g., "Today, nobody can save you!");
+  * **Hard red line**: a single breath may not exceed **17 words** (over-length triggers validator `E2` warning). If one line carries two layers of meaning, split it into two lines or short clauses first.
+
+### Dimension 5: Physical Evidence + Plain-Language Conclusion in the Same Round (Zero Comprehension Delay · v4.9 core addition)
+* **Symptom (the top complaint from fans: "I need to think for ages to understand what they just said")**:
+  AI often mistakes subtext for riddle-speak: it gives a single hazy piece of evidence ("This bowl's bottom is dry." "Push the oil lamp over that way." "Today you set out one extra bowl and chopsticks.") without ever saying what it means. Or it has characters ask one question and answer a different one for artsy ambiguity, so viewers scrolling a vertical short-video feed can't keep up and swipe away.
+* **Surgical rewrite method (evidence action + stakes conclusion, landing in the same round)**:
+  * **Iron rule**: in a short drama, subtext is played through expression and contrasting action, but **the facts and the stakes must be stated plainly in the same round of dialogue (within 1-2 lines)!**
+  * ❌ *Riddle-speak (incomprehensible)*:
+    `△ She touches the rim of the bowl.`
+    `Heroine: No water ring on this rim. You're still the same old you.` (Audience: wait, did they eat? What "same old you"?)
+  * ✅ *Plain-speech delivery (understood in one second)*:
+    `△ She flips the coarse clay bowl over; her thumb comes away dusted with dry flour from the bottom!`
+    `Heroine (eyes reddening | rushed): The bowl was just washed. Where did dry flour on the bottom come from?`
+    `Heroine: You didn't eat breakfast this morning. You saved the last two steamed buns for me!`
+
+### Dimension 6: Instant Plain-Language Translation of Technical and Genre Jargon (Instant Secular Translation · v4.9 new)
+* **Symptom**: in business, medical, legal, period, fantasy, and system genres, characters spout technical terms or invented mystical jargon ("triggers a Level-2 disclosure breach clause," "qi-sea reversal, fire leak," "karmic anchor collapse"), and abstract nouns cause the audience no pain.
+* **Surgical rewrite method (after each technical term, a plain-language anchor of money / life / prison time / status on the same line)**:
+  * **Iron rule**: whenever a technical term, archaic phrase, or setting word appears, **the same line or the very next line must immediately translate it into a plain-language consequence (how much money, how many years in prison, who lives or dies, who is in charge)**. Untranslated pseudo-profound jargon triggers validator `E25` alert.
+  * ❌ *Jargon pile (no pain)*: "Mr. Lin, the other side triggered a cross-default clause, and our liquidity exposure is fully exposed!"
+  * ✅ *Translated on the spot (maximum pain)*: "Mr. Lin, the bank just pulled our credit line! If we can't raise thirty million in cash by midnight, the company building gets seized and auctioned tomorrow morning!"
+
+### Dimension 7: Variable-Speed Cadence in Lines (Variable-Speed Cadence · v4.9 new)
+* **Symptom**: every line in the script is a standard subject-verb-object sentence of 12-15 words, dragging along at a metronome's pace like a chant, with none of the breath of a real fight or a real power game.
+* **Surgical rewrite method (short, sharp lines alternating with plain-language ledger lines)**:
+  * **Iron rule**: each scene's dialogue must **change speed**. First, open the situation with **2-4-word short, sharp lines** ("Stop!" "You dare?" "Look closely!" "So what?"), then follow with **5-11-word plain-language ledger lines** that lay out the chips and the consequences.
+  * ❌ *Metronome recitation*:
+    `A: If you don't sign this contract today, I'll make sure you can't survive in River City.`
+    `B: Don't think a few stinking bucks make you special. I'm not scared of your threats at all.`
+  * ✅ *Variable speed*:
+    `A (slams table | sharp): Sign it! Don't, and you're gone from River City by tomorrow!`
+    `B (lifts eyes | sneers): Gone from River City?`
+    `B (tosses out the share certificate | word by word): Open your eyes and look. Who's the landlord of this building now!`
+
+---
+
+## II. Script Doctor Case Library: Rewrite Examples (All Tracks)
+
+| Track | Typical AI symptom lines (instruction-manual / riddle-speak / metronome) | Script-doctor rewrite (strong visual + plain speech + variable speed) | Diagnostic basis |
 |---|---|---|---|
-| **男频/商战打脸** | “你不过是一个区区江城首富，在我眼里连蝼蚁都不如，我已经通过资本运作收购了你们的母公司！” | `△ 林辰将烫金收购函甩在会议桌上，滑到陈峰手边。`<br>`林辰（俯身｜轻蔑冷笑）：江城首富？`<br>`林辰（字字如刀）：给你三分钟，打电话问问你爸，现在陈氏集团归谁管！` | 剔除中二自夸，用收购函物证+三分钟死线直给压迫感。 |
-| **女频/家庭醒悟** | “碗底还是凉的，你终究还是没有想起今天是什么日子，我们的缘分尽了。” | `△ 苏晚一把掀翻桌上的冷寿面，瓷碗砸在地上摔成两半！`<br>`苏晚（声音发颤）：今天是我妈忌日！`<br>`苏晚（扯下婚戒砸过去｜厉声）：你陪白月光放了一宿烟花，这婚，今天离定了！` | 拔除文艺伤感谜语，动作砸碗+直接挑明“忌日陪白月光”的冲突事实。 |
-| **医疗/职场逆袭** | “患者的血流动力学指标出现不可逆衰减，你的术式选择存在严重指征误判！” | `△ 监护仪发出刺耳红光警报，病人嘴唇瞬间发紫！`<br>`沈清（一把推开主刀｜厉喝）：让开！他主动脉被你切破了！`<br>`沈清（急促）：再按你的方案缝下去，三分钟内人就得死在手术台上！` | 把医学术语当场翻译为“主动脉破了、三分钟内死人”的大白话生死危机。 |
-| **古装/宅斗权谋** | “二妹妹这袖口上的苏绣针脚倒是别致，想来昨晚定是去了不该去的地方吧。” | `△ 嫡姐一把拽起庶妹的袖口，亮出上面沾着的一抹暗红朱砂！`<br>`嫡姐（冷笑）：好端端的去佛堂祈福，袖口哪来的账房朱砂？`<br>`嫡姐（厉声）：昨晚撬开公中库房偷改账册的人，就是你！` | 拒绝只点物证不点破的慢热宫斗腔，当场亮出朱砂物证并直接扣死偷改账册罪名。 |
+| **Male-led / business face-slapping** | "You're nothing but River City's richest man. In my eyes you're less than an ant, and I've already acquired your parent company through capital maneuvering!" | `△ Lin Chen flings a gold-embossed acquisition letter onto the conference table; it slides to Chen Feng's hand.`<br>`Lin Chen (leaning in ｜ contemptuous sneer): River City's richest man?`<br>`Lin Chen (each word a blade): You have three minutes. Call your father and ask who runs Chen Group now!` | Cut the self-aggrandizing bluster; the acquisition letter as physical evidence plus a three-minute deadline delivers pressure directly. |
+| **Female-led / family awakening** | "The bowl's bottom is still cold. You never did remember what day it is. Our bond is over." | `△ Su Wan flips the table, sending the cold noodles flying. The bowl smashes into two pieces on the floor!`<br>`Su Wan (voice shaking): Today is my mother's death anniversary!`<br>`Su Wan (rips off her wedding ring and hurls it ｜ sharp): You spent all night setting off fireworks with your first love. This marriage ends today!` | Strip the literary melancholy riddles. Smashing the bowl plus stating the conflict fact outright: he spent the memorial day with his first love. |
+| **Medical / workplace comeback** | "The patient's hemodynamic indicators show irreversible decline, and your choice of procedure reflects a serious misjudgment of indications!" | `△ The monitor flashes red and shrieks an alarm; the patient's lips turn blue in an instant!`<br>`Shen Qing (shoving the surgeon aside ｜ barking): Move! You nicked his aorta!`<br>`Shen Qing (rapid): Keep sewing by your plan and he dies on the table within three minutes!` | Translate the medical jargon on the spot into a plain-language life-or-death crisis: the aorta is torn, and he dies in three minutes. |
+| **Period / household intrigue** | "Second Sister, that fine embroidery on your cuff is quite unique. I suppose you went somewhere you shouldn't have last night." | `△ Eldest Sister yanks up Second Sister's sleeve, exposing a smear of vermilion ink on it!`<br>`Eldest Sister (coldly): You claimed you were praying at the shrine. Where did ledger-room vermilion on your sleeve come from?`<br>`Eldest Sister (sharp): You're the one who broke into the family treasury last night and altered the ledgers!` | Reject the slow-burn palace-intrigue tone that hints at evidence without naming it. Expose the vermilion stain on the spot and pin the ledger-tampering charge directly. |

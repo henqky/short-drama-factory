@@ -1,44 +1,46 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""short-drama-factory v4.9 全剧台账机检
+"""short-drama-factory v4.9 series ledger validator
 
-用法:
-    python validate_series.py <台账.md> [--episodes 80] [--script-dir 剧本目录]
+Usage:
+    python validate_series.py <ledger.md> [--episodes 80] [--script-dir scripts-dir]
     python validate_series.py --self-test
-    （Windows 用 python；macOS / Linux 用 python3）
+    (Windows: use python; macOS / Linux: use python3)
 
-台账为 markdown 表格文件（templates/ledger.md 格式），四类账：
-    伏笔账 / 人物账 / 道具账 / 世界观规则账
+The ledger is a markdown file of tables (templates/ledger.md format) with four ledgers:
+    Foreshadowing Ledger / Character Ledger / Prop Ledger / World Rules Ledger
 
-总集数 --episodes 决定付费墙区间：标准档 60/80/100 集；长档（约3分钟/集）30/40/50 集
-（1 长档集 ≈ 2 标准集，墙集数减半，见 references/hongguo-beat-sheet.md §二/§四）。
+--episodes sets the paywall ranges: standard tier 60/80/100 eps; long tier (about 3 min/ep) 30/40/50 eps
+(1 long ep ≈ 2 standard eps, so wall episodes are halved; see references/hongguo-beat-sheet.md, sections 2 and 4).
 
-检查项:
-    S1  伏笔"拟收"超期: 状态含 埋/养/未收 且 当前集>拟收+3      WARN
-    S2  伏笔废置: 状态"废"但正文未给废弃说明列               WARN
-    S3  死人开口: 人物账状态含 死/殒/失踪 但剧本目录中其后集数该角色有对白行  FAIL
-    S4  人物无档案: 剧本目录出现【角色】名册外人名            WARN(需--script-dir)
-    S5  断章缺失扫描: --script-dir 时逐集查【本集断章卡点】    FAIL(缺)
-    S6  付费墙落位: 三档总集数下墙集区间内无"墙"标记行         WARN
-    S7  台账必备四表齐全                                      FAIL(缺表)
-    S8  反转手段轮换: 反转手段矩阵表相邻3集内复用同一[A-I]标签  WARN
-        (A身份压制/B铁证如山/C盟友倒戈/D降维制裁/E诛心破防/F纯粹武力
-         /G情感剥夺/H舆论社死/I借刀自噬; G/H/I为女频文戏新增)
-退出码: 0=通过, 1=FAIL, 2=用法错误
+Checks:
+    S1  Foreshadowing overdue: status Planted/Nurturing/Unresolved and current ep > planned resolution + 3      WARN
+    S2  Foreshadowing discarded: status "Discarded" but no reason given in the notes column                    WARN
+    S3  Dead character speaks: Character Ledger status Dead/Perished/Missing but a later script has their dialogue  FAIL
+    S4  Character not in roster: speaker in the scripts is not in the Character Ledger                        WARN (needs --script-dir)
+    S5  Missing cliffhanger: with --script-dir, check each episode for 【Episode Cliffhanger】                   FAIL (missing)
+    S6  Paywall placement: no "wall" marker line inside the wall range for each of the three totals            WARN
+    S7  Four required ledger tables present                                                                    FAIL (missing table)
+    S8  Twist rotation: same [A-I] tag reused within 3 episodes in the Twist Rotation Matrix                   WARN
+        (A Identity Suppression / B Ironclad Evidence / C Ally Betrayal / D Dimensional Crackdown /
+         E Heart-Piercing Collapse / F Pure Force / G Emotional Deprivation / H Public Social Death /
+         I Borrowed-Knife Self-Consumption; G/H/I are additions for female-lead dramas)
+Exit codes: 0=passed, 1=FAIL, 2=usage error
 """
 import re
 import sys
 import pathlib
 
 WALL_RANGES = {60: [(8, 11), (21, 24), (41, 44)], 80: [(10, 15), (28, 32), (55, 58)], 100: [(13, 19), (35, 40), (68, 73)],
-               # 长档（约 3 分钟/集）：集数减半，墙集区间同步折算
+               # Long tier (about 3 min/ep): episode counts halved, wall ranges scaled to match
                30: [(4, 6), (10, 12), (20, 22)], 40: [(5, 8), (14, 16), (27, 29)], 50: [(7, 10), (17, 20), (34, 37)]}
-TABLE_KEYS = {"伏笔": "伏笔账", "人物": "人物账", "道具": "道具账", "规则": "世界观规则账"}
+TABLE_KEYS = {"Foreshadowing": "Foreshadowing Ledger", "Character": "Character Ledger",
+              "Prop": "Prop Ledger", "Rules": "World Rules Ledger"}
 
 
 def _rows(text, section_kw):
-    """取某账小节后的 markdown 表格数据行"""
-    m = re.search(r"^#+[^\n]*?" + section_kw + r"[^\n]*\n(.*?)(?=^#+\s|\Z)", text, re.S | re.M)
+    """Return the markdown table data rows under a ledger section"""
+    m = re.search(r"^#+[^\n]*?" + section_kw + r"[^\n]*\n(.*?)(?=^#+\s|\Z)", text, re.S | re.M | re.I)
     if not m:
         return None
     rows = []
@@ -47,12 +49,12 @@ def _rows(text, section_kw):
         if s.startswith("|") and not re.match(r"^\|[\s\-:|]+\|$", s):
             cells = [c.strip() for c in s.strip("|").split("|")]
             rows.append(cells)
-    return rows[1:] if rows else []  # 去表头
+    return rows[1:] if rows else []  # drop header
 
 
 def _reversal_entries(text):
-    """解析'反转手段轮换矩阵'表, 返回按集数升序的 [(ep:int, tag:str)]。"""
-    m = re.search(r"#+.*?反转手段轮换矩阵.*?\n(.*?)(?=\n#+\s|\Z)", text, re.S)
+    """Parse the 'Twist Rotation Matrix' table; return [(ep:int, tag:str)] sorted by episode."""
+    m = re.search(r"#+.*?Twist Rotation Matrix.*?\n(.*?)(?=\n#+\s|\Z)", text, re.S | re.I)
     out = []
     if not m:
         return out
@@ -63,7 +65,7 @@ def _reversal_entries(text):
         if re.match(r"^\|[\s\-:|]+\|$", s):
             continue
         cells = [c.strip() for c in s.strip("|").split("|")]
-        if not cells or "集数" in cells[0]:
+        if not cells or "Episode" in cells[0]:
             continue
         em = re.search(r"(\d+)", cells[0])
         tm = re.search(r"\[([A-I])\]", s)
@@ -76,33 +78,34 @@ def _reversal_entries(text):
 def validate_ledger(text, total_eps=80, scripts=None):
     fails, warns = [], []
     for kw in TABLE_KEYS.values():
-        if not re.search(r"#+.*?" + kw, text):
-            fails.append(f"S7 台账缺「{kw}」表")
-    mm = re.search(r"当前集[:：]\s*(\d+)", text)
+        if not re.search(r"#+.*?" + kw, text, re.I):
+            fails.append(f"S7 Ledger is missing the 「{kw}」 table")
+    mm = re.search(r"Current Episode[:：]\s*(\d+)", text, re.I)
     cur = int(mm.group(1)) if mm else (max(scripts) if scripts else total_eps)
 
-    # S1/S2 伏笔账
-    fb = _rows(text, "伏笔") or []
+    # S1/S2 Foreshadowing Ledger
+    fb = _rows(text, "Foreshadowing Ledger") or []
     for r in fb:
         if len(r) < 5:
             continue
         plan, state = r[3], r[4].strip()
+        low = state.lower()
         try:
             pn = int(plan)
         except ValueError:
-            warns.append(f"S1 伏笔「{r[1][:12]}」拟收集数非数字: {plan}"); continue
-        is_open = ("埋" in state or "养" in state or "未收" in state) and not state.startswith("收")
+            warns.append(f"S1 foreshadowing 「{r[1][:24]}」 planned resolution is not a number: {plan}"); continue
+        is_open = any(w in low for w in ("planted", "nurturing", "unresolved")) and not low.startswith("resolved")
         if is_open and cur > pn + 3:
-            warns.append(f"S1 伏笔「{r[1][:12]}」超期未收(拟收{pn}集,现{cur}集,状态{state})")
-        if state.startswith("废") and (len(r) < 6 or not r[5]):
-            warns.append(f"S2 伏笔「{r[1][:12]}」标废但未写原因")
+            warns.append(f"S1 foreshadowing 「{r[1][:24]}」 overdue (planned ep {pn}, now ep {cur}, status {state})")
+        if low.startswith("discarded") and (len(r) < 6 or not r[5]):
+            warns.append(f"S2 foreshadowing 「{r[1][:24]}」 marked discarded but no reason given")
 
-    # S3 死人开口
+    # S3 dead character speaks
     dead = {}
-    for r in (_rows(text, "人物") or []):
+    for r in (_rows(text, "Character Ledger") or []):
         if len(r) < 3:
             continue
-        if re.search(r"死|殒|失踪", r[2]):
+        if re.search(r"\b(dead|perished|missing)\b", r[2], re.I):
             mm2 = re.search(r"(\d+)", r[4] if len(r) > 4 else r[2])
             dead[r[0].strip()] = int(mm2.group(1)) if mm2 else cur
     if scripts:
@@ -110,42 +113,43 @@ def validate_ledger(text, total_eps=80, scripts=None):
             for name, at in dead.items():
                 if ep > at:
                     body = scripts[ep]
-                    if re.search(r"^" + re.escape(name[:4]) + r"(\(|（|[:：])", body, re.M):
-                        fails.append(f"S3 「{name}」第{at}集后状态死亡/失踪，但第{ep}集有对白")
+                    if re.search(r"^" + re.escape(name) + r"\s*(\(|（|[:：])", body, re.M):
+                        fails.append(f"S3 「{name}」 is dead/missing from ep {at}, but ep {ep} has dialogue from them")
 
-    # S4 名册外角色
-    roster = {r[0].strip() for r in (_rows(text, "人物") or []) if len(r) > 0}
+    # S4 speaker not on roster
+    roster = {r[0].strip() for r in (_rows(text, "Character Ledger") or []) if len(r) > 0}
     if scripts and roster:
-        NOISE = {"第", "场景", "人物", "本集", "所属", "黄金", "情绪", "备注", "接上",
-                 "声音", "旁白", "画外音", "内心独白", "镜头", "字幕", "提示", "音效"}
+        NOISE = {"Episode", "Ep", "Scene", "Cast", "This Episode", "Stage", "Golden", "Emotion", "Note", "Continued",
+                 "Sound", "Narration", "Voiceover", "Inner Monologue", "Monologue", "Inner Voice", "Shot",
+                 "Caption", "On-screen Caption", "Hint", "SFX"}
         for ep in sorted(scripts):
             seen = set()
-            for m2 in re.finditer(r"^([\u4e00-\u9fa5A-Za-z0-9]{1,8})(?:（[^）]*）|\([^)]*\))?\s*[:：]", scripts[ep], re.M):
-                nm = m2.group(1)
+            for m2 in re.finditer(r"^([A-Za-z][A-Za-z .'-]{0,24})(?:（[^）]*）|\([^)]*\))?\s*[:：]", scripts[ep], re.M):
+                nm = m2.group(1).strip()
                 if nm in NOISE or nm in seen:
                     continue
                 seen.add(nm)
                 if nm not in roster and not any(nm in x or x in nm for x in roster):
-                    warns.append(f"S4 第{ep}集台词角色「{nm}」不在人物账名册")
+                    warns.append(f"S4 Ep {ep} dialogue speaker 「{nm}」 is not in the Character Ledger")
 
-    # S5 断章缺失
+    # S5 missing cliffhanger
     if scripts:
         for ep in sorted(scripts):
-            if not re.search(r"【本集断章卡点】|\[本集断章", scripts[ep]):
-                fails.append(f"S5 第{ep}集缺【本集断章卡点】")
+            if not re.search(r"[【\[]Episode Cliffhanger", scripts[ep]):
+                fails.append(f"S5 Episode {ep} is missing 【Episode Cliffhanger】")
 
-    # S6 付费墙标记
+    # S6 paywall markers
     ranges = WALL_RANGES.get(total_eps, WALL_RANGES[80])
     marks = []
-    for m in re.finditer(r"墙[^\n]{0,12}?(\d+)\s*[-~至]?\s*(\d+)?", text):
+    for m in re.finditer(r"\bwall\b[^\n]{0,12}?(\d+)\s*(?:[-~]|to)?\s*(\d+)?", text, re.I):
         marks.append(int(m.group(1)))
         if m.group(2):
             marks.append(int(m.group(2)))
     for lo, hi in ranges:
         if not any(lo <= x <= hi for x in marks):
-            warns.append(f"S6 未见付费墙落在第{lo}~{hi}集区间(三档各需一条'X级墙 第N集'标记)")
+            warns.append(f"S6 no paywall found in Ep {lo}~{hi} (each of the three tiers needs one 'Tier-X wall, Ep N' marker)")
 
-    # S8 反转手段轮换: 相邻3集内(集数差<=2)复用同一[A-I]标签 → WARN
+    # S8 twist rotation: same [A-I] tag within 3 episodes (difference <= 2) -> WARN
     rev = _reversal_entries(text)
     for i in range(len(rev)):
         e1, t1 = rev[i]
@@ -154,50 +158,49 @@ def validate_ledger(text, total_eps=80, scripts=None):
             if e2 - e1 > 2:
                 break
             if t1 == t2:
-                warns.append(f"S8 反转手段重复: EP{e1}与EP{e2}相邻3集内复用[{t1}]")
+                warns.append(f"S8 twist tag repeated: EP{e1} and EP{e2} within 3 episodes both use [{t1}]")
     return fails, warns, cur
 
 
-LEDGER_GOOD = """# 台账：demo 项目
-当前集: 30
+LEDGER_GOOD = """# Ledger: Demo Project
+Current Episode: 30
 
-## 伏笔账
-| ID | 内容 | 埋于 | 拟收 | 状态 | 备注 |
+## Foreshadowing Ledger
+| ID | Content | Planted In | Planned Resolution | Status | Notes |
 |---|---|---|---|---|---|
-| FB-01 | 旧怀表 | 3 | 28 | 收 | 已当众展开 |
-| FB-02 | 神秘来电 | 12 | 31 | 养 | 反派内讧线 |
+| FB-01 | Old pocket watch | 3 | 28 | Resolved | Revealed publicly |
+| FB-02 | Mystery call | 12 | 31 | Nurturing | Rival infighting thread |
 
-## 人物账
-| 角色 | 首出 | 状态 | 关系 | 变动集 | 备注 |
+## Character Ledger
+| Character | First Appearance | Status | Current Relation | Changed In | Notes |
 |---|---|---|---|---|---|
-| 林辰 | 1 | 存活 | 主角 | 30 | |
-| 陈峰 | 1 | 死亡 | 敌 | 25 | 第25集坠楼 |
+| Lin Chen | 1 | Alive | Protagonist | 30 | |
+| Chen Feng | 1 | Dead | Enemy | 25 | Fell from the building in ep 25 |
 
-## 道具账
-| 道具 | 持有 | 状态 | 变动集 |
+## Prop Ledger
+| Prop | Held By | Status | Changed In |
 |---|---|---|---|
-| 玄铁令 | 林辰 | 怀中 | 12 |
+| Black Iron Token | Lin Chen | On person | 12 |
 
-## 世界观规则账
-| 规则 | 确立集 | 引用集 | 违反 |
+## World Rules Ledger
+| Rule | Established In | Referenced In | Violated |
 |---|---|---|---|
-| 龙王令只一次 | 12 | 25 | 否 |
+| The Dragon King's Token works only once | 12 | 25 | No |
 
-付费墙落位: 一级墙 第12集(中点转换) / 二级墙 第30集 / 三级墙 第56集
+Paywall placement: Tier-1 wall, Ep 12 (midpoint turn) / Tier-2 wall, Ep 30 / Tier-3 wall, Ep 56
 """
-
-EP_GOOD = """第【3】集
-[场景]：内景·大堂
-△ 巴掌甩到半空停住。
-陈峰：签了它。
-林辰：你确定？
-【本集断章卡点】：门外齐跪，"参见殿下"喊到一半——（黑屏）
+EP_GOOD = """Episode 【3】
+[Scene]: Interior · Great Hall
+△ The slap stops halfway through the swing.
+Chen Feng: Sign it.
+Lin Chen: Are you sure?
+【Episode Cliffhanger】: Outside, everyone kneels; "Your Highness" is cut off mid-shout. (Blackout)
 """
-EP_BAD = """第【4】集
-[场景]：内景·大堂
-△ 对峙。
-林辰：滚。
-陈峰：好。
+EP_BAD = """Episode 【4】
+[Scene]: Interior · Great Hall
+△ Standoff.
+Lin Chen: Get lost.
+Chen Feng: Fine.
 """
 
 
@@ -205,69 +208,69 @@ def self_test():
     ok = 1
     scripts = {3: EP_GOOD, 4: EP_BAD}
     f, w, cur = validate_ledger(LEDGER_GOOD, 80, scripts)
-    if not any("S5" in x and "第4集" in x for x in f):
-        print("FAIL self-test: 第4集缺断章应报 S5:", f); ok = 0
+    if not any("S5" in x and "Episode 4" in x for x in f):
+        print("FAIL self-test: Episode 4 lacks a cliffhanger, should report S5:", f); ok = 0
     if any("S1" in x for x in w):
-        print("FAIL self-test: 未超期不应报 S1:", w); ok = 0
-    scripts2 = {3: EP_GOOD, 4: EP_BAD, 30: "第【30】集\n[场景]：内景·大宅\n△ 对峙。\n陈峰（阴笑）：我回来了。\n【本集断章卡点】：灯灭。（黑屏）\n"}
+        print("FAIL self-test: not overdue, should not report S1:", w); ok = 0
+    scripts2 = {3: EP_GOOD, 4: EP_BAD, 30: "Episode 【30】\n[Scene]: Interior · Mansion\n△ Standoff.\nChen Feng (sneering): I'm back.\n【Episode Cliffhanger】: Lights out. (Blackout)\n"}
     f2, _, _ = validate_ledger(LEDGER_GOOD, 80, scripts2)
     if not any("S3" in x for x in f2):
-        print("FAIL self-test: 死人开口应报 S3:", f2); ok = 0
-    if any("S5" in x and "第30集" in x for x in f2):
-        print("FAIL self-test: 第30集有断章不该报 S5"); ok = 0
-    f3, _, _ = validate_ledger("空台账", 80)
+        print("FAIL self-test: dead character speaking should report S3:", f2); ok = 0
+    if any("S5" in x and "Episode 30" in x for x in f2):
+        print("FAIL self-test: Episode 30 has a cliffhanger, should not report S5"); ok = 0
+    f3, _, _ = validate_ledger("Empty ledger", 80)
     if len([x for x in f3 if x.startswith("S7")]) < 4:
-        print("FAIL self-test: 空台账应报 4 条 S7:", f3); ok = 0
+        print("FAIL self-test: empty ledger should report 4 S7 entries:", f3); ok = 0
 
-    led2 = LEDGER_GOOD.replace("| FB-02 | 神秘来电 | 12 | 31 | 养 | 反派内讧线 |",
-                               "| FB-02 | 神秘来电 | 12 | 8 | 已埋 | 反派内讧线 |")
+    led2 = LEDGER_GOOD.replace("| FB-02 | Mystery call | 12 | 31 | Nurturing | Rival infighting thread |",
+                               "| FB-02 | Mystery call | 12 | 8 | Already planted | Rival infighting thread |")
     f4, w4, _ = validate_ledger(led2, 80, scripts)
-    if not any("S1" in x and "FB" not in x or "神秘来电" in x for x in w4):
-        print("FAIL self-test: 状态'已埋'超期应报 S1:", w4); ok = 0
-    ep_noise = {5: "第【5】集\n[场景]：内景\n△ 拍桌。\n声音：轰鸣。\n林辰：谁？\n陈峰：我。\n【本集断章卡点】：黑屏（黑屏）\n"}
+    if not any("S1" in x and "FB" not in x or "Mystery call" in x for x in w4):
+        print("FAIL self-test: status 'Already planted' past due should report S1:", w4); ok = 0
+    ep_noise = {5: "Episode 【5】\n[Scene]: Interior\n△ Slam the table.\nSound: Rumbling.\nLin Chen: Who?\nChen Feng: Me.\n【Episode Cliffhanger】: Black screen. (Blackout)\n"}
     _, w5, _ = validate_ledger(LEDGER_GOOD, 80, ep_noise)
-    if any("「声音」" in x for x in w5):
-        print("FAIL self-test: '声音:' 旁白不应报 S4:", w5); ok = 0
+    if any("「Sound」" in x for x in w5):
+        print("FAIL self-test: 'Sound:' narration line should not report S4:", w5); ok = 0
 
-    ep_dup = {9: "第【9】集\n[场景]：内景\n[人物]：甲\n△ 对峙。\n陌生人：你是谁？\n陌生人：说话！\n陌生人：再不说我动手了。\n林辰：别急。\n【本集断章卡点】：黑屏（黑屏）\n"}
+    ep_dup = {9: "Episode 【9】\n[Scene]: Interior\n[Cast]: A\n△ Standoff.\nStranger: Who are you?\nStranger: Talk!\nStranger: Talk now or I'll move.\nLin Chen: Hold on.\n【Episode Cliffhanger】: Black screen. (Blackout)\n"}
     _, w6, _ = validate_ledger(LEDGER_GOOD, 80, ep_dup)
-    dup_cnt = sum(1 for x in w6 if "「陌生人」" in x)
+    dup_cnt = sum(1 for x in w6 if "「Stranger」" in x)
     if dup_cnt != 1:
-        print(f"FAIL self-test: S4 同名角色应只报 1 次，实得 {dup_cnt}", w6); ok = 0
+        print(f"FAIL self-test: S4 same unknown speaker should report only once, got {dup_cnt}", w6); ok = 0
 
     led_long = LEDGER_GOOD.replace(
-        "付费墙落位: 一级墙 第12集(中点转换) / 二级墙 第30集 / 三级墙 第56集",
-        "付费墙落位: 一级墙 第6集(中点转换) / 二级墙 第15集 / 三级墙 第28集")
+        "Paywall placement: Tier-1 wall, Ep 12 (midpoint turn) / Tier-2 wall, Ep 30 / Tier-3 wall, Ep 56",
+        "Paywall placement: Tier-1 wall, Ep 6 (midpoint turn) / Tier-2 wall, Ep 15 / Tier-3 wall, Ep 28")
     _, w7, _ = validate_ledger(led_long, 40)
     if any("S6" in x for x in w7):
-        print("FAIL self-test: 长档 40 集墙落位不应报 S6:", w7); ok = 0
+        print("FAIL self-test: long-tier 40-ep wall placement should not report S6:", w7); ok = 0
     _, w8, _ = validate_ledger(LEDGER_GOOD, 40)
     if not any("S6" in x for x in w8):
-        print("FAIL self-test: 标准档墙集数按长档 40 集核对应报 S6:", w8); ok = 0
+        print("FAIL self-test: standard-tier wall placement checked against 40 eps should report S6:", w8); ok = 0
 
     led_s8_bad = LEDGER_GOOD + """
-## 反转手段轮换矩阵
-| 集数 | 反转标签 | 核心冲突事件 | 攻守方 | 爽点结算 |
+## Twist Rotation Matrix
+| Episode | Twist Tag[A-I] | Core Conflict Event | Attacker vs Defender | Payoff |
 |---|---|---|---|---|
-| EP1 | [F] 纯粹武力 | 破门踹翻打手 | 主角 vs 反派 | 肢体压制 |
-| EP2 | [A] 身份压制 | 亮出真实身份 | 亲信 vs 反派家族 | 阶层逆转 |
-| EP3 | [F] 纯粹武力 | 再次武力控场 | 主角 vs 反派 | 爽点重复 |
+| EP1 | [F] Pure Force | Kick the door in and floor the thugs | Hero vs villain | Physical suppression |
+| EP2 | [A] Identity Suppression | Reveal true identity | Aide vs villain's family | Status reversal |
+| EP3 | [F] Pure Force | Force control again | Hero vs villain | Repeated payoff |
 """
     _, w_s8b, _ = validate_ledger(led_s8_bad, 80)
-    if not any(x.startswith("S8") and "EP1与EP3" in x and "[F]" in x for x in w_s8b):
-        print("FAIL self-test: 相邻3集复用[F]应报 S8:", w_s8b); ok = 0
+    if not any(x.startswith("S8") and "EP1 and EP3" in x and "[F]" in x for x in w_s8b):
+        print("FAIL self-test: [F] reused within 3 episodes should report S8:", w_s8b); ok = 0
     led_s8_good = LEDGER_GOOD + """
-## 反转手段轮换矩阵
-| 集数 | 反转标签 | 核心冲突事件 | 攻守方 | 爽点结算 |
+## Twist Rotation Matrix
+| Episode | Twist Tag[A-I] | Core Conflict Event | Attacker vs Defender | Payoff |
 |---|---|---|---|---|
-| EP1 | [F] 纯粹武力 | 破门踹翻打手 | 主角 vs 反派 | 肢体压制 |
-| EP2 | [A] 身份压制 | 亮出真实身份 | 亲信 vs 反派家族 | 阶层逆转 |
-| EP3 | [B] 铁证如山 | 亮出原始黑账 | 主角 vs 前妻 | 道德崩塌 |
-| EP4 | [C] 盟友倒戈 | 核心靠山反水 | 大伯 vs 反派 | 现场倒戈 |
+| EP1 | [F] Pure Force | Kick the door in and floor the thugs | Hero vs villain | Physical suppression |
+| EP2 | [A] Identity Suppression | Reveal true identity | Aide vs villain's family | Status reversal |
+| EP3 | [B] Ironclad Evidence | Show the original black ledger | Hero vs ex-wife | Moral high ground collapses |
+| EP4 | [C] Ally Betrayal | Core backer turns on them | Uncle vs villain | Betrayal on the spot |
 """
     _, w_s8g, _ = validate_ledger(led_s8_good, 80)
     if any(x.startswith("S8") for x in w_s8g):
-        print("FAIL self-test: 正常轮换不应报 S8:", w_s8g); ok = 0
+        print("FAIL self-test: normal rotation should not report S8:", w_s8g); ok = 0
 
     print("[+] self-test PASSED" if ok else "[-] self-test FAILED")
     return 0 if ok else 1
@@ -282,46 +285,46 @@ def main():
     try:
         led = pathlib.Path(args[0]).read_text(encoding="utf-8-sig")
     except FileNotFoundError:
-        print(f"[-] 找不到台账文件: {args[0]}"); return 2
+        print(f"[-] Ledger file not found: {args[0]}"); return 2
     except IsADirectoryError:
-        print(f"[-] 路径是目录，不是台账文件: {args[0]}"); return 2
+        print(f"[-] Path is a directory, not a ledger file: {args[0]}"); return 2
     except UnicodeDecodeError:
-        print(f"[-] 台账不是 UTF-8 文本: {args[0]}"); return 2
+        print(f"[-] Ledger is not UTF-8 text: {args[0]}"); return 2
     except OSError as e:
-        print(f"[-] 无法读取台账文件: {args[0]}（{e}）"); return 2
+        print(f"[-] Cannot read ledger file: {args[0]} ({e})"); return 2
     total = 80
     if "--episodes" in args:
         try:
             total = int(args[args.index("--episodes") + 1])
         except (IndexError, ValueError):
-            print("[-] --episodes 需要一个整数"); return 2
+            print("[-] --episodes requires an integer"); return 2
     scripts = None
     if "--script-dir" in args:
         try:
             d = pathlib.Path(args[args.index("--script-dir") + 1])
         except IndexError:
-            print("[-] --script-dir 需要一个目录路径"); return 2
+            print("[-] --script-dir requires a directory path"); return 2
         if not d.is_dir():
-            print(f"[-] 剧本目录不存在: {d}"); return 2
+            print(f"[-] Script directory not found: {d}"); return 2
         scripts = {}
         for p in sorted(d.glob("*.md")):
-            if not (re.search(r"集|EP", p.stem, re.I) or re.fullmatch(r"\d+", p.stem)):
+            if not (re.search(r"ep", p.stem, re.I) or re.fullmatch(r"\d+", p.stem)):
                 continue
             m = re.search(r"(\d+)", p.stem)
             if m:
                 try:
                     scripts[int(m.group(1))] = p.read_text(encoding="utf-8-sig")
                 except (UnicodeDecodeError, OSError) as e:
-                    print(f"[-] 跳过无法读取的剧本: {p}（{e}）")
+                    print(f"[-] Skipping unreadable script: {p} ({e})")
     fails, warns, cur = validate_ledger(led, total, scripts)
-    print(f"== {args[0]}  总集数={total} 当前集={cur} ==")
+    print(f"== {args[0]}  total eps={total} current ep={cur} ==")
     for x in fails:
         print("[-] FAIL:", x)
     for x in warns:
         print("[!] WARN:", x)
     if fails:
-        print("结果: FAILED"); return 1
-    print("结果: PASSED" + ("（含 WARN）" if warns else ""))
+        print("Result: FAILED"); return 1
+    print("Result: PASSED" + (" (with WARN)" if warns else ""))
     return 0
 
 

@@ -1,95 +1,95 @@
-# 抖音/红果平台短剧内容合规与审核风控红线指南
+# Douyin / Hongguo Short-Drama Content Compliance and Review Risk-Control Red-Line Guide
 
-为了确保剧本顺利通过抖音、红果等短剧平台的机器与人工审核，严禁触犯以下红线。
+To ensure scripts pass the machine and human reviews of short-drama platforms such as Douyin and Hongguo, the following red lines must never be crossed.
 
-> **v4.0（2026-09-28）扩充**：依据广电总局令第 16 号《微短剧发展管理办法》（2026-09-01 施行）及 2026-06 起专项治理要求，新增"备案分类与特殊题材许可""11 条内容红线""暴力复仇/封建糟粕专项治理"三章。原"平台绝对禁止类"与"敏感词替换表"保留并补充。依据《下沉剧热点对标报告》第五章 5.6。
+> **v4.0 (2026-09-28) expansion**: Based on NRTA Order No. 16, *Micro-Drama Development Management Measures* (effective 2026-09-01), and the targeted campaign requirements in force since 2026-06, three new chapters were added: "Filing Classification and Special-Subject Permits," "11 Content Red Lines," and "Targeted Campaign Against Violent Revenge / Feudal Dregs." The original "Absolute Platform Prohibitions" and "Sensitive-Word Replacement Table" are retained and supplemented. Based on Chapter 5, section 5.6, of the *Downmarket Drama Hot-Topic Benchmark Report*.
 >
-> **v4.2（2026-09-28）修订**：吸收 v4.2 高压版合规要求 5 项——①反拜金宣扬（并入 11 条红线第 8 条扩充）；②新增"恶行不过 3 集即时受惩机制"专项章节；③公权力威严（并入第 6 条扩充）；④严禁私刑致命救济（并入第 2 条扩充，与暴力复仇专项治理呼应）；⑤敏感词转译对照补 5 条并入替换表（合并去重）。原有全部内容保留不删。
+> **v4.2 (2026-09-28) revision**: Absorbs 5 items from the v4.2 high-pressure compliance requirements — ① anti-money-worship messaging (merged into the expansion of Red Line 8); ② a new special section, "Wrongdoing Punished Within 3 Episodes"; ③ the dignity of public authority (merged into the expansion of Red Line 6); ④ prohibition on lethal vigilante remedies (merged into the expansion of Red Line 2, echoing the violent-revenge campaign); ⑤ five additional entries in the sensitive-word translation table (merged and deduplicated). All original content is retained and nothing is deleted.
 
 ---
 
-## 〇、 广电 16 号令备案分类与特殊题材许可（v4.0 新增）
+## 0. NRTA Order No. 16 Filing Classification and Special-Subject Permits (new in v4.0)
 
-**法规依据**：广电总局令第 16 号《微短剧发展管理办法》2026-09-01 施行。
+**Legal basis**: NRTA Order No. 16, *Micro-Drama Development Management Measures*, effective 2026-09-01.
 
-- **按投资/题材分三类备案**：
-  * **一类（重点许可）**：投资规模较大 + 题材敏感，须重点审核许可；
-  * **二类（普通备案）**：常规都市/情感/喜剧题材；
-  * **三类（普通备案/小程序重点类）**：低成本草根题材。
-- **一类特殊题材（须重点许可）**：涉**公安、司法、国家安全、民族、宗教、外交**题材——立项前必须走一类备案，未过审不得开机/上架。
-  * 对应赛道：都市悬疑/办公室悬疑（涉公安/司法主线时）、法治/反腐/反诈普法、谍战/红色革命主旋律、民俗恐怖（涉民族宗教元素时）。
-  * 注意：《嫌疑人的秘密》式"办公室职场悬疑+保洁反盗窃"无公安/司法主线，不触发一类许可；但一旦出现警察/法官/检察官作为主线角色，即触发。
-- **合规校验要点**（立项大纲 Step 0 必答）：
-  1. 本剧是否涉公安/司法/国安/民族/宗教/外交任一元素？若是 → 标注一类题材，走重点许可；
-  2. 本剧投资规模对应哪一类备案？未明确前不得进入剧本写作；
-  3. 民俗恐怖真人端是否走了"民俗解谜/非遗志怪"包装？未走包装不得立项。
-
----
-
-## 一、 平台绝对禁止类（一票否决）
-1. **封建迷信与违规导向**：严禁宣扬命理改命、下蛊害人等封建迷信，穿越/重生等设定需做轻量化、虚构化处理。
-2. **极度血腥暴力**：严禁出现断肢、开膛破肚等直观血腥描写，动作戏以"受力震飞、骨裂声响、制服倒地"等写意手法替代。
-3. **低俗与不良婚恋观**：严禁宣扬重婚、出轨合法化、恶意物化女性或贩卖人口等内容。
-4. **涉政涉军涉警违规**：严禁丑化军警公职人员形象，严禁违规调用真实国家机关名称。
+- **Three filing classes by investment and subject matter**:
+  * **Class I (focused permit)**: large investment scale + sensitive subject matter; must go through focused review and permit;
+  * **Class II (standard filing)**: conventional urban / romance / comedy subjects;
+  * **Class III (standard filing / mini-program focus category)**: low-cost grassroots subjects.
+- **Class I special subjects (focused permit required)**: subjects involving **public security, judiciary, national security, ethnicity, religion, or diplomacy** — must be filed as Class I before project setup; no filming or listing before approval.
+  * Corresponding tracks: Urban Suspense / Office Suspense (when a public-security or judicial main line is involved), Rule of Law / Anti-Corruption / Anti-Fraud Education, Espionage / Red Revolution Mainstream, and Folk Horror (when ethnic or religious elements are involved).
+  * Note: an office-workplace suspense with a cleaner catching a thief, such as *The Suspect's Secret*, has no public-security or judicial main line and does not trigger a Class I permit; but once a police officer, judge, or prosecutor becomes a main-line character, it is triggered.
+- **Compliance checkpoints** (must be answered in Step 0 of the project outline):
+  1. Does this drama involve any element of public security / judiciary / national security / ethnicity / religion / diplomacy? If yes → mark it as a Class I subject and go through focused permit review;
+  2. Which filing class does this drama's investment scale correspond to? Until this is settled, script writing may not begin;
+  3. For live-action folk horror, has it been packaged as "folk-mystery solving / intangible-heritage ghost tales"? Without that packaging, the project may not be set up.
 
 ---
 
-## 一·补、 11 条内容红线（v4.0 新增 · 基于 16 号令及 2026-06 专项治理）
-
-> 以下 11 条为一票否决项，剧本自查逐条过：
-
-1. **政治性有害内容**：严禁反对宪法确立的基本原则、危害国家统一/主权/领土完整、泄露国家秘密、损害国家荣誉；
-2. **暴力复仇/私刑**：严禁主角以暴制暴、私自处决反派、动用私刑复仇；刑侦/法治题材必须落"法网恢恢"，反派必须由法律制裁而非主角手刃；**【v4.2 补充：严禁私刑致命救济】**主角打脸惩恶可运用商业制裁、揭露真相或正当防卫，但严禁主角私设公堂施加致命私刑或残害肉体（泼硫酸/割喉/活埋等），最终刑事责任必须交由公安与司法机关依法裁决；
-3. **封建糟粕/纯迷信真鬼**：严禁宣扬生辰八字合婚、冥婚、配阴婚、跳大神驱鬼等封建糟粕；民俗恐怖真人端禁纯迷信真鬼，须走"民俗解谜/非遗志怪"包装（真鬼真法术=违规，民俗传说/非遗仪式解谜=合规）；
-4. **低俗色情**：严禁露点、性暗示镜头、露骨台词、软色情擦边；婚恋戏以情感互动为主，不得渲染肉体；
-5. **毒品/赌博**：严禁展示吸毒/制毒/贩毒细节、赌博出千手法、毒品吸食场面；
-6. **恶意丑化军警公职**：严禁将警察/法官/检察官/军人/公务员塑造成反派、贪腐者、施暴者（反面角色须有法律制裁落点）；**【v4.2 补充：公权力威严】**严禁抹黑国家公权力机关，公检法必须严明、廉洁、执法公正，不得出现"买通法官""官匪勾结"等直接抹黑司法系统的情节（相关改走"不正当利益输送/违规商业勾结"转译，详见替换表）；
-7. **歪曲历史/民族宗教**：严禁歪曲近现代史、美化侵略/殖民、破坏民族团结、亵渎宗教；
-8. **拜金炫富导向**：严禁宣扬"金钱万能""嫁入豪门即人生胜利""为了钱可以出卖一切"；炫富镜头不得作为爽点核心；**【v4.2 补充：反拜金宣扬】**严禁拜金主义与恶意炫富（如用钞票践踏底层尊严、把羞辱人格当作全剧终极正面价值）；奢华元素仅可作为反派丑陋面目或主角反击伪装出现，终局必须宣导勤劳、正义与公理；
-9. **未成年人不良引导**：严禁未成年人吸烟/饮酒/校园霸凌/早恋美化/早孕；未成年人角色不得参与暴力复仇主线；
-10. **个人隐私/人肉搜索**：严禁展示真实身份证号/手机号/住址/车牌；严禁"全网人肉主角"作为爽点（匿名化处理）；
-11. **其他违反公序良俗**：包括但不限于宣扬出轨合法化、恶意虐待动物、赌博成瘾、畸形婚恋观（父女恋/乱伦暗示）、炫富攀比等。
+## 1. Absolute Platform Prohibitions (single-violation veto)
+1. **Feudal superstition and noncompliant messaging**: strictly forbidden to promote fortune-telling to change destiny, casting curses to harm others, or other feudal superstition; time-travel and rebirth settings must be treated lightly and fictionalized.
+2. **Extreme gore and violence**: strictly forbidden to show severed limbs, disembowelment, or other explicit gore; action scenes must use stylized techniques such as "knocked flying by the force, the crack of bone, the opponent collapses to the floor" in place of graphic depiction.
+3. **Vulgar content and bad views on marriage and romance**: strictly forbidden to promote bigamy, legitimizing infidelity, malicious objectification of women, or human trafficking.
+4. **Violations involving the state, the military, and the police**: strictly forbidden to demean the image of military, police, or public servants, and strictly forbidden to improperly invoke the names of real state organs.
 
 ---
 
-## 一·补二、 暴力复仇/封建糟粕专项治理（v4.0 新增）
+## 1·Supplement. 11 Content Red Lines (new in v4.0 · based on Order No. 16 and the 2026-06 targeted campaign)
 
-**背景**：2026-06 起广电专项治理 8 类问题，**暴力复仇、封建糟粕**在列。这也是 golden-3s-hook-library.md 中"极端羞辱"强度降级的政策原因——肢体冲突型羞辱（胯下之辱/扇耳光泼茶）风险升高，须降级为生活化/现实化羞辱。
+> The following 11 items are single-violation veto items; the script self-check goes through them one by one:
 
-- **民俗恐怖真人端**：禁纯迷信真鬼。规则：
-  * ❌ 违规：真人剧中出现真鬼索命、作法下蛊致死、风水改命害人；
-  * ✅ 合规：民俗传说包装为"非遗仪式/地方志怪解谜"，最终落点是人为犯罪/心理悬疑/非遗文化保护。
-- **刑侦悬疑**：禁私刑复仇。规则：
-  * ❌ 违规：主角化身正义使者手刃反派、动用私刑"替天行道"；
-  * ✅ 合规：反派最终由法律/公安机关制裁，主角的复仇落点是"证据上交换来公正"（法网恢恢）。
-- **暴力复仇戏**：所有"以暴制暴"桥段须落法律后果或写意化处理（受力震飞/制服倒地，不得断肢见血）。
-
----
-
-## 一·补三、 恶行不过 3 集即时受惩机制（v4.2 新增）
-
-**背景**：v4.2 高压版要求反派恶行不得长期悬置、持续致郁。结合 11 条红线第 9 条（未成年人不良引导）与专项治理精神，设本机制作为剧本节奏自查项。
-
-- **恶性家庭虐待红线**：严禁无底线展现对老人、儿童、孕妇、残障等弱势群体的恶性家庭虐待（如"老太婆去死"式攻击、长期虐待不反击）。
-- **3 集受惩时限**：反派的恶行（造谣诽谤、虐待家人、侵占财产、构陷主角等）必须在**不超过 3 集**内遭遇阶段性反击或法律惩治——即恶行→反击/惩治的闭环最长跨 3 集必须闭合一次。
-  * ❌ 违规：反派连续 4 集以上持续作恶、主角一味隐忍挨打、恶行无任何阶段性反弹，形成绝望致郁；
-  * ✅ 合规：每 3 集内至少给一次"小爽点"反击（当众揭穿/证据反制/商业制裁/报案），终局再落法律严惩。
-- **自查要点**：写分集大纲时逐段标注"本轮恶行起止集数"，凡跨度 >3 集未受惩的，须插入阶段性反击节点。
+1. **Politically harmful content**: strictly forbidden to oppose the basic principles established by the Constitution, endanger national unity / sovereignty / territorial integrity, disclose state secrets, or damage national honor;
+2. **Violent revenge / vigilante justice**: strictly forbidden for the protagonist to fight violence with violence, privately execute the villain, or use vigilante justice for revenge. Crime-investigation and rule-of-law subjects must land on "the net of justice is wide"; the villain must be punished by law, not killed by the protagonist's own hand. **[v4.2 addition: no lethal vigilante remedies]** The protagonist may use commercial sanctions, exposure of the truth, or legitimate self-defense to punish wrongdoers and deliver payback, but strictly forbidden: the protagonist setting up a private court to inflict lethal punishment or mutilate bodies (throwing acid / slitting throats / live burial, etc.). Ultimate criminal responsibility must be decided by public security and judicial organs in accordance with law;
+3. **Feudal dregs / pure superstition with real ghosts**: strictly forbidden to promote birth-date matching for marriage, ghost marriages, yin-spirit marriages, shamanic dances to drive out ghosts, or other feudal dregs. Live-action folk horror must not feature pure superstition with real ghosts and must be packaged as "folk-mystery solving / intangible-heritage ghost tales" (real ghosts with real magic = violation; folk legend or intangible-heritage ritual mystery-solving = compliant);
+4. **Vulgar pornography**: strictly forbidden to show nudity, sexual suggestion shots, explicit dialogue, or soft-porn edge content; romance scenes center on emotional interaction and may not dwell on the body;
+5. **Drugs / gambling**: strictly forbidden to show details of drug use / manufacture / trafficking, gambling cheating techniques, or scenes of drug consumption;
+6. **Malicious demeaning of military, police, or public officials**: strictly forbidden to cast police officers / judges / prosecutors / soldiers / civil servants as villains, corrupt officials, or perpetrators of violence (an antagonist in this role must face legal consequences). **[v4.2 addition: dignity of public authority]** Strictly forbidden to smear state public-authority organs: public security, prosecutors, and courts must be stern, incorruptible, and fair in enforcement; plots such as "buying off a judge" or "officials colluding with bandits" that directly smear the judicial system must not appear (rewrite these as "improper benefit transfer / illegal commercial collusion," see the replacement table);
+7. **Distorting history / ethnicity and religion**: strictly forbidden to distort modern history, glorify aggression or colonialism, undermine ethnic unity, or desecrate religion;
+8. **Money-worship and show-off messaging**: strictly forbidden to promote "money can do anything," "marrying into a rich family equals life victory," or "sell out anything for money"; show-off shots may not serve as the core of a payoff. **[v4.2 addition: anti-money-worship messaging]** Strictly forbidden: money-worship and malicious flaunting (such as trampling the dignity of the underclass with banknotes, or treating humiliation of a person's dignity as the drama's ultimate positive value). Luxury elements may appear only as the villain's ugly face or as the protagonist's disguise for a counterattack; the ending must advocate diligence, justice, and fairness;
+9. **Bad guidance for minors**: strictly forbidden to glamorize minors smoking / drinking, campus bullying, puppy love, or teen pregnancy; minor characters may not take part in violent revenge storylines;
+10. **Personal privacy / doxxing**: strictly forbidden to show real ID numbers, phone numbers, home addresses, or license plates; strictly forbidden to use "the whole internet hunts down the protagonist" as a payoff (anonymize);
+11. **Other violations of public order and good morals**: including but not limited to promoting legitimized infidelity, malicious abuse of animals, gambling addiction, deviant marriage views (father-daughter romance / incest hints), show-off competition, and similar content.
 
 ---
 
-## 二、 敏感词与替换转译库
+## 1·Supplement 2. Targeted Campaign Against Violent Revenge and Feudal Dregs (new in v4.0)
 
-| 禁用/高危词汇 | 推荐合规替换词 |
+**Background**: Since 2026-06, the broadcast regulator has run a targeted campaign against 8 categories of problems, including **violent revenge and feudal dregs**. This is also the policy reason that the intensity of "extreme humiliation" in `golden-3s-hook-library.md` is downgraded: body-contact humiliation (the crotch-crawl humiliation / slapping / splashing tea) carries higher risk and must be downgraded to everyday, realistic humiliation.
+
+- **Live-action folk horror**: pure superstition with real ghosts is banned. Rules:
+  * ❌ Violation: in a live-action drama, real ghosts seeking revenge, casting spells that kill, or feng shui used to change fate and harm others;
+  * ✅ Compliant: folk legends packaged as "intangible-heritage rituals / local ghost-story mystery-solving," with the final resolution being human crime / psychological suspense / intangible-heritage cultural preservation.
+- **Crime suspense**: private-justice revenge is banned. Rules:
+  * ❌ Violation: the protagonist plays a messenger of justice and kills the villain by hand, or uses vigilante methods to "enforce heaven's will";
+  * ✅ Compliant: the villain is ultimately sanctioned by the law / public security authorities, and the protagonist's revenge lands on "justice won by handing over evidence" (the net of justice is wide).
+- **Violent-revenge scenes**: every "fight violence with violence" beat must carry legal consequences or be stylized (knocked flying by the force / subdued on the floor; no severed limbs or visible blood).
+
+---
+
+## 1·Supplement 3. Wrongdoing Punished Within 3 Episodes Mechanism (new in v4.2)
+
+**Background**: The v4.2 high-pressure edition requires that a villain's misdeeds may not be left hanging for long or keep the audience depressed. Combined with the 9th of the 11 red lines (bad guidance for minors) and the spirit of the targeted campaign, this mechanism is set as a script-pacing self-check item.
+
+- **Red line on severe family abuse**: strictly forbidden to show unrestrained severe family abuse against vulnerable groups such as the elderly, children, pregnant women, or people with disabilities (e.g., attacks in the style of "Die already, you old hag," or long-term abuse with no counterattack).
+- **3-episode punishment deadline**: the villain's misdeeds (spreading rumors and slander, abusing family members, seizing property, framing the protagonist, etc.) must meet at least one staged counterattack or legal punishment **within no more than 3 episodes** — that is, a misdeed → counterattack / punishment closed loop must close at least once every 3 episodes.
+  * ❌ Violation: the villain keeps doing wrong for 4 or more consecutive episodes, the protagonist endures being beaten, and the misdeeds never bounce back in any staged way, creating despair and depression;
+  * ✅ Compliant: within every 3 episodes, at least one "small payoff" counterattack (public exposure, evidence counter-strike, commercial sanction, or reporting to police), with severe legal punishment at the final stage.
+- **Self-check points**: when writing the episode-by-episode outline, annotate each block with "the start and end episode of this round of wrongdoing"; any span over 3 episodes without punishment must insert a staged counterattack beat.
+
+---
+
+## 2. Sensitive-Word and Replacement Translation Library
+
+| Banned / High-Risk Words | Recommended Compliant Replacement |
 |---|---|
-| "杀了他 / 要你的狗命 / 灭门" | `废了他 / 让你付出代价 / 让他从江城消失 / 让他受到法律制裁 / 送他进铁窗 / 彻底拔除爪牙` |
-| "黑社会 / 堂口 / 砍人" | `灰色势力 / 地下商会 / 暗处势力 / 地下恶势力 / 地痞恶霸 / 商业灰色打手` |
-| "黑卡无限透支（违法犯罪资金）" | `环球至尊黑卡 / 家族信托基金` |
-| "买凶杀人" | `雇佣打手制造麻烦` |
-| "我要弄死他 / 老子砍死你"（暴力升级） | `我让他跪着把账还清楚 / 我要他当众身败名裂` |
-| "这鬼真的索命来了 / 作法招鬼"（纯迷信真鬼） | `这老宅里的传说原来是有人装神弄鬼 / 这仪式其实是祖辈传下的非遗` |
-| "行贿 / 买通法官"（v4.2 新增） | `不正当利益输送 / 违规商业勾结` |
-| "泼硫酸 / 割喉"（v4.2 新增） | `打落手腕 / 夺下凶器 / 当场制伏` |
-| "老太婆去死"（v4.2 新增 · 恶性家庭伦理攻击） | `你休想再颠倒黑白` |
+| "Kill him / I'll take your dog's life / wipe out the whole family" | `Cripple him / make you pay the price / make him vanish from Jiangcheng / have him face legal sanction / put him behind bars / pull out his henchmen root and branch` |
+| "Gangster / gang hall / chop people up" | `Gray-market power / underground chamber / hidden power / underground criminal force / street thugs and local bullies / commercial gray-zone enforcers` |
+| "Black card with unlimited overdraft (illicit funds)" | `Global Elite Black Card / family trust fund` |
+| "Hire a killer" | `Hire enforcers to make trouble` |
+| "I'll kill him / I'll hack you to death" (escalated violence) | `I'll make him kneel and settle the account / I'll make him publicly ruined` |
+| "This ghost really came to take a life / summoning ghosts with rituals" (pure superstition with real ghosts) | `The legend of this old house turned out to be someone faking ghosts / this ritual is an intangible heritage passed down by our ancestors` |
+| "Bribery / buying off a judge" (added in v4.2) | `Improper benefit transfer / illegal commercial collusion` |
+| "Throwing acid / slitting throats" (added in v4.2) | `Knock the wrist away / seize the weapon / subdue on the spot` |
+| "Die already, you old hag" (added in v4.2 · severe family-ethics attack) | `Don't you dare twist black into white again` |
 
-> v4.2 合并说明：原"杀了他"行与 v4.2"杀了他/灭门"行、原"黑社会/堂口"行与 v4.2"黑社会/砍人"行已合并去重；v4.2 另新增"行贿/买通法官""泼硫酸/割喉""老太婆去死"3 条，共补 5 条转译。
+> v4.2 merger note: the original "kill him" row and the v4.2 "kill him / wipe out the family" row, and the original "gangster / gang hall" row and the v4.2 "gangster / chop people" row, have been merged and deduplicated; v4.2 additionally adds 3 entries — "bribery / buying off a judge," "throwing acid / slitting throats," and "Die already, you old hag" — for a total of 5 new translation entries.

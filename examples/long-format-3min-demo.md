@@ -1,72 +1,72 @@
-第【1】集：【龙王令·开局羞辱】（长档·150~195 秒弹性）
-【所属阶段】：第一幕・入局压迫期（第 1/40 集 ｜ 单元A ｜ 往返第 1 回合・证据档1/反驳档1）
-【黄金前3秒钩子】：极端羞辱
-【冲突形态】：对话型
-【情绪流变】：当众受辱 ➔ 隐忍握拳 ➔ 反手断腕 ➔ 亮令屠城 ➔ 绝命断章
-【本集物证】：九龙玄铁令（贯穿双回合的翻盘物证）、退婚书（被烟灰烫洞、被鞋底碾）
-【质疑者配角】：苏清雪（回合A·半劝半逼）、刀疤（回合B·狗腿叫嚣）
-【本集执念】：守住母亲救命氧气管与林家尊严，当众清算陈家三年前背信弃义的旧账
-【对手要什么】：陈峰要逼林辰当众下跪签退婚书，并拿医院断氧威胁他彻底臣服
-【本集主角主动目标】：回合A点破三年前祠堂让渡书旧账，回合B废掉打手刀疤并亮出龙王令启动破产清算
-【本集改变了什么】：攻守彻底易位——从林辰被逼跪签退婚书，变成刀疤断腕、陈氏集团资金链被当场抽干
-【本集结算】：林辰反手拧断刀疤铁棍、拍出九龙玄铁令震裂酒杯，陈父破产哭嚎电话当场打进包厢
-【本集时长】：170 秒（由台词量倒推，非按总字数虚标）
-【本集结构】：双回合（回合A 逼跪签退婚书 ➔ 回合B 断氧威胁与亮令清算）
+Episode 【1】: 【The Dragon King's Token · Opening Humiliation】 (long tier · 150~195 s flexible)
+【Stage】: Act 1 · Entry Pressure Phase (Ep 1/40 | Unit A | Return Round 1 · Evidence File 1 / Rebuttal File 1)
+【Golden 3-Second Hook】: Extreme humiliation
+【Conflict Mode】: Dialogue
+【Emotion Shift】: Publicly humiliated ➔ Swallows rage ➔ Snaps a wrist in reversal ➔ Reveals the token and ruins them all ➔ Deadly cliffhanger
+【Episode Evidence】: Nine-Dragon Iron Token (the reversal evidence running through both rounds); cancellation letter (burned by cigar ash, ground under a shoe)
+【Skeptic Supporting Character】: Su Qingxue (Round A · half-persuading, half-forcing), Scar (Round B · lapdog who shouts)
+【Episode Obsession】: Protect his mother's oxygen line and the Lin family's dignity, and publicly settle the Chen family's betrayal from three years ago
+【What the Opponent Wants】: Chen Feng wants Lin Chen to kneel in public and sign the cancellation letter, and threatens to cut his mother's hospital oxygen to make him submit
+【Protagonist Active Goal】: Round A: expose the ancestral-hall transfer deed from three years ago; Round B: cripple the thug Scar, reveal the Dragon King's Token, and launch a bankruptcy liquidation
+【What Changes This Episode】: The tables turn: from Lin Chen forced to kneel and sign, to Scar's wrist broken and the Chen Group's funds drained on the spot
+【Episode Payoff】: Lin Chen twists Scar's iron bar away, slams the Nine-Dragon Iron Token and shatters the glasses; Chen Feng's father's bankruptcy wail calls right into the room
+【Episode Length】: 170 s (derived from dialogue volume, not inflated by total word count)
+【Episode Structure】: Two rounds (Round A: forced kneel and sign the cancellation letter ➔ Round B: oxygen-cut threat and token-reveal liquidation)
 
-[场景]：内景·顶级私人会所包厢·夜
-[场景]：内景·会所走廊·夜
-[人物]：林辰（隐忍龙王）、陈峰（嚣张富二代）、苏清雪（未婚妻）、刀疤（陈峰打手）
+[Scene]: INT. Top-floor private club room · night
+[Scene]: INT. Club corridor · night
+[Cast]: Lin Chen (hidden Dragon King), Chen Feng (arrogant rich heir), Su Qingxue (fiancée), Scar (Chen Feng's thug)
 
-△ 特写：点燃的雪茄摁在林辰洗得发白的衣领上，青烟直冒，火星坠落在肩头。
-陈峰（吐出烟圈｜嗤笑）：跪下！把这杯脏水喝干净，十万块救命钱本少现在转你。
-苏清雪（别过脸｜冷声）：林辰，你痛快签了这份退婚书，阿姨的住院费我替你要。
-陈峰（讥诮）：签完字，还得顺便给本少磕三个响头。
-△ 特写：陈峰指尖弹了弹烟灰，火星落在退婚书上，烧出一个焦黑的洞。
-林辰（声音极低）：三年前，我在暴雨里救过你父亲陈泰山一命。
-陈峰（嗤笑）：救命？你一个送外卖的穷鬼也配提我爸的名字？
-△ 满堂宾客哄堂大笑，两名阔少举起手机打开闪光灯对着林辰拍。
-林辰（冷冷）：那天你父亲跪在林家老宅泥水里，亲手给我签了一份股权让渡书。
-陈峰（拍桌｜厉声）：少在这儿编故事！今天这字你签也得签，不签也得签！
-刀疤（上前一步｜低吼）：小子，我们少爷让你跪，你听不懂人话是吧？
-△ 刀疤一把推翻旁边的高脚凳，铁棍重重顿在地板上，堵死林辰退路。
-林辰（掀起眼皮｜淡淡）：那份让渡书上，按着你父亲鲜红的右手拇指印。
-陈峰（阴阳怪气）：好啊，那你现在把协议掏出来给大伙儿开开眼！
-陈峰：拿不出来，今晚就从我胯下爬出去！
-△ 陈峰一把揪住林辰衣领，把烧焦的退婚书狠狠拍在他脸上。
-林辰（一字一顿）：协议原件不在我身上，就藏在你陈家祠堂最中间的牌位后面。
-苏清雪（皱眉｜急促）：林辰，别再死要面子嘴硬了，你低头求陈少一句能少块肉吗？
-林辰（冷声）：我这辈子求过的人，三年前那场大火里就已经死了。
-△ 陈峰脸色骤变，抄起桌上的洋酒瓶砸碎在茶几边缘，玻璃碴溅了一地。
-△ 特写：陈峰的皮鞋狠狠踩住地上的退婚书，鞋底用力来回碾了碾。
-△ 特写：林辰垂在身侧的右手缓缓收拢，指节一节一节绷到泛白。
+△ Close-up: a lit cigar is ground into Lin Chen's faded collar, embers burning down onto his shoulder.
+Chen Feng (blowing smoke rings | sneering): Kneel! Drink this filthy water clean, and I'll wire you the hundred-thousand life-saving money right now.
+Su Qingxue (arms folded | cold): Lin Chen, sign this cancellation letter, and I'll get your mother's hospital bill covered.
+Chen Feng (scoffing): And once you sign, you can kowtow three times to me.
+△ Close-up: Chen Feng flicks his ash, and an ember lands on the cancellation letter, burning a black hole through it.
+Lin Chen (very low voice): Three years ago, I saved your father, Chen Taishan, from the storm.
+Chen Feng (scoffing): Saved? A delivery rat like you has the nerve to say my father's name?
+△ The guests erupt in laughter, and two rich kids raise their phones, flashes blazing at Lin Chen.
+Lin Chen (coldly): That day your father knelt in the mud of the Lin family house, and signed a share-transfer deed with his own hand.
+Chen Feng (slapping the table | sharply): Stop spinning tales! You sign today, whether you want to or not!
+Scar (stepping forward | snarling): Kid, the young master told you to kneel. Are you deaf?
+△ Scar kicks over a bar stool and plants his iron bar on the floor, blocking Lin Chen's retreat.
+Lin Chen (lifting his eyes | calmly): That transfer deed carries your father's blood-red right thumbprint.
+Chen Feng (sarcastic): Fine, then bring out the agreement and let everyone see it!
+Chen Feng: Can't produce it? Then crawl out between my legs tonight!
+△ Chen Feng grabs Lin Chen's collar and slaps the scorched cancellation letter across his face.
+Lin Chen (word by word): The original agreement isn't on me. It's hidden behind the center memorial tablet in your family's ancestral hall.
+Su Qingxue (frowning | rushed): Lin Chen, stop being stubborn. Would it kill you to beg Young Master Chen for one word?
+Lin Chen (coldly): The people I've begged in my life died in that fire three years ago.
+△ Chen Feng's face darkens; he grabs a liquor bottle and smashes it on the table edge, glass shards spraying the floor.
+△ Close-up: Chen Feng's leather shoe stomps on the cancellation letter, grinding it back and forth.
+△ Close-up: Lin Chen's right hand at his side slowly closes, knuckles going white one by one.
 
-【本集中段小钩】：陈峰举起手机，屏幕亮起市一院重症监护室视频——"林母，欠费断氧倒计时十分钟"，陈峰当着林辰的面按下了停药通知键。
+【Mid-Episode Hook】: Chen Feng raises his phone: the City First Hospital ICU feed lights up with "Lin's mother: oxygen cut in ten minutes for unpaid fees," and he presses the stop-medication button in front of Lin Chen.
 
-陈峰（咬着牙｜冷笑）：看见没？你妈重症室的氧气管，本少一句话就能让人拔了！
-苏清雪（猛地起身｜颤声）：陈峰！那是人命关天的大事，你别闹出人命来！
-陈峰（厉喝）：闭嘴！不想他妈现在断气，就让他马上跪下管我叫一声爷！
-△ 林辰猛地抬眼，一步跨上前按住茶几边缘，实木桌面发出刺耳的咔嚓声。
-林辰（字字如刀）：你把刚才关于我妈的那句话，再给我重复一遍。
-内心独白：三年前暴雨夜里，他父亲陈泰山就是为了这口气跪在我面前。
-刀疤（抡起铁棍｜嘶吼）：少爷跟前还敢装横，老子先替少爷敲碎你的膝盖骨！
-陈峰（后退挥手｜厉声）：动手！出了事本少拿一百万兜着！
-△ 刀疤抡起实心铁棍从侧面狠狠砸向林辰膝盖，破空风声炸响。
-△ 林辰不退反进，左手如铁钳般扣住刀疤手腕，顺势反拧将铁棍夺过！
-△ 伴随清脆骨裂声，刀疤惨叫着单膝砸穿玻璃茶几，铁棍叮当滚落到陈峰脚边。
-陈峰（踉跄后退｜破音）：你……你敢在我的地盘废我的人？
-林辰（跨过碎玻璃｜冷声）：在江城，能让我下跪的，只有已故的先人。
-陈峰（掏出手机｜急促）：死人能护得住你？我现在就叫医院拔管，看你今晚保谁！
-△ 林辰从怀中摸出一枚九龙玄铁令，重重拍在大理石桌面上，满桌酒杯齐齐震裂！
-林辰（沉声）：传我龙王令，十分钟内抽干陈氏集团全部授信，让陈家彻底破产！
-陈峰（脸色惨白｜讥诮）：破铁牌子也敢叫龙王令？你演戏给鬼看呢！
-△ 陈峰伸手想把令牌扫落在地，林辰一根手指按在令牌上，陈峰拼尽全力竟推不动分毫。
-林辰（一字一顿）：三年前陈泰山跪着求我注资三个亿，签的就是无条件清退协议。
-林辰：你们陈家吃进肚里的每一分钱，今晚连本带利给我吐干净！
-陈峰（嘶哑）：你胡说八道！我爸是江城商会会长，怎么可能给你这种穷鬼下跪！
-△ 走廊尽头大门轰然推开，四名黑衣高管捧着红头清算函快步走来，齐齐在包厢门外单膝跪地。
-苏清雪（捂住嘴｜颤声）：那是……江城银行的周行长？他们怎么会给林辰下跪？
-林辰（低头看着陈峰｜冷冷）：不信的话，现在就接你口袋里的电话，问问你爸认不认这块牌子。
-△ 特写：苏清雪手指剧烈一抖，手里的名牌包啪地掉在碎玻璃碴上。
-△ 陈峰口袋里的手机疯狂震动，屏幕上"父亲"两个大字在死寂的包厢里疯狂闪烁。
+Chen Feng (gritting his teeth | cold laugh): See that? Your mother's oxygen line in the ICU, and one word from me pulls it!
+Su Qingxue (jumping up | voice shaking): Chen Feng! That's a matter of life and death. Don't you dare push someone to death!
+Chen Feng (roaring): Shut up! If your mother stops breathing right now, kneel and call me Daddy this instant!
+△ Lin Chen lunges forward and grips the table's edge; the solid wood screeches under his hand.
+Lin Chen (word by word): Repeat what you just said about my mother. Word for word.
+Inner Monologue: Three years ago, in that storm, his father Chen Taishan knelt before me over this very pride.
+Scar (swinging the iron bar | roaring): How dare you pose in front of the young master! I'll smash your kneecaps myself!
+Chen Feng (stepping back, waving | sharply): Do it! If anything happens, I'll cover a million for it!
+△ Scar swings the solid iron bar sideways at Lin Chen's knee, the wind roaring with it.
+△ Lin Chen doesn't retreat. He clamps Scar's wrist with his left hand and wrenches the bar free.
+△ A crisp crack of bone rings out; Scar crashes through the glass table on one knee, and the bar clatters to Chen Feng's feet.
+Chen Feng (stumbling back | voice cracking): You... you dare to break my men on my own turf?
+Lin Chen (stepping over the glass | coldly): In Jiangcheng, the only people who could make me kneel are my dead ancestors.
+Chen Feng (pulling out his phone | rushed): Dead men can protect you? I'll have the hospital pull the tube right now. See who you protect tonight!
+△ Lin Chen pulls a Nine-Dragon Iron Token from his chest and slams it on the marble table; every glass on it cracks.
+Lin Chen (sharply): Relay my Dragon King's order! Within ten minutes, drain every credit line of the Chen Group until the family is bankrupt!
+Chen Feng (pale | mocking): A scrap iron plate calls itself a Dragon King's Token? You're acting for ghosts!
+△ Chen Feng swipes at the token; Lin Chen presses one finger on it, and Chen Feng cannot budge it an inch.
+Lin Chen (word by word): Three years ago, your father knelt and begged me to invest three hundred million, and he signed an unconditional withdrawal agreement.
+Lin Chen: Every cent your family swallowed, you're spitting it back tonight, principal and interest!
+Chen Feng (hoarse): You're talking nonsense! My father is president of the Jiangcheng Chamber of Commerce. He'd never kneel to a poor man like you!
+△ The door at the corridor's end bursts open; four black-suited executives stride in with red-letter liquidation notices and drop to one knee outside the room.
+Su Qingxue (covering her mouth | trembling): That's... Director Zhou from Jiangcheng Bank? Why would they kneel to Lin Chen?
+Lin Chen (looking down at Chen Feng | coldly): If you don't believe me, answer the phone in your pocket and ask your father if he recognizes this token.
+△ Close-up: Su Qingxue's fingers jerk, and her designer handbag slaps onto the broken glass.
+△ Chen Feng's pocket phone vibrates wildly; "Father" flashes across the screen in the dead-silent room.
 
-【本集断章卡点】：陈峰颤抖着按下免提键，电话那头立刻传来陈父绝望的哭嚎："逆子，你到底得罪了哪路煞神？江城银行刚刚抽干了我们全部资金链，陈家彻底完了！"林辰一步踏出，居高临下逼近。（黑屏：下滑立即解锁第2集）
+【Episode Cliffhanger】: Chen Feng presses the speaker button, and a wail of despair comes through: "Rebel son, who on earth did you offend? Jiangcheng Bank just drained all our funds, the Chen family is finished!" Lin Chen steps over the glass and closes in from above. (Black screen: swipe up to unlock Episode 2 now)

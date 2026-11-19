@@ -1,201 +1,201 @@
-# 短剧赛道题材全图（Genre Map · 男频/女频/中性 40 赛道）
+# Short-Drama Track Map (Genre Map · Male / Female / Neutral 40 Tracks)
 
-> v3.0 扩容：v2.0 仅 4 条赛道。本图为 `/立项大纲` Step 0 的赛道锚定权威，每条含：底层心理、情绪契约与单元执念模板（情绪流用）、标准爽点密度、代表套路链。立项单四件套之"执念一句话"= **单元A 执念**，全剧锚另填"情绪契约一句话"。
->
-> 通用版补充（v3.3-U · 2026-09-20）：由 16 条扩容至 **37 条**，覆盖 2025~2026 红果/抖音/快手大盘头部赛道；新增 §五 赛道知识速查（受众画像 / 集数档 / 付费墙断点 / 爽感曲线 / 平台趋势）。
->
-> **v3.3-U2（2026-09-20 真实榜单核验版）**：新增赛道不再凭想象——全部经 DataEye 短剧热力榜、新榜抖快周榜、红果短剧热播榜、抖音端原生百强榜及行业媒体盘点逐条核验（证据与修订依据见文末附录）。核验后：男频 12 条、女频 13 条、中性 12 条；3 条改名对齐平台实际叫法、3 条补入榜单头部反复出现的漏收赛道、1 条拆出"银发婚恋"子赛道。
->
-> **v4.0（2026-09-28 热点对标修订版）**：依据《下沉剧热点对标与单集体量修订报告》第五章修订清单落地。37→**40 赛道**：男频补入"学霸高考逆袭/阶层跃迁"（从附录E未补入项正式立条）、女频新增"成年人离婚治愈系"、中性新增"娱乐圈选秀系统流（银发粉丝向）"；"规则怪谈"由男频移至中性独立成类；"刑侦悬疑"扩义为"都市悬疑/办公室悬疑"；"甜宠现言/大叔恋"改名"成年人情感/治愈系"；3 条加子类型（反向婆媳、97下岗潮南下、古装和离二嫁）；男频补注"重生"跨赛道引擎标签。
+> v3.0 expansion: v2.0 had only 4 tracks. This map is the authoritative track anchor for `/project-outline` Step 0. Each track includes: underlying psychology, emotion contract and unit obsession template (for emotion flow), standard payoff density, and representative trope chains. The "one-line obsession" in the project sheet's four parts = **Unit A obsession**; the series-level anchor separately requires a "one-line emotion contract."
+
+> Universal edition addendum (v3.3-U · 2026-09-20): expanded from 16 to **37 tracks**, covering the head tracks of the 2025–2026 Hongguo / Douyin / Kuaishou market; new §V track knowledge quick reference (audience profiles / episode-count tiers / paywall break points / payoff curves / platform trends).
+
+> **v3.3-U2 (2026-09-20 verified against real charts)**: New tracks are no longer invented from imagination. Every track was checked against the DataEye short-drama heat chart, Newrank Douyin/Kuaishou weekly chart, Hongguo short-drama hit chart, Douyin native top-100 chart, and industry media roundups (evidence and revision basis in the appendix). After verification: 12 male tracks, 13 female tracks, 12 neutral tracks; 3 tracks renamed to match the platforms' actual usage, 3 tracks added for recurring head-chart tracks that had been missed, and 1 track split out as a "silver-age romance" subtrack.
+
+> **v4.0 (2026-09-28 hot-topic benchmark revision)**: Based on Chapter 5 revision list of the "Downmarket Drama Hot-Topic Benchmark and Per-Episode Volume Revision Report." Moved from 37 to **40 tracks**: male adds "Top-Student College Entrance Comeback / Class Ascent" (formally listed from the unlisted items in Appendix E); female adds "Adult Divorce Healing"; neutral adds "Entertainment Industry Talent-Show System Flow (silver-age fan-oriented)"; "Rule Horror" moved from male to neutral as its own category; "Crime Suspense" widened to "Urban Suspense / Office Suspense"; "Sweet Romance Modern / Older-Man Romance" renamed "Adult Romance / Healing"; 3 tracks got subtypes (reverse mother-in-law/daughter-in-law, 1997 layoff wave heading south, ancient-costume divorce-then-remarriage). The male group adds a note that "rebirth" is a cross-track engine tag.
 
 ---
 
-## 一、 男频（核心情绪：尊严翻盘、碾压、护短、补偿）
+## I. Male (core emotions: dignity reversal, crushing, protecting, compensation)
 
-| 赛道 | 底层心理 | 一句话执念模板 | 爽点密度 |
+| Track | Underlying Psychology | One-Line Obsession Template | Payoff Density |
 |---|---|---|---|
-| 战神/龙王归来 | 权力补偿 | 他不信/不跪：你们口中废物真是你们的王 | 每集1小爽(打脸)，每回合1大爽(跪拜) |
-| 万亿神豪 | 金钱跃迁 | 不认：你买得起的东西我买不起？ | 消费碾压连击，付费墙断在"亮卡前一瞬" |
-| 赘婿隐忍 | 尊严延迟兑现 | 不服：今天你们踩我，明天我踩你们全家 | 憋屈:释放≈3:1，中点前密集憋屈 |
-| 出狱/归乡复仇 | 因果清算 | 不认：我坐的牢你们忘了？ | 每出一个旧敌=一档证据 |
-| 逆袭打脸（职场/鉴宝/医术） | 专业碾压 | 不信：你这行我玩剩下的 | 每集1个专业名场面 |
-| **无敌神医/乞丐神医**（原"都市神医"） | 能力反差（废物壳+救命芯） | 不信：一个乞丐/赘婿，凭什么救你的命？ | 每集1个救命名场面+1次打脸，墙断在"身份揭晓前一瞬" |
-| **都市脑洞/系统流**（设定向，原"系统/签到/直播流"） | 金手指掌控 | 不欠：系统给的每一分，你们连本带利还 | 系统为引擎设定（情绪/功德/任务系统），非独立题材；墙断在"新功能/新任务解锁前一瞬"。**重生同为跨赛道引擎标签**（《都重生了谁还装富二代》红果9.7周榜#3验证），可叠加于逆袭打脸/玄幻仙侠/穿越古代等赛道 |
-| **玄幻仙侠（重生修真·2026 增量主力为 AI 漫剧）** | 力量跃迁 | 不认：上一世你欺我，这一世我踩你 | 每集1境界1碾压，境界=档位阶梯；头部多季播化（千集/第八季） |
-| **穿越古代（帝王/权臣/赘婿·全员穿越新变种）** | 知识代差 | 不服：你们几千年没解的题，我一晚上解 | 每集1个现代知识名场面（造物/兵法/金融）；2026 新钩子=岳家/朝堂全员穿越互相猜忌 |
-| **玄学/风水/天师下山（含"直播算命"子形态）** | 隐秘能力 | 不察：你们当我是神棍？ | 每集1卦1反转，卦象=前置线索；直播算命变体=连麦预言→弹幕火箭刷屏 |
-| **隐世大佬/马甲战神（保安·保镖·侍卫）**（原"兵王/特工/隐世大佬"） | 实力隐藏 | 不认：我的档案，你们查不到 | 掉马三档：小圈→大人物→全网；2026 新皮=隐世大佬伪装最底层职业（保安/侍卫/保镖）+异能；子类型"错认顶替/被动马甲"（《东北话事人》被错认成商会龙头被迫顶替） |
-| **学霸高考逆袭/阶层跃迁**（v4.0 新增，从附录E正式立条） | 学历歧视下的阶层跃迁 | 不认：流水线的手也能握清北的通知书 | 金手指=学霸系统/记忆宫殿；每集1次知识碾压+1次学历歧视反杀；冲突对象是学历歧视与教育资源不公（非职场反派）。代表剧《从流水线到清北》（DataEye 8月热力榜#3，单月播放增量近11亿） |
+| War God / Dragon King's Return | Power compensation | He doesn't believe it / won't kneel: the "trash" you mocked is actually your king | One small payoff per episode (face-slap), one big payoff per round (kneeling) |
+| Trillionaire Tycoon | Wealth leap | Denial: you can afford it and I can't? | Chained displays of spending dominance; paywall cuts "one moment before the card is unlocked" |
+| Live-In Son-in-Law Endurance | Dignity delayed payoff | Defiance: you trample me today, I'll trample your whole family tomorrow | Humiliation:release ≈ 3:1, dense humiliation before the midpoint |
+| Prison Release / Revenge on Return | Karmic settlement | Denial: did you forget the years I served? | Each old enemy taken down = one tier of evidence |
+| Comeback Face-Slap (Workplace / Appraisal / Medicine) | Professional crushing | Disbelief: I played with your field and got bored | One professional showpiece per episode |
+| **Invincible Doctor / Beggar Doctor** (formerly "Urban Divine Doctor") | Ability contrast (trash shell + life-saving core) | Disbelief: a beggar / live-in son-in-law, how can he save your life? | One lifesaving showpiece + one face-slap per episode; paywall cuts "one moment before identity is revealed" |
+| **Urban Fantasy / System Mode** (setting-driven, formerly "System / Check-In / Livestream Mode") | Golden-finger control | Owed nothing: every point the system gives, you repay with interest | The system is an engine setting (emotion / merit / task systems), not an independent track; paywall cuts "one moment before a new feature or task unlocks." **Rebirth is also a cross-track engine tag** (*Reborn, Why Still Pretend to Be a Rich Heir?* ranked #3 on Hongguo's 9.7 weekly chart), and can be layered onto Comeback Face-Slap, Xuanhuan Xianxia, Time-Travel to Ancient Times, and other tracks |
+| **Xuanhuan Xianxia** (rebirth cultivation · 2026 growth driven by AI comic-drama) | Power leap | Denial: in my last life you wronged me, in this one I stomp you | One realm breakthrough and one crushing win per episode; realms are the tier ladder; top titles are serialized into multi-season runs (1,000+ episodes / Season 8) |
+| **Time-Travel to Ancient Times** (emperors / chancellors / live-in sons-in-law · whole-household transmigration variant) | Knowledge gap | Disbelief: problems your people couldn't solve for thousands of years, I solve in one night | One modern-knowledge showpiece per episode (invention / strategy / finance); 2026 new hook = an in-law family or the court all transmigrating and suspecting each other |
+| **Mysticism / Feng Shui / Taoist Master Descends the Mountain** (includes the "livestream fortune-telling" subform) | Hidden ability | Disbelief: you think I'm a charlatan? | One divination reading and one twist per episode; the hexagram is the prior clue; livestream variant = call-in prophecy → bullet-comment flood |
+| **Hidden Tycoon / Disguised Warrior (security guard, bodyguard, attendant)** (formerly "Special Forces / Agent / Hidden Tycoon") | Concealed strength | Denial: my file, you can't look it up | Unmasking in three tiers: small circle → big figure → whole internet; 2026 new skin = hidden tycoon disguised as the lowest jobs (security guard / attendant / bodyguard) plus a special power; subtype "mistaken identity / passive disguise" (*The Northeast Boss*: a man mistaken for a chamber-of-commerce head and forced to play the part) |
+| **Top-Student College Entrance Comeback / Class Ascent** (v4.0 new, formally listed from Appendix E) | Class leap under education discrimination | Denial: the hands on an assembly line can also hold a top-university acceptance letter | Golden finger = top-student system / memory palace; one knowledge crushing and one discrimination reversal per episode; the opponent is educational discrimination and unequal resources (not a workplace villain). Representative show: *From Assembly Line to Top University* (DataEye August heat chart #3, nearly 1.1 billion added plays that month) |
 
-## 二、 女频（核心情绪：解恨、代偿、被爱证明、手撕伪善）
+## II. Female (core emotions: venting resentment, vicarious payoff, proof of being loved, tearing down hypocrisy)
 
-| 赛道 | 底层心理 | 执念模板 | 爽点密度 |
+| Track | Underlying Psychology | Obsession Template | Payoff Density |
 |---|---|---|---|
-| 重生虐渣 | 重来掌控 | 不饶：上一世的账这一世一笔一笔收 | 每集撕一层伪装 |
-| 真假千金 | 身份正名 | 不认：我血里的身份轮不到你们盖章 | 掉马节奏：三档掉马（小圈层→家族→天下） |
-| 带球跑/追妻火葬场 | 高傲者低头 | 不给：当年你爱答不理 | 男频结构反转：施压方=男主，观众爽点是"他跪" |
-| 大女主复仇/事业线 | 能力自证 | 不让：位置是我拿命换的 | 商战/技艺回合化，每回合赢一单 |
-| 手撕婆媳/绿茶 | 清算伪善 | 忍够：你们作的每个谣我都记着 | 反灌输：谣言档档升级，反击集集见效；子类型"反向婆媳/儿媳护婆"（《我的婆婆，我罩着》红果#8验证——儿媳罩婆婆、怼奶奶大姑，角色关系反转） |
-| 极致虐恋先虐后甜 | 情感确认 | 不信：他说的爱是有期限的骗局 | 付费墙断在"误会证据档4" |
-| **古装将门/侯府权斗**（原"古装宫斗/宅斗"） | 权力棋局 | 不饶：这深宅/将门的账，我用命算 | 每集1局1杀（计谋回合化，杀人不流血的赢法）；2026 头部=将门蒙冤+姐妹赐婚拆分+与失势皇子结盟 |
-| **古装虐恋/替嫁王妃**（有量无峰，基础供给盘） | 错位情深 | 不认：你娶的是我，还是她？ | 误会档位递进，墙断在"身份真相前一瞬"；钩子多为大婚日被抢亲/被迫替嫁 |
-| **闪婚/先婚后爱** | 契约安全感 | 不认：我们的婚姻只是交易 | 每集1次心动破防（糖点=新证据）；总裁题材第一子套路，丈夫隐藏身份逐层揭露 |
-| **大佬隐藏身份宠妻**（原"隐婚马甲/大佬夫人"） | 反差碾压 | 不认：我的身份轮不到你盖章 | 掉马三档：小圈→家族→全网；2026 头部重心从"女主掉马"转向"男主隐藏身份宠妻" |
-| **豪门弃妇/高调离婚逆袭**（女性成长） | 尊严重建 | 不要：你扔掉的，我自己捡回来捧高 | 前憋屈后碾压，离婚即分水岭（憋屈:释放≈2:1）；付费点断在"前夫当众求复合被拒"；子类型"古装和离二嫁/前夫追妻火葬场"（《二嫁有喜》红果#7验证——古代和离→三天二嫁鳏夫→前夫追妻火葬场） |
-| **成年人情感/治愈系**（原"甜宠现言/大叔恋"，v4.0 改名） | 被无条件偏爱 | 不信：真有人无条件对我好？ | 每集1糖1护，墙断在"误会伤糖"处；2026 H2 头部从工业糖精升级为成年人克制情感/治愈系，甜宠/大叔恋降为子类型；慢节奏治愈子方向留白增多 |
-| **白月光代餐/反套路替身**（原"替身/白月光"） | 自我正名 | 不认：我是我，不是谁的影子 | 替身真相揭穿三档（自欺→他知→她知）；2026 新范式=替身觉醒反杀/双向替身/代餐计费 |
-| **成年人离婚治愈系**（v4.0 新增） | 被背叛后体面离场、与同样受伤的人互相治愈 | 不闹：我值得被好好对待 | 每集1糖1护（温感）；集数档=60~80集；付费墙=情感后置。**无手撕、无金手指、无当众打脸**，区别于"豪门弃妇高调离婚逆袭"的高调逆袭路线——强调克制与治愈。代表剧《好雨知时节》（红果8月三榜第一，13天播放破20亿，评分9.5） |
+| Rebirth Revenge on Scumbags | Control through redoing | No mercy: the debts of my last life get collected one by one this time | Tear off one layer of disguise per episode |
+| Fake Heiress / Real Heiress | Identity restoration | Denial: the identity in my blood doesn't need your stamp | Unmasking pacing: three tiers (small circle → family → the world) |
+| Leave-With-Child / Chase-Your-Wife Crematorium | The proud lowering themselves | Refusal: back then you didn't even look at me | Male-track structural twist: the pressuring party is the male lead, and the audience's payoff is "he kneels" |
+| Female Lead Revenge / Career Track | Proving ability | Won't allow it: I risked my life for this position | Business and craft battles turned into rounds; win one deal per round |
+| Tearing Down the Mother-in-Law / Green Tea Rival | Clearing away hypocrisy | Enough: I've kept a record of every rumor you spread | Anti-indoctrination: rumors escalate tier by tier, counterattacks pay off episode by episode; subtypes "reverse mother-in-law / daughter-in-law defends mother-in-law" (*My Mother-in-Law, I've Got Her Back*, Hongguo #8: the daughter-in-law shields the mother-in-law and snaps back at the grandmother and aunt, with the relationship reversed) |
+| Extreme Romance: Suffering First, Sweetness Later | Emotional certainty | Disbelief: the love he speaks of is a scam with an expiry date | Paywall cuts at "misunderstanding evidence tier 4" |
+| **Ancient Costume: Noble Houses / Court Power Struggle** (formerly "Ancient Palace / Household Intrigue") | Power chess | No mercy: I'll settle this household's / this general family's debts with my life | One scheme and one kill per episode (winning without bloodshed through calculation, turned into rounds); 2026 head titles = a general family wrongfully accused + sisters' marriages split apart + an alliance with a fallen prince |
+| **Ancient Costume Romance / Substitute Bride Princess** (steady supply, no peak) | Misaligned deep affection | Denial: did you marry me, or her? | Misunderstanding tiers escalate; paywall cuts "one moment before the truth of identity"; hooks are mostly the bride being snatched on the wedding day / forced into a substitution |
+| **Marriage First, Love Later** (flash marriage) | Contractual security | Denial: our marriage is only a transaction | One heartbeat-breaking moment per episode (the sweet point = new evidence); the first sub-trope of the CEO genre, with the husband's hidden identity revealed layer by layer |
+| **Hidden Identity Spoils Wife** (formerly "Secret Marriage / Tycoon's Wife") | Contrast and crushing | Denial: my identity doesn't need your stamp | Unmasking in three tiers: small circle → family → whole internet; the 2026 head focus shifted from "female lead unmasked" to "male lead's hidden identity spoils his wife" |
+| **Rich Family Discard / High-Profile Divorce Comeback** (female growth) | Rebuilding dignity | No: what you threw away, I pick up myself and hold up high | Suppression first, crushing later; divorce is the watershed (humiliation:release ≈ 2:1); paywall cuts at "ex-husband publicly begs for reconciliation and is refused"; subtypes "ancient-costume divorce then remarriage / ex-husband's chase-your-wife crematorium" (*Married Again, With Joy*, Hongguo #7: an ancient divorce → remarriage to a widower within three days → the ex-husband begs for reconciliation) |
+| **Adult Romance / Healing** (formerly "Sweet Romance / Older-Man Romance", renamed in v4.0) | Being loved unconditionally | Disbelief: is there really someone who treats me this well for nothing? | One sweet beat and one protective beat per episode; paywall cuts at "misunderstanding wounds the sweetness"; in H2 2026 the head shifted from industrial sugar to restrained adult romance / healing; slow-paced healing sub-direction has more negative space |
+| **White Moonlight Stand-In / Anti-Trope Substitute** (formerly "Substitute / White Moonlight") | Self-validation | Denial: I am me, not anyone's shadow | Substitute truth exposed in three tiers (self-deception → he knows → she knows); 2026 new pattern = the substitute awakens and strikes back / two-way substitutes / stand-in billing |
+| **Adult Divorce Healing** (v4.0 new) | Leaving gracefully after betrayal, healing one another with someone equally wounded | No drama: I deserve to be treated well | One sweet beat and one protective beat per episode (warm feeling); episode tier = 60–80 episodes; paywall placed after the emotional payoff. **No slap-downs, no golden finger, no public face-slaps**, unlike the high-profile comeback of "Rich Family Discard" — this one stresses restraint and healing. Representative show: *Rain Knows Its Season* (Hongguo August triple chart #1, passed 2 billion views in 13 days, rated 9.5) |
 
-## 三、 中性/合家欢
+## III. Neutral / Family-Friendly
 
-| 赛道 | 底层心理 | 执念模板 |
+| Track | Underlying Psychology | Obsession Template |
 |---|---|---|
-| 萌宝神助攻 | 亲情+爽感 | 不认：我爸不认识我，我认识我爸 |
-| 中老年家庭伦理（婆媳/妯娌/家长里短） | 公道回报 | 不甘：我养大的孩子不认我 |
-| 悬疑脑洞 | 解谜 | **剧情流**：不闭环不罢休 |
-| 年代/逆袭 | 时代补偿 | 不信：这个时代亏欠我的我亲手拿回（子类型"97下岗潮南下闯荡"——《东北话事人》红果#6验证：97下岗潮+南下港城+冒充商会龙头的男频商海喜剧） |
-| **银发婚恋/黄昏恋（五十岁隐藏身份类）** | 第二春补偿 | 不认：我的后半辈子凭什么将就 |
-| **乡村正能量/返乡创业** | 乡土归属 | 不让：我的村子我来守 |
-| **都市悬疑/办公室悬疑**（原"刑侦悬疑"，v4.0 扩义） | 正义解谜 | **剧情流**：不破不罢休。刑侦降为子类型（一类题材，需重点备案）；本质多为办公室职场悬疑+小人物反窃密/反套路（《嫌疑人的秘密》抖音#2验证——保洁反盗窃，无公安/司法主线） |
-| **民俗恐怖/民间怪谈** | 恐惧掌控 | **剧情流**：规则即生死（真人端须走"民俗解谜/非遗志怪"包装，主战场在漫剧/AI 剧） |
-| **规则怪谈/AI怪谈密闭空间流**（v4.0 由男频移入中性） | 智斗掌控 | **剧情流**：不遵守就死，遵守到最后一格赢。主战场在抖音原生端，受众为大学生/女性向悬疑怪谈集群（《反相之地》《零号档案》《被裁掉的女孩》《消失的馆长》）；与"民俗恐怖/民间怪谈"为独立赛道，不合并 |
-| **职场打工人/反PUA** | 职场代偿 | 不惯：你的PUA我不接了 |
-| **谍战/红色革命主旋律** | 信仰抉择 | **剧情流**：潜伏到最后一格（长征胜利 90 周年政策窗口期） |
-| **法治/反腐/反诈普法** | 正义伸张 | **剧情流**：法网恢恢（"微短剧+"行动计划重点品类） |
-| **非遗/文旅融合/国风文化** | 文化认同 | 不丢：老祖宗的东西我捡回来 |
-| **娱乐圈选秀系统流（银发粉丝向）**（v4.0 新增） | 代际审美冲突+银发力量 | 不服：老歌的根你们年轻人不懂。核心爽点链=导师羞辱→开唱炸场→年轻人买牛奶刷票打压→大爷大妈后援团硬核投票反杀→系统每集解锁金曲。代表剧《夕阳红顶流，大爷大妈助我乐坛封神》（红果2026-09-28 #15，热度6315万） |
+| Baby-Star Helper (cute kid) | Family bond + thrill | Denial: my dad doesn't know me, but I know my dad |
+| Middle-Aged and Elderly Family Ethics (mother-in-law / sisters-in-law / household trivia) | Fair return | Resentment: the child I raised doesn't acknowledge me |
+| Mystery Brainstorm | Puzzle solving | **Plot-flow**: don't stop until it's closed |
+| Era / Comeback | Compensation from the era | Disbelief: what this era owes me, I take back with my own hands (subtype "1997 layoff wave heads south to make it" — *The Northeast Boss*, Hongguo #6: the 1997 layoff wave + heading south to a port city + a man posing as a chamber-of-commerce head, a male-track business comedy) |
+| **Silver-Age Romance / Golden-Years Romance (fifty-something hidden-identity type)** | Compensation for a second spring | Denial: why should my later years settle for less? |
+| **Rural Positive Energy / Returning Home to Start a Business** | Rural belonging | Won't let go: I'll guard my village |
+| **Urban Suspense / Office Suspense** (formerly "Criminal Investigation Suspense", widened in v4.0) | Justice through puzzle-solving | **Plot-flow**: won't stop until it's broken. Criminal investigation is demoted to a subtype (a category that needs focused filing); the core is mostly office-workplace suspense plus a little-person anti-theft / anti-trope story (*The Suspect's Secret*, Douyin #2: a cleaner catches a thief, with no police or judicial storyline) |
+| **Folk Horror / Folklore Ghost Stories** | Control through fear | **Plot-flow**: the rules are life and death (live-action versions must be packaged as "folk-mystery solving / intangible-heritage ghost tales"; the main battlefield is comic-drama / AI drama) |
+| **Rule Horror / AI-Horror Closed-Space Flow** (v4.0 moved from male to neutral) | Control through wit | **Plot-flow**: break the rules and you die; follow them to the last panel and you win. The main battlefield is native Douyin, with an audience of university students and women who like suspense horror (*Anti-Phase Land*, *Zero Archive*, *The Girl Who Got Cut*, *The Missing Curator*); independent from "Folk Horror / Folklore Ghost Stories" and not merged with it |
+| **Office Worker / Anti-Gaslighting (anti-PUA)** | Workplace compensation | Won't take it: I'm done with your manipulation |
+| **Espionage / Red Revolution Mainstream** | Choice of faith | **Plot-flow**: undercover to the last panel (policy window around the 90th anniversary of the Long March victory) |
+| **Rule of Law / Anti-Corruption / Anti-Fraud Education** | Justice upheld | **Plot-flow**: the net of justice is wide (a key category of the "Micro-Drama+" action plan) |
+| **Intangible Heritage / Cultural Tourism / Guofeng Culture** | Cultural identity | Won't lose it: I'll pick up our ancestors' things |
+| **Entertainment Industry Talent-Show System Flow (silver-age fan-oriented)** (v4.0 new) | Generational taste clash + silver-age power | Denial: you young people don't understand the roots of classic songs. Core payoff chain = mentor humiliation → opening performance blows up the stage → young people buy milk to pad votes and suppress → aunties and uncles' fan squads vote and strike back hard → the system unlocks a classic song each episode. Representative show: *Sunset Top-Ranker: Aunties and Uncles Help Me Conquer the Music Scene* (Hongguo 2026-09-28 #15, heat 63.15 million) |
 
 ---
 
-## 四、 赛道×流派速查
+## IV. Track × Approach Quick Reference
 
-- 情绪流主场：男频前 5 + 新增全列（无敌神医/系统流/仙侠/穿越/玄学/隐世大佬马甲/学霸高考逆袭）、女频全部（含成年人离婚治愈系/成年人情感治愈系）、萌宝、家庭伦理、年代、乡村、银发婚恋、娱乐圈选秀系统流 → 走 `emotion-flow-roundtrip.md`；
-- 剧情流主场：规则怪谈/AI怪谈密闭空间流、悬疑脑洞、都市悬疑/办公室悬疑、民俗恐怖、法治反腐反诈、谍战主旋律、部分智斗职场 → 走 `hongguo-beat-sheet.md` §四；
-- 双流派兼用：玄学（情绪流主线+卦象信息支线）、穿越古代（情绪流主线+知识信息差支线）、谍战（信仰情绪线+潜伏信息阶梯）——按 §一 混合剧处理（主线情绪流、支线剧情流）；
-- 立项单必须写：`赛道=__ ｜流派=__ ｜执念一句话=__ ｜爽点密度=__`，四项缺一不进 Step 1。
+- Emotion-flow home turf: the first five male tracks plus all the newly added ones (Invincible Doctor / System Flow / Xianxia / Time-Travel / Mysticism / Hidden Tycoon Disguise / Top-Student Comeback), all female tracks (including Adult Divorce Healing and Adult Romance / Healing), Baby-Star Helper, Family Ethics, Era, Rural, Silver-Age Romance, and Entertainment Talent-Show System Flow → use `emotion-flow-roundtrip.md`;
+- Plot-flow home turf: Rule Horror / AI-Horror Closed-Space Flow, Mystery Brainstorm, Urban Suspense / Office Suspense, Folk Horror, Rule of Law / Anti-Corruption / Anti-Fraud, Espionage Mainstream, and some wit-driven workplace stories → use `hongguo-beat-sheet.md` §4;
+- Dual-approach tracks: Mysticism (emotion-flow main line + oracle-clue side line), Time-Travel to Ancient Times (emotion-flow main line + knowledge-gap side line), Espionage (faith-driven emotion line + undercover information ladder) — handle as hybrid per §I (main line emotion flow, side line plot flow);
+- The project sheet must state: `Track=__ ｜Approach=__ ｜One-Line Obsession=__ ｜Payoff Density=__`. If any of the four is missing, the project does not advance to Step 1.
 
 ---
 
-## 五、 赛道知识速查（v3.3-U 新增，v3.3-U2 榜单核验修订）
+## V. Track Knowledge Quick Reference (v3.3-U addition, v3.3-U2 chart-verified revisions)
 
-### 5.1 赛道×受众画像
+### 5.1 Track × Audience Profile
 
-| 受众带 | 主赛道 | 内容偏好 |
+| Audience Band | Main Tracks | Content Preference |
 |---|---|---|
-| 男频 18~40 | 战神/神豪/神医/系统流/仙侠/穿越/隐世大佬/学霸高考逆袭 | 升级与碾压，节奏要"快+爽"，逻辑够用即可；2026 头部大量迁移至 AI 漫剧；学霸高考逆袭走学历歧视反杀路线 |
-| 女频 25~45 | 重生/真假千金/闪婚/隐藏身份/离婚逆袭/古装/代餐替身/成年人离婚治愈系/成年人情感治愈系 | 情绪拉扯与身份逆袭，细节要"细+真"；2026 H2 头部转向成年人情感/治愈系，无手撕无金手指的克制治愈成新供给 |
-| 下沉泛龄 35+ | 家庭伦理/年代/乡村/中老年 | 公道与回报，情感要"厚+近"，禁悬浮 |
-| 年轻潮流 18~30 | 规则怪谈/都市悬疑/职场反PUA/甜宠/娱乐圈选秀 | 话题与智趣，人设要"新+贴"；规则怪谈主战场在抖音原生端，受众为大学生/女性向 |
-| 银发 50+ | 银发婚恋黄昏恋/中老年家庭伦理/娱乐圈选秀（银发粉丝向） | 第二春与公道，主角就是 50+ 本人而非子女视角；《夕阳红顶流》证银发后援团硬核投票反杀成新爽点 |
+| Male 18–40 | War God / Tycoon / Invincible Doctor / System Flow / Xianxia / Time-Travel / Hidden Tycoon / Top-Student Comeback | Leveling up and crushing; pacing must be "fast + satisfying," logic only needs to be sufficient; in 2026 a large share of head titles migrated to AI comic-drama; the top-student comeback follows an education-discrimination reversal path |
+| Female 25–45 | Rebirth / Fake Heiress / Flash Marriage / Hidden Identity / Divorce Comeback / Ancient Costume / Substitute Stand-In / Adult Divorce Healing / Adult Romance Healing | Emotional tug-of-war and identity comebacks; details must be "fine + real"; in H2 2026 the head shifted to adult romance / healing; restrained healing with no slap-downs and no golden finger is the new supply |
+| Downmarket Broad 35+ | Family Ethics / Era / Rural / Middle-Aged and Elderly | Fairness and reward; emotion must be "deep + close"; no floating |
+| Young Trend 18–30 | Rule Horror / Urban Suspense / Office Anti-PUA / Sweet Romance / Entertainment Talent Show | Topics and wit; personas must be "fresh + relatable"; the rule-horror main battlefield is native Douyin, audience university students and women who like it |
+| Silver-Age 50+ | Silver-Age Romance / Golden-Years Romance / Middle-Aged Family Ethics / Talent Show (silver-age fan-oriented) | Second spring and fairness; the protagonist is the 50+ person themselves, not a child's point of view; *Sunset Top-Ranker* shows that silver-age fan squads' hardcore voting reversals are a new payoff |
 
-### 5.2 赛道×集数档偏好（立项先对档，防体量错配）
+### 5.2 Track × Episode-Count Tier Preference (pick the tier at project start to avoid volume mismatch)
 
-| 集数档 | 适配赛道 | 理由 |
+| Episode Tier | Suitable Tracks | Reason |
 |---|---|---|
-| 100 集长剧 | 战神/神豪/赘婿/年代/家庭伦理/玄幻仙侠 | 升级链长、憋屈-释放可多循环，付费墙 3 道以上；仙侠头部多季播化（千集） |
-| 60~80 集中型 | 重生虐渣/真假千金/古装将门侯府/隐藏身份/闪婚/离婚逆袭/成年人离婚治愈系/学霸高考逆袭 | 单元链 2~3 段，节奏紧凑，墙 2~3 道；成年人离婚治愈系付费墙后置（情感悬念替代强断章） |
-| 60 集短打 | 悬疑/规则怪谈/都市悬疑/民俗恐怖/法治普法/甜宠/娱乐圈选秀 | 信息量守恒，拉长必水，墙 1~2 道；娱乐圈选秀靠系统每集解锁金曲维持密度 |
-| 30~50 集轻量 | 职场反PUA/银发婚恋/非遗文旅/乡村返乡（精品化） | 政策扶持与平台定制多走轻量精品档 |
+| 100-episode long series | War God / Tycoon / Live-In Son-in-Law / Era / Family Ethics / Xianxia | Long upgrade chains, humiliation-release can loop many times, 3+ paywalls; Xianxia head titles run multi-season (1,000 episodes) |
+| 60–80 episodes, medium | Rebirth Revenge / Fake Heiress / Ancient Costume Noble Houses / Hidden Identity / Flash Marriage / Divorce Comeback / Adult Divorce Healing / Top-Student Comeback | Unit chains of 2–3 segments, tight pacing, 2–3 paywalls; Adult Divorce Healing places the paywall late (emotional suspense replaces hard cliffhangers) |
+| 60-episode short | Suspense / Rule Horror / Urban Suspense / Folk Horror / Rule of Law / Sweet Romance / Talent-Show System | Information volume is conserved; stretching it always gets watery; 1–2 paywalls; the talent-show track keeps density by unlocking a classic song each episode |
+| 30–50 episodes, light | Office Anti-PUA / Silver-Age Romance / Intangible Heritage / Rural Return (boutique) | Policy support and platform commissions often go to the light boutique tier |
 
-### 5.3 赛道×付费墙断点（墙=情绪最高点+信息差最大点）
+### 5.3 Track × Paywall Break Points (paywall = emotional peak + largest information gap)
 
-| 赛道族 | 一级墙 | 二级墙 | 三级墙 |
+| Track Family | Tier 1 Wall | Tier 2 Wall | Tier 3 Wall |
 |---|---|---|---|
-| 男频碾压系（战神/神豪/神医/隐世大佬） | 首亮身份/首亮卡（第 8~12 集） | 大人物跪拜/全网曝光（第 28~35 集） | 终极对手总清算（第 60+ 集） |
-| 女频身份系（真假千金/隐藏身份/离婚逆袭） | 小圈层掉马/离婚提（第 6~10 集） | 家族级掉马/前夫当众求复合被拒（第 25~32 集） | 全网掉马+终极打脸（第 50+ 集） |
-| 女频情感系（闪婚/替身/虐恋/甜宠） | 心动破防/误会坐实（第 8~12 集） | 真相半揭/他先低头（第 25~32 集） | 身份+情感双闭环（第 45+ 集） |
-| 剧情流（悬疑/怪谈/都市悬疑/法治/谍战） | 第一条线索反转（第 5~8 集） | 中间人暴露/潜伏身份半揭（第 20~28 集） | 真相闭环/信仰抉择（第 50~60 集） |
+| Male crushing family (War God / Tycoon / Invincible Doctor / Hidden Tycoon) | First reveal of identity / first reveal of card (Ep. 8–12) | Big figure kneels / exposure across the internet (Ep. 28–35) | Final clearing with the ultimate opponent (Ep. 60+) |
+| Female identity family (Fake Heiress / Hidden Identity / Divorce Comeback) | Small-circle unmasking / divorce proposal (Ep. 6–10) | Family-level unmasking / ex-husband publicly begs for reconciliation and is refused (Ep. 25–32) | Internet-wide unmasking + final face-slap (Ep. 50+) |
+| Female emotion family (Flash Marriage / Substitute / Suffering-Romance / Sweet Romance) | Heartbeat breaking / misunderstanding confirmed (Ep. 8–12) | Truth half-revealed / he lowers his head first (Ep. 25–32) | Identity + emotion closed loop (Ep. 45+) |
+| Plot-flow (Suspense / Horror / Urban Suspense / Rule of Law / Espionage) | First clue twist (Ep. 5–8) | Middleman exposed / undercover identity half-revealed (Ep. 20–28) | Truth closed loop / choice of faith (Ep. 50–60) |
 
-### 5.4 赛道×爽感曲线
+### 5.4 Track × Payoff Curve
 
-- **男频阶梯式爆发**：憋屈短暂→碾压快速兑现，爽点密度高、单点烈度大，靠"升级链"续期（对应六档阶梯证据+境界/资产/名望升档）；
-- **女频回合式拉扯**：憋屈长、释放慢而狠，靠"情绪契约"续期（对应六档往返回合，证据与反驳双升档）；2026 H2 新增"治愈式温感"变体（成年人离婚治愈系/成年人情感治愈系），慢节奏陪伴替代强狗血，断章用克制型情绪反差而非强悬念；
-- **下沉温感式回报**：爽感弱化、公道感强化，靠"善恶有报"续期，禁过分暴力与拜金堆砌；银发婚恋走"第二春被珍惜"的温感曲线；
-- **剧情流悬念式牵引**：靠信息阶梯续期，每集必须改写信息格局（新增量铁律同样适用）；主旋律/法治类额外叠加"信仰/正义"价值落点。
+- **Male stepped burst**: short humiliation, fast crushing payoff; high payoff density and strong single hits; renewed by the "upgrade chain" (corresponding to the six-tier evidence ladder + realm / asset / reputation tier-ups);
+- **Female round-based pull**: long humiliation, slow but fierce release; renewed by the "emotion contract" (corresponding to six round-trip rounds, with evidence and rebuttal both escalating tiers); H2 2026 added a "healing warmth" variant (Adult Divorce Healing / Adult Romance Healing): slow companionship replaces strong melodrama, cliffhangers use restrained emotional contrast rather than hard suspense;
+- **Downmarket warm-reward payoff**: weaker thrill, stronger sense of fairness; renewed by "good is rewarded, evil is punished"; forbids excessive violence and money-worship padding; silver-age romance follows a warm curve of "a second spring that is cherished";
+- **Plot-flow suspense-driven pull**: renewed by information ladders; every episode must rewrite the information landscape (the new-information iron rule applies equally); main-melody / rule-of-law stories add a "faith / justice" value landing.
 
-### 5.5 平台与趋势提示（2025~2026，v3.3-U2 核验更新）
+### 5.5 Platform and Trend Notes (2025–2026, v3.3-U2 verified)
 
-- **红果**：下沉长剧主场（家庭/年代/战神/神豪），100 集大长剧付费模式成熟；2026 女频头部为女性成长/成年人情感（《好雨知时节》《移巢》），AI 漫剧端玄幻/民俗/仙侠霸榜；
-- **抖音**：短平快爆发场（规则怪谈/都市悬疑/甜宠/职场反PUA/隐形身份剧），前 3 秒钩子权重更高，30~60 集为主；2026 年男频剧王《隐身侍卫》、银发剧王《五十岁隐藏身份》均出自抖音端原生；
-- **快手**：乡村/家庭/正能量赛道强，接地气题材优先，主角设定不宜过"都市悬浮"；
-- **政策风向（2026-09 新规）**：① 广电总局令第 16 号《微短剧发展管理办法》2026-09-01 施行，按投资/题材分一/二/三类备案，涉公安/司法/国安/民族/宗教/外交属一类特殊题材须重点许可；② 2026-06 起专项治理 8 类问题，**封建糟粕、暴力复仇**在列——民俗恐怖真人端禁纯迷信真鬼，须走"民俗解谜/非遗志怪"包装；刑侦悬疑禁私刑复仇，须落"法网恢恢"；③ 60 亿"微短剧精品创作传播计划"+"跟着微短剧去旅行"扶持乡村/非遗文旅/主旋律；长征胜利 90 周年窗口，谍战/红色革命、法治反腐反诈是政策定价方向。
+- **Hongguo**: home of downmarket long series (family / era / war god / tycoon), with the 100-episode model for big series well established; in 2026 the female head titles are female growth and adult emotion (*Rain Knows Its Season*, *Moving the Nest*), while the AI comic-drama side tops charts with Xianxia / folk / immortal stories;
+- **Douyin**: home of short, fast, explosive hits (rule horror / urban suspense / sweet romance / office anti-PUA / hidden-identity dramas); the first-3-seconds hook weighs more heavily; mostly 30–60 episodes; in 2026 the male drama king *Hidden Security Guard* and the silver-age drama king *Hidden Identity at Fifty* both originated natively on Douyin;
+- **Kuaishou**: strong in rural / family / positive-energy tracks; down-to-earth subject matter comes first, and protagonist settings should not be too "floating urban";
+- **Policy direction (2026-09 rules)**: ① NRTA Order No. 16, *Micro-Drama Development Management Measures*, took effect 2026-09-01 and sorts filings into Class I / II / III by investment and subject matter; special subjects involving public security / judiciary / national security / ethnicity / religion / diplomacy are Class I and require focused approval; ② Since 2026-06, a targeted campaign covers 8 types of problems, including **feudal dregs and violent revenge**; in live-action folk horror, pure superstition with real ghosts is forbidden, and it must be packaged as "folk-mystery solving / intangible-heritage ghost tales"; crime suspense may not show vigilante revenge and must fall under "the net of justice is wide"; ③ The 6 billion-yuan "Micro-Drama Premium Creation and Dissemination Plan" plus "Follow the Micro-Drama Travel" support rural / intangible heritage cultural tourism / mainstream-melody stories; the 90th anniversary of the Long March victory is a window, and espionage / red revolution and rule of law / anti-corruption / anti-fraud are the policy-priced directions.
 
 ---
 
-## 附录：v3.3-U2（2026-09-20）真实榜单核验修订记录
+## Appendix: v3.3-U2 (2026-09-20) Chart Verification Revision Log
 
-> 核验方法：17 条新增赛道逐条对照 DataEye 短剧热力榜、新榜抖快短剧周榜、红果短剧热播榜、抖音端原生百强榜及澎湃/36氪/新榜等行业盘点（2025–2026 年）。每条结论附可追溯证据。原 16 条老赛道未在本次核验范围，原样保留。
+> Verification method: each of the 17 new tracks was checked against the DataEye short-drama heat chart, Newrank's Douyin/Kuaishou short-drama weekly chart, Hongguo's short-drama hit chart, the Douyin native top-100 chart, and industry roundups from The Paper / 36Kr / Newrank (2025–2026). Each conclusion carries traceable evidence. The original 16 legacy tracks were outside the scope of this verification and are kept unchanged.
 
-### A. 男频 6 条处置
+### A. Male: Disposition of 6 Rows
 
-| 原行 | 处置 | 依据（榜单+头部作品） |
+| Original Row | Disposition | Basis (chart + head titles) |
 |---|---|---|
-| 都市神医（医武双绝/龙王医婿） | **保留并改名** →「无敌神医/乞丐神医」 | 新榜抖快周榜 2026-08-09~15 第 1 名《这个乞丐神医太无敌了》抖音播放 11.9 亿；DataEye 2026 上半年抖音端原生百强榜原文用"无敌神医"官方口径 |
-| 系统/签到/直播流 | **改写定位** →「都市脑洞/系统流（设定向）」 | 纯签到流无独立头部爆款；系统已退化为穿越/都市脑洞剧引擎（《开局被甩我觉醒情绪系统》《穿成傀儡皇帝·朕要整顿朝堂》）；"直播算命"子形态并入玄学赛道（《三千卦金买你一条命》《直播算命，科学道士不好惹》） |
-| 玄幻仙侠（重生修真） | **保留，补载体备注** | 《咱家剑宗团宠小师妹》第三季红果开播首日热度 1.15 亿破亿、抖音播放超 8 亿；《万妖图录传》为红果首部热度破亿 AI 漫剧；2026 头部增量主力为 AI 漫剧/季播化 |
-| 穿越古代（帝王/权臣/赘婿） | **保留，补新变种** | 《屠龙：策》（岳家全员穿越）、《穿成傀儡皇帝朕要整顿朝堂》（系统+穿越）、《我是赘婿但我兄弟是女帝》在红果 2026 年在榜 |
-| 玄学/风水/天师下山 | **保留，并入直播算命子形态** | 《风水天师》AI 剧 2026-03 上线 12 小时抖音破亿、累计播放近 6.3 亿，红果峰值热度 7126 万，长期居漫剧热播榜首 |
-| 兵王/特工/隐世大佬 | **改名** →「隐世大佬/马甲战神（保安·保镖·侍卫）」 | 《隐身侍卫》行业首部破亿男频剧、全网播放 50 亿、2026 上半年红果百强 TOP30 唯一男频；《我的保安身份藏不住了》新榜周榜第 2、播放超 4 亿；DataEye 7 月投流数据：传统"马甲"已跌出 TOP10，须靠底层职业伪装新皮续命 |
+| Urban Divine Doctor (medical-martial dual master / dragon king's doctor son-in-law) | **Kept and renamed** → "Invincible Doctor / Beggar Doctor" | Newrank Douyin weekly chart 2026-08-09~15, #1: *This Beggar Doctor Is Unbeatable*, 1.19 billion Douyin plays; DataEye's 2026 H1 Douyin native top-100 uses the official label "Invincible Doctor" |
+| System / Check-In / Livestream Flow | **Repositioned** → "Urban Fantasy / System Mode (setting-driven)" | Pure check-in flow has no standalone head hit; the system has degraded into an engine for time-travel and urban fantasy (*Got Hit by Divorce, I Awakened the Emotion System*, *Transmigrated as a Puppet Emperor: I'll Reform the Court*); the "livestream fortune-telling" subform is merged into the Mysticism track (*Three Thousand Gold for Your Life*, *Livestream Fortune-Telling: Scientific Taoists Are Not to Be Trifled With*) |
+| Xianxia (rebirth cultivation) | **Kept, with a platform note added** | *Our Family's Sword Sect Pet Little Junior Sister*, Season 3, passed 115 million heat on the first day on Hongguo and over 800 million Douyin plays; *The Ten-Thousand Demons Codex* was Hongguo's first AI comic-drama to pass 100 million heat; in 2026 the head growth is driven by AI comic-drama and serialized seasons |
+| Time-Travel to Ancient Times (emperors / chancellors / live-in sons-in-law) | **Kept, with new variants added** | *Dragon Slaying: Strategy* (in-laws all transmigrated), *Transmigrated as a Puppet Emperor: I'll Reform the Court* (system + transmigration), and *I'm a Live-In Son-in-Law, But My Brother Is the Empress* all charted on Hongguo in 2026 |
+| Mysticism / Feng Shui / Taoist Master Descends the Mountain | **Kept, merged with the livestream fortune-telling subform** | The AI drama *Feng Shui Master* went live 2026-03 and passed 100 million Douyin plays within 12 hours, with nearly 630 million cumulative plays; Hongguo peak heat was 71.26 million, and it held the top of the comic-drama chart for a long time |
+| Special Forces / Agent / Hidden Tycoon | **Renamed** → "Hidden Tycoon / Disguised Warrior (security guard, bodyguard, attendant)" | *Hidden Security Guard*, the industry's first male drama to pass 100 million, 5 billion total plays, the only male title in Hongguo's H1 2026 top-30; *My Security Guard Identity Can't Be Hidden*, #2 on the Newrank weekly chart with over 400 million plays; DataEye July ad-buying data: the traditional "disguised" trope has fallen out of the top 10 and must be revived with a new skin of hidden lowly jobs |
 
-### B. 女频 7 条处置
+### B. Female: Disposition of 7 Rows
 
-| 原行 | 处置 | 依据 |
+| Original Row | Disposition | Basis |
 |---|---|---|
-| 古装宫斗/宅斗 | **改名** →「古装将门/侯府权斗」 | 2026-08-24 红果周榜 TOP50 纯宫斗宅斗仅 1 部在榜（#29）；2025 头部《千金谋》《夫人她专治不服 3》及 2026 腰部《将门六姝》均为将门/侯府+权谋+女性反杀，非传统嫔妃争宠 |
-| 古装虐恋/替嫁王妃 | **保留（标注有量无峰）** | 红果在库长期稳定供给（《和离后替嫁医妃带崽宠冠全京城》《王妃太缺德得宠着》），抖音信息流 2026-09 持续投放，但未进 8 月 TOP10 |
-| 闪婚/先婚后爱 | **保留** | DataEye 2026-08 热投题材"总裁"首进 TOP3（1.67 亿、296 部），闪婚为先婚后爱第一子套路；红果《闪婚她甜的过头》《婚后心动》在榜 |
-| 隐婚马甲/大佬夫人 | **改名** →「大佬隐藏身份宠妻」 | 纯掉马甲剧未进 8 月头部；DataEye 8 月热力榜冠军《五十岁隐藏身份我遇见真爱》（抖音端原生播放近 20 亿）证卖点已转向男主隐藏身份宠妻 |
-| 豪门弃妇/离婚逆袭 | **保留（标注平台叫法"女性成长/高调离婚"）** | DataEye 2026-06 真人短剧百强榜一《苏太太高调离婚了》热力 2060.4 万；《离婚后爸妈带我走上巅峰》为 2026 上半年唯一热力超 4000 万真人短剧 |
-| 甜宠现言/大叔恋 | **保留，补趋势备注** | 红果 8-24 周榜 TOP50 都市爱情 17 部占第一大题材，《好雨知时节》#1（峰值 1.4 亿）；DataEye 8 月官方点名"银发/大叔"为潜力赛道；头部已从工业糖精升级为成年人克制情感 |
-| 替身/白月光 | **改名** →「白月光代餐/反套路替身」 | 传统替身虐恋已跌出头部；2026 新范式《白月光代餐》《双向替身》（替身觉醒反杀/双向替身/代餐计费）；红果 8 月周榜 #2《庄园保姆成了全家白月光》为女性成长变体 |
+| Ancient Palace / Household Intrigue | **Renamed** → "Ancient Costume: Noble Houses / Court Power Struggle" | On the 2026-08-24 Hongguo weekly chart Top 50, only one pure palace/household intrigue title charted (#29); the 2025 head titles *A Thousand-Gold Scheme* and *Madam Refuses to Be Cowed 3*, and the 2026 mid-tier *Six Sisters of the General's House*, are all general-house / noble-family + scheming + female counterattack, not traditional consort rivalry |
+| Ancient Costume Romance / Substitute Bride Princess | **Kept (marked: steady supply, no peak)** | Hongguo's library has long-term steady supply (*Remarried Medic Princess With a Baby Conquers the Capital*, *The Princess Is Too Wicked and Still Favored*), and Douyin feeds have kept investing in it through 2026-09, but it did not enter the August top 10 |
+| Flash Marriage / Marriage First, Love Later | **Kept** | DataEye 2026-08 hot-invest topic "CEO" entered the top 3 for the first time (167 million, 296 titles); flash marriage is the first sub-trope of marriage-first-love-later; *Flash Marriage, She's Too Sweet*, *Love After Marriage* are charting on Hongguo |
+| Secret Marriage / Tycoon's Wife | **Renamed** → "Hidden Identity Spoils Wife" | Pure unmasking dramas did not enter the top of the August chart; DataEye's August heat-chart champion *Fifty and Hiding My Identity, I Met True Love* (nearly 2 billion Douyin native plays) proves the selling point has shifted to the male lead's hidden identity spoiling his wife |
+| Rich Family Discard / Divorce Comeback | **Kept (marked with platform label "female growth / high-profile divorce")** | DataEye 2026-06 live-action top-100 #1, *Mrs. Su Divorces Loudly*, heat 20.604 million; *Dad and Mom Took Me to the Peak After the Divorce* is the only live-action title in H1 2026 with heat over 40 million |
+| Sweet Romance Modern / Older-Man Romance | **Kept, with a trend note added** | Hongguo Aug 24 weekly chart Top 50: urban romance has 17 titles, the largest genre; *Rain Knows Its Season* #1 (peak 140 million); DataEye's August official call-out named "silver-age / older-man" a potential track; the head has moved from industrial sugar to restrained adult romance |
+| Substitute / White Moonlight | **Renamed** → "White Moonlight Stand-In / Anti-Trope Substitute" | The traditional substitute-suffering romance has dropped out of the head; the 2026 new pattern is *White Moonlight Stand-In*, *Two-Way Substitute* (the substitute awakens and strikes back / two-way substitutes / stand-in billing); Hongguo's August weekly #2, *The Garden Nanny Became the Whole Family's White Moonlight*, is a female-growth variant |
 
-### C. 中性 4 条处置
+### C. Neutral: Disposition of 4 Rows
 
-| 原行 | 处置 | 依据 |
+| Original Row | Disposition | Basis |
 |---|---|---|
-| 乡村正能量/返乡创业 | **保留** | 《我的归途有风 2》播放 1.77 亿、带动普洱咖啡门店 30→431 家；《花开石上》总播放 3.9 亿；广电 2026-05 精品创作计划 60 亿扶持 + 08 月三农题材管理提示 |
-| 刑侦悬疑 | **保留，补合规备注** | 《黑色焰火》（红果 2026-02 现象级）；《嫌疑人的秘密》上线 7 天抖音端原生 18.95 亿播放、全端第 2；一类特殊题材须重点备案 |
-| 民俗恐怖/民间怪谈 | **保留，补合规与载体备注** | 漫剧端《诡异婚配》连续 3 期登顶红果漫剧榜；2026-09-19 红果漫剧榜疯女通幽冥/尸潮/雾山精神病院占近半；16 号令禁宣扬迷信，真人端须走"民俗解谜/非遗志怪" |
-| 职场打工人/反PUA | **保留** | 《苏秘书下不为例》《我的功劳你夺不走》在红果 2026-07 起持续投放，红果官方营销话术直接用"职场反 PUA"标签 |
+| Rural Positive Energy / Returning Home to Start a Business | **Kept** | *My Return Has Wind 2* passed 177 million plays and drove a Pu'er coffee chain from 30 to 431 stores; *Flowers on the Stone* totaled 390 million plays; NRTA 2026-05 boutique creation plan with 6 billion for support plus an August rural-theme management notice |
+| Criminal Investigation Suspense | **Kept, with a compliance note added** | *Black Flame* (Hongguo phenomenon, 2026-02); *The Suspect's Secret* passed 1.895 billion native Douyin plays in 7 days, #2 across all platforms; Class I special subject, requires focused filing |
+| Folk Horror / Folklore Ghost Stories | **Kept, with compliance and platform notes added** | The comic-drama *Strange Marriage Match* topped the Hongguo comic-drama chart for 3 consecutive periods; on the 2026-09-19 Hongguo comic-drama chart, mad-woman / ghost-realm / corpse-tide / mist-mountain psychiatric hospital titles took nearly half; NRTA Order 16 bans promoting superstition, so live-action must be "folk-mystery solving / intangible-heritage ghost tales" |
+| Office Worker / Anti-PUA | **Kept** | *Secretary Su Won't Do It Again* and *You Can't Take My Achievements* have been continuously invested in on Hongguo since 2026-07, and Hongguo's official marketing copy uses the "office anti-PUA" label directly |
 
-### D. 查漏补入（榜单头部反复出现、原 33 条未收录）
+### D. Supplementary Additions (recurring head-chart tracks not in the original 33)
 
-| 新行 | 依据 |
+| New Row | Basis |
 |---|---|
-| 谍战/红色革命主旋律 | 《暗潮涌动》红果热度破 7000 万、2025 红果年度大赏 Top2、一周破 5 亿；《燎原之烽火 1945》播放超 1 亿；创作指引明言"革命题材黄金窗口期"（长征胜利 90 周年） |
-| 法治/反腐/反诈普法 | 《长路初心》红果播放破 10 亿；《我当卧底这件事》登顶短剧热搜榜 TOP1；《少年田野》累计播放 3.3 亿；广电"微短剧+"行动计划 116 部推荐剧目中反诈普法为重点 |
-| 非遗/文旅融合/国风文化 | 《傩戏》全网传播破 10 亿、《傩戏 2》预约破 240 万；《姐姐的三条簪》正片 3 亿+；央视频《墨韵新生》触达 200 国 |
-| 银发婚恋/黄昏恋（从原"中老年/家庭伦理"拆出） | 《五十岁隐藏身份我遇见真爱》为 DataEye 2026-08 百强唯一热力破千万真人剧（1027.2 万）、抖音端原生播放近 20 亿；《六十岁觉醒告别三十九载烂婚姻》同榜 TOP30；原"中老年/家庭伦理"改名聚焦婆媳/妯娌/家长里短 |
+| Espionage / Red Revolution Mainstream | *Undercurrents* passed 70 million Hongguo heat, #2 for the 2025 Hongguo annual awards, and over 500 million in a week; *Flames of the Revolution 1945* passed 100 million plays; the creation guidelines explicitly name a "golden window for revolutionary themes" (90th anniversary of the Long March victory) |
+| Rule of Law / Anti-Corruption / Anti-Fraud Education | *The Long Road of the Original Heart* passed 1 billion Hongguo plays; *I'm an Undercover Agent* topped the short-drama trending chart at #1; *Young Field* cumulatively passed 330 million plays; among the 116 recommended titles of the NRTA "Micro-Drama+" action plan, anti-fraud education is a key focus |
+| Intangible Heritage / Cultural Tourism / Guofeng Culture | *Nuo Opera* passed 1 billion plays across the web, with *Nuo Opera 2* reservations passing 2.4 million; *Three Hairpins of My Sister* over 300 million for the main cut; CCTV Video's *Ink Rebirth* reached 200 countries |
+| Silver-Age Romance / Golden-Years Romance (split from the original "Middle-Aged / Family Ethics") | *Fifty and Hiding My Identity, I Met True Love* is the only live-action title over 10 million heat in DataEye's 2026-08 top 100 (10.272 million), with nearly 2 billion Douyin native plays; *Sixty and Waking Up to Leave 39 Years of a Rotten Marriage* on the same chart TOP30; the original "Middle-Aged / Family Ethics" was renamed to focus on mother-in-law / sisters-in-law / household trivia |
 
-### E. 未补入项（及理由）
+### E. Unlisted Items (and reasons)
 
-- **末世/囤货/尸潮**：已被现有"规则怪谈/AI怪谈密闭空间流"覆盖，漫剧延伸不另立。
-- **萌宝认亲/后妈**：已被"萌宝神助攻"覆盖。
-- **医养结合/养老**（《情定养老院》单点）：尚未跑出第二部头部，观察不补。
-- **AI 剧/漫剧**：这是媒介形态而非题材，不进赛道表，只在相关赛道行内做载体备注。
+- **Apocalypse / Hoarding / Corpse Tide**: already covered by the existing "Rule Horror / AI-Horror Closed-Space Flow," so the comic-drama extension does not get its own track.
+- **Baby Reunion / Stepmother**: already covered by "Baby-Star Helper."
+- **Medical-Elder Care / Retirement** (*Love at the Nursing Home*, a single hit): no second head title has emerged yet, so it is watched but not added.
+- **AI drama / comic-drama**: these are media formats, not subject matter; they are not in the track table and appear only as platform notes within the relevant track rows.
 
 ---
 
-## 附录：v4.0（2026-09-28）热点对标修订记录
+## Appendix: v4.0 (2026-09-28) Hot-Topic Benchmark Revision Log
 
-> 依据《下沉剧热点对标与单集体量修订报告》（2026-09-28）第二章赛道映射与第五章修订清单落地。核验数据源：红果短剧热播榜（2026-09-28 TOP20）、DataEye 短剧热力榜（2026年8月榜）、抖音端原生百强榜、新榜抖快短剧周榜（2026-09-24）。
+> Based on Chapter 2 (track mapping) and Chapter 5 (revision list) of the "Downmarket Drama Hot-Topic Benchmark and Per-Episode Volume Revision Report" (2026-09-28). Data sources verified: Hongguo short-drama hit chart (2026-09-28 TOP20), DataEye short-drama heat chart (August 2026), Douyin native top-100 chart, Newrank Douyin/Kuaishou short-drama weekly chart (2026-09-24).
 
-### F. v4.0 三条新增赛道
+### F. Three New Tracks in v4.0
 
-| 新赛道 | 归属 | 依据（代表剧+数据） |
+| New Track | Category | Basis (representative show + data) |
 |---|---|---|
-| 成年人离婚治愈系 | 女频第14条 | 《好雨知时节》红果8月三榜第一，13天播放破20亿，评分9.5；无手撕无金手指无当众打脸，区别于豪门弃妇高调离婚逆袭 |
-| 学霸高考逆袭/阶层跃迁 | 男频第13条（从附录E正式立条） | 《从流水线到清北》DataEye 8月热力榜#3，热值895万，单月播放增量近11亿；金手指=学霸系统/记忆宫殿，冲突对象=学历歧视 |
-| 娱乐圈选秀系统流（银发粉丝向） | 中性第13条 | 《夕阳红顶流，大爷大妈助我乐坛封神》红果2026-09-28 #15，热度6315万；核心爽点=导师羞辱→开唱炸场→银发后援团投票反杀→系统每集解锁金曲 |
+| Adult Divorce Healing | Female row 14 | *Rain Knows Its Season* — Hongguo's #1 across three August charts, passed 2 billion plays in 13 days, rated 9.5; no slap-downs, no golden finger, no public face-slaps, unlike the high-profile comeback of Rich Family Discard |
+| Top-Student College Entrance Comeback / Class Ascent | Male row 13 (formally listed from Appendix E) | *From Assembly Line to Top University*, DataEye August heat chart #3, heat value 8.95 million, nearly 1.1 billion added plays that month; golden finger = top-student system / memory palace, opponent = education discrimination |
+| Entertainment Talent-Show System Flow (silver-age fan-oriented) | Neutral row 13 | *Sunset Top-Ranker: Aunties and Uncles Help Me Conquer the Music Scene*, Hongguo 2026-09-28 #15, heat 63.15 million; core payoff = mentor humiliation → opening performance blows up the stage → silver-age fan-squad voting reversal → the system unlocks a classic song each episode |
 
-### G. v4.0 六条细分/扩义/改名/归类调整
+### G. Six Subdivisions / Expansions / Renames / Reclassifications in v4.0
 
-| 原赛道 | 处置 | 依据 |
+| Original Track | Disposition | Basis |
 |---|---|---|
-| 手撕婆媳/绿茶 | 加子类型"反向婆媳/儿媳护婆" | 《我的婆婆，我罩着》红果#8——儿媳罩婆婆、怼奶奶大姑，角色关系反转 |
-| 年代/逆袭 | 加子类型"97下岗潮南下闯荡" | 《东北话事人》红果#6——97下岗潮+南下港城+冒充商会龙头的男频商海喜剧 |
-| 豪门弃妇/高调离婚逆袭 | 加子类型"古装和离二嫁/前夫追妻火葬场" | 《二嫁有喜》红果#7——古代和离→三天二嫁鳏夫→前夫追妻火葬场 |
-| 刑侦悬疑 | 扩义为"都市悬疑/办公室悬疑"，刑侦降为子类型 | 《嫌疑人的秘密》抖音#2——本质办公室职场悬疑+保洁反盗窃，无公安/司法主线 |
-| 规则怪谈（男频向） | 从男频移至中性，改名"规则怪谈/AI怪谈密闭空间流" | 抖音端跑出来的是大学生/女性向悬疑怪谈集群（反相之地、零号档案、被裁掉的女孩、消失的馆长），非男频专属；与民俗恐怖/民间怪谈为独立赛道不合并 |
-| 甜宠现言/大叔恋 | 改名"成年人情感/治愈系"，甜宠/大叔恋降为子类型 | 2026 H2头部从工业糖精升级为成年人克制情感/治愈系 |
-| 都市脑洞/系统流 | 行内补注"重生"跨赛道引擎标签 | 《都重生了谁还装富二代》红果9.7周榜#3——重生同为引擎设定，可叠加于逆袭打脸/玄幻仙侠/穿越古代等赛道 |
+| Tearing Down the Mother-in-Law / Green Tea Rival | Added subtype "reverse mother-in-law / daughter-in-law defends mother-in-law" | *My Mother-in-Law, I've Got Her Back*, Hongguo #8 — the daughter-in-law shields the mother-in-law and snaps back at the grandmother and aunt, with the relationship reversed |
+| Era / Comeback | Added subtype "1997 layoff wave heads south to make it" | *The Northeast Boss*, Hongguo #6 — 1997 layoff wave + heading south to a port city + a man posing as a chamber-of-commerce head; a male-track business comedy |
+| Rich Family Discard / High-Profile Divorce Comeback | Added subtype "ancient-costume divorce then remarriage / ex-husband's chase-your-wife crematorium" | *Married Again, With Joy*, Hongguo #7 — ancient divorce → remarriage to a widower within three days → the ex-husband begs for reconciliation |
+| Criminal Investigation Suspense | Widened to "Urban Suspense / Office Suspense"; criminal investigation demoted to a subtype | *The Suspect's Secret*, Douyin #2 — essentially an office-workplace suspense with a cleaner catching a thief, with no police or judicial main line |
+| Rule Horror (male-oriented) | Moved from male to neutral, renamed "Rule Horror / AI-Horror Closed-Space Flow" | What broke out on Douyin is a cluster of suspense-horror titles favored by university students and women (*Anti-Phase Land*, *Zero Archive*, *The Girl Who Got Cut*, *The Missing Curator*), not male-only; kept independent from Folk Horror / Folklore Ghost Stories rather than merged |
+| Sweet Romance Modern / Older-Man Romance | Renamed "Adult Romance / Healing"; sweet romance and older-man romance demoted to subtypes | In H2 2026 the head shifted from industrial sugar to restrained adult romance / healing |
+| System Flow / Check-In / Livestream | Added a "rebirth" cross-track engine tag in the line notes | *Reborn, Why Still Pretend to Be a Rich Heir?*, Hongguo 9.7 weekly chart #3 — rebirth is likewise an engine setting that can be layered onto Comeback Face-Slap, Xianxia, Time-Travel to Ancient Times, and other tracks |

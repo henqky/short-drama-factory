@@ -1,94 +1,94 @@
-# 保护性反例集（防止机检把好稿判差 · v4.9 升级）
+# Protective Counterexamples (Keeping Machine Checks from Failing Good Drafts · v4.9 Upgrade)
 
-> **定位**：机检（`validate_episode.py` / `validate_series.py`）是**确定性规则**，它只会数数。数得对，不等于判得对——**任何硬指标都有把成立的好戏误伤的可能**。本文件列明"哪些东西明确不算缺陷"，并为机检提供 **NOTE 级**（明确标注"不是失败"）的反向提示。
+> **Purpose**: The validators (`validate_episode.py` / `validate_series.py`) are deterministic rules; they only count. Counting correctly is not the same as judging correctly. **Every hard metric can wrongly penalize a scene that works.** This file lists what is explicitly *not* a defect, and provides **NOTE-level** hints (explicitly labeled "not a failure") as counter-signals for the validators.
 >
-> **触发**：跑机检、按机检结果修稿、给评审意见定级时，**必读**。看到 FAIL/WARN 之前先读这里，看清楚哪一条属于"规则提示"、哪一条才是真缺陷。
+> **Trigger**: read this before running the validators, before revising based on validator results, and before grading review comments. Read here before acting on any FAIL/WARN, so you can tell which items are rule prompts and which are real defects.
 >
-> **来源**：外部包 JYY v3.8 的 jyy-script-eval 评分表（rubric）中"不能自动判失败的反例"列（**外部源文件，不在本包内**，勿按包内路径查找），按红果机检项逐条映射，并在 v4.9 补充 `E24~E26` 的反例边界。
+> **Source**: the "counterexamples that must not be auto-failed" column of the jyy-script-eval scoring rubric in the external JYY v3.8 package (an external source file, **not included in this package**; do not look for it by in-package path). Mapped item by item to the Hongguo validator checks, with v4.9 adding boundary counterexamples for `E24-E26`.
 
 ---
 
-## §一 三级输出：FAIL / WARN / NOTE
+## §1 Three Output Levels: FAIL / WARN / NOTE
 
-机检结果分三级，**处理方式完全不同**：
+Validator results have three levels, and each is handled differently:
 
-| 级别 | 含义 | 处理 |
+| Level | Meaning | Handling |
 |---|---|---|
-| **FAIL** | 硬约束未满足（体量极端越界、缺断章、缺中段小钩、合规红线、场景超限、时长虚标/降级） | **必须修**，修完重跑 |
-| **WARN** | 需要**人工复核**的可疑点（单句超长、开篇禁词、对白行不足、干聊断层、未翻译黑话、无效微动作） | 复核后**可以判定为"成立"并放行**，但平时生产应优先消除 |
-| **NOTE** | 保护性反例提示：**明确不是缺陷**，是在提醒"别过度修正" | **不要求修改**；若确实属于过度修正，应回退 |
+| **FAIL** | A hard constraint is not met (volume far out of range, missing cliffhanger, missing mid-episode hook, compliance red line, scene cap exceeded, duration inflated or downgraded) | **Must fix**, then rerun |
+| **WARN** | A suspicious point needing **human review** (over-long line, banned opener words, too few dialogue lines, talking-only gap, untranslated jargon, ineffective micro-gesture) | After review it may be judged "valid" and passed, but in normal production it should be eliminated first |
+| **NOTE** | Protective-counterexample hint: **explicitly not a defect**; a reminder not to over-correct | **No change required**; if it really is over-correction, roll it back |
 
-> ⚠️ **把 NOTE 当 FAIL 处理，是本书要防的头号错误。** 看到 NOTE 就动手改，会把好稿改坏。
+> ⚠️ **Treating a NOTE as a FAIL is the number-one error this document exists to prevent.** Seeing a NOTE and rushing to edit will break good drafts.
 
 ---
 
-## §二 逐条反例对照表
+## §2 Item-by-Item Counterexample Table
 
-| 机检项 | 容易误伤什么 | 反例（不判失败的情形） | 正确处置 |
+| Check | What it's likely to wrongly penalize | Counterexample (cases not to fail) | Correct handling |
 |---|---|---|---|
-| **E1 体量区间** | 为达标删掉必要过程 / 为达标注水 | 某些集天然偏短（余波集、转折集）；某些集必要过程确实长 | 先合并重复说明、让同一行为兼任多作用、调整事件负荷；**不能删掉一删就因果跳跃的决定或反应** |
-| **E2 单句 ≤25 字** | 把完整直说强行切碎 | **完整、准确、礼貌的直说是成立的**；权力压制下的长句、正式场合的程序话、专业处置 | 若为过检而普遍碎句 → 回退到完整表达（见 N12） |
-| **E3 场景数上限** | 为凑场景把连续动作假拆成多场 | 一个连续场可以有多次行动变化；同一事件也可跨场 | 分场按**真实时空理由**，不按数量目标 |
-| **E4 黄金前 3 秒** | —— | 无（这是红线，**不做反例**；②行动坚持型允许用「反常动作」开场） | 任何档位都必须直接切入冲突或反常行动 |
-| **E6 断章卡点** | 为凑钩子把答案无故截断 | 本集回报已给足时，钩子只需是"未作出的选择/即将验证的猜测/新代价" | 钩子不许抹掉本集应给的回报 |
-| **E7 情绪流变** | 每集都写同一音量、同一走向 | **安静场、余波场、蓄势场**成立；情绪不必每集推向极化 | 安静场只需有明确情绪视角并改变关系/意义/状态 |
-| **E9 对白行数下限** | 硬加台词填空 | **短小无对白的反应也可以有分量**；沉默、照料、一个动作都能承担推进 | 不足时优先检查攻防结构，而不是加台词 |
-| **E8 复读检测** | 把功能性重复判成缺陷 | **有作用的重复**：请求、嘲讽、追责、确认、改口、误听、寒暄 | 重复若承担新作用，保留并注明理由 |
-| **E10 合规红线** | —— | 无（**一票否决**，不做反例） | 暴力用"受力震飞/骨裂/倒地"写意替代 |
-| **E11 长档中段小钩** | 把中段小钩写成全集高潮 | 中段小钩是新信息/新威胁的**一次投放**，不是第二个高潮 | 回合 B 必须双升级，但小钩留在 ≈90 秒处 |
-| **E24 干聊断层（连续>6行无△）** | 为消告警强塞“他点点头/她眨眨眼”等水动作 | 极少数法庭快节奏连环质询或电报式急促抢白（但总时长不超过10秒，且被 E19 95字窗口兜底） | **绝不能靠塞无效微动作（会触发 E26）来凑断点**；必须补入真正的三大视觉锚点（亮物证、肢体进退、手头反差动作） |
-| **E25 谜语黑话告警** | 反派故意装神弄鬼说黑话被主角当场打脸拆穿 | 当反派说黑话、而下一句主角立刻用大白话嘲讽拆穿时（如“少扯什么气运锚点，你就是想骗我签卖身契”） | 只要紧跟大白话人话拆穿，即可人工复核放行；若主角自己也在打哑谜，必须改写为大白话直给 |
-| **E26 无效微动作告警** | 安静治愈场里的克制神态 | 若同一条 `△` 里既有神态又有具体物证/肢体动作（如“她微微一怔，手里的药碗啪地砸在青石板上”），机检不会误报 | 仅当整条 `△` 只有“眼神微动/若有所思/推了半寸”而无任何可拍物理结果时，必须替换为可见动作 |
+| **E1 body volume range** | Cutting necessary process to hit the target / padding to hit the target | Some episodes are naturally short (aftermath, pivot); some episodes genuinely need long process | First merge repeated explanations, let one action serve several purposes, and adjust event load. **Never cut a decision or reaction whose removal would make causality jump.** |
+| **E2 single line ≤17 words** | Forcibly chopping complete direct speech into fragments | **Complete, accurate, polite direct speech is valid**; long sentences under power pressure, procedural talk in formal settings, professional handling | If sentences are broadly chopped just to pass the check → revert to full phrasing (see N12) |
+| **E3 scene-count cap** | Splitting one continuous action into multiple scenes artificially to meet the count | One continuous scene can contain several changes of action; a single event may span scenes | Split scenes for real time-and-place reasons, not for count targets |
+| **E4 golden first 3 seconds** | — | None (this is a red line; **no counterexamples**. Action-Persistence episodes may open on an "abnormal action") | Every tier must cut straight into conflict or an abnormal action |
+| **E6 cliffhanger** | Cutting off an answer for no reason just to manufacture a hook | When the episode's payoff is already delivered, the hook only needs to be an unmade choice, a guess about to be tested, or a new cost | A hook may not erase the payoff the episode owes |
+| **E7 emotion shift** | Every episode written at the same volume and the same direction | **Quiet, aftermath, and build-up scenes are valid**; emotion need not be pushed to an extreme every episode | A quiet scene only needs a clear emotional point of view and must change the relationship, meaning, or state |
+| **E9 minimum dialogue lines** | Forcing in filler dialogue | **A brief reaction with no dialogue can still carry weight**; silence, care, or a single action can drive the scene | When short, check the exchange structure first, rather than adding dialogue |
+| **E8 repetition detection** | Flagging functional repetition as a defect | **Repetition that works**: requests, mockery, accusation, confirmation, retraction, mishearing, small talk | If a repetition carries a new function, keep it and note the reason |
+| **E10 compliance red line** | — | None (**automatic veto**; no counterexamples) | Depict violence impressionistically: "thrown back by the force," "bones crack," "falls to the ground" |
+| **E11 long-tier mid-episode hook** | Writing the mid-episode hook as the episode's climax | The mid-episode hook is a **single release** of new information or a new threat, not a second climax | Round B must escalate twice, but the hook stays at about the 90-second mark |
+| **E24 talking-only gap (more than 6 consecutive lines with no △)** | Stuffing in filler gestures like "he nods" or "she blinks" just to clear the alert | Rare cases: a fast courtroom volley of questions, or telegraphic rapid-fire interruptions (total under 10 seconds, and backstopped by the E19 63-word window) | **Never fill the gap with ineffective micro-gestures (this triggers E26).** Insert real visual anchors instead: show a physical exhibit, a body movement forward or back, or a contrasting hands-on action |
+| **E25 riddle/jargon alert** | A villain deliberately speaks mystical jargon and the protagonist exposes it on the spot | When the villain uses jargon and the very next line has the protagonist mock and expose it in plain speech (e.g., "Stop with the fate-anchor nonsense, you just want me to sign a slave contract") | As long as plain-speech exposure follows immediately, human review can pass it. If the protagonist is also speaking in riddles, rewrite to plain, direct speech |
+| **E26 ineffective micro-gesture alert** | Restrained expressions in a quiet, healing scene | If the same △ line contains both an expression and a concrete physical exhibit or body action (e.g., "She startles slightly; the medicine bowl in her hand shatters on the flagstones"), the validator does not false-flag it | Only when the whole △ line contains nothing but "eyes flicker / lost in thought / moves forward half an inch" with no filmable physical result must it be replaced with a visible action |
 
 ---
 
-## §三 机检的三条反向提示（NOTE 级）
+## §3 Three Counter-Signal Hints (NOTE level)
 
-以下三条由 `validate_episode.py` 自动输出，**是"你可能过度修正了"的提醒，不是缺陷**：
+The following three items are output automatically by `validate_episode.py`. **They are reminders that you may have over-corrected, not defects.**
 
-### N12 碎句化提示
-> 触发：连续 ≥5 行对白，每行净字数 ≤4 字。
+### N12 Fragmented-dialogue hint
+> Trigger: 5 or more consecutive dialogue lines, each with ≤3 words of net content.
 
-含义：可能是为了绕开"单句 ≤25 字"而把完整句子机械剁成电报哑谜。**快慢变速（3~5字快刀句 + 8~15字算账句交替）才是好节奏**——连续 5 句以上全是两三个字的短句，会让观众听不懂前因后果。
-处置：保留关键的 1~2 句短促快刀句（如“你敢！”“看清楚！”），将其余碎句合并为把账算清楚的大白话完整句。
+Meaning: this may be a mechanical chopping of complete sentences into telegraphic riddles, done to dodge the "single line ≤17 words" cap. **Variable speed (2-3-word sharp lines alternating with 5-10-word ledger lines) is a good rhythm.** Five or more consecutive lines of two or three words each leave the audience unable to follow the cause and effect.
+Handling: keep the 1-2 key short, sharp lines (e.g., "You dare!" "Look closely!"), and merge the rest of the fragments into complete plain-speech sentences that lay out the ledger clearly.
 
-### N13 堆动作提示
-> 触发：动作行 ≥12 且动作行平均净字数 ≤14，同时对白行 ≤ 本档下限。
-> ⚠️ **豁免**：标了 `【冲突形态】：行动坚持型／混合` 的稿子**不报 N13**——动作多、对白少本来就是行动型的形态特征（准备×质疑），不是“凑体量堆动作”。（③④⑤与缺省仍按对话型判。）
+### N13 Action-line padding hint
+> Trigger: ≥12 action lines with an average net length of ≤9 words, while dialogue lines are at or below this tier's floor.
+> ⚠️ **Exemption**: scripts tagged 【Conflict Mode】: Action-Persistence / Mixed do **not** trigger N13. Many actions and few lines is simply the signature of the action form (preparation × doubt), not "padding volume with actions." (Types ③④⑤ and the default are still judged by the Dialogue standard.)
 
-含义：可能是为凑 E1 体量而堆砌低信息量动作行。**动作多不等于有戏。**
-处置：回到事件负荷——合并重复证明、让同一动作兼任人物/线索/情绪，而不是继续加动作行。
+Meaning: this may be low-information action lines piled up to meet E1 volume. **More action does not mean more drama.**
+Handling: return to event load. Merge repeated proofs, and let one action serve character, clue, and emotion at once, instead of adding more action lines.
 
-### N14 贴下限提示
-> 触发：正文体量贴近本档下限（≤下限+15）且断章卡点段净字数 <20。
+### N14 Thin-episode-at-floor hint
+> Trigger: body volume near this tier's floor (≤ floor + 10 words) and the net word count of the cliffhanger section <13.
 
-含义：可能是为达标而压掉了必要过程，或断章写得太干。**必要过程不能为卡线而删。**
-处置：若确实删掉了"一删就因果跳跃"的决定或反应，补回来并说明；若集本身成立（余波集、快节奏转折集），在交付说明里写明理由即可。
+Meaning: this may be necessary process cut to reach the floor, or a cliffhanger written too thin. **Necessary process must never be cut just to clear a threshold.**
+Handling: if a decision or reaction whose removal would break causality was cut, restore it and explain why. If the episode itself holds up (an aftermath episode, or a fast-paced pivot episode), state the reason in the delivery notes and move on.
 
 ---
 
-## §四 NOTE 触发后的处理流程
+## §4 NOTE Handling Procedure
 
 ```text
-NOTE 出现
-  ├─ 复盘：这是"规则提示"还是"真的改坏了"？
-  │    ├─ 原稿本来就成立 → 不动，在交付说明里记一行「NOTE 已复核，判定成立」
-  │    └─ 确实是为过检而改坏的 → 回退到上一版实现
-  └─ 绝不因为 NOTE 而再做一轮"优化"
+NOTE raised
+  ├─ Review: is this a "rule hint" or did we really break it?
+  │    ├─ Original already holds up → leave it; log one line in delivery notes: "NOTE reviewed, judged valid"
+  │    └─ Really broke it to pass the check → roll back to the previous version
+  └─ Never run another round of "optimization" because of a NOTE
 ```
 
-**修复回退判定**（出现任一即为改坏了，必须回滚）：
+**Rollback criteria** (any one of these means the draft was broken and must be rolled back):
 
-- 逻辑更顺了，但人物更平了；
-- 笑点、压迫感、亲密感、缺陷或余味消失了；
-- 情绪被提前解决了；
-- 风格化的完整句被统一碎句化；
-- 为过机检而注水，或删掉了必要过程。
+- The logic runs smoother, but the characters have become flatter;
+- The laughs, the pressure, the intimacy, the flaws, or the aftertaste have disappeared;
+- Emotion has been resolved early;
+- Stylized full sentences have been uniformly chopped into fragments;
+- Padding was added to pass the check, or necessary process was removed.
 
 ---
 
-## §五 与评审规程的衔接
+## §5 Connection to the Review Protocol
 
-- NOTE 属于**机检层**（`scripts/`），评审问题卡属于**人工层**（`script-doctor-protocol.md`）。两者不互相替代。
-- 评审官**不得**因为机检报了 WARN/NOTE 就直接开问题卡——**必须先核验**（见 `script-doctor-protocol.md` §五）。
-- 反向也要防：**不要用"机检全过"当作质量结论**。机检过了只说明结构与画面密度合规，戏是否成立看 `craft-quality-layer.md`。
+- NOTE belongs to the **validator layer** (`scripts/`); the review issue cards belong to the **human layer** (`script-doctor-protocol.md`). The two do not replace each other.
+- A reviewer **must not** open an issue card just because the validator reported a WARN or NOTE. **Verify first** (see `script-doctor-protocol.md` §5).
+- The reverse also needs guarding against: **do not treat "all validators pass" as a quality verdict.** Passing only shows that structure and on-screen density are compliant. Whether the drama actually works is judged by `craft-quality-layer.md`.

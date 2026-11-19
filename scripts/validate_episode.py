@@ -1,201 +1,255 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""short-drama-factory v4.9 单集剧本机检（分档）
+"""short-drama-factory v4.9 per-episode script validator (by tier)
 
-用法:
-    python validate_episode.py <单集剧本.md> [--format auto|standard|long|manju] [--prev 前集.md ...]
+Usage:
+    python validate_episode.py <episode-script.md> [--format auto|standard|long|comic] [--prev prev.md ...]
     python validate_episode.py --self-test
-    （Windows 用 python；macOS / Linux 用 python3）
+    (Windows: use python; macOS / Linux: use python3)
 
-档位 profile (--format; 默认 auto = 按正文自检: 含"长档"→long, 含"漫剧"→manju, 否则 standard):
-    standard  标准档 90~120 秒   正文体量 实拍 480~850 / 漫剧 330~620   场景 <=2   对白行 >=4
-    long      长档   150~195 秒  正文体量 实拍 820~1400 / 漫剧 660~1150  场景 <=3   对白行 >=8   必设【本集中段小钩】
-    manju     漫剧档 60~90 秒    正文体量 330~620                       场景 <=2   对白行 >=4
+Tier profiles (--format; default auto = detect from the script header, i.e. its first 3 lines:
+    the header contains "long tier" -> long ; contains "comic-drama" -> comic ; otherwise standard):
+    standard  standard tier 90~120 s     body words real-shoot 320~570 / comic 220~415   scenes <=2   dialogue lines >=4
+    long      long tier 150~195 s        body words real-shoot 550~930 / comic 440~765   scenes <=3   dialogue lines >=8   must set 【Mid-Episode Hook】
+    comic     comic-drama tier 60~90 s   body words 220~415                             scenes <=2   dialogue lines >=4
+    (shorthands: --long = --format long ; --comic = --format comic)
 
-检查项 (FAIL=拦截必须修复, WARN=告警复核, NOTE=保护性反例提示, 明确不是缺陷):
-    E1  正文体量【参考带】= 对白+动作行+断章画面（不计【】字段行/[场景][人物]）
-          参考带按【本集时长】动态推导（≈5.0~7.6 字/秒·含动作）；无时长则用档位典型
-          WARN(超参考带，不拦) / FAIL(低于参考带 0.5 倍 = 极端空稿)
-    E2  单句台词(常规 12~18 字 / 爆发金句 8~12) 上限 25 字(超长告警,非拦截)   WARN(逐句 >25)
-          注: 独白/旁白不按此判(改按 E12 的 os_len/vo_len)
-    E3  场景数 <=2 ([场景] 标记计数)                FAIL(>2)
-    E4  黄金前3秒: 首个内容行含冲突信号词（②行动型可用「反常动作」词）      FAIL(无)
-    E5  开篇禁词(起床/拉窗帘/太阳升起/走在路上等)     WARN
-    E6  断章卡点: 存在【本集断章卡点】且含黑屏/悬念   FAIL(缺)
-    E7  情绪流变词: 存在【情绪流变】链条(-> 或 ➔)    WARN(缺)
-    E8  复读检测: 主角台词与前集传入(--prev)重复     WARN(重复句)
-    E9  对白行数: >= 本档位下限(标准/漫剧 4 行, 长档 8 行)  WARN(不足)
-          注: 独白/旁白行不计入对白行数(防用独白充数绕过攻防结构检查)
-    E10 合规红线词(断肢/开膛/下蛊等一票否决直观描写)  FAIL
-    E11 长档中段小钩: 存在【本集中段小钩】(long 档)      FAIL(长档缺)
-    E12 独白/旁白配额: 内心独白 标准1/长档2/漫剧1 处(单处 25/30/20 字); 旁白 ≤1 处·≤12 字  FAIL(超配额)
-    E13 独白/旁白连排: 两条相邻, 或紧贴断章收尾            FAIL
-    E14 独白里写交代设定 / 抽象情绪                       WARN
-    E15 前 3 秒出现独白/旁白(应为场内冲突)                FAIL
-    E16 时长虚标(v4.9.1·全档): 【本集时长】> 台词量可拆时长×1.20      FAIL
-          （v4.9.1: 时长带不带"秒"字均可识别；旧版"：180"无"秒"字会绕过校验）
-          可拆时长 = 纯台词字数÷4.5(参考语速) + 动作行数×动作拍权重 + 5s 留白；动作行字数不参与时长换算
-    E17 长档降级(v3.4.2·long 档): 【本集时长】< 150 秒(长档下限)          FAIL
-    E18 对白语气供给(v3.4.3·对接导演端 V6.9.3 C16 / model-adapters §5.2):
-        E18a 神态短语含空泛情绪结果词(开心/愤怒等)                       WARN
-        E18b 全篇对白行无一处语气词(极端态: 嗓音/发声方式信息整集缺失)    WARN
-    E19 15秒窗口台词密度(v4.0·WARN 生产端建议): 连续对白块 >95 字       WARN
-    E20 动作单段≤40字(v4.2·WARN 软约束): 单条 △ 镜头净字数 >40 字      WARN
-    E21 对白/动作字数黄金比 25%~70%(v4.2·WARN): 对白/(对白+△动作)        WARN
-    E22 台词用语/错别字(常用误用对照，如 竞然/迫不急待/掉过钱…)          WARN(只提示，不拦)
-    E23 冲突形态适配: ②行动坚持型必须设【质疑者配角】                    FAIL
-    E24 干聊断层检测(v4.9·WARN 强画面支撑): 连续纯对白 >6 行无 △ 动作行  WARN
-          解决"没有画面支撑、站桩广播剧"痛点；建议每 2~4 句对白穿插一条强视觉 △
-    E25 谜语黑话检测(v4.9·WARN 大白话直给): 对白含未翻译晦涩黑话/谜语词  WARN
-          解决"说的话想半天才能明白什么意思"痛点；专名与黑话当句须翻译为钱/命/地位等大白话后果
-    E26 无效微动作检测(v4.9·WARN 强视觉锚点): △ 含拍不出的微动作/心理词且无强动作标记 WARN
-          封杀"△ 眼神微动 / 微微一怔 / 推了半寸"等假动作充数，要求落到三大视觉锚点
-          （v4.9.1: 弱微动作被凑长氛围描写包住也须告警；含物证砸碎/肢体对抗等强动作的组合 △ 不误报）
+Checks (FAIL = blocking, must fix; WARN = warning, review; NOTE = protective counterexample hint, explicitly NOT a defect):
+    E1  body word count vs the [Reference Band] = dialogue + action lines + cliffhanger frame
+          (excludes 【】 field lines and [Scene] / [Cast]).
+          The band is derived from 【Episode Length】 (~3.3~5.1 words/s incl. action); without a length, the tier default is used.
+          WARN (outside band, not blocking) / FAIL (below 0.5x the band = extreme empty draft)
+    E2  single dialogue clause (normal 8~12 words / punchy 5~8) cap 17 words (over-long = WARN, not blocking)   WARN (clause > 17)
+          note: monologue / narration are not judged here (they use E12 os_len / vo_len)
+    E3  scene count <= 2 (count of [Scene] markers)                FAIL (>2)
+    E4  golden first 3 seconds: the first content line must contain a conflict signal (Action mode may also use an unusual-action word)   FAIL (none)
+    E5  banned opener clichés (wakes up / draws the curtains / sun rises / walking down the street, etc.)   WARN
+    E6  cliffhanger: 【Episode Cliffhanger】 exists and contains black screen / suspense   FAIL (missing)
+    E7  emotion-shift chain: 【Emotion Shift】 exists with an arrow (-> or ➔)   WARN (missing)
+    E8  repetition check: protagonist line repeats a prior episode passed in (--prev)   WARN (repeated line)
+    E9  dialogue line count: >= tier minimum (standard/comic 4 lines, long 8 lines)   WARN (too few)
+          note: monologue / narration lines do not count as dialogue lines (so they cannot be used to pad past the structure check)
+    E10 compliance red-line words (dismember / disembowel / lingchi etc., one-strike graphic depictions)   FAIL
+    E11 long-tier midpoint hook: 【Mid-Episode Hook】 exists (long tier)      FAIL (long tier missing)
+    E12 monologue / narration quota: inner monologue 1 (standard) / 2 (long) / 1 (comic) per episode (single line 17/20/13 words);
+        narration <= 1 use, <= 8 words                                       FAIL (over quota)
+    E13 monologue / narration back-to-back: two adjacent, or right before the cliffhanger closing   FAIL
+    E14 monologue carrying exposition or abstract emotion                    WARN
+    E15 monologue / narration in the first 3 seconds (should be on-scene conflict)   FAIL
+    E16 inflated duration (v4.9.1, all tiers): 【Episode Length】 > dialogue-derived duration x 1.20      FAIL
+          (v4.9.1: the seconds unit is optional; old "：180" without a unit used to bypass the check)
+          derivable duration = pure dialogue words / 3.0 (reference speech rate) + action lines x action-beat credit + 5 s padding;
+          action-line words do not count toward duration
+    E17 long-tier downgrade (v3.4.2, long tier): 【Episode Length】 < 150 s (long-tier floor)   FAIL
+    E18 tone-cue supply (v3.4.3, aligns with director-side V6.9.3 C16 / model-adapters §5.2):
+        E18a parenthetical contains a vague emotion word (happy / angry, etc.)   WARN
+        E18b no dialogue line in the whole script has a tone cue (extreme case: voice / delivery info missing for the episode)   WARN
+    E19 15-second dialogue density (v4.0, WARN production-side suggestion): consecutive dialogue block > 63 words   WARN
+    E20 single action segment <= 27 words (v4.2, WARN soft limit): one △ shot with > 27 words   WARN
+    E21 dialogue / action word ratio 25%~70% (v4.2, WARN): dialogue / (dialogue + △ action)   WARN
+    E22 dialogue wording / typos (common misuse table, e.g. could of / alot / irregardless)   WARN (hint only, not blocking)
+    E23 conflict-mode fit: Action-Persistence mode must set 【Skeptic Supporting Character】   FAIL
+    E24 dry-talk gap detection (v4.9, WARN strong-visual support): more than 6 consecutive pure-dialogue lines with no △ action line   WARN
+          addresses the "standing-still radio drama" pain point; suggest a strong-visual △ every 2~4 dialogue lines
+    E25 riddle-jargon detection (v4.9, WARN plain-language delivery): dialogue contains untranslated obscure jargon / riddle terms   WARN
+          addresses the "takes forever to understand what is being said" pain point; proper nouns and jargon must be translated
+          into plain consequences (money / life / status)
+    E26 invalid micro-action detection (v4.9, WARN strong-visual anchor): a △ contains an unfilmable micro-action / psychological word
+          with no strong action marker                                       WARN
+          bans fake actions like "△ eyes flicker / slightly stunned / pushed half an inch" that pad the count; requires one of the
+          three visual anchors (v4.9.1: a weak micro-action wrapped in a long atmosphere description still warns; a combined △
+          with a strong action such as an evidence smash or physical clash does not false-positive)
 
-保护性反例 (NOTE 级 —— 提示"你可能过度修正了", 不要求修改; 详见 references/protective-counterexamples.md):
-    N12 碎句化: 连续 >=5 行对白且每行净字数 <=4      NOTE(疑为绕开 E2 而剁碎完整句)
-    N13 堆动作: 动作行 >=12 且均净字数 <=14 且对白行 <= 本档下限  NOTE(疑为凑 E1 体量堆动作)
-    N14 贴下限: 体量 <= 下限+15 且断章段净字数 <20    NOTE(疑为达标而压掉必要过程/断章过干)
-退出码: 0=通过(可含WARN/NOTE), 1=FAIL, 2=用法错误
+Protective counterexamples (NOTE level -- hints that you may have over-corrected; no change required; see references/protective-counterexamples.md):
+    N12 fragmenting: >= 5 consecutive dialogue lines with each line <= 3 words      NOTE (may be chopping full sentences to dodge E2)
+    N13 action padding: >= 12 action lines, each averaging <= 9 words, and dialogue lines <= tier minimum   NOTE (may be padding E1 volume)
+    N14 hugging the floor: volume <= floor + 10 and cliffhanger frame < 13 words     NOTE (may have cut needed process or made the cliffhanger too thin)
+Exit codes: 0 = pass (may contain WARN / NOTE), 1 = FAIL, 2 = usage error
 """
 import re
 import sys
 
-# 剧本文本体量阈值(仅计正文: 对白行 + △动作行 + 断章卡点画面描述)
-NET_MIN, NET_MAX = 480, 850          # 实拍短剧（宽参考带：只抓极端过薄/过厚，中间不卡）
-NET_MIN_ANIME, NET_MAX_ANIME = 330, 620  # 漫剧/竖屏动画
-NET_LONG_MIN, NET_LONG_MAX = 820, 1400        # 长档(150~195秒弹性) 实拍
-NET_LONG_ANIME_MIN, NET_LONG_ANIME_MAX = 660, 1150  # 长档 漫剧/竖屏动画
-SENT_MAX = 25                        # 单句台词上限(WARN 级告警,非拦截; 常规 12~18)
+# Body-volume thresholds in words (body only: dialogue lines + △ action lines + cliffhanger frame description)
+# Converted from the original character counts at 1 English word ~= 1.5 Chinese characters (chars / 1.5, rounded).
+NET_MIN, NET_MAX = 320, 570          # real-shoot short drama (wide reference band: only catches extremely thin / thick scripts)
+NET_MIN_ANIME, NET_MAX_ANIME = 220, 415  # comic-drama / vertical animation
+NET_LONG_MIN, NET_LONG_MAX = 550, 930        # long tier (150~195 s flexible) real-shoot
+NET_LONG_ANIME_MIN, NET_LONG_ANIME_MAX = 440, 765  # long tier comic-drama / vertical animation
+SENT_MAX = 17                        # single dialogue clause cap in words (WARN level, not blocking; normal 8~12)
 
-# ---- 长档时长守恒锚点（v4.3：按实测语速重校——15秒≈95字上限，写作目标 5.5 字/s）----
-LONG_MIN_SEC = 150                   # 长档【本集时长】下限(秒)：低于此即"挂长档名头、交标准档体量"
-DLG_PER_SEC = 4.5                    # 台词→时长换算参考语速(字/s)，用于 E16（容差 ±20%）
-DLG_TARGET = {90: 400, 120: 540, 150: 670, 180: 800, 195: 870}   # 各目标时长的纯台词量【参考中值】(字)，非硬门槛
-WIN15_MAX_CHARS = 95                 # E19: 任何连续对白块净字数上限(字)，≈15秒×6.33字/s触顶
-DRY_DLG_RUN_MAX = 6                  # E24 (v4.9): 连续纯对白无 △ 动作行的最大行数上限（>6 行即告警干聊断层）
+# ---- Long-tier duration anchors (v4.3, recalibrated to measured speech rate: 15 s ~= 63-word cap, target 3.0 words/s) ----
+LONG_MIN_SEC = 150                   # long-tier 【Episode Length】 floor (seconds): below this = "long tier label, standard-tier volume"
+DLG_PER_SEC = 3.0                    # dialogue -> duration reference rate (words/s), used by E16 (tolerance +/-20%)
+DLG_TARGET = {90: 267, 120: 360, 150: 447, 180: 533, 195: 580}   # reference median pure-dialogue words per target duration; not a hard gate
+WIN15_MAX_WORDS = 63                 # E19: max net words in any consecutive dialogue block (~15 s x 4.2 words/s ceiling)
+DRY_DLG_RUN_MAX = 6                  # E24 (v4.9): max consecutive pure-dialogue lines with no △ action line (>6 = dry-talk gap warning)
+ACT_SEG_MAX = 27                     # E20: max words in one △ action shot (WARN)
 
-# ---- 对白语气供给（v3.4.3 · 对接导演端 V6.9.3 C16 / model-adapters §5.2 对白三要素）----
-TONE_WORDS = ("嘶哑", "沙哑", "气音", "颤声", "发颤", "哭腔", "哽咽", "破音", "气若游丝",
-              "有气无力", "低语", "轻声", "柔声", "厉声", "厉喝", "嘶吼", "低吼", "怒喝",
-              "咆哮", "一字一顿", "一字一句", "拖长音", "阴阳怪气", "讥诮", "嗤笑", "冷笑",
-              "咬牙切齿", "压低声音", "压着嗓", "急促", "咬着牙", "冷冷", "淡淡", "沉声",
-              "低声", "高声", "尖声", "声音极低", "声音发", "嗓音", "语气", "颤", "哑",
-              "低声道", "冷声道", "字字")
-E18_VAGUE_WORDS = ("开心", "难过", "生气", "愤怒", "悲伤", "伤心", "高兴", "邪魅", "伤感", "激动")
+# ---- Dialogue tone-cue supply (v3.4.3 · aligns with director-side V6.9.3 C16 / model-adapters §5.2 dialogue triad) ----
+# Matched case-insensitively at a word start (prefix), so "whisper" also hits "whispered".
+TONE_WORDS = ("hoarse", "husky", "breathy", "trembl", "shaky", "tearful", "sobb", "choked", "cracking",
+              "barely", "weak", "whisper", "softly", "gently", "sharply", "bark", "snarl", "roar", "growl",
+              "shout", "word by word", "drawn-out", "sarcas", "mock", "sneer", "scoff", "cold",
+              "gritted", "lowered voice", "low voice", "hushed", "rapid", "calmly", "very low",
+              "loudly", "shrill", "voice", "tone", "stammer", "slurr")
+# Vague emotion words in a parenthetical (E18a); matched as whole words.
+E18_VAGUE_WORDS = ("happy", "happily", "sad", "sadly", "angry", "angrily", "furious", "sorrowful",
+                   "heartbroken", "glad", "seductive", "melancholy", "excited")
 
-# ---- E22 台词用语/错别字（常用误用对照，WARN 级：只提示、不拦）----
+# ---- E22 dialogue wording / typos (common misuse table, WARN level: hint only, not blocking) ----
+# (wrong, right); matched case-insensitively as whole words.
 TYPO_LITERALS = (
-    ("竞然", "竟然"), ("既使", "即使"), ("即然", "既然"),
-    ("迫不急待", "迫不及待"), ("按耐", "按捺"), ("穿流不息", "川流不息"),
-    ("走头无路", "走投无路"), ("挺而走险", "铤而走险"), ("一如继往", "一如既往"),
-    ("按步就班", "按部就班"), ("甘败下风", "甘拜下风"), ("相形见拙", "相形见绌"),
-    ("不加思索", "不假思索"), ("有持无恐", "有恃无恐"), ("天翻地复", "天翻地覆"),
-    ("人情事故", "人情世故"), ("鬼鬼崇崇", "鬼鬼祟祟"), ("声名雀起", "声名鹊起"),
-    ("一愁莫展", "一筹莫展"), ("不径而走", "不胫而走"), ("张慌", "张皇"),
-    ("倍受", "备受"), ("做为", "作为"), ("帐号", "账号"), ("通霄", "通宵"),
-    ("瞪目结舌", "瞠目结舌"), ("蜂涌", "蜂拥"), ("各行其事", "各行其是"),
-    ("断章取意", "断章取义"), ("来不急", "来不及"), ("楞", "愣"),
-    ("攒紧", "攥紧"), ("趔列", "趔趄"), ("踉仓", "踉跄"),
-    ("嘀估", "嘀咕"), ("嘱付", "嘱咐"), ("多嗦", "哆嗦"), ("硬咽", "哽咽"),
+    ("could of", "could have"), ("would of", "would have"), ("should of", "should have"),
+    ("might of", "might have"), ("must of", "must have"),
+    ("alot", "a lot"), ("irregardless", "regardless"),
+    ("for all intensive purposes", "for all intents and purposes"),
+    ("definately", "definitely"), ("seperate", "separate"), ("occured", "occurred"), ("untill", "until"),
+    ("could care less", "couldn't care less"), ("free reign", "free rein"),
+    ("one in the same", "one and the same"), ("nip it in the butt", "nip it in the bud"),
+    ("pass judgement", "pass judgment"), ("taken for granite", "taken for granted"),
 )
 TYPO_REGEX = (
-    (r"掉(?:过|了)[^。！？\n]{0,4}(?:钱|银子)", "「掉」用于钱物不通，口语应为「掏」/「出」"),
+    (r"\bborrow(?:ed|ing)? (?:me|us|him|her|them|you) (?:some |the |a )?(?:money|cash|bucks|dollars)\b",
+     "'borrow' takes money from someone; to hand money to someone, use 'lend' or 'give'"),
 )
 
-# ---- E25 谜语黑话与未翻译设定词（v4.9 新增 · WARN 级：防观众想半天听不懂）----
+# ---- E25 riddle jargon and untranslated setting terms (v4.9 · WARN level: stop viewers from puzzling over lines) ----
 OBSCURE_JARGON_WORDS = (
-    "法则缝隙", "气运锚点", "因果闭环", "维度坍缩", "高维投影",
-    "底层逻辑闭环", "赋能矩阵", "火漏", "哑青", "第七份", "第八份", "把油灯往"
+    "law rift", "fortune anchor", "karmic loop", "dimensional collapse", "higher-dimensional projection",
+    "closed logic loop", "empowerment matrix", "ember leak", "mute jade", "seventh shard", "eighth shard",
+    "tilt the oil lamp toward",
 )
 
-# ---- E26 无效微动作（v4.9 新增 · WARN 级：防镜头拍不出来的假动作充数）----
+# ---- E26 invalid micro-actions (v4.9 · WARN level: stop fake actions that the camera cannot show from padding) ----
 WEAK_MICRO_ACTIONS = (
-    "眼神微动", "眼神微闪", "目光微闪", "目光微动", "微微一怔",
-    "若有所思", "陷入沉思", "嘴角微扬", "嘴角微勾", "推了半寸", "移了半寸"
+    "eyes flicker", "eyes twitch", "gaze flickers", "gaze twitches", "slightly stunned",
+    "lost in thought", "deep in thought", "pensive", "corner of the mouth twitches",
+    "lips curl slightly", "faint smile", "pushed half an inch", "moved half an inch",
 )
 
-# 强动作标记（v4.9.1 新增）：△ 行内命中即视为有可见物理结果/物证对抗，E26 放行。
-# 用于修复"弱微动作被凑长氛围描写包住即绕过检测"的盲区：命中弱词但行内无任何
-# 强动作标记时，无论 △ 行长短都告警（组合△"微微一怔+茶杯砸碎"不误报）。
+# Strong action markers (v4.9.1): if a △ line contains any of these, it has a visible physical result / evidence clash,
+# so E26 lets it pass. Fixes the blind spot where a weak micro-action wrapped in a long atmosphere description slipped past.
+# When a weak word hits but the line has no strong marker, it warns regardless of the line's length
+# (so a combined "slightly stunned + teacup smashes" line does not false-positive).
 STRONG_ACT_MARKERS = (
-    "砸", "摔", "甩", "拍在", "拍桌", "拍案", "重拍", "踹", "踢", "扇",
-    "掀", "撞", "掐", "抓住", "拽", "扯", "泼", "烧", "点燃", "撕",
-    "跪", "瘫", "倒地", "跌", "扔", "抛", "夺", "抢", "掏出", "抽出",
-    "拔出", "按住", "挡", "躲", "冲上", "扑", "抱住", "拖", "绑", "堵住",
-    "捂", "翻过", "推翻", "推开", "推倒", "举", "亮出", "亮明", "逼近",
-    "踉跄", "后退", "转身", "起身", "站起", "碎", "裂", "滚落", "滑落",
-    "溅", "冒出", "涨红", "攥", "捏", "摁", "特写", "推给", "滑到"
+    "smash", "shatter", "slam", "throw", "fling", "hurl", "toss", "kick", "punch", "slap", "flip",
+    "bump", "choke", "grab", "seize", "snatch", "drag", "yank", "tear", "rip", "splash", "burn",
+    "ignite", "kneel", "collapse", "crumple", "fall", "drop", "stagger", "stumble", "step back",
+    "back away", "retreat", "turn", "stand up", "rise", "crack", "spill", "pour", "roll off", "slide",
+    "clench", "pinch", "press", "close-up", "close in", "lunge", "pounce", "rush", "block", "dodge",
+    "pin", "pull", "push", "shove", "cover", "tie", "draw", "raise", "reveal", "flush", "knock",
+    "overturn", "hit the ground", "spew",
 )
 
-# ---- 独白 / 旁白（非说话的叙述通道）----
-VO_OS_TAGS = ("内心独白", "独白", "心声")            # 只有观众听见的说话人心声
-VO_VO_TAGS = ("旁白", "画外音", "画面字幕", "字幕")   # 第三人称点题 / 时间锚
-VO_EXPO_WORDS = ["事情要从", "这一切都要从", "这一切都因为", "之所以", "众所周知",
-                 "前情", "话说当年", "回顾一下", "背景是", "原来是这样的"]
-VO_ABSTRACT_WORDS = ["五味杂陈", "百感交集", "思绪万千", "心如刀割", "难以言表", "感慨万千"]
+# ---- Monologue / narration (non-spoken narrative channels) ----
+VO_OS_TAGS = ("inner monologue", "monologue", "inner voice")          # only the audience hears the speaker's thoughts
+VO_VO_TAGS = ("narration", "voiceover", "on-screen caption", "caption")  # third-person pointing-out / time anchors
+VO_EXPO_WORDS = ["it all started", "it all began", "everything started", "as everyone knows", "backstory",
+                 "let me explain", "flashback", "the background is"]
+VO_ABSTRACT_WORDS = ["mixed feelings", "a flood of emotions", "a thousand thoughts", "my heart was breaking",
+                     "beyond words", "so many emotions"]
 
 PROFILES = {
-    "auto":     {"scenes": 2, "lines": 4, "midhook": False, "os": 1, "os_len": 25, "vo": 1, "vo_len": 12, "label": "自动分档"},
-    "standard": {"scenes": 2, "lines": 4, "midhook": False, "os": 1, "os_len": 25, "vo": 1, "vo_len": 12, "label": "标准档 90~120 秒"},
-    "long":     {"scenes": 3, "lines": 8, "midhook": True,  "os": 2, "os_len": 30, "vo": 1, "vo_len": 12, "label": "长档 150~195秒弹性"},
-    "manju":    {"scenes": 2, "lines": 4, "midhook": False, "os": 1, "os_len": 20, "vo": 1, "vo_len": 12, "label": "漫剧档 60~90 秒"},
+    "auto":     {"scenes": 2, "lines": 4, "midhook": False, "os": 1, "os_len": 17, "vo": 1, "vo_len": 8, "label": "auto-detect tier"},
+    "standard": {"scenes": 2, "lines": 4, "midhook": False, "os": 1, "os_len": 17, "vo": 1, "vo_len": 8, "label": "standard tier 90~120 s"},
+    "long":     {"scenes": 3, "lines": 8, "midhook": True,  "os": 2, "os_len": 20, "vo": 1, "vo_len": 8, "label": "long tier 150~195 s (flexible)"},
+    "comic":    {"scenes": 2, "lines": 4, "midhook": False, "os": 1, "os_len": 13, "vo": 1, "vo_len": 8, "label": "comic-drama tier 60~90 s"},
 }
 
-OPEN_BAN_WORDS = ["早晨起床", "起床", "拉窗帘", "太阳升起", "醒过来", "走在路上",
-                  "整理衣服", "开车上班", "喝咖啡闲聊", "悠闲的清晨", "阳光明媚的早晨"]
+# Opener clichés that waste the first shot (E5 / E4), matched case-insensitively at a word start.
+OPEN_BAN_WORDS = ["wakes up", "woke up", "wake up", "gets out of bed", "draws the curtains", "pulls the curtains",
+                  "the sun rises", "sunrise", "walking down the street", "walking along the road",
+                  "straightens his clothes", "straightens her clothes", "driving to work", "sipping coffee",
+                  "a lazy morning", "a sunny morning"]
 
-CONFLICT_SIGNALS = ["！?", "！", "枪", "刀", "巴掌", "扔", "砸", "吼",
-                    "逼", "跪", "撕", "拍在", "顶在", "推", "踹", "骂", "羞辱", "退婚",
-                    "病危", "签字", "死", "滚", "住手", "救", "断裂", "炸", "烧", "血"]
-ACTION_SIGNALS = ["囤", "搬", "扛", "抬", "焊", "封", "锁", "插销", "装箱", "码",
-                  "发电机", "钢板", "密封", "加固", "抢购", "屯", "备货", "储", "水桶",
-                  "断电", "停水", "挖", "砌", "钻", "拧", "钉", "背", "贴", "算"]
+# E4 conflict signals in the first 3 seconds (punctuation is matched as plain substring).
+CONFLICT_SIGNALS = ["!", "?", "gun", "knife", "slap", "throw", "smash", "shout", "kneel", "tear", "slam",
+                    "shove", "kick", "curse", "humiliat", "divorce", "critical", "sign", "die", "dead", "kill",
+                    "get out", "stop", "save", "break", "explod", "burn", "blood", "punch", "pin", "scream"]
+# Extra action-mode openers (Action mode may open on an unusual action): prep / hoarding / physical work.
+ACTION_SIGNALS = ["stock", "hoard", "carry", "haul", "lift", "weld", "seal", "lock", "bolt", "crate", "stack",
+                  "barrel", "water", "generator", "steel plate", "reinforc", "rush-buy", "stockpile", "supplies",
+                  "power cut", "outage", "dig", "brick", "drill", "twist", "nail", "strap", "tape", "tally"]
 
-BREAK_WORDS = ["断章", "卡点", "黑屏", "悬念"]
+BREAK_WORDS = ["black screen", "suspense", "swipe", "unlock"]
 
-REDLINE_WORDS = ["断肢", "开膛", "破肚", "身首异处", "凌迟", "活埋", "注射死刑", "吸毒",
-                 "制毒", "自杀方法", "下蛊害人", "蛊毒害人", "真实的国家机关"]
+# Red-line one-strike graphic words (E10), matched case-insensitively at a word start.
+REDLINE_WORDS = ("dismember", "disembowel", "decapitat", "buried alive", "lingchi", "lethal injection",
+                 "cook meth", "drug synthesis", "suicide method", "gu poison", "poison curse",
+                 "real government agency")
 
 
-_VO_LINE_RE = re.compile(r"^(内心独白|独白|心声|旁白|画外音|画面字幕|字幕)(（[^）]*）|\([^)]*\))?\s*[:：]\s*(.+)$")
+_VO_LINE_RE = re.compile(
+    r"^(inner monologue|monologue|inner voice|narration|voiceover|on-screen caption|caption)"
+    r"(?:\([^)]*\)|（[^）]*）)?\s*[:：]\s*(.+)$", re.I)
+_DIALOGUE_RE = re.compile(
+    r"^([A-Za-z][A-Za-z .'-]{0,24})(?:\([^)]*\)|（[^）]*）)?\s*[:：]\s*(.+)$")
+_PAREN_RE = re.compile(
+    r"^[A-Za-z][A-Za-z .'-]{0,24}(?:\(([^)]*)\)|（([^）]*)）)?\s*[:：]")
+_LABEL_RE = re.compile(r"\[[^\]]*\]|【[^】]*】")   # [Scene] / 【...】 labels and markers
+_NON_WORD_RE = re.compile(r"[^A-Za-z0-9'’-]+")  # punctuation other than apostrophes and hyphens
+
+
+def count_words(text):
+    """Net word count: drop [..] / 【..】 labels and punctuation, then count whitespace-separated word tokens.
+    Contractions and hyphenated words (don't, life-saving) count as one word."""
+    text = _NON_WORD_RE.sub(" ", _LABEL_RE.sub(" ", text))
+    return sum(1 for tok in text.split() if re.search(r"[A-Za-z0-9]", tok))
+
+
+def _has(s, w, whole=False):
+    """Case-insensitive phrase match. A word starting with a letter must begin at a word boundary
+    (prefix match, so 'smash' hits 'smashed'); whole=True also requires a word end.
+    Punctuation signals ('!', '?') are plain substring matches."""
+    pre = r"(?<![A-Za-z])" if w[:1].isalpha() else ""
+    post = r"(?![A-Za-z])" if whole else ""
+    return re.search(pre + re.escape(w) + post, s, re.I) is not None
+
+
+def _norm_line(s):
+    return re.sub(r"\s+", " ", s).strip().lower()
+
+
+_TYPO_LITERAL_RES = tuple((re.compile(r"\b" + re.escape(bad) + r"\b", re.I), bad, good)
+                          for bad, good in TYPO_LITERALS)
+_TYPO_REGEX_RES = tuple((re.compile(pat, re.I), note) for pat, note in TYPO_REGEX)
 
 
 def _vo_line(line):
-    """独白/旁白行 → (kind, 内容)；kind ∈ {'os' 内心独白, 'vo' 旁白/字幕}；非独白行返回 None"""
+    """Monologue / narration line -> (kind, content); kind is 'os' (inner monologue) or 'vo' (narration / caption); None for other lines"""
     s = line.strip()
     if not s or s.startswith(("[", "△", "【", "#", ">")):
         return None
     m = _VO_LINE_RE.match(s)
     if not m:
         return None
-    return ("os" if m.group(1) in VO_OS_TAGS else "vo", m.group(3))
+    return ("os" if m.group(1).lower() in VO_OS_TAGS else "vo", m.group(2))
 
 
 def _is_dialogue(line):
-    """对白行: 角色名(可选括号提示): 台词  —— 不以[ △ 【开头，且不是独白/旁白行"""
+    """Dialogue line: Speaker (optional parenthetical): line -- does not start with [ △ 【 and is not a monologue / narration line"""
     s = line.strip()
     if not s or s.startswith(("[", "△", "【", "#", ">")):
         return None
     if _vo_line(s):
         return None
-    m = re.match(r"^([\u4e00-\u9fa5A-Za-z0-9]{1,8})(（[^）]*）|\([^)]*\))?\s*[:：]\s*(.+)$", s)
-    return m.group(3) if m else None
+    m = _DIALOGUE_RE.match(s)
+    return m.group(2) if m else None
 
 
 def _paren_of(line):
-    """对白行的神态短语（括号内容）→ str；无括号或非对白行返回 ''"""
+    """Parenthetical (tone / action cue) of a dialogue line -> str; '' if no parenthetical or not a dialogue line"""
     s = line.strip()
     if not s or _vo_line(s) is not None:
         return ""
-    m = re.match(r"^[\u4e00-\u9fa5A-Za-z0-9]{1,8}(?:（([^）]*)）|\(([^)]*)\))?\s*[:：]", s)
+    m = _PAREN_RE.match(s)
     if not m:
         return ""
     return (m.group(1) or m.group(2) or "").strip()
 
 
-def net_chars(text):
-    """剧本文本体量: 仅计对白行台词 + 独白/旁白行内容 + △动作指示行内容 + 【本集断章卡点】画面描述"""
+def net_words(text):
+    """Body word count: counts only dialogue lines + monologue / narration content + △ action content + 【Episode Cliffhanger】 frame description"""
     total = 0
     for line in text.splitlines():
         s = line.strip()
@@ -209,66 +263,66 @@ def net_chars(text):
             body = d
         elif s.startswith("△"):
             body = re.sub(r"^△\s*", "", s)
-        elif s.startswith("【本集断章卡点】"):
-            body = re.sub(r"^【本集断章卡点】\s*[:：]?\s*", "", s)
+        elif s.startswith("【Episode Cliffhanger】"):
+            body = re.sub(r"^【Episode Cliffhanger】\s*[:：]?\s*", "", s)
         else:
             continue
-        body = re.sub(r"[\s，。！？；：、…—\-·“”\"'‘’（）()《》!?.]", "", body)
-        total += len(body)
+        total += count_words(body)
     return total
 
 
 def _header_text(text):
-    """只取剧本头部（前 3 行：集标题/档位标注区）"""
+    """Only the script header (first 3 lines: episode title / tier marker area)"""
     return "\n".join(text.splitlines()[:3])
 
 
 def is_anime(text):
-    """漫剧/竖屏动画项目: 头部含 '漫剧' 即按漫剧体量档判 E1"""
-    return "漫剧" in _header_text(text)
+    """Comic-drama / vertical animation project: header contains 'comic-drama' -> judged against the comic body band in E1"""
+    return re.search(r"comic[- ]drama", _header_text(text), re.I) is not None
 
 
 def is_long(text):
-    """长档项目: 头部含 '长档' 即按长档体量判 E1/E3/E9/E11"""
-    return "长档" in _header_text(text)
+    """Long-tier project: header contains 'long tier' -> judged against the long-tier body band in E1/E3/E9/E11"""
+    return re.search(r"long[- ]tier", _header_text(text), re.I) is not None
 
 
 def resolve_profile(text, profile="auto"):
-    """auto 档按正文自检: 含"长档"→long, 含"漫剧"→manju, 否则 standard"""
+    """auto: detect from the header -- 'long tier' -> long, 'comic-drama' -> comic, otherwise standard"""
     if profile != "auto":
         return profile if profile in PROFILES else "standard"
     if is_long(text):
         return "long"
     if is_anime(text):
-        return "manju"
+        return "comic"
     return "standard"
 
 
 def net_band(text, profile):
-    """正文体量【参考带】。优先按剧本自报的【本集时长】动态推导，并按冲突形态微调系数"""
-    m = re.search(r"【本集时长】[：:]\s*(\d+)", text)
+    """Body word count [Reference Band]. Preferentially derived from the script's declared 【Episode Length】, adjusted by conflict mode
+    (rates are the original chars/s rates divided by 1.5)"""
+    m = re.search(r"【Episode Length】[:：]\s*(\d+)", text)
     if m:
         t = int(m.group(1))
         if t > 0:
             _mode = conflict_mode(text)
-            _lo, _hi = (3.5, 5.5) if _mode == "行动型" else ((4.2, 6.5) if _mode == "混合" else (5.0, 7.6))
+            _lo, _hi = (2.3, 3.7) if _mode == "Action" else ((2.8, 4.3) if _mode == "Mixed" else (3.3, 5.1))
             return (round(t * _lo), round(t * _hi))
     if profile == "long":
         return (NET_LONG_ANIME_MIN, NET_LONG_ANIME_MAX) if is_anime(text) else (NET_LONG_MIN, NET_LONG_MAX)
-    if profile == "manju":
+    if profile == "comic":
         return NET_MIN_ANIME, NET_MAX_ANIME
     return (NET_MIN_ANIME, NET_MAX_ANIME) if is_anime(text) else (NET_MIN, NET_MAX)
 
 
 def scene_count(text):
-    return len(re.findall(r"^\[场景\]|^【场景】|^##?\s*场景", text, re.M))
+    return len(re.findall(r"^\[Scene\]|^【Scene】|^##?\s*Scene", text, re.M))
 
 
 def first_content_lines(text, n=3):
     out = []
     for line in text.splitlines():
-        s = line.strip().lstrip("\ufeff").strip()  # v4.9.1: 剥离 BOM，防其挤占前3秒检测窗口
-        if not s or s.startswith(("#", ">", "第", "【", "[")):
+        s = line.strip().lstrip("﻿").strip()  # v4.9.1: strip BOM so it cannot take up the first-3-seconds window
+        if not s or s.startswith(("#", ">", "Episode", "【", "[")):
             continue
         out.append(s)
         if len(out) >= n:
@@ -277,116 +331,119 @@ def first_content_lines(text, n=3):
 
 
 def conflict_mode(text):
-    """冲突形态：对话型（嘴仗）/ 行动型（准备×质疑）/ 混合；缺省=对话型。"""
-    m = re.search(r"【冲突形态】[：:]\s*([^\n【]{1,30})", text)
+    """Conflict mode: Dialogue (verbal fight) / Action (prep x doubt) / Mixed; default = Dialogue.
+    Action-Persistence also maps to Action."""
+    m = re.search(r"【Conflict Mode】[:：]\s*([^\n【]{1,30})", text)
     if m:
-        s = re.split(r"[／/\s、,，]", m.group(1).strip())[0]
-        if "行动" in s:
-            return "行动型"
-        if "混合" in s:
-            return "混合"
-    return "对话型"
+        s = re.split(r"[/／\s,，、|｜]", m.group(1).strip())[0]
+        if "action" in s.lower():
+            return "Action"
+        if "mixed" in s.lower():
+            return "Mixed"
+    return "Dialogue"
 
 
 def validate(text, prev_texts=(), profile="auto"):
     profile = resolve_profile(text, profile)
     prof = PROFILES[profile]
     mode = conflict_mode(text)
-    if mode == "行动型":
+    if mode == "Action":
         lines_min = max(3, prof["lines"] // 2)
-    elif mode == "混合":
+    elif mode == "Mixed":
         lines_min = max(4, prof["lines"] - 2)
     else:
         lines_min = prof["lines"]
-    act_credit = 4.0 if mode == "行动型" else (2.5 if mode == "混合" else 1.5)
+    act_credit = 4.0 if mode == "Action" else (2.5 if mode == "Mixed" else 1.5)
     fails, warns = [], []
-    nc = net_chars(text)
+    nc = net_words(text)
     lo, hi = net_band(text, profile)
     if nc < lo * 0.5:
-        fails.append(f"E1 [{profile}] 正文体量 {nc} 过薄（参考带 {lo}~{hi}；仅拦极端空稿）")
+        fails.append(f"E1 [{profile}] body word count {nc} too thin (reference band {lo}~{hi}; blocks only extreme empty drafts)")
     elif not (lo <= nc <= hi):
-        warns.append(f"E1 正文体量 {nc} 超出参考带 {lo}~{hi}（体量为参考值：按【本集时长】或内容判断，不拦）")
+        warns.append(f"E1 body word count {nc} outside reference band {lo}~{hi} (band is advisory: judge by 【Episode Length】 or content; not blocking)")
 
-    # E2 单气口≤25字：仅限对白行，按标点拆 clause（一行内可有多个气口），逐 clause 净字数 >25 → WARN
+    # E2 single clause <= 17 words: dialogue lines only, split by punctuation into clauses (one line may hold several), clause > 17 words -> WARN
     for line in text.splitlines():
         d = _is_dialogue(line)
         if not d:
             continue
-        for clause in re.split(r"[，。！？；、…—!?;]", d):
-            c = re.sub(r"[\s“”\"‘’（）()《》：:，。！？；、…—]", "", clause)
-            if len(c) > SENT_MAX:
-                warns.append(f"E2 单句台词 {len(c)} 字(>{SENT_MAX}): {c[:18]}…")
+        for clause in re.split(r"[,;!?.…—]", d):
+            n = count_words(clause)
+            if n > SENT_MAX:
+                warns.append(f"E2 dialogue clause {n} words (>{SENT_MAX}): {clause.strip()[:30]}…")
 
     sc = scene_count(text)
     _cap = prof["scenes"]
-    _md = re.search(r"【本集时长】[：:]\s*(\d+)", text)
+    _md = re.search(r"【Episode Length】[:：]\s*(\d+)", text)
     if _md:
         _t = int(_md.group(1))
         if _t > 0:
             _cap = max(_cap, int(round(_t / 75.0)))
     if sc > _cap:
-        fails.append(f"E3 [{profile}] 场景数 {sc} >{_cap}")
+        fails.append(f"E3 [{profile}] scene count {sc} >{_cap}")
     if sc == 0:
-        warns.append("E3 未检出 [场景] 标记，无法核对场景数")
+        warns.append("E3 no [Scene] marker detected, cannot verify scene count")
 
-    head = "".join(first_content_lines(text))
-    banned_hit = any(w in head for w in OPEN_BAN_WORDS)
-    _sig = CONFLICT_SIGNALS + (ACTION_SIGNALS if mode == "行动型" else [])
-    if banned_hit or not any(w in head for w in _sig):
-        fails.append("E4 前3秒无冲突/命中开篇废镜头词(须直接切入冲突顶点，禁铺垫；②行动型可用反常动作)")
+    head = "\n".join(first_content_lines(text))
+    banned_hit = any(_has(head, w) for w in OPEN_BAN_WORDS)
+    _sig = CONFLICT_SIGNALS + (ACTION_SIGNALS if mode == "Action" else [])
+    if banned_hit or not any(_has(head, w) for w in _sig):
+        fails.append("E4 no conflict in the first 3 seconds, or hits an opener banned word "
+                     "(must cut straight to the conflict peak, no setup; Action mode may open on an unusual action)")
     for w in OPEN_BAN_WORDS:
-        if w in head:
-            warns.append(f"E5 开篇疑似废镜头禁词「{w}」")
+        if _has(head, w):
+            warns.append(f"E5 opener may be a stock empty shot, banned word '{w}'")
 
-    if not re.search(r"【本集断章卡点】|\[本集断章", text):
-        fails.append("E6 缺【本集断章卡点】段")
+    if not re.search(r"【Episode Cliffhanger】|\[Episode Cliffhanger", text):
+        fails.append("E6 missing 【Episode Cliffhanger】 section")
     else:
-        seg = re.search(r"【本集断章卡点】(.{0,200})", text, re.S)
-        if seg and not any(w in seg.group(1) for w in ["黑屏", "悬念", "下滑", "解锁"]):
-            warns.append("E6 断章卡点缺黑屏/下滑解锁落点词")
+        seg = re.search(r"【Episode Cliffhanger】(.{0,800})", text, re.S)
+        if seg and not any(_has(seg.group(1), w) for w in BREAK_WORDS):
+            warns.append("E6 cliffhanger lacks a black-screen / swipe-to-unlock landing word")
 
-    if not re.search(r"【情绪流变】.*(->|➔|➔|→)", text):
-        warns.append("E7 缺【情绪流变】链条(应标: 遭受刁难 ➔ … ➔ 绝命断章)")
+    if not re.search(r"【Emotion Shift】.*(->|➔|→)", text):
+        warns.append("E7 missing 【Emotion Shift】 chain (should read: Humiliated ➔ … ➔ Deadly cliffhanger)")
 
-    rounds = 0
     my_lines = [d for d in (_is_dialogue(l) for l in text.splitlines()) if d]
     rounds = len(my_lines)
-    if prof["midhook"] and not re.search(r"【本集中段小钩】|\[本集中段小钩", text):
-        fails.append("E11 长档缺【本集中段小钩】(≈90 秒处必设新信息/新威胁，防滑走)")
+    if prof["midhook"] and not re.search(r"【Mid-Episode Hook】|\[Mid-Episode Hook", text):
+        fails.append("E11 long tier missing 【Mid-Episode Hook】 (set new information / a new threat at ~90 s to prevent drift)")
     if rounds < lines_min:
-        warns.append(f"E9 [{profile}] 对白行仅 {rounds} 行(<{lines_min})，攻防结构不足" + ("（行动型已减半）" if mode == "行动型" else ""))
-    # E23 行动型必须有【质疑者配角】（准备×质疑 的对手位）
-    if mode == "行动型":
-        _q = re.search(r"【质疑者配角】[：:]\s*([^\n]*)", text)
-        if _q and _q.group(1).strip() in ("", "无", "无。", "—", "-"):
-            fails.append("E23 行动型缺【质疑者配角】（对手位缺失：准备×质疑 必须有质疑者；无对手位＝行动流水账）")
+        warns.append(f"E9 [{profile}] only {rounds} dialogue lines (<{lines_min}), exchange structure too thin"
+                     + (" (Action halved)" if mode == "Action" else ""))
+    # E23 Action mode must have a 【Skeptic Supporting Character】 (the opposing seat of prep x doubt)
+    if mode == "Action":
+        _q = re.search(r"【Skeptic Supporting Character】[:：]\s*([^\n]*)", text)
+        if _q and _q.group(1).strip().lower() in ("", "none", "none.", "n/a", "—", "-"):
+            fails.append("E23 Action mode missing 【Skeptic Supporting Character】 (no opposing seat: prep x doubt needs a skeptic; "
+                         "without one it is an action log)")
 
-    # ---- 对白语气供给（E18 · v3.4.3）----
+    # ---- Dialogue tone-cue supply (E18 · v3.4.3) ----
     if my_lines:
         for l in text.splitlines():
             p = _paren_of(l)
             if not p:
                 continue
-            v = [w for w in E18_VAGUE_WORDS if w in p]
+            v = [w for w in E18_VAGUE_WORDS if _has(p, w, whole=True)]
             if v:
-                warns.append(f"E18a 神态短语含空泛情绪词「{'/'.join(v)}」：{p}——"
-                             "改为可执行的语气/画面词（如 压着怒·低语 ／ 指节捏白），"
-                             "规格见 templates/episode-format.md §四")
+                warns.append(f"E18a parenthetical has vague emotion word '{'/'.join(v)}': {p} -- "
+                             "change it to an actionable tone / visual cue (e.g. jaw clenched, low voice | knuckles white), "
+                             "spec in templates/episode-format.md §4")
                 break
         tone_lines = sum(1 for l in text.splitlines()
-                         if _is_dialogue(l) and any(w in _paren_of(l) for w in TONE_WORDS))
+                         if _is_dialogue(l) and any(_has(_paren_of(l), w) for w in TONE_WORDS))
         if tone_lines == 0:
-            warns.append(f"E18b 全篇 {rounds} 行对白无一处语气词（嗓音/发声方式信息整集缺失）——"
-                         "官方对白三要素之三 HOW THEY SOUND 上游缺供：给关键对白补语气词"
-                         "（如（气音·发颤）／（俯身逼近｜甜笑·柔声）），规格见 templates/episode-format.md §四")
+            warns.append(f"E18b none of the {rounds} dialogue lines has a tone cue (voice / delivery info missing for the whole episode) -- "
+                         "the third dialogue element, HOW THEY SOUND, has no upstream supply: add tone cues to key lines "
+                         "(e.g. (breathy, trembling) / (leaning in | sweet smile, gentle)), spec in templates/episode-format.md §4")
 
-    # ---- 独白 / 旁白通道（E12~E15）----
+    # ---- Monologue / narration channel (E12~E15) ----
     seq = []
     for line in text.splitlines():
         s = line.strip()
-        if not s or s.startswith(("#", ">", "[场景", "[人物", "第【")):
+        if not s or s.startswith(("#", ">", "[Scene", "[Cast", "Episode 【")):
             continue
-        if s.startswith("【本集断章卡点】") or s.startswith("[本集断章"):
+        if s.startswith("【Episode Cliffhanger】") or s.startswith("[Episode Cliffhanger"):
             seq.append(("break", s)); continue
         if s.startswith("【"):
             continue
@@ -401,89 +458,91 @@ def validate(text, prev_texts=(), profile="auto"):
     os_cnt = sum(1 for c, _ in seq if c == "os")
     vo_cnt = sum(1 for c, _ in seq if c == "vo")
     if os_cnt > prof["os"]:
-        fails.append(f"E12 [{profile}] 内心独白 {os_cnt} 处 > {prof['os']}：独白是配额制工具，超量即注水")
+        fails.append(f"E12 [{profile}] inner monologue x{os_cnt} > {prof['os']}: monologue is a quota tool, excess is padding")
     if vo_cnt > prof["vo"]:
-        fails.append(f"E12 [{profile}] 旁白/字幕 {vo_cnt} 处 > {prof['vo']}：旁白只服务点题转折")
+        fails.append(f"E12 [{profile}] narration / caption x{vo_cnt} > {prof['vo']}: narration only serves pointing out turns")
     for cls, body in seq:
         if cls in ("os", "vo"):
             cap = prof["os_len"] if cls == "os" else prof["vo_len"]
-            n = len(re.sub(r"[\s，。！？；：、…—\-·“”\"'‘’（）()《》!?.]", "", body))
+            n = count_words(body)
             if n > cap:
-                fails.append(f"E12 {'内心独白' if cls == 'os' else '旁白/字幕'}单处 {n} 字 >{cap}（{body[:14]}…）")
+                fails.append(f"E12 {'inner monologue' if cls == 'os' else 'narration / caption'} single line {n} words >{cap} ({body[:30]}…)")
 
     for i in range(len(seq) - 1):
         if seq[i][0] in ("os", "vo") and seq[i + 1][0] in ("os", "vo"):
-            fails.append("E13 连续两条独白/旁白（禁连排）：独白之间必须隔动作或台词")
+            fails.append("E13 two monologue / narration lines back to back (no back-to-back): separate them with action or dialogue")
             break
     bi = next((i for i, (c, _) in enumerate(seq) if c == "break"), None)
     if bi is not None and bi > 0 and seq[bi - 1][0] in ("os", "vo"):
-        fails.append("E13 独白/旁白紧贴断章收尾：断章必须落在画面/事件上（独白收尾＝软收尾）")
+        fails.append("E13 monologue / narration right before the cliffhanger: the cliffhanger must land on an image / event "
+                     "(a monologue ending is a soft ending)")
 
     for cls, body in seq:
         if cls not in ("os", "vo"):
             continue
         for w in VO_EXPO_WORDS:
-            if w in body:
-                warns.append(f"E14 独白含交代设定/前情信号「{w}」：独白不承担交代设定（红线 2）")
+            if _has(body, w):
+                warns.append(f"E14 monologue carries exposition / backstory signal '{w}': monologue must not deliver setup (red line 2)")
                 break
         for w in VO_ABSTRACT_WORDS:
-            if w in body:
-                warns.append(f"E14 独白写抽象情绪「{w}」：独白要写「具体的账」（我给他生了五个孩子），不写抽象感受")
+            if _has(body, w):
+                warns.append(f"E14 monologue states abstract emotion '{w}': write a concrete ledger (I gave him five children), not abstract feelings")
                 break
 
     for s in first_content_lines(text, 3):
         if _vo_line(s):
-            fails.append("E15 前 3 秒出现独白/旁白：黄金 3 秒必须是场内冲突（独白开场＝软开场，踩红线 1）")
+            fails.append("E15 monologue / narration in the first 3 seconds: the golden 3 seconds must be on-scene conflict "
+                         "(a monologue opening is a soft open; breaks red line 1)")
             break
 
-    # E16 时长虚标 / E17 长档降级
-    # v4.9.1 修复：①【本集时长】带不带「秒」字均可识别（旧版写"：180"会整条绕过校验）；
-    # ②E16 扩为全档生效——任何档位只要标注了【本集时长】就按 4.5 字/s 口径核对防虚标；
-    # E17（<150s 拦降级）仍仅长档生效。
-    m_dur = re.search(r"【本集时长】[：:]?\s*(\d{2,4})(?:\s*秒)?", text)
+    # E16 inflated duration / E17 long-tier downgrade
+    # v4.9.1 fix: (1) the seconds unit is optional in 【Episode Length】 (old "：180" without a unit bypassed the check);
+    # (2) E16 applies to all tiers -- any tier that declares 【Episode Length】 is checked at 3.0 words/s to prevent inflation;
+    # E17 (< 150 s blocked as a downgrade) still applies to the long tier only.
+    m_dur = re.search(r"【Episode Length】[:：]?\s*(\d{2,4})(?:\s*(?:seconds?|secs?|s)\b)?", text, re.I)
     if m_dur:
-        dlg_chars = 0
+        dlg_words = 0
         action_lines = 0
         for line in text.splitlines():
             s = line.strip()
             v = _vo_line(s)
             d = _is_dialogue(s)
             if v is not None:
-                dlg_chars += len(re.sub(r"[\s，。！？；：、…—]", "", v[1]))
+                dlg_words += count_words(v[1])
             elif d is not None:
-                dlg_chars += len(re.sub(r"[\s，。！？；：、…—]", "", d))
+                dlg_words += count_words(d)
             elif s.startswith("△"):
                 action_lines += 1
-        est = dlg_chars / DLG_PER_SEC + action_lines * act_credit + 5
+        est = dlg_words / DLG_PER_SEC + action_lines * act_credit + 5
         claimed = int(m_dur.group(1))
         if claimed > est * 1.20:
             fails.append(
-                f"E16 时长虚标：标注 {claimed}s，按台词量最多可拆 {est:.0f}s"
-                f"（纯台词 {dlg_chars} 字÷4.5字/s【参考语速】 ＋ {action_lines} 动作拍×{act_credit}s[{mode}] ＋ 留白）——"
-                "参考语速 4.5 字/s（局部上限 6.33 × 对白占比 0.7），容差 ±20%；补足台词量或改标真实时长；"
-                "动作行字数不参与时长换算，禁止用氛围 △ 行凑体量虚标")
+                f"E16 inflated duration: labeled {claimed}s, but dialogue supports at most {est:.0f}s "
+                f"(pure dialogue {dlg_words} words / 3.0 words/s reference rate + {action_lines} action beats x {act_credit}s [{mode}] + padding) -- "
+                "reference rate 3.0 words/s (local ceiling 4.2 x dialogue share 0.7), tolerance +/-20%; add dialogue or label the true duration; "
+                "action-line words do not count toward duration, so do not pad volume with atmosphere △ lines to inflate")
 
         if profile == "long" and claimed < LONG_MIN_SEC:
             fails.append(
-                f"E17 长档降级：标注 {claimed}s 低于长档下限 {LONG_MIN_SEC}s——挂着长档名头、交的是标准档体量"
-                f"（纯台词仅 {dlg_chars} 字，可拆 {est:.0f}s）。两条出路：① 补足纯台词量做成真长档"
-                "（150s≈670字 / 180s≈800字 / 195s≈870字 纯台词【参考中值】）；"
-                "② 明确改 --format standard（90~120 秒）。"
-                "禁止用动作行凑体量后标短时长来规避 E16")
+                f"E17 long-tier downgrade: labeled {claimed}s is below the long-tier floor {LONG_MIN_SEC}s -- "
+                f"long-tier label, standard-tier volume (pure dialogue only {dlg_words} words, supports {est:.0f}s). Two ways out: "
+                "(1) add pure dialogue to make a real long tier (150s ~= 447 words / 180s ~= 533 / 195s ~= 580 pure dialogue, reference medians); "
+                "(2) explicitly switch to --format standard (90~120 s). "
+                "Do not pad with action lines and then label a short duration to dodge E16")
 
     for prev in prev_texts:
-        prev_set = set(re.sub(r"\s", "", p) for p in (_is_dialogue(l) for l in prev.splitlines()) if p)
+        prev_set = set(_norm_line(p) for p in (_is_dialogue(l) for l in prev.splitlines()) if p)
         for d in my_lines:
-            dd = re.sub(r"\s", "", d)
-            if dd in prev_set and len(dd) >= 8:
-                warns.append(f"E8 台词与前集复读: {dd[:16]}…")
+            dd = _norm_line(d)
+            if dd in prev_set and count_words(dd) >= 5:
+                warns.append(f"E8 dialogue repeats prior episode: {dd[:40]}…")
 
     for w in REDLINE_WORDS:
-        if w in text:
-            fails.append(f"E10 合规一票否决类直观描写「{w}」")
+        if re.search(r"\b" + re.escape(w), text, re.I):
+            fails.append(f"E10 compliance one-strike graphic depiction '{w}'")
 
-    # ---- E19 15秒窗口台词密度 + E24 连续干聊断层检测（v4.9 新增）----
-    run_chars = 0
+    # ---- E19 15-second dialogue density + E24 consecutive dry-talk gap detection (v4.9) ----
+    run_words = 0
     run_lines = 0
     max_dry_run = 0
     for line in text.splitlines():
@@ -492,24 +551,25 @@ def validate(text, prev_texts=(), profile="auto"):
             continue
         d = _is_dialogue(s)
         if d is not None:
-            run_chars += len(re.sub(r"[\s，。！？；：、…—]", "", d))
+            run_words += count_words(d)
             run_lines += 1
             if run_lines > max_dry_run:
                 max_dry_run = run_lines
             continue
-        if run_chars > WIN15_MAX_CHARS:
-            warns.append(f"E19 15秒窗口台词超量：连续对白 {run_chars} 字超过 {WIN15_MAX_CHARS} 字上限"
-                         f"（对应 {run_chars / 15:.2f} 字/s 触顶 6.33 字/s），建议插入 △动作行断点或拆分")
-        run_chars = 0
+        if run_words > WIN15_MAX_WORDS:
+            warns.append(f"E19 15-second dialogue overload: {run_words} words in a row exceed the {WIN15_MAX_WORDS}-word cap "
+                         f"(= {run_words / 15:.2f} words/s vs. a {WIN15_MAX_WORDS / 15:.2f} words/s ceiling); insert a △ action beat or split")
+        run_words = 0
         run_lines = 0
-    if run_chars > WIN15_MAX_CHARS:
-        warns.append(f"E19 15秒窗口台词超量：连续对白 {run_chars} 字超过 {WIN15_MAX_CHARS} 字上限"
-                     f"（对应 {run_chars / 15:.2f} 字/s 触顶 6.33 字/s），建议插入 △动作行断点或拆分")
+    if run_words > WIN15_MAX_WORDS:
+        warns.append(f"E19 15-second dialogue overload: {run_words} words in a row exceed the {WIN15_MAX_WORDS}-word cap "
+                     f"(= {run_words / 15:.2f} words/s vs. a {WIN15_MAX_WORDS / 15:.2f} words/s ceiling); insert a △ action beat or split")
     if max_dry_run > DRY_DLG_RUN_MAX:
-        warns.append(f"E24 干聊断层：连续 {max_dry_run} 行对白无 △ 动作支撑（上限 {DRY_DLG_RUN_MAX} 行），"
-                     "画面易沦为站桩广播剧——建议每 2~4 句对白穿插一条强视觉 △（物理结果/身份反差/物证对抗）")
+        warns.append(f"E24 dry-talk gap: {max_dry_run} dialogue lines in a row with no △ action support (limit {DRY_DLG_RUN_MAX} lines); "
+                     "the scene risks becoming a static radio drama -- suggest a strong-visual △ every 2~4 dialogue lines "
+                     "(physical result / identity contrast / evidence clash)")
 
-    # ---- E20 动作单段≤40字 + E21 对白/动作黄金比 25%~70% + E26 无效微动作检测（v4.9 新增）----
+    # ---- E20 single action <= 27 words + E21 dialogue/action ratio 25%~70% + E26 invalid micro-action (v4.9) ----
     act_total = 0
     dlg_total = 0
     weak_act_hit = None
@@ -517,531 +577,549 @@ def validate(text, prev_texts=(), profile="auto"):
         s = line.strip()
         if s.startswith("△"):
             body = re.sub(r"^△\s*", "", s)
-            clean_act = re.sub(r"[\s，。！？；：、…—\-·“”\"‘’（）()《》!?.]", "", body)
-            n = len(clean_act)
-            if n > 40:
-                warns.append(f"E20 动作单段{n}字(>40)，建议拆为两个△镜头")
-            # v4.9.1 修复：弱微动作即使被凑长的氛围描写包住（净字数>14）也须告警；
-            # 但行内含强动作标记（物证砸碎/肢体对抗等）的组合 △ 不误报
+            n = count_words(body)
+            if n > ACT_SEG_MAX:
+                warns.append(f"E20 action segment {n} words (>{ACT_SEG_MAX}), consider splitting into two △ shots")
+            # v4.9.1 fix: a weak micro-action still warns even when wrapped in a long atmosphere description (> 14 words);
+            # but a combined △ that has a strong action marker (evidence smash / physical clash) does not false-positive
             if weak_act_hit is None:
                 for w in WEAK_MICRO_ACTIONS:
-                    if w in body:
-                        if not any(m in body for m in STRONG_ACT_MARKERS):
+                    if _has(body, w):
+                        if not any(_has(body, m) for m in STRONG_ACT_MARKERS):
                             weak_act_hit = body
                         break
             act_total += n
         else:
             d = _is_dialogue(s)
             if d is not None:
-                dlg_total += len(re.sub(r"[\s，。！？；：、…—\-·“”\"‘’（）()《》!?.]", "", d))
+                dlg_total += count_words(d)
     if weak_act_hit is not None:
-        warns.append(f"E26 无效微动作：『△ {weak_act_hit}』镜头缺乏可见物理结果或物证对抗——"
-                     "请改为三大视觉锚点（物理破坏/身份反差忙活/物证亮牌），见 references/craft-quality-layer.md §四·补")
+        warns.append(f"E26 invalid micro-action: '△ {weak_act_hit}' has no visible physical result or evidence clash -- "
+                     "rewrite it as one of the three visual anchors (physical destruction / identity-contrast action / evidence reveal), "
+                     "see references/craft-quality-layer.md §4 addendum")
 
     denom = dlg_total + act_total
     if denom > 0:
         ratio = dlg_total / denom
         pct = int(round(ratio * 100))
         if ratio > 0.70:
-            warns.append(f"E21 对白占比{pct}%>70%，缺少肢体冲突与视听调度")
+            warns.append(f"E21 dialogue share {pct}%>70%, lacks physical conflict and audio-visual staging")
         else:
-            _lo = 0.10 if mode == "行动型" else (0.15 if mode == "混合" else 0.25)
+            _lo = 0.10 if mode == "Action" else (0.15 if mode == "Mixed" else 0.25)
             if ratio < _lo:
-                warns.append(f"E21 对白占比{pct}%<{int(_lo*100)}%，缺乏唇枪舌战" + (f"（{mode}已放宽）" if mode != "对话型" else ""))
+                warns.append(f"E21 dialogue share {pct}%<{int(_lo*100)}%, lacks verbal sparring" + (f" ({mode} relaxed)" if mode != "Dialogue" else ""))
 
-    # ---- E22 台词用语/错别字 + E25 谜语黑话与未翻译设定词检测（v4.9 新增）----
+    # ---- E22 dialogue wording / typos + E25 riddle jargon and untranslated setting terms (v4.9) ----
     _hit = set()
     _jargon_hit = set()
     for _raw in text.splitlines():
         _s = _raw.strip()
         if not _s or _s.startswith(("【", "[", "#", ">", "△")):
             continue
-        for _bad, _good in TYPO_LITERALS:
-            if _bad in _s and _bad not in _hit:
+        for _pat, _bad, _good in _TYPO_LITERAL_RES:
+            if _bad not in _hit and _pat.search(_s):
                 _hit.add(_bad)
-                warns.append(f"E22 台词用语：『{_bad}』疑为『{_good}』")
-        for _pat, _note in TYPO_REGEX:
-            _m = re.search(_pat, _s)
-            if _m and _pat not in _hit:
-                _hit.add(_pat)
-                warns.append(f"E22 台词用语：『{_m.group(0)}』——{_note}")
+                warns.append(f"E22 dialogue wording: '{_bad}' is likely '{_good}'")
+        for _pat, _note in _TYPO_REGEX_RES:
+            _m = _pat.search(_s)
+            if _m and _note not in _hit:
+                _hit.add(_note)
+                warns.append(f"E22 dialogue wording: '{_m.group(0)}' -- {_note}")
         for _jw in OBSCURE_JARGON_WORDS:
-            if _jw in _s and _jw not in _jargon_hit:
+            if _jw not in _jargon_hit and _has(_s, _jw):
                 _jargon_hit.add(_jw)
-                warns.append(f"E25 谜语黑话告警：台词含晦涩词『{_jw}』——须当句用大白话直给翻译为具体利害（多少钱/谁死谁活/什么物证）")
+                warns.append(f"E25 jargon alert: dialogue contains obscure term '{_jw}' -- translate it on the spot into plain language "
+                             "with concrete stakes (how much money / who lives or dies / what evidence)")
 
     return fails, warns, nc
 
 
-_PUNCT = "，。！？；：、…—－·“”（）()《》!?."
-_QUOTES = "\"'" + "\u2018\u2019"
-_STRIP_RE = re.compile("[" + re.escape(_PUNCT + _QUOTES) + r"\s]")
-
-FRAG_RUN = 5        # N12: 连续短对白行数阈值（每行净字数 <= 4）
-FRAG_LEN = 4
-DUMP_ACT = 12       # N13: 动作行数阈值
-DUMP_AVG = 14       # N13: 动作行平均净字数上限
-NEAR_LO = 15        # N14: "贴近下限"容差
-BRK_MIN = 20        # N14: 断章段净字数下限
+FRAG_RUN = 5        # N12: consecutive short dialogue lines threshold (each line <= 3 words)
+FRAG_LEN = 3        # N12: short-line cap in words (4 chars ~= 3 words)
+DUMP_ACT = 12       # N13: action-line count threshold
+DUMP_AVG = 9        # N13: average words per action line cap (14 chars ~= 9 words)
+NEAR_LO = 10        # N14: "near the floor" tolerance in words (15 chars ~= 10 words)
+BRK_MIN = 13        # N14: cliffhanger frame word floor (20 chars ~= 13 words)
 
 
 def collect_notes(text, profile="auto"):
-    """保护性反例提示（NOTE 级）—— 明确不是缺陷，提示「可能过度修正了」。"""
+    """Protective counterexample hints (NOTE level) -- explicitly NOT defects; hint that you may have 'over-corrected'."""
     profile = resolve_profile(text, profile)
     prof = PROFILES[profile]
     mode = conflict_mode(text)
     notes = []
 
-    # N12 碎句化：连续 >=FRAG_RUN 行对白，每行净字数 <=FRAG_LEN
+    # N12 fragmenting: >= FRAG_RUN consecutive dialogue lines, each <= FRAG_LEN words
     run, run_start = 0, ""
     for line in text.splitlines():
         d = _is_dialogue(line)
         if d is None:
             continue
-        clean = _STRIP_RE.sub("", d)
-        if len(clean) <= FRAG_LEN:
+        if count_words(d) <= FRAG_LEN:
             if run == 0:
-                run_start = clean
+                run_start = d.strip()
             run += 1
             if run >= FRAG_RUN:
-                notes.append("N12 连续 %d 行以上短对白（≤%d 字），起于「%s」：疑为绕开单句上限而剁碎完整句。"
-                             "完整直说不是缺陷——权力压制/羞耻/正式场合下话可能更客气更完整，而非更碎" % (FRAG_RUN, FRAG_LEN, run_start))
+                notes.append("N12 %d+ consecutive short dialogue lines (<= %d words), starting at '%s': may be chopping full sentences "
+                             "to dodge the clause cap. Saying it in full is not a defect -- under power pressure, shame or formal settings "
+                             "a character may speak more politely and more completely, not in fragments" % (FRAG_RUN, FRAG_LEN, run_start))
                 break
         else:
             run = 0
 
-    # N13 堆动作：动作行 >=DUMP_ACT 且均净字数 <=DUMP_AVG 且对白行 <= 本档下限
+    # N13 action padding: action lines >= DUMP_ACT, average <= DUMP_AVG words, and dialogue lines <= tier minimum
     act, dia = [], []
     for line in text.splitlines():
         s = line.strip()
         if s.startswith("△"):
-            act.append(len(_STRIP_RE.sub("", re.sub(r"^△\s*", "", s))))
+            act.append(count_words(re.sub(r"^△\s*", "", s)))
         else:
             d = _is_dialogue(s)
             if d is not None:
                 dia.append(d)
-    if mode == "对话型" and act and len(act) >= DUMP_ACT and (sum(act) / len(act)) <= DUMP_AVG and len(dia) <= prof["lines"]:
-        notes.append("N13 动作行 %d 条、均 %.1f 字，对白仅 %d 行：疑为凑 E1 体量堆低信息动作行。"
-                     "动作多不等于有戏——应合并重复证明、让同一动作兼任人物/线索/情绪" % (len(act), sum(act) / len(act), len(dia)))
+    if mode == "Dialogue" and act and len(act) >= DUMP_ACT and (sum(act) / len(act)) <= DUMP_AVG and len(dia) <= prof["lines"]:
+        notes.append("N13 %d action lines averaging %.1f words, only %d dialogue lines: may be padding E1 volume with low-information action lines. "
+                     "More action is not more drama -- merge repeated beats and let one action carry character, clue and emotion"
+                     % (len(act), sum(act) / len(act), len(dia)))
 
-    # N14 贴下限：体量 <= 下限+NEAR_LO 且断章段净字数 <BRK_MIN
-    nc = net_chars(text)
+    # N14 hugging the floor: volume <= floor + NEAR_LO and cliffhanger frame < BRK_MIN words
+    nc = net_words(text)
     lo, _hi = net_band(text, profile)
-    m = re.search(r"【本集断章卡点】\s*[:：]?\s*(.*)", text)
-    brk = len(_STRIP_RE.sub("", m.group(1))) if m else 0
+    m = re.search(r"【Episode Cliffhanger】\s*[:：]?\s*(.*)", text)
+    brk = count_words(m.group(1)) if m else 0
     if nc <= lo + NEAR_LO and brk < BRK_MIN:
-        notes.append("N14 体量 %d 贴近本档下限 %d、断章段仅 %d 字：疑为达标而压掉必要过程或断章过干。"
-                     "必要过程不能为卡线而删；若本集本身成立（余波集/快节奏转折集），在交付说明写明理由即可" % (nc, lo, brk))
+        notes.append("N14 body %d is close to this tier's floor %d, cliffhanger frame only %d words: may be cutting necessary process "
+                     "or making the cliffhanger too thin. Necessary process must not be cut just to hit the line; if this episode works on its "
+                     "own (aftershock / fast-turn episode), state the reason in the delivery notes" % (nc, lo, brk))
 
     return notes
 
 
-GOOD = """第【1】集：【龙王令·开局羞辱】
-【黄金前3秒钩子】：极端羞辱
-【情绪流变】：当众受辱 ➔ 隐忍握拳 ➔ 亮令反杀 ➔ 绝命断章
-【本集时长】：105 秒
-[场景]：内景·顶级私人会所·夜
-[人物]：林辰（隐忍龙王）、陈峰（嚣张富二代）、苏清雪（未婚妻）
+GOOD = """Episode 【1】: The Dragon King's Token · Opening Humiliation
+【Golden 3-Second Hook】: Extreme humiliation
+【Emotion Shift】: Publicly humiliated ➔ Swallows rage ➔ Reveals the token and strikes back ➔ Deadly cliffhanger
+【Episode Length】: 105 s
+[Scene]: INT. Private club · top floor · night
+[Cast]: Lin Chen (hidden Dragon King), Chen Feng (arrogant rich heir), Su Qingxue (fiancée)
 
-△ 特写：点燃的雪茄狠狠摁在林辰洗得发白的衣领上，青烟直冒，火星坠落。
-△ 中景：陈峰搂着苏清雪，满脸鄙夷，包厢内保镖环立。
-陈峰（吐出烟圈）：跪下，把这杯脏水喝了，十万块救命钱，本少当场转给你。
-苏清雪（冷漠）：林辰，别不知好歹，认清你自己的身份。
-△ 特写：林辰低垂的眼眸骤抬，垂在身侧的右拳缓缓握紧，指节泛白。
-林辰（声音极低）：三年前你陈家跪着求我救命时，也是这副嘴脸？
-陈峰（恼羞成怒）：你找死！给我废了他双手！
-△ 四名保镖暴起扑上，林辰反手抓住领头手腕顺势一拧，骨裂声起，保镖倒飞砸碎整面酒柜。
-△ 玻璃碎裂，酒水横流，全场死寂，陈峰踉跄后退撞翻茶几。
-陈峰（色厉内荏）：你……你敢动手？你知道我爸是谁吗？
-△ 中景：包厢门被推开，闻讯赶来的酒店经理满头大汗挤进人群，站在一旁不敢出声。
-苏清雪（攥紧手包）：林辰，你今天要是踏出这个门，咱俩的婚事就算彻底完了。
-林辰（掸了掸袖口）：婚事？当年你苏家跪着退婚的时候，怎么不记得提这两个字？
-△ 苏清雪被噎得脸色一阵青一阵白，捏着包带的指节收紧，再没敢抬头。
-林辰：在江城，能让我跪的，只有已故的先人。
-△ 林辰从怀中掏出一枚九龙玄铁令，重重拍在桌上，震得酒杯齐齐炸裂。
-林辰（字字如刀）：传我龙王令，十分钟内，让江城陈氏集团彻底破产。
-△ 特写：陈峰死死盯着令牌上的九龙图腾，双腿剧烈发抖，手机疯狂震动，来电显示"父亲"。
-林辰（声音极低）：三年了，你陈家欠的账，一笔一笔都在这儿。
-陈峰（嘶哑）：我……我错了，我这就去给你赔罪。
-林辰：赔罪的话，留着跟我的律师说。
-△ 陈峰的膝盖一软，扶着茶几才没跪下去。
-苏清雪（发颤）：林辰，我们好歹有过情分，你别赶尽杀绝。
-林辰（淡淡）：情分？你踩着它上台的时候，忘了？
-△ 满堂保镖谁也不敢上前，齐齐往门边退。
-林辰：今天走出这扇门的，我一个都不追究。
-△ 话音一落，保镖们争先恐后涌向门口。
-陈峰（急）：你连他们也收买了？
-林辰：我用不着收买。他们只是比你，看得清形势。
-苏清雪：林辰，看在过去的情分上，放过陈家吧。
-陈峰：爸……爸，你在哪儿啊……
-苏清雪：这些事，我什么都不知道。
-△ 陈峰把脸埋进手里，肩膀一抽一抽地抖。
-△ 陈峰瘫坐在地，手机屏幕还亮着，来电仍在闪。
+△ Close-up: A lit cigar is pressed hard into the collar of Lin Chen's faded shirt; smoke curls up, sparks fall.
+△ Medium shot: Chen Feng holds Su Qingxue, sneering; bodyguards stand around the room.
+Chen Feng (blowing out smoke): Kneel and drink this filthy water, and I'll transfer you the ten thousand for your life-saving money right here.
+Su Qingxue (aloof): Lin Chen, don't be ungrateful. Know your place.
+△ Close-up: Lin Chen's lowered eyes snap up; the fist at his side slowly clenches, knuckles going white.
+Lin Chen (very low voice): Three years ago, when your Chen family was on its knees begging me to save them, did you wear this same face?
+Chen Feng (flushed with rage): You're dead! Break his hands!
+△ Four bodyguards lunge at once; Lin Chen catches the leader's wrist and twists it, bones crack, and a guard flies back to smash a whole liquor cabinet.
+△ Glass shatters, liquor runs across the floor, the whole room goes silent; Chen Feng stumbles back and knocks over a tea table.
+Chen Feng (weakly defiant): You... you dare touch me? Do you know who my father is?
+△ Medium shot: The door swings open; the hotel manager, sweating, squeezes through the crowd and stands by, not daring to speak.
+Su Qingxue (gripping her clutch): Lin Chen, if you walk out that door today, our engagement is over for good.
+Lin Chen (brushing off his cuff): Engagement? When your Su family knelt and begged to cancel our wedding, did you remember to mention that word?
+△ Su Qingxue's face flushes red, then pales; her fingers tighten on the strap of her bag, and she doesn't dare look up again.
+Lin Chen: In Jiangcheng, the only ones who make me kneel are my late ancestors.
+△ Lin Chen pulls a nine-dragon iron token from his coat and slams it on the table; the wine glasses all shatter.
+Lin Chen (cold, every word a blade): Carry my Dragon King's Token: in ten minutes, Chen Group of Jiangcheng goes bankrupt.
+△ Close-up: Chen Feng stares at the nine-dragon emblem on the token; his legs tremble violently, his phone buzzes nonstop, the caller ID reads "Father".
+Lin Chen (very low voice): Three years. Every debt your family owes me is right here, line by line.
+Chen Feng (hoarse): I... I was wrong. I'll go apologize to you right now.
+Lin Chen: Save the apology for my lawyer.
+△ Chen Feng's knees buckle; he grabs the table to keep from kneeling.
+Su Qingxue (trembling voice): Lin Chen, we had a bond once. Don't wipe us out completely.
+Lin Chen (calmly): A bond? Did you forget it when you climbed on top of it?
+△ Not one bodyguard dares step forward; they all back away toward the door.
+Lin Chen: Whoever walks out that door today, I won't chase.
+△ The words have barely landed when the bodyguards scramble for the exit.
+Chen Feng (anxious): You even bought them off?
+Lin Chen: I didn't need to buy them. They just see more clearly which way the wind is blowing.
+Su Qingxue: Lin Chen, for the sake of our past, spare the Chen family.
+Chen Feng: Dad... Dad, where are you...
+Su Qingxue: I don't know anything about any of this.
+△ Chen Feng buries his face in his hands, shoulders shaking.
+△ Chen Feng slumps to the floor; his phone screen is still lit, the call still flashing.
 
-【本集断章卡点】：陈峰颤抖着接通电话，那头传来绝望哭嚎："逆子，你到底得罪了谁？陈家彻底完了！"林辰一步踏出，居高临下逼近。（黑屏：下滑立即解锁第2集）
+【Episode Cliffhanger】: Chen Feng trembles as he answers; a wail of despair comes through: "Rebel son, who on earth did you offend? The Chen family is finished!" Lin Chen steps forward and closes in, looking down at him. (Black screen: swipe to unlock Episode 2 now)
 """
 
-BAD = """第【1】集
-清晨，林辰起床拉开窗帘，太阳升起。他在路上慢慢走。
-陈峰：林辰，你要知道，三年前你害死了我父亲，侵占了我们家三千万的财产，今天我一定要让你血债血偿，把我的东西全部还回来！
-林辰：好的。
-△ 他把断肢捡起来。
+BAD = """Episode 【1】
+Morning. Lin Chen gets out of bed, draws the curtains, the sun rises. He walks slowly down the street.
+Chen Feng: Lin Chen, you need to know that three years ago you killed my father, took thirty million from our family, and today I will make you pay in blood and return everything!
+Lin Chen: Okay.
+△ He picks up the dismembered limb.
 """
 
 
 def self_test():
     ok = 1
+
+    def _long_dlg(n):
+        return "".join(f"Lin Chen: Line {i}, a back-and-forth that drops new information and raises the stakes.\n" for i in range(n))
+
     f, w, nc = validate(GOOD)
     if f:
-        print("FAIL self-test: GOOD 样例不应 FAIL:", f); ok = 0
-    if nc < 100:
-        print("FAIL self-test: GOOD 净字数异常", nc); ok = 0
+        print("FAIL self-test: GOOD sample should not FAIL:", f); ok = 0
+    if nc < 67:
+        print("FAIL self-test: GOOD body word count abnormal", nc); ok = 0
     f, w, _ = validate(BAD)
     if not any("E1" in x for x in f):
-        print("FAIL self-test: BAD 应报 E1 或字数异常"); ok = 0
+        print("FAIL self-test: BAD should report E1 (or word count anomaly)"); ok = 0
     if not any("E4" in x for x in f):
-        print("FAIL self-test: BAD 应报 E4 前3秒无冲突"); ok = 0
+        print("FAIL self-test: BAD should report E4 (no conflict in first 3 seconds)"); ok = 0
     if not any("E6" in x for x in f):
-        print("FAIL self-test: BAD 应报 E6 缺断章"); ok = 0
+        print("FAIL self-test: BAD should report E6 (missing cliffhanger)"); ok = 0
     if not any("E10" in x for x in f):
-        print("FAIL self-test: BAD 应报 E10 红线词"); ok = 0
+        print("FAIL self-test: BAD should report E10 (red-line word)"); ok = 0
     if not any("E5" in x for x in w):
-        print("FAIL self-test: BAD 应报 E5 开篇禁词"); ok = 0
+        print("FAIL self-test: BAD should report E5 (opener banned word)"); ok = 0
 
-    # 回归1: 字段行不应灌入 E1 体量
-    hdr_only = "第【1】集\n【所属阶段】：第X幕・（第 1/80 集 ｜ 往返第 N 回合）\n【黄金前3秒钩子】：极端羞辱型（婚礼当众）\n【情绪流变】：受辱 ➔ 隐忍 ➔ 反杀 ➔ 绝命断章\n【本集时长】：108 秒\n[场景]：内景·会所·夜\n[人物]：林辰、陈峰\n"
-    if net_chars(hdr_only) != 0:
-        print("FAIL self-test: 纯字段/标记行应计 0 字，实得", net_chars(hdr_only)); ok = 0
+    # Regression 1: field lines must not feed E1 body volume
+    hdr_only = ("Episode 【1】\n【Stage】: Act X · (Ep 1/80 | return round N)\n【Golden 3-Second Hook】: Extreme humiliation (wedding public shaming)\n"
+                "【Emotion Shift】: Humiliated ➔ Swallows rage ➔ Strikes back ➔ Deadly cliffhanger\n【Episode Length】: 108 s\n"
+                "[Scene]: INT. Club · night\n[Cast]: Lin Chen, Chen Feng\n")
+    if net_words(hdr_only) != 0:
+        print("FAIL self-test: pure field / marker lines should count 0 words, got", net_words(hdr_only)); ok = 0
 
-    # 回归2: 以 △ 开场的废镜头剧本，E4 必须拦截
-    boring = "第【1】集\n[场景]：内景·客厅·日\n[人物]：甲、乙\n△ 他慢慢走进客厅，端起茶杯喝了一口。\n△ 他看了看窗外。\n甲：今天天气不错。\n乙：是啊。\n甲：那先这样。\n乙：好。\n【本集断章卡点】：两人告别。（黑屏）\n"
+    # Regression 2: a script opening with an empty △ shot must be blocked by E4
+    boring = ("Episode 【1】\n[Scene]: INT. Living room · day\n[Cast]: Ann, Ben\n"
+              "△ He slowly walks into the living room, picks up a teacup and takes a sip.\n"
+              "△ He looks out the window.\nAnn: Nice weather today.\nBen: Yes.\nAnn: Well then, that's it.\nBen: Okay.\n"
+              "【Episode Cliffhanger】: The two say goodbye. (Black screen)\n")
     f, w, _ = validate(boring)
     if not any("E4" in x for x in f):
-        print("FAIL self-test: △ 开场的废镜头剧本应报 E4"); ok = 0
+        print("FAIL self-test: script opening with empty △ shots should report E4"); ok = 0
 
-    # 回归3: 漫剧档体量(330~620)应可用
-    anime = "第【1】集：漫剧\n【情绪流变】：受辱 ➔ 隐忍 ➔ 反杀 ➔ 绝命断章\n[场景]：内景·堂·日\n[人物]：甲、乙\n" + "".join(f"△ 具体的物理动作行编号{i}，可被镜头拍到的行为事件推进本集冲突。\n" for i in range(18)) + "甲：你确定要这么做？\n乙：我确定。\n甲：那就别怪我。\n乙：来吧。\n【本集断章卡点】：灯灭人散，只余一击。（黑屏：下滑解锁）\n"
+    # Regression 3: comic-drama tier body volume (220~415) must be usable
+    anime = ("Episode 【1】: comic-drama\n【Emotion Shift】: Humiliated ➔ Swallows rage ➔ Strikes back ➔ Deadly cliffhanger\n"
+             "[Scene]: INT. Hall · day\n[Cast]: Ann, Ben\n"
+             + "".join(f"△ Concrete physical action beat number {i}, a camera-visible event that pushes the episode's conflict forward.\n" for i in range(18))
+             + "Ann: Are you sure you want to do this?\nBen: I'm sure.\nAnn: Then don't blame me.\nBen: Come on.\n"
+             "【Episode Cliffhanger】: Lights go out, people scatter, only one strike left. (Black screen: swipe to unlock)\n")
     f, w, _ = validate(anime)
     if any("E1" in x for x in f):
-        print("FAIL self-test: 漫剧档不应报 E1 区冲突:", [x for x in f if 'E1' in x]); ok = 0
+        print("FAIL self-test: comic tier should not report E1 conflict:", [x for x in f if 'E1' in x]); ok = 0
 
-    # 回归4: 台词上限 25（WARN 非拦截）
-    longline = "第【1】集\n[场景]：内景\n[人物]：甲\n△ 拍桌。\n甲：这是超过二十五个字的长复合句用来触发告警检查是否生效一二三四五六七八。\n【本集断章卡点】：黑屏（黑屏）\n"
+    # Regression 4: dialogue cap 17 words (WARN, not blocking)
+    longline = ("Episode 【1】\n[Scene]: INT.\n[Cast]: Ann\n△ Slams the table.\n"
+                "Ann: This is a long compound sentence with no pauses that is meant to trigger the warning check and confirm that the cap is actually working in practice today.\n"
+                "【Episode Cliffhanger】: Black screen (black screen)\n")
     f, w, _ = validate(longline)
     if not any("E2" in x for x in w):
-        print("FAIL self-test: >25 字台词应报 E2"); ok = 0
+        print("FAIL self-test: dialogue over 17 words should report E2"); ok = 0
 
-    # 回归5: 长档（150~195 秒弹性）
-    long_body = ("".join(f"△ 受力事件{i}：巴掌扇到半空被反手抓住，冲突再升一级。\n" for i in range(10))
-                 + "".join(f"林辰：第{i}句攻防台词，抛出新信息并抬价施压。\n" for i in range(48)))
-    long_good = ("第【1】集：长档样例（长档·约3分钟）\n【本集时长】：180 秒\n"
-                 "[场景]：内景·会所·夜\n[场景]：内景·走廊·夜\n[人物]：林辰、陈峰\n"
+    # Regression 5: long tier (150~195 s flexible)
+    long_body = ("".join(f"△ Force event {i}: a slap is caught mid-air and twisted back, the conflict climbs another level.\n" for i in range(10))
+                 + _long_dlg(48))
+    long_good = ("Episode 【1】: long-tier sample (long tier · about 3 minutes)\n【Episode Length】: 180 s\n"
+                 "[Scene]: INT. Private club · night\n[Scene]: INT. Corridor · night\n[Cast]: Lin Chen, Chen Feng\n"
                  + long_body
-                 + "【本集中段小钩】：手机亮起病危通知单，缴费截止今晚，对面按下挂断键。\n"
-                 + "△ 林辰反手拧腕，骨裂声起，铁棍滚落。\n"
-                 + "【本集断章卡点】：电话那头传来绝望哭嚎，陈峰双腿发抖。（黑屏：下滑解锁第2集）\n")
+                 + "【Mid-Episode Hook】: The phone lights up with a critical-condition notice, payment due tonight, and on the other end the caller hangs up.\n"
+                 + "△ Lin Chen twists the wrist back, bones crack, and the iron bar rolls off.\n"
+                 + "【Episode Cliffhanger】: A wail of despair comes from the other end of the line; Chen Feng's legs tremble. (Black screen: swipe to unlock Episode 2)\n")
     f, w, nc = validate(long_good)
     if f:
-        print("FAIL self-test: 长档样例不应 FAIL:", f, "体量", nc); ok = 0
+        print("FAIL self-test: long-tier sample should not FAIL:", f, "body", nc); ok = 0
     if not (NET_LONG_MIN <= nc <= NET_LONG_MAX):
-        print(f"FAIL self-test: 长档样例体量 {nc} 应在 {NET_LONG_MIN}~{NET_LONG_MAX}"); ok = 0
-    f, _, _ = validate(long_good.replace("【本集中段小钩】", "【中段】"))
+        print(f"FAIL self-test: long-tier sample body {nc} should be within {NET_LONG_MIN}~{NET_LONG_MAX}"); ok = 0
+    f, _, _ = validate(long_good.replace("【Mid-Episode Hook】", "【Midpoint】"))
     if not any("E11" in x for x in f):
-        print("FAIL self-test: 长档缺中段小钩应报 E11"); ok = 0
-    f, _, _ = validate(long_good.replace(
-        "".join(f"林辰：第{i}句攻防台词，抛出新信息并抬价施压。\n" for i in range(48)),
-        "".join(f"林辰：第{i}句攻防台词，抛出新信息并抬价施压。\n" for i in range(16))))
+        print("FAIL self-test: long tier missing midpoint hook should report E11"); ok = 0
+    f, _, _ = validate(long_good.replace(_long_dlg(48), _long_dlg(16)))
     if not any("E16" in x for x in f):
-        print("FAIL self-test: 台词量不足仍标 180 秒应报 E16 时长虚标:", f); ok = 0
-    f, _, _ = validate(long_good.replace("【本集时长】：180 秒", "【本集时长】：110 秒"), profile="long")
+        print("FAIL self-test: too few dialogue lines while labeling 180 s should report E16 inflated duration:", f); ok = 0
+    f, _, _ = validate(long_good.replace("【Episode Length】: 180 s", "【Episode Length】: 110 s"), profile="long")
     if not any("E17" in x for x in f):
-        print("FAIL self-test: 长档标 110 秒应报 E17 长档降级:", f); ok = 0
+        print("FAIL self-test: long tier labeled 110 s should report E17 downgrade:", f); ok = 0
     for _d in (150, 180, 195):
-        f, _, _ = validate(long_good.replace("【本集时长】：180 秒", f"【本集时长】：{_d} 秒"), profile="long")
+        f, _, _ = validate(long_good.replace("【Episode Length】: 180 s", f"【Episode Length】: {_d} s"), profile="long")
         if any("E17" in x for x in f):
-            print(f"FAIL self-test: 长档标 {_d} 秒不应报 E17:", [x for x in f if "E17" in x]); ok = 0
+            print(f"FAIL self-test: long tier labeled {_d} s should not report E17:", [x for x in f if "E17" in x]); ok = 0
     f, w, _ = validate(GOOD, profile="long")
     if not any("E11" in x for x in f):
-        print("FAIL self-test: 标准档样本按 long 显式机检应报 E11"); ok = 0
+        print("FAIL self-test: standard sample checked explicitly as long should report E11"); ok = 0
     f, _, _ = validate(BAD, profile="long")
     if not any("E1" in x for x in f):
-        print("FAIL self-test: 极端空稿应报 E1"); ok = 0
-    f, _, _ = validate(long_good.replace("【本集时长】：180 秒", "【本集时长】：60 秒"), profile="manju")
+        print("FAIL self-test: extreme empty draft should report E1"); ok = 0
+    f, _, _ = validate(long_good.replace("【Episode Length】: 180 s", "【Episode Length】: 60 s"), profile="comic")
     if any("E1" in x for x in f):
-        print("FAIL self-test: 体量超参考带上限不应 FAIL:", [x for x in f if "E1" in x]); ok = 0
-    f, _, _ = validate(long_good + "[场景]：内景·车库·夜\n[场景]：内景·天台·夜\n")
+        print("FAIL self-test: exceeding the reference band upper limit should not FAIL:", [x for x in f if "E1" in x]); ok = 0
+    f, _, _ = validate(long_good + "[Scene]: INT. Garage · night\n[Scene]: INT. Rooftop · night\n")
     if not any("E3" in x for x in f):
-        print("FAIL self-test: 长档 4 场景应报 E3"); ok = 0
+        print("FAIL self-test: long tier with 4 scenes should report E3"); ok = 0
 
-    # ---- 保护性反例（NOTE 级）回归 ----
+    # ---- Protective counterexamples (NOTE level) regression ----
     n = collect_notes(GOOD)
     if n:
-        print("FAIL self-test: GOOD 样例不应产生 NOTE:", n); ok = 0
+        print("FAIL self-test: GOOD sample should not produce NOTE:", n); ok = 0
     n = collect_notes(long_good)
     if n:
-        print("FAIL self-test: 长档样例不应产生 NOTE:", n); ok = 0
+        print("FAIL self-test: long-tier sample should not produce NOTE:", n); ok = 0
 
-    frag = ("第【1】集\n[场景]：内景·堂·日\n[人物]：甲、乙\n△ 巴掌扇到半空被反手抓住。\n"
-            "甲：跪下。\n乙：凭什么。\n甲：闭嘴。\n乙：你敢。\n甲：再说。\n乙：罢了。\n"
-            "【本集断章卡点】：巴掌落下，满堂死寂，门外脚步声骤起，全家齐齐转头望去，画面定住。（黑屏：下滑立即解锁第2集）\n")
+    frag = ("Episode 【1】\n[Scene]: INT. Main hall · day\n[Cast]: Ann, Ben\n△ A slap is caught mid-air by the wrist.\n"
+            "Ann: Kneel.\nBen: On what grounds?\nAnn: Shut up.\nBen: You dare?\nAnn: Say it again.\nBen: Fine.\n"
+            "【Episode Cliffhanger】: The slap lands, the whole hall goes silent, footsteps rush outside, every head turns toward the door, the frame freezes. (Black screen: swipe to unlock Episode 2 now)\n")
     if not any("N12" in x for x in collect_notes(frag)):
-        print("FAIL self-test: 连续短对白应报 N12 碎句化"); ok = 0
+        print("FAIL self-test: consecutive short dialogue should report N12 fragmenting"); ok = 0
 
-    dump = ("第【1】集\n[场景]：内景\n[人物]：甲\n"
-            + "".join("△ 抬手。\n" for _ in range(14))
-            + "甲：你来了。\n"
-            + "【本集断章卡点】：门开，光涌进来，甲缓缓抬头，画面定住，下滑立即解锁下一集内容。\n")
+    dump = ("Episode 【1】\n[Scene]: INT.\n[Cast]: Ann\n"
+            + "".join("△ He raises a hand.\n" for _ in range(14))
+            + "Ann: You're here.\n"
+            + "【Episode Cliffhanger】: The door opens, light floods in, Ann slowly looks up, the frame freezes, swipe to unlock the next episode.\n")
     if not any("N13" in x for x in collect_notes(dump)):
-        print("FAIL self-test: 堆低信息动作行应报 N13"); ok = 0
+        print("FAIL self-test: low-information action padding should report N13"); ok = 0
 
-    thin = ("第【1】集\n[场景]：内景\n[人物]：甲\n△ 把刀拍在桌上。\n甲：说。\n"
-            "【本集断章卡点】：黑屏。\n")
+    thin = ("Episode 【1】\n[Scene]: INT.\n[Cast]: Ann\n△ He slams a knife on the table.\nAnn: Speak.\n"
+            "【Episode Cliffhanger】: Black screen.\n")
     if not any("N14" in x for x in collect_notes(thin)):
-        print("FAIL self-test: 体量贴下限且断章过干应报 N14"); ok = 0
+        print("FAIL self-test: body hugging the floor with a thin cliffhanger should report N14"); ok = 0
 
     for sample in (frag, dump, thin, GOOD):
         f, _, _ = validate(sample)
         bad = [x for x in f if re.match(r"^N\d", x)]
         if bad:
-            print("FAIL self-test: NOTE 级不应出现在 FAIL 列表:", bad); ok = 0
+            print("FAIL self-test: NOTE level should not appear in the FAIL list:", bad); ok = 0
 
-    # ---- 独白 / 旁白（VO）回归 ----
-    vo_fill = ("第【1】集\n[场景]：内景·堂屋·日\n[人物]：周韶华、二儿媳\n"
-               "△ 巴掌扇到半空被反手抓住，满堂死寂。\n"
-               "二儿媳：周韶华你说是不是。\n"
-               "△ 周韶华的手攥紧围裙，指节发白。\n"
-               "内心独白：我给他生了五个孩子。\n"
-               "△ 二儿媳抬手指着她鼻尖。\n"
-               "周韶华：我说是。\n"
-               "△ 满堂人齐齐转头。\n"
-               "旁白：老实人反抗了。\n"
-               "二儿媳：你说。\n"
-               "【本集断章卡点】：门被踹开，满堂死寂。（黑屏：下滑立即解锁第2集）\n")
+    # ---- Monologue / narration (VO) regression ----
+    vo_fill = ("Episode 【1】\n[Scene]: INT. Main hall · day\n[Cast]: Helen, Second Daughter-in-law\n"
+               "△ A slap is caught mid-air by the wrist, the whole hall goes dead silent.\n"
+               "Second Daughter-in-law: Helen, tell me the truth.\n"
+               "△ Helen's hand tightens on her apron, knuckles white.\n"
+               "Inner Monologue: I gave him five children.\n"
+               "△ The daughter-in-law jabs a finger at her nose.\n"
+               "Helen: I say yes.\n"
+               "△ Everyone in the hall turns their heads at once.\n"
+               "Narration: The meek one fought back.\n"
+               "Second Daughter-in-law: Say it.\n"
+               "【Episode Cliffhanger】: The door is kicked open, the hall falls dead silent. (Black screen: swipe to unlock Episode 2 now)\n")
     f, w, _ = validate(vo_fill)
     if not any("E9" in x for x in w):
-        print("FAIL self-test: 独白不应计入对白行（应报 E9 不足）"); ok = 0
+        print("FAIL self-test: monologue should not count as a dialogue line (should report E9 too few)"); ok = 0
     if any("E12" in x or "E13" in x or "E15" in x for x in f):
-        print("FAIL self-test: 合规的独白样本不应报 E12/E13/E15:", f); ok = 0
+        print("FAIL self-test: compliant monologue sample should not report E12/E13/E15:", f); ok = 0
 
-    vo28 = "我这一辈子给他生了五个孩子，他走的那天我还在灯下缝他的棉袄。"
-    vo_long = ("第【1】集：长档样例（长档·约3分钟）\n[场景]：内景·堂屋·日\n[人物]：周韶华\n"
-               "△ 巴掌扇到半空被反手抓住，满堂死寂。\n"
-               "周韶华：你回来了。\n"
-               "△ 二儿媳抬手指着她鼻尖，满堂人齐齐转头，目光全部钉在她脸上。\n"
-               + f"内心独白：{vo28}\n"
-               + "【本集中段小钩】：手机亮起病危通知单，缴费截止今晚。\n"
-               + "△ 反手拧腕，铁棍滚落。\n甲：跪下。\n"
-               + "【本集断章卡点】：门被踹开，满堂死寂。（黑屏：下滑立即解锁第2集）\n")
+    vo28 = "I gave him five children. The day he died, I was still sewing his jacket by the lamp."
+    vo_long = ("Episode 【1】: long-tier sample (long tier · about 3 minutes)\n[Scene]: INT. Main hall · day\n[Cast]: Helen\n"
+               "△ A slap is caught mid-air by the wrist, the whole hall goes silent.\n"
+               "Helen: You're back.\n"
+               "△ The daughter-in-law jabs a finger at her nose, and everyone turns to stare, eyes nailed to her face.\n"
+               + f"Inner Monologue: {vo28}\n"
+               + "【Mid-Episode Hook】: The phone lights up with a critical notice, payment due tonight.\n"
+               + "△ Twist the wrist back, and the iron bar rolls off.\nAnn: Kneel.\n"
+               + "【Episode Cliffhanger】: The door is kicked open, the hall falls dead silent. (Black screen: swipe to unlock Episode 2 now)\n")
     f, w, _ = validate(vo_long)
     if any(x.startswith("E2 ") for x in w):
-        print("FAIL self-test: 独白不应按台词 25 字上限报 E2:", [x for x in w if x.startswith("E2 ")]); ok = 0
+        print("FAIL self-test: monologue should not hit the E2 dialogue cap:", [x for x in w if x.startswith("E2 ")]); ok = 0
     if any("E12" in x for x in f):
-        print("FAIL self-test: 长档 28 字独白不应报 E12(上限 30):", [x for x in f if "E12" in x]); ok = 0
+        print("FAIL self-test: 18-word long-tier monologue should not report E12 (cap 20):", [x for x in f if "E12" in x]); ok = 0
 
-    f, _, _ = validate(vo_fill.replace("旁白：老实人反抗了。", "内心独白：这一世我谁都不欠了。"))
+    f, _, _ = validate(vo_fill.replace("Narration: The meek one fought back.", "Inner Monologue: This life, I owe nobody anything anymore."))
     if not any("E12" in x for x in f):
-        print("FAIL self-test: 标准档 2 处内心独白应报 E12"); ok = 0
+        print("FAIL self-test: 2 inner monologues in standard tier should report E12"); ok = 0
 
-    f, _, _ = validate("第【1】集\n[场景]：内景·堂屋·日\n[人物]：甲\n△ 巴掌扇到半空被反手抓住。\n"
-                       "内心独白：我给他生了五个孩子。\n旁白：老实人反抗了。\n"
-                       "甲：你说是不是。\n乙：我说是。\n丙：我说不是。\n"
-                       "【本集断章卡点】：门被踹开，满堂死寂。（黑屏：下滑立即解锁第2集）\n")
+    f, _, _ = validate("Episode 【1】\n[Scene]: INT. Main hall · day\n[Cast]: Ann\n△ A slap is caught mid-air by the wrist.\n"
+                       "Inner Monologue: I gave him five children.\nNarration: The meek one fought back.\n"
+                       "Ann: Are you saying so?\nBen: I say yes.\nCara: I say no.\n"
+                       "【Episode Cliffhanger】: The door is kicked open, the hall falls dead silent. (Black screen: swipe to unlock Episode 2 now)\n")
     if not any("E13" in x for x in f):
-        print("FAIL self-test: 连续两条独白应报 E13"); ok = 0
+        print("FAIL self-test: two monologue lines back to back should report E13"); ok = 0
 
-    f, _, _ = validate("第【1】集\n[场景]：内景·堂屋·日\n[人物]：甲\n△ 巴掌扇到半空被反手抓住。\n"
-                       "甲：你说是不是。\n乙：我说是。\n丙：我说不是。\n丁：我说是。\n"
-                       "内心独白：这一世我谁都不欠了。\n"
-                       "【本集断章卡点】：门被踹开，满堂死寂。（黑屏：下滑立即解锁第2集）\n")
+    f, _, _ = validate("Episode 【1】\n[Scene]: INT. Main hall · day\n[Cast]: Ann\n△ A slap is caught mid-air by the wrist.\n"
+                       "Ann: Are you saying so?\nBen: I say yes.\nCara: I say no.\nDan: I say yes.\n"
+                       "Inner Monologue: This life, I owe nobody anything anymore.\n"
+                       "【Episode Cliffhanger】: The door is kicked open, the hall falls dead silent. (Black screen: swipe to unlock Episode 2 now)\n")
     if not any("E13" in x for x in f):
-        print("FAIL self-test: 独白紧贴断章应报 E13"); ok = 0
+        print("FAIL self-test: monologue right before the cliffhanger should report E13"); ok = 0
 
-    f, _, _ = validate("第【1】集\n[场景]：内景·堂屋·日\n[人物]：甲\n"
-                       "内心独白：我给他生了五个孩子。\n△ 巴掌扇到半空被反手抓住。\n"
-                       "甲：你说是不是。\n乙：我说是。\n"
-                       "【本集断章卡点】：门被踹开，满堂死寂。（黑屏：下滑立即解锁第2集）\n")
+    f, _, _ = validate("Episode 【1】\n[Scene]: INT. Main hall · day\n[Cast]: Ann\n"
+                       "Inner Monologue: I gave him five children.\n△ A slap is caught mid-air by the wrist.\n"
+                       "Ann: Are you saying so?\nBen: I say yes.\n"
+                       "【Episode Cliffhanger】: The door is kicked open, the hall falls dead silent. (Black screen: swipe to unlock Episode 2 now)\n")
     if not any("E15" in x for x in f):
-        print("FAIL self-test: 前3秒独白应报 E15"); ok = 0
+        print("FAIL self-test: monologue in the first 3 seconds should report E15"); ok = 0
 
-    f, w, _ = validate(vo_fill.replace("内心独白：我给他生了五个孩子。", "内心独白：这一切都要从三十年前说起。"))
+    f, w, _ = validate(vo_fill.replace("Inner Monologue: I gave him five children.", "Inner Monologue: It all started thirty years ago."))
     if not any("E14" in x for x in w):
-        print("FAIL self-test: 独白交代设定应报 E14"); ok = 0
+        print("FAIL self-test: monologue carrying exposition should report E14"); ok = 0
 
-    # ---- 对白语气供给（E18 · v3.4.3）回归 ----
-    f, w, _ = validate(GOOD.replace("苏清雪（冷漠）：", "苏清雪（生气）："))
+    # ---- Dialogue tone-cue supply (E18 · v3.4.3) regression ----
+    f, w, _ = validate(GOOD.replace("Su Qingxue (aloof):", "Su Qingxue (angry):"))
     if not any("E18a" in x for x in w):
-        print("FAIL self-test: 神态短语空泛情绪词应报 E18a:", [x for x in w if "E18" in x]); ok = 0
+        print("FAIL self-test: vague emotion word in parenthetical should report E18a:", [x for x in w if "E18" in x]); ok = 0
     t2 = GOOD
-    for a, b in (("（吐出烟圈）", "（把玩打火机）"), ("（冷漠）", "（抱臂）"),
-                 ("（声音极低）", "（盯着他）"), ("（恼羞成怒）", "（踹翻椅子）"),
-                 ("（字字如刀）", "（指着令牌）"), ("（色厉内荏）", "（后退半步）"),
-                 ("（嘶哑）", "（攥拳）"), ("（发颤）", "（低头）"), ("（淡淡）", "（转开脸）")):
+    for a, b in (("(blowing out smoke)", "(toying with a lighter)"), ("(aloof)", "(arms folded)"),
+                 ("(very low voice)", "(staring at him)"), ("(cold, every word a blade)", "(pointing at the token)"),
+                 ("(flushed with rage)", "(kicks over a chair)"), ("(weakly defiant)", "(steps back)"),
+                 ("(hoarse)", "(clenches a fist)"), ("(trembling voice)", "(bows head)"), ("(calmly)", "(turns away)")):
         t2 = t2.replace(a, b)
     f, w, _ = validate(t2)
     if not any("E18b" in x for x in w):
-        print("FAIL self-test: 全篇对白零语气词应报 E18b:", [x for x in w if "E18" in x]); ok = 0
-    t3 = GOOD.replace("苏清雪（冷漠）：", "苏清雪（抱臂后退｜冷漠疏离）：")
+        print("FAIL self-test: whole script with zero tone cues should report E18b:", [x for x in w if "E18" in x]); ok = 0
+    t3 = GOOD.replace("Su Qingxue (aloof):", "Su Qingxue (arms folded, stepping back ｜ aloof and distant):")
     f, w, _ = validate(t3)
     if any("E18a" in x or "E18b" in x for x in w):
-        print("FAIL self-test: 合规语气供给不应报 E18:", [x for x in w if "E18" in x]); ok = 0
-    t4 = GOOD.replace("林辰（声音极低）：三年前你陈家跪着求我救命时，也是这副嘴脸？",
-                      "林辰：他竞然敢这么说话。")
+        print("FAIL self-test: compliant tone-cue supply should not report E18:", [x for x in w if "E18" in x]); ok = 0
+    t4 = GOOD.replace("Lin Chen (very low voice): Three years ago, when your Chen family was on its knees begging me to save them, did you wear this same face?",
+                      "Lin Chen: You could of walked away, but you didn't.")
     f, w, _ = validate(t4)
     if not any("E22" in x for x in w):
-        print("FAIL self-test: 错别字应报 E22:", [x for x in w if "E22" in x]); ok = 0
-    _act_body = ("[场景]：内景·楼道·夜\n[人物]：陈默、张叔\n"
-                 + "".join(f"△ 准备动作{i}：他把加固钢板一块块拧上去，火星四溅，处境又安全一层。\n" for i in range(14))
-                 + "张叔（嗤笑）：你这是要把整栋楼拆了重盖一遍啊？\n△ 陈默没抬头，继续拧螺丝。\n"
-                 + "张叔（扬声）：我跟物业打过招呼了，明天就来人拆。\n△ 陈默把螺丝拧到底，手背青筋绷起。\n"
-                 + "张叔（敲了敲钢板）：一宿一宿折腾，你到底图个什么？\n△ 陈默弯腰，把最后一颗铆钉敲进去。\n"
-                 + "陈默（平静）：明天要停电，你现在下楼还来得及。\n△ 陈默转身，把水桶推到门口。\n"
-                 + "张叔（大笑）：停电？就你信这个，疯子。\n【本集中段小钩】：路灯全灭，整片小区陷入黑暗。\n"
-                 + "【本集断章卡点】：楼下传来第二声闷响，备用发电机没响。（黑屏：下滑解锁）\n")
-    _hdr = "第【1】集\n【质疑者配角】：楼下张叔\n【本集时长】：180 秒\n"
-    f1, w1, _ = validate(_hdr + "【冲突形态】：行动型\n" + _act_body, profile="long")
+        print("FAIL self-test: typo should report E22:", [x for x in w if "E22" in x]); ok = 0
+
+    _act_body = ("[Scene]: INT. Stairwell · night\n[Cast]: Ethan, Uncle Dave\n"
+                 + "".join(f"△ Prep beat {i}: he bolts another steel plate on, sparks fly, the position gets one notch safer.\n" for i in range(14))
+                 + "Uncle Dave (sneering): You're going to tear the whole building down and rebuild it?\n"
+                 + "△ Ethan doesn't look up; he keeps turning the bolt.\n"
+                 + "Uncle Dave (loudly): I already talked to the property office. They're coming to demolish it tomorrow.\n"
+                 + "△ Ethan tightens the bolts to the end, the back of his hand corded with tendons.\n"
+                 + "Uncle Dave (knocks on the steel plate): Night after night of this. What do you even want out of it?\n"
+                 + "△ Ethan bends down and hammers the last rivet in.\n"
+                 + "Ethan (calm): The power goes out tomorrow. You still have time to go downstairs now.\n"
+                 + "△ Ethan turns and pushes the water barrel to the door.\n"
+                 + "Uncle Dave (laughing loudly): Power outage? Only you would believe that, you lunatic.\n"
+                 + "【Mid-Episode Hook】: The streetlights all go out; the whole compound sinks into darkness.\n"
+                 + "【Episode Cliffhanger】: A second dull thud comes from downstairs, and the backup generator doesn't start. (Black screen: swipe to unlock)\n")
+    _hdr = "Episode 【1】\n【Skeptic Supporting Character】: Uncle Dave\n【Episode Length】: 180 s\n"
+    f1, w1, _ = validate(_hdr + "【Conflict Mode】: Action\n" + _act_body, profile="long")
     f2, w2, _ = validate(_hdr + _act_body, profile="long")
     if not any("E9" in x for x in w2) or not any("E21" in x for x in w2):
-        print("FAIL self-test: 无形态标记的对白少年应报 E9/E21:", w2); ok = 0
+        print("FAIL self-test: dialogue-mode (no mode marker) sample should report E9/E21:", w2); ok = 0
     if any("E9" in x for x in w1) or any("E21" in x for x in w1):
-        print("FAIL self-test: 行动型不应报 E9/E21:", w1); ok = 0
-    _t6 = ("第【1】集\n【质疑者配角】：张叔\n【本集时长】：150 秒\n[场景]：内景·楼顶\n[人物]：陈默、张叔\n"
-           + "".join(f"△ 准备动作{i}：他把钢板一块块拧上去，火光四溅，处境又安全一层。\n" for i in range(20))
-           + "".join(f"陈默：第{i}句台词，字数大概就是二十个字左右。\n" for i in range(20)))
+        print("FAIL self-test: Action mode should not report E9/E21:", w1); ok = 0
+    _t6 = ("Episode 【1】\n【Skeptic Supporting Character】: Uncle Dave\n【Episode Length】: 150 s\n[Scene]: INT. Rooftop\n[Cast]: Ethan, Uncle Dave\n"
+           + "".join(f"△ Prep beat {i}: he bolts the steel plate on piece by piece, sparks fly, the position gets one notch safer.\n" for i in range(20))
+           + "".join(f"Ethan: Line number {i}, about twelve words of argument goes right here now.\n" for i in range(20)))
     _fa, _, _ = validate(_t6, profile="long")
-    _fb, _, _ = validate("【冲突形态】：行动型\n" + _t6, profile="long")
+    _fb, _, _ = validate("【Conflict Mode】: Action\n" + _t6, profile="long")
     if not any("E16" in x for x in _fa):
-        print("FAIL self-test: 对话型台词少应报 E16"); ok = 0
+        print("FAIL self-test: Dialogue mode with too few lines should report E16"); ok = 0
     if any("E16" in x for x in _fb):
-        print("FAIL self-test: 行动型不应报 E16（动作拍权重）×2.5:", [x for x in _fb if "E16" in x]); ok = 0
-    _t7 = ("第【1】集\n【质疑者配角】：张叔\n【本集时长】：150 秒\n[场景]：内景·楼顶\n[人物]：陈默、张叔\n"
-           + "".join(f"△ 准备动作{i}：他把加固钢板一块块拧上去，火星四溅，处境又安全一层。\n" for i in range(14))
-           + "".join(f"陈默：第{i}句话，说完我就接着干活。\n" for i in range(6)))
+        print("FAIL self-test: Action mode should not report E16 (action beat weight x2.5):", [x for x in _fb if "E16" in x]); ok = 0
+    _t7 = ("Episode 【1】\n【Skeptic Supporting Character】: Uncle Dave\n【Episode Length】: 150 s\n[Scene]: INT. Rooftop\n[Cast]: Ethan, Uncle Dave\n"
+           + "".join(f"△ Prep beat {i}: he bolts a steel plate on, sparks fly, the position gets one notch safer.\n" for i in range(14))
+           + "".join("Ethan: Say it, then I'm straight back to work on the steel.\n" for _ in range(6)))
     _f7n, _w7n, _ = validate(_t7, profile="long")
-    _f7m, _w7m, _ = validate("【冲突形态】：混合\n" + _t7, profile="long")
+    _f7m, _w7m, _ = validate("【Conflict Mode】: Mixed\n" + _t7, profile="long")
     if not any("E9" in x for x in _w7n) or not any("E21" in x for x in _w7n):
-        print("FAIL self-test: 对话型应报 E9/E21:", _w7n); ok = 0
+        print("FAIL self-test: Dialogue mode should report E9/E21:", _w7n); ok = 0
     if any("E9" in x for x in _w7m) or any("E21" in x for x in _w7m):
-        print("FAIL self-test: 混合型不应报 E9/E21:", _w7m); ok = 0
-    _t8 = ("第【1】集\n【质疑者配角】：张叔\n[场景]：内景\n[人物]：陈默、张叔\n"
-           + "".join("△ 他抬手。\n" for _ in range(14))
-           + "张叔：你疯了。\n陈默：嗯。\n张叔：真的疯了。\n陈默：嗯。\n"
-           + "【本集断章卡点】：门被风吹开，钢板在夜里晃了一下，灯灭了。（黑屏：下滑立即解锁第2集）\n")
+        print("FAIL self-test: Mixed mode should not report E9/E21:", _w7m); ok = 0
+    _t8 = ("Episode 【1】\n【Skeptic Supporting Character】: Uncle Dave\n[Scene]: INT.\n[Cast]: Ethan, Uncle Dave\n"
+           + "".join("△ He nods.\n" for _ in range(14))
+           + "Uncle Dave: You're out of your mind.\nEthan: Mm.\nUncle Dave: Really out of your mind.\nEthan: Mm.\n"
+           + "【Episode Cliffhanger】: The door blows open, the steel plate sways in the night, the light goes out. (Black screen: swipe to unlock)\n")
     if not any("N13" in x for x in collect_notes(_t8, "long")):
-        print("FAIL self-test: 对话型堆动作应报 N13"); ok = 0
-    if any("N13" in x for x in collect_notes("【冲突形态】：行动型\n" + _t8, "long")):
-        print("FAIL self-test: 行动型不应报 N13（堆动作豁免）"); ok = 0
-    _t9 = ("第【1】集\n【本集时长】：150 秒\n[场景]：内景·楼道\n[人物]：陈默、张叔\n"
-           "△ 他把三十箱矿泉水一箱箱搬上楼，垛在门口。\n"
-           + "陈默：嗯。\n张叔：嗯。\n陈默：嗯。\n张叔：嗯。\n陈默：嗯。\n张叔：嗯。\n陈默：嗯。\n张叔：嗯。\n"
-           "【本集断章卡点】：灯灭了，门却亮着。（黑屏：下滑解锁）\n")
+        print("FAIL self-test: Dialogue mode action padding should report N13"); ok = 0
+    if any("N13" in x for x in collect_notes("【Conflict Mode】: Action\n" + _t8, "long")):
+        print("FAIL self-test: Action mode should not report N13 (action padding exemption)"); ok = 0
+    _t9 = ("Episode 【1】\n【Episode Length】: 150 s\n[Scene]: INT. Stairwell\n[Cast]: Ethan, Uncle Dave\n"
+           "△ He hauls thirty crates of bottled water up the stairs one by one and stacks them at the door.\n"
+           + "Ethan: Mm.\nUncle Dave: Mm.\nEthan: Mm.\nUncle Dave: Mm.\nEthan: Mm.\nUncle Dave: Mm.\nEthan: Mm.\nUncle Dave: Mm.\n"
+           "【Episode Cliffhanger】: The lights go out, but the door is still lit. (Black screen: swipe to unlock)\n")
     _f9a, _, _ = validate(_t9, profile="long")
-    _f9b, _, _ = validate("【冲突形态】：行动坚持型\n" + _t9, profile="long")
+    _f9b, _, _ = validate("【Conflict Mode】: Action-Persistence\n" + _t9, profile="long")
     if not any("E4" in x for x in _f9a):
-        print("FAIL self-test: 无形态标记时反常动作开场应报 E4"); ok = 0
+        print("FAIL self-test: no mode marker with an unusual-action opener should report E4"); ok = 0
     if any("E4" in x for x in _f9b):
-        print("FAIL self-test: 行动型反常动作开场不应报 E4:", [x for x in _f9b if "E4" in x]); ok = 0
+        print("FAIL self-test: Action mode unusual-action opener should not report E4:", [x for x in _f9b if "E4" in x]); ok = 0
 
-    # ---- E19 15秒窗口台词密度回归 ----
-    e19 = ("第【1】集\n[场景]：内景·堂·日\n[人物]：甲、乙\n△ 巴掌扇到半空被反手抓住。\n"
-           + "".join(f"甲：第{i}轮连续攻防台词，把新证据新代价和施压一步一步讲透抬价压上。\n" for i in range(6))
-           + "乙：我知道了。\n"
-           + "【本集断章卡点】：满堂死寂，画面定住。（黑屏：下滑立即解锁第2集）\n")
+    # ---- E19 15-second dialogue density regression ----
+    e19 = ("Episode 【1】\n[Scene]: INT. Hall · day\n[Cast]: Ann, Ben\n△ A slap is caught mid-air by the wrist.\n"
+           + "".join(f"Ann: Round {i}, a continuous back-and-forth line that walks through new evidence, new cost and pressure, step by step.\n" for i in range(6))
+           + "Ben: I know.\n"
+           + "【Episode Cliffhanger】: The whole hall goes silent, the frame freezes. (Black screen: swipe to unlock Episode 2 now)\n")
     f, w, _ = validate(e19)
     if not any("E19" in x for x in w):
-        print("FAIL self-test: 连续对白超95字应报 E19 WARN:", w); ok = 0
-    e19_ok = ("第【1】集\n[场景]：内景·堂·日\n[人物]：甲、乙\n△ 巴掌扇到半空被反手抓住。\n"
-              "甲：第一轮连续攻防台词，把新证据新代价一步一步讲透抬价。\n△ 甲反手摁住对方手腕。\n"
-              "乙：第二轮连续攻防台词，把新代价和施压一步一步讲透抬价。\n△ 乙后退半步。\n"
-              "甲：第三轮连续攻防台词，把新证据一步一步讲透抬价压上。\n"
-              "【本集断章卡点】：满堂死寂，画面定住。（黑屏：下滑立即解锁第2集）\n")
+        print("FAIL self-test: consecutive dialogue over 63 words should report E19 WARN:", w); ok = 0
+    e19_ok = ("Episode 【1】\n[Scene]: INT. Hall · day\n[Cast]: Ann, Ben\n△ A slap is caught mid-air by the wrist.\n"
+              "Ann: First round of continuous back-and-forth, walking through new evidence, new cost and pressure step by step.\n△ Ann grips the other's wrist.\n"
+              "Ben: Second round of continuous back-and-forth, carrying new cost and pressure step by step.\n△ Ben steps back half a pace.\n"
+              "Ann: Third round of continuous back-and-forth, pressing new evidence on top step by step.\n"
+              "【Episode Cliffhanger】: The whole hall goes silent, the frame freezes. (Black screen: swipe to unlock Episode 2 now)\n")
     f, w, _ = validate(e19_ok)
     if any("E19" in x for x in w):
-        print("FAIL self-test: 带动作行断点的对白不应报 E19:", w); ok = 0
+        print("FAIL self-test: dialogue with action-beat breaks should not report E19:", w); ok = 0
 
-    # ---- E20 动作单段≤40字 / E21 对白动作黄金比回归 ----
-    e20 = ("第【1】集\n[场景]：内景·堂·日\n[人物]：甲、乙\n"
-           "△ 特写：陈峰死死盯着桌上令牌上的九龙图腾，双腿剧烈发抖手机疯狂震动不停，来电显示父亲两个字整个人瘫软在地上再也站不起来。\n"
-           "甲：跪下。\n乙：你敢。\n甲：闭嘴。\n乙：罢了。\n"
-           "【本集断章卡点】：门被踹开，满堂死寂。（黑屏：下滑立即解锁第2集）\n")
+    # ---- E20 single action <= 27 words / E21 dialogue-action ratio regression ----
+    e20 = ("Episode 【1】\n[Scene]: INT. Hall · day\n[Cast]: Ann, Ben\n"
+           "△ Close-up: Chen Feng stares hard at the nine-dragon emblem on the token on the table, his legs tremble violently, his phone buzzes nonstop, the caller ID reads Father, and he collapses onto the floor, unable to stand up again.\n"
+           "Ann: Kneel.\nBen: You dare?\nAnn: Shut up.\nBen: Fine.\n"
+           "【Episode Cliffhanger】: The door is kicked open, the hall falls dead silent. (Black screen: swipe to unlock Episode 2 now)\n")
     f, w, _ = validate(e20)
     if not any(x.startswith("E20 ") for x in w):
-        print("FAIL self-test: 单条△动作>40字应报 E20 WARN:", w); ok = 0
-    bal_ok = ("第【1】集\n[场景]：内景·堂·日\n[人物]：甲、乙\n△ 巴掌扇到半空被反手抓住。\n"
-              "甲：你今天必须把这笔账给我算清楚。\n△ 甲反手摁住对方手腕。\n"
-              "乙：我没什么好跟你算清楚的。\n△ 乙后退半步。\n"
-              "甲：那就别怪我翻脸不认人。\n"
-              "【本集断章卡点】：满堂死寂。（黑屏：下滑解锁）\n")
+        print("FAIL self-test: single △ action over 27 words should report E20 WARN:", w); ok = 0
+    bal_ok = ("Episode 【1】\n[Scene]: INT. Hall · day\n[Cast]: Ann, Ben\n△ Smack hits mid-air, caught by the wrist.\n"
+              "Ann: You're going to settle this debt with me today.\n△ Ann grips the other's wrist.\n"
+              "Ben: I've got nothing to settle with you.\n△ Ben steps back half a pace.\n"
+              "Ann: Then don't blame me for turning on you.\n"
+              "【Episode Cliffhanger】: The hall falls dead silent. (Black screen: swipe to unlock)\n")
     f, w, _ = validate(bal_ok)
     if any(x.startswith("E20 ") for x in w):
-        print("FAIL self-test: 短△镜头不应报 E20:", w); ok = 0
+        print("FAIL self-test: short △ shots should not report E20:", w); ok = 0
     if any(x.startswith("E21 ") for x in w):
-        print("FAIL self-test: 均衡对白动作比不应报 E21:", w); ok = 0
-    e21_high = ("第【1】集\n[场景]：内景·堂·日\n[人物]：甲、乙\n△ 拍桌。\n"
-                + "".join(f"甲：第{i}轮唇枪舌战，抛出新证据新代价并步步抬价施压。\n" for i in range(8))
-                + "【本集断章卡点】：满堂死寂。（黑屏：下滑解锁）\n")
+        print("FAIL self-test: balanced dialogue/action ratio should not report E21:", w); ok = 0
+    e21_high = ("Episode 【1】\n[Scene]: INT. Hall · day\n[Cast]: Ann, Ben\n△ Slap.\n"
+                + "".join(f"Ann: Round {i}, a lip-and-tongue duel that drops new evidence and new cost and presses the pressure step by step.\n" for i in range(8))
+                + "【Episode Cliffhanger】: The hall falls dead silent. (Black screen: swipe to unlock)\n")
     f, w, _ = validate(e21_high)
     if not any(x.startswith("E21 ") and ">70%" in x for x in w):
-        print("FAIL self-test: 对白占比>70%应报 E21 WARN:", w); ok = 0
-    e21_low = ("第【1】集\n[场景]：内景·堂·日\n[人物]：甲、乙\n"
-               + "".join(f"△ 第{i}拍具体物理动作，镜头可拍的行为事件推进冲突再升级。\n" for i in range(8))
-               + "甲：来。\n"
-               + "【本集断章卡点】：满堂死寂。（黑屏：下滑解锁）\n")
+        print("FAIL self-test: dialogue share over 70% should report E21 WARN:", w); ok = 0
+    e21_low = ("Episode 【1】\n[Scene]: INT. Hall · day\n[Cast]: Ann, Ben\n"
+               + "".join(f"△ Beat {i}: a concrete physical action, a camera-visible event that pushes conflict further.\n" for i in range(8))
+               + "Ann: Come.\n"
+               + "【Episode Cliffhanger】: The hall falls dead silent. (Black screen: swipe to unlock)\n")
     f, w, _ = validate(e21_low)
     if not any(x.startswith("E21 ") and "<25%" in x for x in w):
-        print("FAIL self-test: 对白占比<25%应报 E21 WARN:", w); ok = 0
+        print("FAIL self-test: dialogue share under 25% should report E21 WARN:", w); ok = 0
 
-    # ---- v4.9 新增：E24 干聊断层 / E25 谜语黑话 / E26 无效微动作回归 ----
-    # T10: 连续 7 行对白无 △ 支撑（哪怕总字数 <95 不触发 E19）→ 必须触发 E24 WARN
-    e24_dry = ("第【1】集\n[场景]：内景·堂·日\n[人物]：甲、乙\n△ 巴掌扇到半空被反手抓住。\n"
-               "甲（厉声）：把钱交出来！\n乙（冷笑）：没钱！\n甲：你找死！\n乙：你敢动我？\n"
-               "甲：你看我敢不敢！\n乙：有本事来啊！\n甲：今天饶不了你！\n"
-               "【本集断章卡点】：满堂死寂。（黑屏：下滑解锁）\n")
+    # ---- v4.9 additions: E24 dry-talk gap / E25 riddle jargon / E26 invalid micro-action regression ----
+    # T10: 7 consecutive dialogue lines with no △ support (under 63 words, so E19 does not fire) -> E24 WARN
+    e24_dry = ("Episode 【1】\n[Scene]: INT. Hall · day\n[Cast]: Ann, Ben\n△ A slap is caught mid-air by the wrist.\n"
+               "Ann (sharp): Hand over the money!\nBen (coldly): No money!\nAnn: You're dead!\nBen: You dare touch me?\n"
+               "Ann: Look at whether I dare!\nBen: Come on then!\nAnn: Today you're not getting off easy!\n"
+               "【Episode Cliffhanger】: The hall falls dead silent. (Black screen: swipe to unlock)\n")
     _, w24, _ = validate(e24_dry)
     if not any(x.startswith("E24 ") for x in w24):
-        print("FAIL self-test: 连续7行对白无△应报 E24 WARN:", w24); ok = 0
+        print("FAIL self-test: 7 consecutive dialogue lines with no △ should report E24 WARN:", w24); ok = 0
     if any(x.startswith("E24 ") for x in validate(GOOD)[1]):
-        print("FAIL self-test: GOOD 样例不应报 E24"); ok = 0
+        print("FAIL self-test: GOOD sample should not report E24"); ok = 0
 
-    # T11: 台词含未翻译晦涩黑话 → 触发 E25 WARN
-    e25_jargon = GOOD.replace("三年了，你陈家欠的账，一笔一笔都在这儿。", "你的气运锚点已经触发因果闭环。")
+    # T11: dialogue contains untranslated riddle jargon -> E25 WARN
+    e25_jargon = GOOD.replace("Three years. Every debt your family owes me is right here, line by line.",
+                              "Your fortune anchor has already triggered a karmic loop.")
     _, w25, _ = validate(e25_jargon)
     if not any(x.startswith("E25 ") for x in w25):
-        print("FAIL self-test: 含晦涩黑话应报 E25 WARN:", w25); ok = 0
+        print("FAIL self-test: riddle jargon should report E25 WARN:", w25); ok = 0
 
-    # T12: △ 仅含无效微动作 → 触发 E26 WARN
-    e26_weak = GOOD.replace("△ 陈峰的膝盖一软，扶着茶几才没跪下去。", "△ 陈峰眼神微动。")
+    # T12: a △ that is only an invalid micro-action -> E26 WARN
+    _weak_line = "△ Chen Feng's knees buckle; he grabs the table to keep from kneeling."
+    e26_weak = GOOD.replace(_weak_line, "△ Chen Feng's eyes flicker.")
     _, w26, _ = validate(e26_weak)
     if not any(x.startswith("E26 ") for x in w26):
-        print("FAIL self-test: 无效微动作应报 E26 WARN:", w26); ok = 0
+        print("FAIL self-test: invalid micro-action should report E26 WARN:", w26); ok = 0
 
-    # T13(v4.9.1): 弱微动作被凑长氛围描写包住（净字数>14）也须触发 E26
-    e26_pad = GOOD.replace("△ 陈峰的膝盖一软，扶着茶几才没跪下去。",
-                           "△ 陈峰眼神微动，包厢内灯光昏黄黯淡，众人屏息凝神不敢出声。")
+    # T13 (v4.9.1): a weak micro-action wrapped in a long atmosphere description still triggers E26
+    e26_pad = GOOD.replace(_weak_line,
+                           "△ Chen Feng's eyes flicker, the private room's lamplight is dim and yellow, everyone holds their breath.")
     _, w26b, _ = validate(e26_pad)
     if not any(x.startswith("E26 ") for x in w26b):
-        print("FAIL self-test: 长描写包住眼神微动应报 E26:", w26b); ok = 0
+        print("FAIL self-test: long description wrapping eyes flicker should report E26:", w26b); ok = 0
 
-    # T14(v4.9.1): 弱神态+强物证动作组合 △ 不应误报 E26
-    e26_ok = GOOD.replace("△ 陈峰的膝盖一软，扶着茶几才没跪下去。",
-                          "△ 陈峰微微一怔，手里的茶杯啪地砸在地上碎成三瓣。")
+    # T14 (v4.9.1): weak micro-action + strong physical-evidence action in one △ should NOT trigger E26
+    e26_ok = GOOD.replace(_weak_line,
+                          "△ Chen Feng is slightly stunned, and the teacup smashes on the floor into three pieces.")
     _, w26c, _ = validate(e26_ok)
     if any(x.startswith("E26 ") for x in w26c):
-        print("FAIL self-test: 弱神态+强物证组合不应报 E26:", w26c); ok = 0
+        print("FAIL self-test: weak micro-action + strong evidence action should not report E26:", w26c); ok = 0
 
-    # T15(v4.9.1): 【本集时长】不带"秒"字也应触发 E16（旧版会整条绕过校验）
-    _t15 = long_good.replace("【本集时长】：180 秒", "【本集时长】：180").replace(
-        "".join(f"林辰：第{i}句攻防台词，抛出新信息并抬价施压。\n" for i in range(48)),
-        "".join(f"林辰：第{i}句攻防台词，抛出新信息并抬价施压。\n" for i in range(16)))
+    # T15 (v4.9.1): 【Episode Length】 without a unit must still trigger E16 (old version bypassed the check entirely)
+    _t15 = long_good.replace("【Episode Length】: 180 s", "【Episode Length】: 180").replace(_long_dlg(48), _long_dlg(16))
     f, _, _ = validate(_t15)
     if not any("E16" in x for x in f):
-        print("FAIL self-test: 不带'秒'字的时长标注应报 E16:", f); ok = 0
+        print("FAIL self-test: duration without a unit should still report E16:", f); ok = 0
 
     print("[+] self-test PASSED" if ok else "[-] self-test FAILED")
     return 0 if ok else 1
 
 
 def parse_args(args):
-    """返回 (path, profile, prev_paths)；用法错误抛 SystemExit(2)"""
+    """Returns (path, profile, prev_paths); usage errors raise SystemExit(2)"""
     path, profile, prevs = None, "auto", []
     i = 0
     while i < len(args):
@@ -1053,17 +1131,17 @@ def parse_args(args):
             continue
         if a == "--long":
             profile = "long"
-        elif a == "--manju":
-            profile = "manju"
+        elif a == "--comic":
+            profile = "comic"
         elif a == "--format" or a.startswith("--format="):
             val = a.split("=", 1)[1] if "=" in a else (args[i + 1] if i + 1 < len(args) else "")
             if "=" not in a:
                 i += 1
             if val not in PROFILES:
-                print(f"[-] --format 只接受 {'/'.join(PROFILES)}，收到「{val}」"); raise SystemExit(2)
+                print(f"[-] --format only accepts {'/'.join(PROFILES)}, got '{val}'"); raise SystemExit(2)
             profile = val
         elif a.startswith("--"):
-            print(f"[-] 未知参数「{a}」"); raise SystemExit(2)
+            print(f"[-] unknown argument '{a}'"); raise SystemExit(2)
         elif path is None:
             path = a
         i += 1
@@ -1085,39 +1163,39 @@ def main():
     try:
         text = open(path, encoding="utf-8-sig").read()
     except FileNotFoundError:
-        print(f"[-] 找不到剧本文件: {path}"); return 2
+        print(f"[-] script file not found: {path}"); return 2
     except IsADirectoryError:
-        print(f"[-] 路径是目录，不是剧本文件: {path}"); return 2
+        print(f"[-] path is a directory, not a script file: {path}"); return 2
     except UnicodeDecodeError:
-        print(f"[-] 文件不是 UTF-8 文本，无法读取: {path}"); return 2
+        print(f"[-] file is not UTF-8 text, cannot read: {path}"); return 2
     except OSError as e:
-        print(f"[-] 无法读取剧本文件: {path}（{e}）"); return 2
+        print(f"[-] cannot read script file: {path} ({e})"); return 2
     for p in prevs:
         try:
             open(p, encoding="utf-8-sig").read()
         except FileNotFoundError:
-            print(f"[-] 找不到前集文件: {p}"); return 2
+            print(f"[-] prev-episode file not found: {p}"); return 2
         except (UnicodeDecodeError, OSError):
-            print(f"[-] 无法读取前集文件: {p}"); return 2
+            print(f"[-] cannot read prev-episode file: {p}"); return 2
     prev_texts = [open(p, encoding="utf-8-sig").read() for p in prevs]
     profile = resolve_profile(text, profile)
     fails, warns, nc = validate(text, prev_texts, profile)
     notes = collect_notes(text, profile)
-    print(f"== {path}  [{profile} {PROFILES[profile]['label']}]  正文体量≈{nc} ==")
+    print(f"== {path}  [{profile} {PROFILES[profile]['label']}]  body word count≈{nc} ==")
     for x in fails:
         print("[-] FAIL:", x)
     for x in warns:
         print("[!] WARN:", x)
     for x in notes:
-        print("[i] NOTE:", x, "  ← 保护性反例，不要求修改")
+        print("[i] NOTE:", x, "  <- protective counterexample, no change required")
     if fails:
-        print("结果: FAILED（修复后重跑）"); return 1
+        print("Result: FAILED (fix and re-run)"); return 1
     tail = []
     if warns:
-        tail.append("含 WARN 请复核")
+        tail.append("has WARN, please review")
     if notes:
-        tail.append("含 NOTE（非缺陷，勿过度修正）")
-    print("结果: PASSED" + ("（" + "；".join(tail) + "）" if tail else ""))
+        tail.append("has NOTE (not a defect; do not over-correct)")
+    print("Result: PASSED" + ("(" + "; ".join(tail) + ")" if tail else ""))
     return 0
 
 

@@ -1,89 +1,89 @@
-# 短剧黄金前 3 秒与开篇必杀钩子库（六母型 · 20+ 变体）
+# Short-Drama Golden First 3 Seconds and Opening Killer Hook Library (Six Core Archetypes · 20+ Variants)
 
-在抖音、红果等短视频短剧平台中，前 3 秒的完播率决定了 90% 的算法推荐量。本模块整理了经过实战验证的开篇必杀钩子模型。
+On short-video drama platforms such as Douyin and Hongguo, the completion rate of the first 3 seconds determines 90% of algorithmic recommendation reach. This module collects the opening killer-hook models that have been validated in practice.
 
-> **v4.0（2026-09-28）修订**：由五母型扩为**六母型**——新增"萌系治愈反差"；"极端羞辱"母型内部分级（强度降级，生活化羞辱替代肢体冲突）；"规则悬念"补"视觉规则异变"子类。依据《下沉剧热点对标报告》第三章 3.1~3.2。
+> **v4.0 (2026-09-28) revision**: Expanded from five archetypes to **six** — added "Cute Healing Contrast"; the "Extreme Humiliation" archetype is graded internally (intensity downgraded, with everyday humiliation replacing body-contact conflict); "Rule Mystery" gained a "visual rule anomaly" subtype. Based on Sections 3.1–3.2 of the *Downmarket Drama Hot-Topic Benchmark Report*.
 >
-> **v4.2（2026-09-28）吸收**：从 v4.2 高压版钩子库吸收"核心底牌不可逆剥夺型"变体，归入母型3【身份暴跌/狂飙暴涨型】变体区（核心="前一秒高高在上，瞬间被不可逆剥夺一切"）。v4.1 既有"账本清算式"（母型2）、"双向马甲式"（母型3）变体保留不动。
+> **v4.2 (2026-09-28) absorption**: Absorbed the "irreversible stripping of the core trump card" variant from the v4.2 high-pressure hook library, filed under the variant zone of Archetype 3 [Identity Crash / Sudden Soaring] (core = one second on top, the next instant everything is irreversibly stripped away). The existing "ledger-settlement" (Archetype 2) and "two-way disguise" (Archetype 3) variants from v4.1 are retained unchanged.
 
 ---
 
-## 一、 六大核心钩子母型
+## I. Six Core Hook Archetypes
 
-### 1. 【生死绝境 / 物理威胁型】（最强视觉与生存刺激）
-* **特征**：开场直接把主角推向生死边缘，制造极度紧迫感。
-* **经典变体**：
-  * ① 刀尖/枪口直接顶在主角咽喉，反派手指正缓缓扣下扳机；
-  * ② 急救室红灯狂闪，医生推门而出：”病危通知书，家属签字，还差最后十分钟”；
-  * ③ 大雨磅礴中，主角满身是泥被按在悬崖边，反派一脚踩在主角手指上；
-  * ④ 毒药已被灌下半碗，主角嘴角溢血，反派冷笑着逼其交出家族印鉴。
+### 1. [Life-or-Death Threat / Physical Peril] (strongest visual and survival stimulus)
+* **Trait**: The opening thrusts the protagonist straight to the edge of life and death, creating extreme urgency.
+* **Classic variants**:
+  * ① A blade tip or gun muzzle pressed directly to the protagonist's throat, the villain's finger slowly tightening on the trigger;
+  * ② The emergency-room light flashes red, a doctor pushes the door open: "Critical condition notice, family signature needed, ten minutes left";
+  * ③ In a pouring rain, the soaked, mud-covered protagonist is pinned at the cliff edge, the villain's foot stamping on his fingers;
+  * ④ Half a bowl of poison has already been forced down, blood seeping from the protagonist's lips, the villain coldly forcing him to hand over the family seal.
 
-### 2. 【极端羞辱 / 地位反差型】（最强憋屈感与代入愤怒）
-* **特征**：反派肆意践踏主角尊严，极度拉满观众的代入憋屈情绪。
-* **经典变体**（**高强度 · 政策风险升高，建议降级使用**）：
-  * ① 厚厚一叠现金扔进泔水桶：”用嘴叼出来，这就是你妈今晚的医药费”；
-  * ② 婚礼现场，新娘当众把婚戒扔在地上踩碎，挽着富二代：”林辰，你也配娶我？”；
-  * ③ 主角送外卖进顶级包厢，发现跪在地上倒酒的正是欺压自己多年的恶毒亲戚；
-  * ④ 家族年会上，主角被安排在狗食盆旁坐下，亲生父母冷眼旁观。
-* **强度降级（2026-09 头部趋势 · 生活化/现实化羞辱）**：
-  * 2026 年 9 月头部剧羞辱已从”肢体冲突型”（胯下之辱/扇耳光泼茶）降级为”生活化/现实化”。原因：广电 16 号令后暴力复仇风险升高 + 下沉受众熟龄化（红果 50 岁以上用户 4074.5 万）+ 现实题材崛起。原 4 个肢体冲突型变体保留但标注”高强度（政策风险升高，建议降级使用）”。
-  * ⑤ 相亲被嫌：”没房没退休金还是个瘸子”（《五十岁隐藏身份》）；
-  * ⑥ 被小吏拦门外：”连府衙大门都进不去”（《废物垫底皇子》）；
-  * ⑦ 被导师当众骂：”你唱这种乡下广播里的东西是在侮辱音乐”（《夕阳红顶流》）；
-  * ⑧ 家庭冷暴力：亲戚私吞礼物、公公准备动手（《我的婆婆，我罩着》）；
-  * ⑨ 阶层歧视啐”费钱货”：修仙界/家族年会对废柴主角的经济性羞辱（《聚宝仙盆》）。
-* **账本清算式（恩人反杀变体 · v4.1 新增 · 实拍验证）**：
-  * 羞辱方是受过主角大恩的”白眼狼受益者”——一碗热汤泼在恩人脸上还骂”吃白食”（《敢泼我馄饨，整条街都别要了》）。
-  * 结构要点：主角全程冷静不辩解，靠内心独白（VO）**逐条回放恩情账**（垫下水疏通费/调监控证清白/追受潮货款），观众跟着一起记账记仇；物证（空碗/十五元到账页/供货单）贯穿全剧；恩情账按集逐条加笔，断章用承诺式金句（”三天，把所有铺位全部收回来”）。
-  * 适用：都市商战/恩人反杀/旧街改造类；单一场景+回忆插叙，AI 生视频低成本。
+### 2. [Extreme Humiliation / Status Reversal] (strongest sense of suppression and anger on the audience's behalf)
+* **Trait**: The villain freely tramples the protagonist's dignity, maxing out the audience's feeling of suppression and identification.
+* **Classic variants** (**high intensity · higher policy risk, downgrade use recommended**):
+  * ① A thick stack of cash is tossed into a slop bucket: "Take it out with your mouth. That's your mother's medical bill for tonight";
+  * ② At the wedding, the bride publicly throws the wedding ring on the floor and stamps it to pieces, arm in arm with a second-generation rich heir: "Lin Chen, you think you deserve to marry me?";
+  * ③ The protagonist delivers takeout into a top-tier private room and discovers that the one kneeling on the floor pouring wine is the vicious relative who has bullied him for years;
+  * ④ At the family reunion dinner, the protagonist is seated beside the dog-food bowl while his biological parents watch coldly.
+* **Intensity downgrade (2026-09 head-chart trend · everyday / realistic humiliation)**:
+  * In September 2026 the humiliation in head dramas was downgraded from "body-contact conflict" (the crotch-crawl humiliation / slapping / splashing tea) to "everyday / realistic" humiliation. Reasons: after NRTA Order No. 16, the risk of violent revenge rose; the downmarket audience is aging (Hongguo has 40.745 million users over 50); and realistic subject matter is on the rise. The four original body-contact variants are retained but labeled "high intensity (higher policy risk, downgrade use recommended)."
+  * ⑤ Rejected on a blind date: "No house, no pension, and a cripple to boot" (*Fifty and Hiding My Identity*);
+  * ⑥ Stopped at the gate by a clerk: "You can't even get through the magistrate's front gate" (*The Useless Prince at the Bottom*);
+  * ⑦ Publicly scolded by a mentor: "Singing that countryside-radio junk insults music" (*Sunset Top-Ranker*);
+  * ⑧ Cold family violence: relatives pocket the gifts, the father-in-law is about to lash out (*My Mother-in-Law, I've Got Her Back*);
+  * ⑨ Class contempt spitting "money-waster": economic humiliation of a good-for-nothing protagonist in a cultivation world / at a family reunion (*Treasure Immortal Basin*).
+* **Ledger-settlement variant (revenge against a benefactor · added in v4.1 · verified in live-action)**:
+  * The one humiliating is an "ungrateful beneficiary" who once received the protagonist's great kindness — a bowl of hot soup is thrown in the benefactor's face with a curse of "freeloader" (*Dare Splash My Wontons? Then Nobody on the Street Gets Anything*).
+  * Structural key points: the protagonist stays calm throughout and does not argue; through an inner monologue (VO) he **replays the debt of kindness item by item** (covering a drainage-clearance fee / pulling surveillance to prove innocence / chasing a damp-goods payment), and the audience keeps the same ledger and grudge; physical evidence (an empty bowl / a receipt showing fifteen yuan transferred / a supply order) runs through the whole drama; the ledger of kindness gains one entry per episode, and the cliffhanger uses a promise-style punchline ("Three days, and I'll take back every stall").
+  * Suited to: urban commerce / benefactor-revenge / old-street renovation; a single location plus flashback inserts, low-cost with AI-generated video.
 
-### 3. 【身份暴跌 / 狂飙暴涨型】（强烈认知冲击）
-* **特征**：前一秒极度卑微，后一秒顶级势力跪拜；或前一秒高高在上，瞬间被剥夺一切。
-* **经典变体**：
-  * ① 刚签下离婚协议扫地出门，门外八架武装直升机同时降落，九大财阀跪呼“恭迎少帅”；
-  * ② 总裁当众开除落魄保洁，保洁缓缓脱下手套，亮出握有集团 51% 股权的绝密印章；
-  * ③ 乞丐在路边被踢翻破碗，碗底赫然雕刻着统御四海的龙王九龙令。
-  * ④ **双向马甲（v4.1 新增 · 实拍验证）**：男女主各藏一个身份——她是集团董事长装穷相亲”测试真心”，他是真穷但敢担当（《五十岁爷们闪婚了》）。**身份在 E1 就当场揭破**，真正的钩子不是”她是谁”，而是”知道对方底细后还敢不敢选”；配质疑者配角（儿子：”这是骗子吧”）替观众发问，持续制造悬念与笑点。
-  * 适用：闪婚/先婚后爱/银发婚恋/成年人情感赛道；比单向马甲多一层反转。
-  * ⑤ **核心底牌不可逆剥夺型（v4.2 吸收 · 归入母型3变体区）**：核心是”前一秒还高高在上、握有翻盘底牌，下一秒赖以立足的东西被当众、不可逆地当场剥夺”——剥夺动作发生在主角/反派最得意的当众时刻，比单纯身份暴跌更狠，认知冲击极强。
-    * ① 百亿合同当场撕毁转投宿敌：谈判桌上刚以为胜券在握，对方当众撕毁百亿合同，转身签给宿敌；
-    * ② 集团突遭停牌清算：会议上正宣布扩张蓝图，停牌通知/查封清算令重重落下，商业帝国顷刻归零；
-    * ③ 病危通知书重重拍在会议桌上：本该庆功/谈判的会议桌，一份病危诊断单被当众重重拍下，亲情责任与商业底牌同时被抽走。
-    * 与母型1”病危通知书”变体②的区别：母型1是急救室外焦急等待的生死威胁；此处是”病危/查封等剥夺物被当作武器当众拍在会议桌上”，强调身份与底牌的瞬间剥夺。适用：都市商战/豪门恩怨/董事会夺权类。
+### 3. [Identity Crash / Sudden Soaring] (strong cognitive shock)
+* **Trait**: One second extremely lowly, the next top-tier powers kneel in worship; or one second on high, the next instant everything is stripped away.
+* **Classic variants**:
+  * ① Just after signing the divorce papers and being thrown out the door, eight armed helicopters land at once outside, and nine tycoon clans kneel and shout "Welcome back, Young Marshal";
+  * ② The CEO publicly fires a down-and-out cleaner; the cleaner slowly removes the gloves and reveals a top-secret seal that holds 51% of the group's equity;
+  * ③ A beggar's broken bowl is kicked over on the roadside, and carved on its base is the Dragon King's Nine-Dragon Token that commands the four seas.
+  * ④ **Two-way disguise (added in v4.1 · verified in live-action)**: the male and female leads each hide an identity — she is the chairman of a group, pretending to be poor on a blind date to "test sincerity"; he is genuinely poor but dares to take responsibility (*The Fifty-Year-Old Man Flash-Married*). **The identities are exposed on the spot in E1**, so the real hook is not "who is she" but "after knowing the other's background, would you still dare to choose?"; a skeptic supporting character (the son: "This is a scammer, right?") asks the audience's question for them, continuously generating suspense and laughs.
+  * Suited to: flash marriage / marriage-first-love-later / silver-age romance / adult emotion tracks; one more twist than one-way disguise.
+  * ⑤ **Irreversible stripping of the core trump card (v4.2 absorption · filed under the Archetype 3 variant zone)**: the core is "one second still on high, holding the winning trump card; the next second, what it stands on is stripped publicly, on the spot, and irreversibly" — the stripping happens in the protagonist's or villain's most triumphant public moment, far harsher than a simple identity crash, with an extremely strong cognitive shock.
+    * ① A ten-billion contract is torn up on the spot and handed to the rival: right at the negotiating table, just as a win seems assured, the other side tears up a ten-billion contract in public and turns to sign with the rival;
+    * ② The group is suddenly suspended and liquidated: at the meeting, the expansion blueprint is being announced when suspension notices and liquidation orders fall one after another, and the commercial empire drops to zero in an instant;
+    * ③ A critical-condition notice slams down on the meeting table: a table that should host a celebration or negotiation is hit by a diagnosis slip, publicly slammed down, removing both family responsibility and the commercial trump card at once.
+    * The difference from the Archetype 1 "critical-condition notice" variant ②: Archetype 1 is anxious waiting outside the emergency room, a life-or-death threat; here, "critical-condition / seizure notice used as a weapon, slammed on the meeting table," emphasizing the instant stripping of identity and trump card. Suited to: urban commerce / rich-family feuds / boardroom power struggles.
 
-### 4. 【物证背叛 / 捉奸现场型】（女频/伦理最强杀伤力）
-* **特征**：亲眼目睹最信任之人的残酷背叛，彻底击碎幻想。
-* **经典变体**：
-  * ① 妻子生日推开家门，发现丈夫正将属于自己母亲的传家玉镯戴在闺蜜手上；
-  * ② 亲子鉴定结果赫然显示 0.01%，深爱五年的孩子竟是仇人的血脉；
-  * ③ 刚为男友顶罪出狱五年，走到门口却看到男友正挽着自己的亲妹妹举办世纪婚礼。
+### 4. [Evidence Betrayal / Caught-in-the-Act Scene] (strongest damage for women's and ethics-driven audiences)
+* **Trait**: The protagonist witnesses the cruel betrayal of the most trusted person and is shattered in every fantasy.
+* **Classic variants**:
+  * ① On her birthday, the wife opens the front door and finds her husband putting the heirloom jade bangle of her own mother on her best friend's wrist;
+  * ② The paternity test reads a shocking 0.01%: the child she loved for five years is the blood of an enemy;
+  * ③ Five years after being released from prison for taking the fall for her boyfriend, she reaches the door and sees the boyfriend walking hand in hand with her own younger sister at a "century wedding."
 
-### 5. 【反常理惊悚 / 规则悬念型】（悬疑/脑洞赛道必杀）
-* **特征**：抛出违背常理的世界观规则或反常现象，诱发极强好奇心。
-* **经典变体**：
-  * ① “这个家里，除了我，所有人都在装死”；
-  * ② 手机突然收到一条来自 10 年后的未来短信：”今晚 8 点，千万不要给你妻子开门”；
-  * ③ 镜子里的自己，在没有眨眼的时候，突然对自己诡异地笑了一下。
-* **视觉规则异变子类（抖音端 AI 怪谈专用）**：
-  * 抖音端 AI 怪谈靠画面异变钩子而非台词——不开口、不解释，直接让画面违背物理/常识，观众因”这画面不对劲”而停滑。
-  * ④ 深夜宿舍墙面上不知何时爬满青藤，藤蔓顺着上铺床栏一直蔓延到枕头边（《反相之地》）；
-  * ⑤ 走廊尽头的红灯笼里，赫然映出一个不该出现的人影转身回头；
-  * ⑥ 半夜保洁推开机房门，原本黑屏的监控墙全部亮起，每一块屏幕里都是同一个人站在她身后。
+### 5. [Counterintuitive Horror / Rule Mystery] (must-have for suspense and brainstorm tracks)
+* **Trait**: Throws out a worldbuilding rule or anomaly that defies common sense, triggering intense curiosity.
+* **Classic variants**:
+  * ① "In this house, everyone except me is playing dead";
+  * ② A text message from ten years in the future suddenly arrives on the phone: "8 p.m. tonight, whatever you do, do NOT open the door for your wife";
+  * ③ The reflection in the mirror, without blinking, suddenly gives its owner an eerie little smile.
+* **Visual rule-anomaly subtype (for Douyin's AI-horror)**:
+  * Douyin AI-horror relies on visual-anomaly hooks rather than dialogue — no talking, no explanation; the image directly defies physics or common sense, and viewers stop scrolling because "this picture is wrong."
+  * ④ In the dead of night, green vines have somehow crept over the dormitory wall and climbed along the upper bunk's rails all the way to the pillow (*Anti-Phase Land*);
+  * ⑤ At the end of the corridor, a red lantern reflects the silhouette of a figure who should not be there, turning around to look back;
+  * ⑥ In the middle of the night, a cleaner pushes open the server-room door; the dark surveillance-monitor wall lights up all at once, and on every screen the same person stands right behind her.
 
-### 6. 【萌系治愈反差型】（v4.0 新增 · 萌宝/治愈/家庭赛道必杀）
-* **特征**：不靠绝境/羞辱/背叛，靠”极小极弱的主体（2岁萌娃/小动物/古灵精怪）vs 极大极严肃的对象（抑郁老爸/修仙大佬/豪门世家）”的反差萌驱动观众。开场范式=萌娃回归/下山→被豪门/宗门轻视→萌娃一个无意举动（打喷嚏震飞神兽/听懂动物心声/一句话戳中老爸）→全场震惊。
-* **经典变体**：
-  * ① 小奶娃打喷嚏，气浪直接震飞前来挑衅的千年神兽，全宗门大佬集体起立惊呆（《糯糯下山，师兄们都慌了》）；
-  * ② 2岁萌娃爬上抑郁老爸的膝盖，歪头说了一句童言稚语，老爸冰封三年的眼眶瞬间红了（《绿意萌熹：蛙系萌娃闹翻忧郁老爸》）；
-  * ③ 乡下来的萌娃被豪门亲戚轻视”土包子”，结果一个无意举动（随手救下濒危灵宠/说出只有家主才知道的旧事）震惊全场（《乡下来的掌上明珠》）；
-  * ④ 萌娃突然对着空气奶声奶气地说”小鸟你别害怕”——原来他能听懂动物心声/自带异能，被隐藏大佬撞见。
-* **适用赛道**：萌宝神助攻、治愈系、家庭伦理；红果 TOP20 占 4 席（糯糯下山#12、乡下来的掌上明珠#3、绿意萌熹#4、东北婆婆#10），为 2026 下半年绝对主力供给之一。
+### 6. [Cute Healing Contrast] (v4.0 new · must-have for baby-star, healing, and family tracks)
+* **Trait**: Instead of relying on desperation, humiliation, or betrayal, it drives the audience through the contrast-cute between "an extremely small and weak subject (a two-year-old baby / small animal / quirky sprite) vs an extremely large and serious counterpart (a depressed father / cultivation patriarch / aristocratic family)." Opening formula = the baby returns / comes down the mountain → looked down on by the aristocratic family or sect → the baby makes one unintentional move (a sneeze blasts away a divine beast / understands animals' inner voices / one sentence hits the father's heart) → the whole room is stunned.
+* **Classic variants**:
+  * ① A little milk-baby sneezes, and the air wave blasts away a thousand-year-old divine beast that came to provoke; every sect elder stands up in unison, stunned (*Nuonuo Comes Down the Mountain, and the Senior Brothers Panic*);
+  * ② A two-year-old climbs onto her depressed father's knee, tilts her head, and says a childlike sentence — and the father's eyes, frozen for three years, instantly turn red (*Green Mengxi: A Frog-Style Baby Shakes Up Her Gloomy Dad*);
+  * ③ A baby from the countryside is looked down on as "a hick" by rich-family relatives, then one unintentional move (casually saving an endangered spirit pet / revealing an old story only the family head knows) stuns the whole room (*The Country Girl, Pearl of the Family*);
+  * ④ The baby suddenly says in a milky voice to empty air, "Little bird, don't be scared" — it turns out she can understand animals' inner voices / has a built-in power, and a hidden tycoon catches sight of it.
+* **Suited tracks**: Baby-Star Helper, healing, family ethics; four slots in the Hongguo TOP20 (*Nuonuo Comes Down the Mountain* #12, *The Country Girl, Pearl of the Family* #3, *Green Mengxi* #4, *Granny from the Northeast* #10), making it one of the absolute main supply sources of the second half of 2026.
 
 ---
 
-## 二、 黄金 3 秒避坑禁令
+## II. Golden 3-Second Pitfalls to Avoid
 
-1. **严禁“早晨起床拉窗帘”**；
-2. **严禁“汽车在公路上行驶超过 2 秒”**；
-3. **严禁“大段旁白交代时代背景”**；
-4. **严禁“角色坐在咖啡厅无意义闲聊倒水”**。
+1. **Strictly forbidden: "waking up in the morning and pulling back the curtains"**;
+2. **Strictly forbidden: "a car driving on the highway for more than 2 seconds"**;
+3. **Strictly forbidden: "long narration explaining the era background"**;
+4. **Strictly forbidden: "characters sitting in a café making meaningless small talk and pouring water"**.

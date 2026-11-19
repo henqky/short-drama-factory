@@ -1,33 +1,33 @@
-# 人物圣经（Character Bible）
+# Character Bible
 
-> v3.0 恢复 v1.x 人物体系并升级：**先建圣经，后出大纲**。任何具名角色拿到台词前必须在圣经建档并入人物账（`continuity-ledger.md` §一.2）。
+> v3.0 restores the v1.x character system and upgrades it: **build the bible first, then the outline.** Any named character must be entered in the bible and in the character ledger (`continuity-ledger.md` §1.2) before getting any dialogue.
 
 ---
 
-## 一、 单角色四件套（缺一不得建档）
+## I. Four-Piece Single-Character Kit (missing any item = no entry)
 
-| 件 | 要求 | 反例 |
+| Item | Requirement | Counterexample |
 |---|---|---|
-| 1. 欲望（Want） | 一句话、可被镜头拍到（"要回女儿的名分"） | "想要幸福"（不可拍） |
-| 2. 秘密/软肋（Secret） | 最怕被谁知道什么；决定其在往返回合里的反驳底线 | 无秘密=无拉扯资本 |
-| 3. 弧光档位 | 情绪流角色弧光=**打法随单元升级**：单元A被动自证→单元B主动入局→单元C掌控规则（单元素内再分 坚不认→质疑→崩溃/反杀 小弧）；标好在哪单元哪回合变 | 80 集性格原地不动 |
-| 4. 语言指纹 | 遮名字能认出是谁：口头禅/句长/称谓习惯/市井or书面（对应 dialogue-doctor 维度1） | 全员播音腔 |
-| 5. **赌注/利害**（Stake，**反派必填**） | 他要什么（可被镜头拍到的东西：地/钱/名分/面子）、为此能付出什么代价、拿什么当筹码——防反派"动机悬空"（如同一声称'嫌命硬'又要抢人） | "就是坏"（无赌注=动机链断，全剧驱动塌） |
+| 1. Desire (Want) | One sentence, catchable on camera ("wants her daughter's legitimacy restored") | "Wants happiness" (can't be filmed) |
+| 2. Secret / Weakness (Secret) | What they fear someone finding out, and who. Sets their rebuttal floor in the round trip | No secret = no leverage for tension |
+| 3. Arc tier | In emotion-flow stories, the character arc = tactics that escalate with each unit: Unit A passively proves themselves → Unit B actively enters the game → Unit C controls the rules. Within each unit, subdivide into mini-arcs: refuses to accept → questions → collapse or counterattack. Mark which unit and round each change happens | An 80-episode character who never moves |
+| 4. Speech fingerprint | Can you tell who's speaking with the name covered? Catchphrases / sentence length / forms of address / street talk vs. formal (maps to dialogue-doctor Dimension 1) | Everyone sounds like a newsreader |
+| 5. **Stake** (Villain's Stake, **required for villains**) | What they want (something filmable: land / money / legitimacy / face), what they'd pay for it, and what chips they'd put down. Guards against a villain whose motive hangs in midair (e.g., one who claims he doesn't care whether he lives or dies, yet still tries to snatch someone) | "Just evil" (no stake = broken motive chain; the whole series' drive collapses) |
 
-## 二、 建档模板
+## II. Entry Template
 
 ```text
-【角色】：林辰（男，28，明：上门赘婿/暗：龙王）
-【欲望】：护住妻女，等一个"配得上说出身份"的时机
-【秘密/软肋】：女儿非他血脉的误会（第 28 集被反派利用）
-【弧光】：隐忍(回合1-3)→中点入局(回合4)→掌控(回合5-6)；终点：不再等时机，当众亮令
-【语言指纹】：≤10 字短句、反问收尾、从不自称"我"用"本少/我"随身份切换
-【功能位】：主角 ｜【出场】：第1集 ｜【状态机】：见台账
+【Character】: Lin Chen (male, 28; public: live-in son-in-law / secret: Dragon King)
+【Desire】: Protect his wife and daughter, waiting for a moment worthy of revealing who he is
+【Secret / Weakness】: The misunderstanding that his daughter is not his biological child (exploited by the villain in Episode 28)
+【Arc】: Endures (Rounds 1-3) → steps in at midpoint (Round 4) → takes control (Rounds 5-6). End state: stops waiting for the moment and reveals the token in public
+【Speech Fingerprint】: Short sentences of 7 words or fewer, ending in rhetorical questions. Never says "I" casually: switches between "I" and "this young master" depending on his identity
+【Function Slot】: Protagonist ｜ 【First Appearance】: Episode 1 ｜ 【State Machine】: see ledger
 ```
 
-## 三、 全员名册与功能位配额
+## III. Full Roster and Function-Slot Quotas
 
-- 一部 80 集情绪流标配：**主角 1 + 核心施压反派 1 + 换层反派 3～4（手下/堂主/家主/终极）+ 情感锚点 1～2（被护者/白月光）+ 助力工具人 ≤2 + 反转棋子 1**；
-- 具名角色总数 ≤12：短剧观众记不住第 13 张脸，多余的降群演；
-- 每个换层反派必须携带"证据升档职能"：TA 出现=往证据阶梯推一档，不推档的反派不立；
-- 反派语言指纹要求：**市井刻薄+傲慢黑话**（红线5），且每层反派的恶要同一种逻辑（贪/势/妒选一），换人不换欲。
+- Standard build for an 80-episode emotion-flow series: **protagonist 1 + core pressuring villain 1 + tier-shifting villains 3-4** (underling / hall master / clan head / final boss) **+ emotional anchors 1-2** (the one being protected / a first love) **+ helper pawns ≤2 + twist pawn 1**;
+- Named characters **≤12 in total**. Short-drama viewers can't remember a 13th face, so demote the extras to background players;
+- Every tier-shifting villain must carry an **evidence-escalation function**: their appearance pushes the evidence ladder up one tier. A villain who doesn't push a tier doesn't get cast;
+- Villain speech-fingerprint requirement: **street-level cruelty plus arrogant jargon** (red line 5). Each tier's villainy follows a single logic (greed / power / envy: pick one). Swap the person, keep the desire.

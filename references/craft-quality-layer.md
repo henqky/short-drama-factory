@@ -1,209 +1,209 @@
-# 戏剧工艺层（通用质量底座 · 红果适配版 · v4.9 升级）
+# Dramatic Craft Layer (Universal Quality Base · Hongguo-Adapted · v4.9 Upgrade)
 
-> **定位**：本文件补的是**机检照不到的那一层**——"结构合规但戏是假的、没画面支撑、节奏原地打转、台词绕弯子听不懂"。机检（`validate_episode.py`）负责硬指标兜底；本层专治戏剧因果、画面支撑密度、15秒换挡推进与零门槛直给表达。
+> **Purpose**: This file covers the layer that **machine checks cannot see**: "structurally compliant but the drama is fake, no visual support, pacing spins in place, dialogue wanders and is hard to follow." The machine check (`validate_episode.py`) handles the hard-metric safety net; this layer targets dramatic causality, visual-support density, the 15-second shift-and-advance, and zero-barrier plain-language delivery.
 >
-> **触发**：写新集正文前、处理"平铺直叙/没画面支撑/节奏不对/说的话想半天才能明白/人物只在执行任务"、连续两次修改同一条仍不见改善、以及长档双回合写得像两段平行事件时，**必读**。
+> **Triggers**: **Must read** before writing the body of a new episode; when a scene reads as flat narration / has no visual support / has the wrong pacing / the lines take a while to understand / characters only execute tasks; when two consecutive revisions of the same item still show no improvement; and when a long-tier two-round arc reads like two parallel events.
 >
-> **来源**：整合自外部包 JYY v3.8 的 quality-baseline、dramatic-generation 两份参考及 jyy-script-creation-v2 的产品模式部分（均为**外部源文件，不在本包内**，勿按包内路径查找），并融合 v4.9 真实观众反馈的「强画面支撑 + 15秒换挡 + 大白话同轮直给」三大实战铁律；未采纳项见文末「迁移边界」。
+> **Sources**: Integrated from the external package JYY v3.8's quality-baseline and dramatic-generation references, plus the product-pattern section of jyy-script-creation-v2 (these are **external source files, not included in this package**; do not look for them at in-package paths). Fused with the three battle-tested rules from real viewer feedback in v4.9: "strong visual support + 15-second shift + plain language delivered in the same round." Items not adopted are listed in the "Migration Boundary" at the end.
 
 ---
 
-## §〇 分层原则（最重要，先读这条）
+## §0 Layering Principle (most important, read this first)
 
-本 skill 有两层规则，**冲突时永远是硬约束赢**：
+This skill has two layers of rules. **When they conflict, the hard constraint always wins**:
 
-| 层级 | 内容 | 性质 |
+| Layer | Content | Nature |
 |---|---|---|
-| **外层·红果平台适配** | 档位体量、场景上限、黄金前 3 秒、每集断章、付费墙区间、单句上限、合规红线、干聊断层上限 | **硬约束**，机检强制，不得以"质量优先"绕过 |
-| **内层·戏剧工艺** | 本文件全部内容：因果是否成立、画面是否有支撑、节奏是否换挡、台词是否一秒听懂 | **质量层**，用于诊断与生成 |
+| **Outer · Hongguo platform adaptation** | Volume tier, scene cap, golden first 3 seconds, per-episode cliffhanger, paywall range, single-line cap, compliance red lines, talking-only dead-air cap | **Hard constraints**, enforced by machine check; cannot be bypassed in the name of "quality first" |
+| **Inner · Dramatic craft** | Everything in this file: whether causality holds, whether images have support, whether pacing shifts gears, whether a line is understood on first hearing | **Quality layer**, used for diagnosis and generation |
 
-**一句话**：外层保证"这是能上红果的短剧"，内层保证"这是有画面、有节奏、一秒听懂的好戏，而不是大纲标签的扩写"。两层都要，但外层不能被内层推翻。
-
----
-
-## §一 先辨真瓶颈：五问定因
-
-用户或观众反馈"没画面、节奏不对、说的话想半天才能明白、没张力"时，**不要盲目加字、加形容词、加吵架**。先按顺序过这五问，定位到哪一环断了：
-
-1. **人物此刻是否有一个清楚的即时目标？**（不是"想复仇"，而是"这一场他要让对方做什么/交出什么/保住什么"）
-2. **阻碍是否主动作用在这个目标上？**（对方有自己想要的筹码，不是站着等他表演）
-3. **人物是否被迫做出选择并付诸可见行动？**（而不是站在原地纯靠嘴皮子干聊）
-4. **结果是否在每 15~30 秒内改变了局面？**（信息 / 关系 / 资源 / 位置 / 危险 / 身体 / 资格 / 认知）
-5. **下一场是否由这个结果直接触发？**（严禁第 1 场在客厅吵某事，第 2 场又回客厅吵同一件事）
-
-- 五问任一缺失 → **优先修因果、换挡与场面功能**。
-- 五问全部成立、但读起来仍干瘪或费解 → 立即检查 **§四·补（强画面三大视觉锚点）** 与 **§六·补（大白话同轮直给）**。
+**In one sentence**: the outer layer guarantees "this is a short drama that can run on Hongguo," and the inner layer guarantees "this is a good drama with visuals, rhythm, and instant comprehension, not an expansion of outline labels." Both layers are needed, but the outer layer may not be overturned by the inner one.
 
 ---
 
-## §二 戏剧生成链（写场前在内部跑一遍，不进正文）
+## §1 Find the Real Bottleneck First: Five Questions
 
-承重场写前，用这条线找戏：
+When a user or viewer says "no visuals, wrong pacing, the lines take forever to make sense, no tension," **do not blindly add words, adjectives, or arguments**. Run these five questions in order and locate which link broke:
+
+1. **Does the character have a clear immediate goal right now?** (Not "wants revenge," but "in this scene he needs the other person to do / hand over / keep something")
+2. **Does the obstacle act directly on that goal?** (The opponent has their own chips to play; they are not standing there waiting for the protagonist to perform)
+3. **Is the character forced to make a choice and carry it out in visible action?** (Not standing still and relying purely on talk)
+4. **Does the outcome change the situation within every 15–30 seconds?** (Information / relationship / resources / position / danger / body / eligibility / cognition)
+5. **Is the next scene directly triggered by this outcome?** (Strictly forbidden: scene 1 argues about X in the living room, and scene 2 is back in the living room arguing the same thing)
+
+- If any one of the five is missing → **fix causality, shift-of-gears, and scene function first**.
+- If all five hold but the read is still dry or hard to follow → immediately check **§4·Supplement (the three strong-visual anchors)** and **§6·Supplement (plain language delivered in the same round)**.
+
+---
+
+## §2 Drama Generation Chain (run internally before writing a scene; not part of the body)
+
+For load-bearing scenes, use this line to find the drama:
 
 ```text
-上一结果造成的压力
-  ➔ 人物当前判断／误判（可以有自欺、侥幸、嘴硬）
-  ➔ 他认为可行的办法（必须能演出来，不是一种心情）
-  ➔ 对方或规则的反作用
-  ➔ 可见代价或意外收益
-  ➔ 人物认出、否认或误读结果
-  ➔ 下一次选择
+Pressure caused by the previous outcome
+  ➔ Character's current judgment / misjudgment (may include self-deception, luck, stubbornness)
+  ➔ The method they believe will work (must be playable on screen, not a mood)
+  ➔ The counter-effect from the opponent or the rules
+  ➔ Visible cost or unexpected gain
+  ➔ The character recognizes, denies, or misreads the outcome
+  ➔ The next choice
 ```
 
-**这是一条因果诊断线，不是七段式正文模板。** 平静相处、照料、等待、纯喜剧、情绪余波不必补齐每一项；但**承重场若只有"人物做了一件事"——没有依据、没有反作用、没有改变、没有后续，就还没写完这场戏。**
+**This is a causal diagnostic line, not a seven-part body template.** Calm togetherness, caregiving, waiting, pure comedy, and emotional aftershocks do not need every item filled in. But **if a load-bearing scene only has "the character does something" — with no basis, no counter-effect, no change, and no follow-up — the scene is not finished.**
 
-尤其检查三种高频失败：**善意的坏结果 / 冲动反击 / 错误选择**——
+Check especially for three high-frequency failures: **a well-meant bad outcome / an impulsive counterattack / a wrong choice**:
 
-1. 观众能否从已经出现的信息与情绪，看懂他为什么相信这个办法有用；
-2. 更稳妥的办法是否有他当下不愿承受的代价，或根本不在他的认知范围内；
-3. 他的行动是否真的改变了别人、资源、风险、关系或信息——而不是只证明作者写过一个动作；
-4. 结果出现后，他是否看见了足以影响下一步的东西。**他可以继续嘴硬或误判，但不能像结果没发生过。**
+1. Can the audience, from information and emotion already on the page, understand why he believes this method will work?
+2. Does the safer method carry a cost he is unwilling to bear right now, or is it simply outside his awareness?
+3. Did his action actually change other people, resources, risk, relationships, or information — rather than only proving the author wrote an action?
+4. After the outcome appears, did he see something that should affect his next step? **He may keep being stubborn or mistaken, but he cannot act as if the outcome never happened.**
 
-> **人物不必理智或最优。** 可信来自"这个人此刻为什么会这么选"，不来自选择正确。给他一个次优但心理可理解的选择，比给他一个正确但无来由的选择好看得多。
-
----
-
-## §三 单场成立七问
-
-每个承重场跑一遍：
-
-1. 谁在争取什么？
-2. 为什么**必须此刻**争取？（拖延的代价是什么）
-3. 谁或什么在阻碍他？
-4. 他采取了什么**具体策略**？
-5. 阻碍如何**反作用**？
-6. 结果与他的预期**偏差**在哪？
-7. **场末相较场初改变了什么？**（信息/关系/资源/位置/危险/资格/身体/承诺/下一选择）
-
-第 7 问是命门。若人物从怀疑开始、争论完仍以**同样的怀疑和同样的办法**离开——这场就是空场，优先改行动关系，**不要靠把声音写大来充当推进**。
-
-**例外（不算空场）**：气氛延宕、照料、日常、情绪余波场可以没有显性攻防，但必须拥有明确的情绪视角，并且改变关系、意义、身体状态、决定或观众期待中的至少一项。
+> **Characters need not be rational or optimal.** Credibility comes from "why this person would choose this right now," not from choosing correctly. A second-best but psychologically understandable choice plays far better than a correct choice with no motivation.
 
 ---
 
-### §三·补 集内结算（单集情绪出口）
+## §3 Seven Questions for a Single Scene
 
-竖屏单集必须给观众一个**可见的"出一口气"**：主角反将一次 + 反派为本次施压**付出可见代价**（当众失面／盘算落空／被架住进退两难）。
+Run this on every load-bearing scene:
 
-- 只堆受辱（哪怕冲突再密、证据再多）而不给结算 → 观众的情绪出口被堵死，结尾断崖；
-- **密度由戏定（不是阈值）**：密度是场景功能的副产品——攻防场该说满、危机/动作场让画面说、转场与余波可极简；集内天然忽密忽疏。机器通过体量宽参考带与失衡阀（E19 连续对白≤95字 / E21 对白占比≤70% / **E24 连续对白≤6行必有△动作支撑**）防止干聊注水；
-- 判据一句话：把这一集从头看到底，**反派有没有为她的施压付账**？没有，就是"直线受辱"；
-- **信号闭环（硬）**：伏笔/异能/玄学信号也要有结算——必须给「**信号 → 当场可验证 → 产生作用**」三步。**严禁拿观众看不懂的暗号判胜负**（如"纸哭了/不哭了"）：规则没在剧内建立就用它下判断，观众只会懵。写法：让信号指向一个**具体、当场可验证的事实**，再由主角当众验证并当武器用（例：小满说"那张纸在念我的名字"→ 知夏翻纸，抬头写着"被申请人：小满"）。
+1. Who is trying to get what?
+2. Why must they try **right now**? (What is the cost of delay?)
+3. Who or what is blocking them?
+4. What **specific tactic** do they use?
+5. How does the block **counter-act**?
+6. Where does the outcome **deviate** from their expectation?
+7. **By the end of the scene, what has changed from the start?** (Information / relationship / resources / position / danger / eligibility / body / commitment / next choice)
+
+Question 7 is the lifeline. If the character starts in doubt, argues it out, and leaves with **the same doubt and the same method**, the scene is an empty scene. Fix the action relationship first; **do not use louder voices as a substitute for progress.**
+
+**Exception (not an empty scene)**: atmosphere-lingering, caregiving, daily-life, and emotional-aftershock scenes may have no explicit attack-and-defense, but they must have a clear emotional point of view and must change at least one of: the relationship, its meaning, the body state, a decision, or the audience's expectation.
 
 ---
 
-## §四 三线可见变化与「强画面支撑」三大锚点（v4.9 重点强化）
+### §3·Supplement Episode Settlement (the single-episode emotional release valve)
 
-竖屏信息量低，观众靠**可见物**跟状态。全程维护三条线，让它们在本集内有可指出的变化：
+A vertical single episode must give the audience a **visible "exhale"**: the protagonist strikes back at least once, and the villain **pays a visible price** for this round of pressure (public loss of face / a scheme that falls through / being pinned in a dilemma).
 
-| 线 | 追踪什么 | 本集至少要回答 |
+- Piling on humiliation alone (no matter how dense the conflict or how much evidence) without a settlement blocks the audience's emotional release and ends in a cliff;
+- **Density is set by the scene, not by a threshold**: density is a by-product of scene function — attack-and-defense scenes should say it all, crisis/action scenes let the image speak, transitions and aftershocks can be minimal; within one episode, density naturally rises and falls. The machine prevents talk-only padding through a wide reference band of volume and imbalance valves (E19 consecutive dialogue ≤63 words / E21 dialogue share ≤70% / **E24 more than 6 consecutive dialogue lines must be backed by a △ action**);
+- One-sentence test: read this episode from start to finish — **did the villain pay for their pressure?** If not, it is "a straight line of humiliation";
+- **Signal closure (hard rule)**: foreshadowing, powers, and mystical signals also need settlement — they must deliver the three steps **signal → instantly verifiable on the spot → has an effect**. **Strictly forbidden: using a code the audience can't decode to decide who wins** (e.g., "the paper cried / stopped crying"). If the rule has not been established inside the story, using it to judge outcomes only confuses viewers. How to write it: make the signal point to a **specific, instantly verifiable fact**, then have the protagonist verify it publicly and use it as a weapon. (Example: Mia says "that paper is reading my name" → Ellie flips the paper, and the header reads "Respondent: Mia.")
+
+---
+
+## §4 Three-Line Visible Change and the "Strong Visual Support" Three Anchors (v4.9 key reinforcement)
+
+Vertical screens carry little information, so viewers track status through **visible objects**. Maintain three lines throughout, so each has a changeable point within this episode:
+
+| Line | What it tracks | This episode must answer at least |
 |---|---|---|
-| **身体线** | 伤势、呼吸、站姿、能否起身、距离与接触 | 谁的身体状态变了？变了之后他能做什么、不能做什么？ |
-| **空间线** | 相对出口、危险源、关键地标、彼此的站位 | 权力关系变化有没有落到位置上（谁退、谁逼近、谁被挡在门外）？ |
-| **道具线** | 关键物件从哪来、在谁手里、状态怎么变、最后去哪 | 本集的"铁证/信物/条子/存折"结束后在谁手上？ |
+| **Body line** | Injuries, breathing, stance, whether they can stand up, distance and contact | Whose physical state changed? After it changed, what can they do and what can't they do? |
+| **Space line** | Relative to the exit, sources of danger, key landmarks, who stands where | Has the shift in power landed in position (who retreats, who closes in, who is shut outside the door)? |
+| **Prop line** | Where key objects came from, who holds them, how their state changes, where they end up | At the end of this episode, whose hands is the "hard evidence / token / note / passbook" in? |
 
-### §四·补 彻底解决「没有画面支撑」：每 2~4 句必插强视觉 `△`（机检 E24/E26）
+### §4·Supplement Fully Fix "No Visual Support": Insert a Strong Visual `△` Every 2–4 Lines (machine check E24/E26)
 
-为什么很多剧本读起来像“广播剧”？因为写手只在场头写一句环境，底下连写十来句纯对话；或者只写`△ 他眼神微动`、`△ 她把杯子推了半寸`这种镜头拍不出来的无效微动作！
+Why do many scripts read like a "radio drama"? Because the writer describes the setting in one line at the top of the scene and then piles up a dozen lines of pure dialogue beneath it — or writes only `△ His eyes flicker`, `△ She pushes the cup half an inch`, which the camera cannot capture as effective micro-actions!
 
-1. **穿插密度硬纪律**：**每 2~4 句对白之间，必须穿插 1 条实质性 `△` 动作行！** 连续纯对白一旦达到 **7 行** 没有任何 `△` 动作支撑，机检 `E24` 直接告警！
-2. **三大强视觉锚点（每条 `△` 必须至少命中其一，做到静音看 `△` 就能看懂戏）**：
-   - **锚点 A · 物理结果与视觉奇观**：动作必须带出可见的物理改变或生理反应（如：`△ 雪茄狠狠摁在洗得发白的衣领上，青烟直冒`、`△ 参汤浇在绿植上，叶片瞬间发黑打蔫`、`△ 一脚踹翻长梯，壮汉摔进竹篓`）。
-   - **锚点 B · 身份反差与手头忙活**：拒绝站桩说话！让角色边做极具反差感的具体动作边说话（如：`△ 一米九的壮汉系着碎花围裙劈柴，被七岁侄女训得把斧头藏到身后`、`△ 董事长慢条斯理地用湿巾擦净手指，看都不看跪在地上的副总`）。
-   - **锚点 C · 物证亮牌与肢体对抗**：台词提到什么物证，画面必须立刻拍出对该物证的具体操作（如：`△ 她一把抓起粗瓷碗翻过来，手指在干巴巴的碗底抹出一层白面粉`、`△ 他反手扣住对方扇来的手腕，将离婚协议拍在对方脸上`）。
-3. **无效微动作黑名单（机检 E26 拦截）**：严禁单独使用 `眼神微动 / 目光微闪 / 微微一怔 / 若有所思 / 嘴角微扬 / 叹了口气 / 把杯子推了半寸` 充当独立动作行！
-
----
-
-## §五 因果接力与防原地踏步
-
-每个转场尝试写成一句话：
-
-> 因为上一场发生了 X，人物现在必须去 Y 做 Z，否则会失去 W。
-
-- **严禁同集同场景原地踏步**：绝不允许第 1 场在某房间争论一件事，第 2/3 场还在同一个房间（或换个房间）用同样的话术争论同一件事；
-- **一次转场若同时改变时间、地点、人物、目标、关键道具、事件类型中的三项以上，必须保留至少一个接力线索**：持续动作 / 同一道具 / 同一伤势 / 同一声音 / 同一问题 / 一句明确动机。
+1. **Hard discipline on interleaving density**: **between every 2–4 lines of dialogue, insert at least one substantive `△` action line!** Once **7 lines** of consecutive pure dialogue appear with no `△` action support, machine check `E24` raises a warning!
+2. **Three strong visual anchors (every `△` must hit at least one, so that the story can be followed by reading only the `△` lines in silence)**:
+   - **Anchor A · Physical result and visual spectacle**: the action must produce a visible physical change or physiological reaction (e.g., `△ He grinds the cigar hard into a collar washed white, smoke curling up`, `△ Herbal soup splashes onto the potted plant, leaves instantly blacken and wilt`, `△ One kick topples the long ladder, the bruiser crashes into a bamboo basket`).
+   - **Anchor B · Identity contrast and busy hands**: no standing still while talking! Have the character speak while doing a highly contrasting, concrete action (e.g., `△ A six-foot-three bruiser in a floral apron chops firewood, scolded by his seven-year-old niece until he hides the axe behind his back`, `△ The chairman wipes his fingers clean with a damp towel, unhurriedly, without even glancing at the vice president kneeling on the floor`).
+   - **Anchor C · Evidence reveal and physical confrontation**: whatever physical evidence a line mentions, the frame must immediately show a concrete action on that evidence (e.g., `△ She grabs a coarse ceramic bowl, flips it over, and rubs her finger across the dry bottom, leaving a film of white flour`, `△ He catches the wrist of the hand swinging at him and slams the divorce papers into the other man's face`).
+3. **Blacklist of ineffective micro-actions (machine check E26 blocks them)**: never use `eyes flicker / gaze shifts slightly / pauses for a moment / looks thoughtful / corner of mouth lifts / sighs / pushes the cup half an inch` as a standalone action line!
 
 ---
 
-## §六 概念负荷最小登记与「大白话同轮直给」（v4.9 重点强化）
+## §5 Causal Relay and Preventing Spinning in Place
 
-设定密集的剧一集要交代时代/世界观背景、组织关系、称谓、物价或规则专名。对每个新名称做最小登记：
+Write each transition as one sentence:
+
+> Because the previous scene produced X, the character must now go to Y and do Z, or they will lose W.
+
+- **Strictly forbidden: spinning in place within the same episode and same scene.** Never allow scene 1 to argue about a matter in one room, and then scenes 2/3 to still be in the same room (or another room) arguing the same thing with the same lines;
+- **When one transition changes three or more of: time, place, characters, goal, key prop, event type, it must keep at least one relay cue**: a continuing action / the same prop / the same injury / the same sound / the same question / one explicit motive line.
+
+---
+
+## §6 Minimum Concept-Load Register and "Plain Language Delivered in the Same Round" (v4.9 key reinforcement)
+
+A densely worldbuilt episode must convey era/world background, organizational relations, forms of address, prices, or rule terms. Make a minimal register entry for each new name:
 
 ```text
-名称 / 此刻是否必须知道名字 / 先看见的作用或后果 / 与旧概念的区别 / 预计再次使用 / 处理
+Name / Must the audience know the name right now? / The effect or consequence they see first / How it differs from old concepts / Expected reuse / Handling
 ```
 
-`处理`只选一项：**现在命名 / 先用大白话 / 先演后命名 / 合并旧概念 / 延后 / 删除**。
+`Handling` takes exactly one of: **name it now / plain language first / show first, name later / merge with an old concept / defer / delete**.
 
-### §六·补 彻底解决「说的话想半天才能明白什么意思」（机检 E25）
+### §6·Supplement Fully Fix "Lines That Take Forever to Understand" (machine check E25)
 
-1. **物证 + 大白话结论同轮直给**：严禁只写隐晦细节让观众自己猜（如只说“今天备了第七双筷子”“碗边没水印”）。凡指出物证或反常细节，**必须在同一轮对话里用大白话把结论直接砸出来**（“这碗底全是干面粉，你早饭根本没吃，全留给我们了！”）。
-2. **设定词/行话当句人话翻译**：凡出现行业术语、商战概念、医学名词、古语或玄学设定词，**当句或下一句必须立刻翻译成大白话世俗利害（多少钱、判几年、谁死谁活）**。严禁抛出 `法则缝隙 / 气运锚点 / 因果闭环 / 维度坍缩` 等让人想半天的晦涩词（机检 `E25` 拦截）。
-3. **成稿后自测**：遮住所有专名，若仍能一秒看懂"眼前谁要做什么、谁占上风、代价是多少钱/几条命"，才算合格。
-
----
-
-## §七 远简近详的写作状态包（连写 60～100 集防走形）
-
-批量连写时，**每一集只携带当前范围需要的信息**，不要把全套人物小传、评审清单、未来谜底同时塞进每一集：
-
-- 全剧故事发动机 + 不可变事实（时代、城市、家庭构成、金手指设定）；
-- 较远阶段的简要方向（不展开）；
-- **最近一到两集的实际结果**、关键原文、尚未消失的身体／道具／关系状态；
-- 当前集双方的目标、认知、隐瞒、预期转折；
-- 本集主导变化、阶段兑现、下一压力。
-
-配套纪律：**台账记事实，状态包记"生成时要带着什么"**——两者分工不同，别用台账替代状态包。
+1. **Physical evidence + plain-language conclusion delivered in the same round**: strictly forbidden to write only an obscure detail and leave the audience to guess (e.g., just saying "today I set out a seventh pair of chopsticks" or "no water ring on the bowl rim"). Whenever physical evidence or an abnormal detail is pointed out, **the same round of dialogue must state the conclusion in plain language** ("This bowl is coated in dry flour — you didn't eat breakfast at all, you saved everything for us!").
+2. **Jargon and setting words translated into everyday speech in the same or next line**: whenever industry terms, business concepts, medical terms, archaic phrasing, or mystical setting words appear, **the same or the next line must immediately translate them into plain worldly stakes (how much money, how many years in prison, who lives and who dies)**. Strictly forbidden: throwing out hard-to-parse words like `rule-gap / fate-anchor / causal-loop / dimension-collapse` that make people think for ages (machine check `E25` blocks them).
+3. **Self-test after drafting**: cover all proper names. If you can still understand at a glance "who is about to do what, who has the upper hand, and what the cost is in money or lives," the draft passes.
 
 ---
 
-## §八 七级修订顺序
+## §7 Writing State Pack for Long Batches (keep distant episodes brief, near ones detailed; prevents drift over 60–100 episodes)
 
-发现多个问题时，按影响排，不按"好改的先改"：
+When writing in batch, **each episode carries only the information needed for its current range**. Do not stuff the full set of character biographies, review checklists, and future answers into every episode at once:
 
-1. 前后接口与硬事实（时代、人名、时间线、道具归属）；
-2. 人物动机、信息权限、空间连续；
-3. 单场功能与单集 15 秒换挡／单元闭环；
-4. 敌我策略与代价；
-5. 强画面 `△` 支撑密度（消除连续干聊与无效微动作）；
-6. 对白大白话直给度、快慢变速、角色语言指纹；
-7. 格式、错字、标记、屏幕文字清单。
+- The series' story engine + immutable facts (era, city, family makeup, golden-finger setup);
+- A brief direction for more distant stages (not expanded);
+- **The actual outcomes of the last one or two episodes**, key original lines, and the body / prop / relationship states that have not yet resolved;
+- Both sides' goals, knowledge, concealments, and expected twists for the current episode;
+- The dominant change of this episode, stage payoff, and the next pressure.
 
----
-
-## §九 竖屏落点（把工艺层翻成可拍的画面）
-
-本层是剧本层，不做分镜，但**写到能演**是底线：
-
-- 动作写"能演出来的"：保留决定理解的对象、阻力、结果和反应；
-- 每 2~4 句对白穿插一条强画面 `△`，用动作切割长对话；
-- 微表情只写**生理可观测动作**（喉结滚动、指甲掐进掌心、耳根发红），不写"他内心五味杂陈"。
-
-> **与独白通道的分界（v3.4）**：上面"不写内心五味杂陈"约束的是 **△ 动作行**——心理描写不许塞进动作行。它**不构成对独白的禁令**：独白是独立通道，走 `内心独白：`／`旁白：` 格式行，配额与写法见 `references/inner-monologue-vo.md`。判据一句：**△ 不写感受；独白只写具体的账。**
+Companion discipline: **the ledger records facts; the state pack records what must be carried when generating** — the two have different jobs, so do not use the ledger as a substitute for the state pack.
 
 ---
 
-## §十 禁止事项（工艺层专属）
+## §8 Seven-Level Revision Order
 
-1. 用作者结论（"气氛压抑""他明白了"）代替可见反应；
-2. 连续 7 句以上纯对白不给任何 `△` 动作支撑（站桩广播剧）；
-3. 只给物证不给大白话结论，或用问 A 答 B 的文艺腔打哑谜；
-4. 抛出未翻译的行业黑话、自造玄学词让观众猜半天；
-5. 同集内同场景原地踏步、反复咀嚼同一句台词；
-6. 用 `眼神微动 / 微微一怔 / 推了半寸` 等镜头拍不出来的无效微动作充数；
-7. 把每个情绪层次都推到极点（人物会全程同一音量，高潮反而消失）。
+When several problems are found, rank them by impact, not by "easiest to fix first":
+
+1. Interface with preceding material and hard facts (era, names, timeline, prop ownership);
+2. Character motives, information access, spatial continuity;
+3. Single-scene function and single-episode 15-second shift / unit closure;
+4. Enemy and protagonist strategy and cost;
+5. Strong-visual `△` support density (eliminate continuous talk-only padding and ineffective micro-actions);
+6. Plain-language directness of dialogue, pace variation, character speech fingerprint;
+7. Format, typos, markers, on-screen text list.
 
 ---
 
-## 迁移边界（哪些没采纳，为什么）
+## §9 Vertical Landing (turning the craft layer into filmable images)
 
-| JYY 原项 | 处置 | 原因 |
+This layer is a script layer and does not do shot breakdowns, but **writing to the point of being performable** is the baseline:
+
+- Write actions that **can be performed**: keep the objects that determine understanding, the resistance, the result, and the reaction;
+- Interleave one strong visual `△` every 2–4 lines of dialogue, using actions to cut up long exchanges;
+- Micro-expressions should be written only as **physiologically observable actions** (Adam's apple bobbing, fingernails digging into a palm, ears flushing red), never as "his heart is in turmoil."
+
+> **Boundary with the monologue channel (v3.4)**: the constraint above against writing "inner turmoil" applies to **△ action lines** — psychological description may not be stuffed into action lines. It does **not** constitute a ban on monologue: monologue is an independent channel, written in `Inner Monologue:` / `Narration:` format lines; its quota and writing method are in `references/inner-monologue-vo.md`. The test in one sentence: **△ does not write feelings; monologue writes only concrete accounts.**
+
+---
+
+## §10 Prohibitions (craft-layer specific)
+
+1. Using the author's conclusion ("the atmosphere is oppressive," "he understood") in place of visible reaction;
+2. More than 7 consecutive lines of pure dialogue with no `△` action support (the standing radio-drama);
+3. Giving physical evidence without a plain-language conclusion, or speaking in riddles through a literary "A asks, B answers" pattern;
+4. Throwing out untranslated industry jargon or made-up mystical terms that leave the audience guessing for ages;
+5. Spinning in place within the same episode and same scene, or repeatedly chewing on the same line;
+6. Padding with ineffective micro-actions the camera cannot shoot, like `eyes flicker / pauses for a moment / pushes half an inch`;
+7. Pushing every emotional layer to its peak (the character stays at the same volume all the way, and the climax disappears).
+
+---
+
+## Migration Boundary (what was not adopted, and why)
+
+| JYY Original Item | Disposition | Reason |
 |---|---|---|
-| "每集至少三个有效场景" | **不采纳** | 该条实为 JYY 包内某用户的**个人项目约定**（其文件自述"不是短剧行业通用规律"），与红果标准档单集场景 ≤2 直接冲突 |
-| "不统一规定首集耳光、前三秒、每三秒一次刺激" | **不采纳** | 红果硬阈值有平台实搜热剧数据支撑，属**平台适配层** |
-| "不擅设第 10/20/30 集付费" | **不采纳** | 我们有 `hongguo-beat-sheet.md` 的三级付费墙区间；仅在**换平台或换总集数**时按新口径重算 |
-| 北美英语 / 多语本土化整套 | **不采纳** | 红果场景用不到；仅在做方言项目时，借用其"地区未校准工作稿"的降级纪律 |
-| 三级情绪结构（全剧承诺／分集情绪债／关键场设计） | **部分并入** | 全剧层我们已有`emotion-flow-roundtrip.md` 情绪契约；本层只取关键场写前诊断 |
-| 概念负荷最小登记、远简近详状态包 | **采纳并强化** | 直接对应"设定密度高""连写 60～100 集"痛点，并在 v4.9 叠加「大白话同轮直给」 |
-| 戏剧生成链、单场七问、三线变化、因果接力、七级修订顺序 | **采纳并强化** | 补齐"机检全过但戏假"，并在 v4.9 叠加「强画面三大视觉锚点」 |
+| "At least three effective scenes per episode" | **Not adopted** | This item is actually a **personal project convention** of one user inside the JYY package (its file states "this is not a general rule of the short-drama industry"), and it directly conflicts with the Hongguo standard-tier cap of ≤2 scenes per episode |
+| "Do not mandate a slap in the first episode, the first 3 seconds, or a stimulus every three seconds" | **Not adopted** | Hongguo's hard thresholds are backed by real platform search data on hit dramas, and belong to the **platform-adaptation layer** |
+| "Do not set paywalls at episodes 10/20/30" | **Not adopted** | We have the three-tier paywall ranges in `hongguo-beat-sheet.md`; only recalculate under the new basis when **changing platform or changing total episode count** |
+| North American English / full multi-language localization | **Not adopted** | Not needed for Hongguo scenes; only borrow its "region-uncalibrated working draft" downgrade discipline when doing dialect projects |
+| Three-tier emotional structure (series-level promise / episode-level emotional debt / key-scene design) | **Partially merged** | At series level we already have the emotion contract in `emotion-flow-roundtrip.md`; this layer takes only the pre-writing diagnosis for key scenes |
+| Concept-load minimal register, distant-brief / near-detailed state pack | **Adopted and reinforced** | Directly addresses the pain points of "high setting density" and "batch writing 60–100 episodes," and v4.9 adds "plain language delivered in the same round" |
+| Drama generation chain, seven questions per scene, three-line change, causal relay, seven-level revision order | **Adopted and reinforced** | Closes the gap of "passes all machine checks but the drama is fake," and v4.9 adds the "three strong visual anchors" |

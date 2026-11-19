@@ -1,39 +1,42 @@
-# 网文→短剧改编流水线（Webnovel Adaptation Pipeline）
+# Webnovel-to-Short-Drama Adaptation Pipeline
 
-> v3.0 新增：兑现"一部网文→剧本"能力。核心原则：**短剧不是网文的缩写，是网文里最爽那条情绪线的放大**。砍掉一切不服务单一执念/单一爽点的内容。
-
----
-
-## 一、 五步流水线
-
-### Step 1 抽取（读原著/大纲，产三张表）
-1. **情绪线表**：全书所有"打脸/反杀/掉马/重逢/碾压"名场面，按出现顺序列出（只记事件功能，不记细节）；
-2. **人物功能表**：每个角色的功能位（主角/施压反派/助力/棋子/白月光），同名不同功能的合并，同功能多人的删减；
-3. **流派判定**：全书情绪体验能不能浓缩成**一句话情绪契约**（如"让看不起我的人高攀不起"）？能→情绪流改编（契约贯穿、原著各卷冲突映射为单元链，每单元一张往返表，见 `emotion-flow-roundtrip.md` §二·五）；不能（悬疑解谜向）→剧情流改编（走信息阶梯）。注意：网文一卷≈短剧一个单元（20～30集），拿一卷的矛盾硬拉全书=两头不讨好。
-
-### Step 2 砍并（做减法的硬规则）
-- 支线砍：不直接影响主情绪线的支线全部删，支线信息并入主线道具/台词；
-- 人物并：功能重复的角色合并成一人（三个前任工具人并成一个）；出场即死的降到"具名龙套"，不占人物账；
-- 时间线压：网文百万字常见"修炼/攒钱/旅途"水段全部跳过，只保留**关系质变的节点场**；
-- 保留铁律：每删一段，检查是否伤及"下一爽点的前置蓄水"，伤了则改为"一句台词带过"。
-
-### Step 3 映射（章→集）
-- 计量：**1 集 = 1 个关系质变节点**（不是 1 章！网文节奏 3 章一爽点≈短剧 1 集一爽点对不上，要重排）；**长档：1 长档集 = 2 个质变节点**（双回合），折算后总集数按内容量守恒取半（30/40/50 集）；
-- 一集只装：一次施压+一次反驳/反击 或 一次蓄力+一次兑现，装不下就拆集，不足就并集；
-- 卷末高潮 → 对位付费墙集（一级/二级/三级），强改前后节奏去凑卡点位置，**不反过来让卡点迁就原文顺序**；
-- 原著前 1/4 通常信息量不足 15 集（长档约 7～8 集）：用"补冲突"（把原著第 20 章的羞辱提前到第 3 章位）或"造回合"（把一次性误会拆成六档证据阶梯）。
-
-### Step 4 单元化+回合化（情绪流改编核心工序）
-先切单元（每单元 20～30 集、长档 10～15 集、闭环留火种、对手换层），再把各单元名场面往六档阶梯上挂：原著场面够档就映射，缺档就按同逻辑自造（自造内容必须走 `mechanism-imitation.md` 边界，不得搬其他书表达）。产出单元链+每单元一张往返回合表。
-
-### Step 5 入系统
-改编结果落地为本包标准件：立项单（流派+赛道+执念一句话）→ 人物圣经 → 往返回合表+付费墙 → 分集规划 → 单集撰写（全部走台账与机检）。
+> New in v3.0: delivers the "one web novel → script" capability. Core principle: **a short drama is not an abbreviation of a web novel; it is an amplification of the single most satisfying emotional thread in the novel.** Cut everything that doesn't serve one obsession or one payoff.
 
 ---
 
-## 二、 改编红线
+## I. The Five-Step Pipeline
 
-1. **人设三观可洗白，核心执念不可改**：原著主角的"不信/不认/不服"是情绪资产，改编必须原样保留或等价替换；
-2. **名场面对白不整段照搬**（版权+节奏双重原因）：保留事件结构与金句功能，表达重写；
-3. **原著党依赖的"世界观说明"改成视觉化冲突**：设定禁止旁白交代（反向灌输死刑法同样适用于改编）；
-4. 篇幅超 200 章的网文，第一版只改**前 1/3 + 全书最强 20 个名场面**，剩余留第二季素材，禁一次改完。
+### Step 1: Extract (read the source novel / outline; produce three tables)
+1. **Emotional-thread table**: list every "face-slap / counterattack / identity reveal / reunion / crushing" showpiece in the whole book, in order of appearance. Record only each event's function, not its details.
+2. **Character function table**: each character's function slot (protagonist / pressuring villain / helper / pawn / "white moonlight" love interest). Merge characters who share a name but have different functions. Trim cases where several characters serve the same function.
+3. **Genre call**: can the book's emotional experience be condensed into a one-line emotional contract (e.g., "those who looked down on me can't afford to reach me")?
+   - If **yes** → emotion-flow adaptation. The contract runs throughout, each source volume's conflicts map to a unit chain, and each unit gets one round-trip table (see `emotion-flow-roundtrip.md` §2.5).
+   - If **no** (mystery / puzzle type) → plot-flow adaptation, walking an information ladder.
+   - Note: one web-novel volume ≈ one short-drama unit (20-30 episodes). Forcing one volume's conflict across the whole book satisfies neither audience.
+
+### Step 2: Cut and Merge (hard rules for subtraction)
+- **Cut subplots**: delete every subplot that doesn't directly affect the main emotional thread. Fold subplot information into main-line props or lines.
+- **Merge characters**: merge characters with duplicate functions into one (three disposable ex-partners become one). Demote characters who die on arrival to "named extras" that take up no character-ledger entry.
+- **Compress the timeline**: skip all the filler stretches common in million-word web novels ("training / saving money / travel"), and keep only the scenes where relationships change.
+- **Iron rule to keep**: for every cut, check whether it damages the "setup build-up for the next payoff." If it does, replace it with one line of dialogue that covers it.
+
+### Step 3: Map (chapter → episode)
+- **Unit of measure**: 1 episode = 1 relationship-changing node. (Not 1 chapter! A web-novel rhythm of one payoff per three chapters does not match a short drama's one payoff per episode, so re-sequence.) **Long tier**: 1 long-tier episode = 2 change nodes (two rounds). After conversion, the total episode count is halved in proportion to content volume (30 / 40 / 50 episodes).
+- **One episode holds only**: one act of pressure plus one rebuttal or counterattack, or one build-up plus one payoff. If it doesn't fit, split the episode. If it's too thin, merge episodes.
+- **Volume-end climaxes** are aligned to paywall episodes (first-, second-, or third-tier). Reshape the pacing before and after to hit cliffhanger positions. Never let cliffhangers bend to the source's chapter order.
+- **The first quarter of the source usually lacks material for 15 episodes** (about 7-8 long-tier episodes). Use "added conflict" (move the source's chapter-20 humiliation forward to the chapter-3 position) or "manufactured rounds" (split a one-off misunderstanding into a six-tier evidence ladder).
+
+### Step 4: Unitize and Round-ify (the core operation of emotion-flow adaptation)
+First cut into units (20-30 episodes each; 10-15 long-tier episodes). Each unit closes its loop and leaves an ember, and the opponent changes tier. Then hang each unit's showpiece scenes onto the six-tier ladder. Map source scenes that fit a tier. Where a tier is empty, fabricate by the same logic. Fabricated material must respect the boundary in `mechanism-imitation.md` and may not carry expression lifted from other books. **Output**: a unit chain plus one round-trip table per unit.
+
+### Step 5: Load into the System
+Turn the adaptation into this package's standard artifacts: greenlight sheet (genre + track + one-line obsession) → character bible → round-trip table + paywall → episode plan → single-episode writing (all routed through the ledger and validators).
+
+---
+
+## II. Adaptation Red Lines
+
+1. **Personas' values can be reworked; the core obsession cannot.** The source protagonist's "won't believe / won't acknowledge / won't submit" is emotional capital. The adaptation must keep it intact or swap in an equivalent.
+2. **Never copy showpiece dialogue wholesale** (for both copyright and pacing reasons). Keep the event structure and the punchline's function, and rewrite the expression.
+3. **Turn the "worldbuilding exposition" that original-novel fans rely on into visual conflict.** Settings may not be established by narration (the reverse-exposition death penalty applies to adaptation too).
+4. For web novels over 200 chapters, the first version adapts only the first third plus the book's 20 strongest showpieces. Leave the rest as season-two material. Do not adapt everything at once.

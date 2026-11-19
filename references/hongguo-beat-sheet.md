@@ -1,132 +1,132 @@
-# 红果/抖音 全剧架构、节奏曲线与付费卡点排布（标准 60/80/100 集 · 长档 30/40/50 集 · v4.9 升级）
+# Hongguo / Douyin Full-Series Architecture, Pacing Curve, and Paywall Placement (Standard 60/80/100 Episodes · Long Tier 30/40/50 Episodes · v4.9 Upgrade)
 
-> ★权威（v3.0 扩容）：v2.0 只有 80 集单模板；v3.0 扩为 60/80/100 三档变体，并新增"情绪契约+单元链+每单元一张往返回合表"挂线（情绪流项目专用，详见 `emotion-flow-roundtrip.md`）与漫剧/竖屏动画适配位。
+> ★ Authoritative (v3.0 expansion): v2.0 had only an 80-episode single template; v3.0 expanded it to three variants (60/80/100), and added the "emotion contract + unit chain + one round table per unit" hookup (for emotion-flow projects only, see `emotion-flow-roundtrip.md`) plus a slot for comic-drama / vertical-animation adaptation.
 >
-> **v3.2（2026-09-17 升级）**：新增**长档（约 3 分钟）**篇幅制式——单集 165～195 秒、一集装双往返回合 + ≈90 秒中段小钩；全剧按内容量守恒折算为 **30/40/50 集**三档，四幕、单元链、付费墙同步换算。详见 §三、§四。
+> **v3.2 (2026-09-17 upgrade)**: Added the **long tier (about 3 minutes)** format — 165–195 seconds per episode, one episode carries two round-trip rounds + a mid-episode hook at about 90 seconds; the full series is converted by conserving content volume into three tiers of **30/40/50 episodes**, with the four acts, unit chain, and paywalls converted in step. See §3 and §4.
 >
-> **v4.9（2026-10 实战升级）**：新增 **§三·补「单集 15 秒换挡四拍推进表」与「防同场景原地打转铁律」**，彻底解决单集内节奏拖沓、同一件事来回干聊不推进的痛点。
+> **v4.9 (2026-10 battle-tested upgrade)**: Added **§3·Supplement "Single-Episode 15-Second Gear-Shift Four-Beat Table" and the "no spinning in place within the same scene" iron rule**, to fully fix the pain points of sluggish pacing within an episode and back-and-forth talk that goes nowhere.
 
 ---
 
-## 一、 三档结构总表（以 80 集为基准，另两档按占比折算）
+## I. Three-Tier Structure Overview (80 episodes as baseline, the other two tiers converted by proportion)
 
-| 幕 | 80集 | 60集 | 100集 | 核心任务 | 情绪核心 |
+| Act | 80 Ep. | 60 Ep. | 100 Ep. | Core Task | Emotional Core |
 |---|---|---|---|---|---|
-| 一幕·入局极限压迫 | 1～15 (20%) | 1～12 | 1～20 | 核爆钩、阶层对立、隐忍受辱、首轮小反击 | 憋屈➔震惊➔期待 |
-| 二幕·升级与纠缠 | 16～45 (35%) | 13～34 | 21～55 | 单元循环/往返回合主体区 | 爽感➔步步紧逼 |
-| 三幕·风暴与危机 | 46～65 (25%) | 35～49 | 56～80 | 终极反派反扑、底牌失效、最大信任危机 | 虐心➔紧迫➔窒息 |
-| 四幕·决战与封神 | 66～80 (20%) | 50～60 | 81～100 | 底牌全开、伏笔全收、极致释放 | 狂爽➔情感释放 |
+| Act 1 · Entry Under Extreme Pressure | 1–15 (20%) | 1–12 | 1–20 | Nuclear hook, class opposition, endured humiliation, first small counterattack | Humiliation ➔ shock ➔ anticipation |
+| Act 2 · Escalation and Entanglement | 16–45 (35%) | 13–34 | 21–55 | Main body of the unit loop / round-trip rounds | Payoff ➔ relentless tightening |
+| Act 3 · Storm and Crisis | 46–65 (25%) | 35–49 | 56–80 | Ultimate villain's counterattack, trump card fails, greatest trust crisis | Heartbreak ➔ urgency ➔ suffocation |
+| Act 4 · Final Battle and Apotheosis | 66–80 (20%) | 50–60 | 81–100 | All trump cards revealed, all foreshadowing collected, ultimate release | Frenzied payoff ➔ emotional release |
 
-**长档（150~195 秒/集）集数折算**：内容量守恒 **1 长档集 ≈ 2 标准集**，集数减半、四幕占比不变（20 / 35 / 25 / 20），即 **30 / 40 / 50 集**三档，详见 §四.3。
+**Long tier (150–195 seconds per episode) episode conversion**: content volume is conserved, so **1 long-tier episode ≈ 2 standard episodes**. The episode count is halved, and the act proportions stay the same (20 / 35 / 25 / 20), giving **30 / 40 / 50 episodes** tiers; see §4.3.
 
-## 二、 付费墙三级卡点（四档换算）
+## II. Three-Level Paywall Breaks (four-tier conversion)
 
-| 卡点 | 80集 | 60集 | 100集 | 长档40集 | 长档30集 | 长档50集 | 断法 |
+| Break | 80 Ep. | 60 Ep. | 100 Ep. | Long 40 Ep. | Long 30 Ep. | Long 50 Ep. | Cut Method |
 |---|---|---|---|---|---|---|---|
-| 一级（黄金） | 10～15 | 8～11 | 13～19 | 5～8 | 4～6 | 7～10 | 首次露顶级底牌/中点攻守转换，反派大祸临头前一瞬 |
-| 二级 | 28～32 | 21～24 | 35～40 | 14～16 | 10～12 | 17～20 | 核心身世/大阴谋初现、重要配角倒戈 |
-| 三级 | 55～58 | 41～44 | 68～73 | 27～29 | 20～22 | 34～37 | 全剧最低谷、生死二选一 |
+| Tier 1 (golden) | 10–15 | 8–11 | 13–19 | 5–8 | 4–6 | 7–10 | First exposure of top-level trump card / midpoint offense-defense flip, one moment before the villain's disaster lands |
+| Tier 2 | 28–32 | 21–24 | 35–40 | 14–16 | 10–12 | 17–20 | Core origin / major conspiracy first appears; an important supporting character turns sides |
+| Tier 3 | 55–58 | 41–44 | 68–73 | 27–29 | 20–22 | 34–37 | Lowest point of the whole series, a choose-one-or-die moment |
 
-**付费墙三法则**（不变）：①前置蓄水（付费集前 2～3 集疯狂拉高反派嚣张与主角隐忍成本）；②断在反击前 0.5 秒/掉马一瞬间，严禁断在爽完之后；③付费后下一集前 15 秒必须兑现，严禁挂羊头。
+**Three rules for paywalls** (unchanged): ① front-loaded build-up (in the 2–3 episodes before the paywall, sharply raise the villain's arrogance and the protagonist's cost of enduring); ② cut 0.5 seconds before the counterattack / at the instant of unmasking — never cut after the payoff is already delivered; ③ the first 15 seconds of the next episode after the paywall must deliver the payoff; no bait-and-switch.
 
-**与单元链挂线（情绪流必做，2026-09-15 修订）**：单一矛盾一单元烧 20～30 集必须闭环，严禁拉满全剧；一级墙≈单元A内攻守小转换或首次亮底牌前；二级墙≈**A/B 单元接缝**（旧矛盾闭环当场暴露新矛盾、主角还没接招的瞬间）；三级墙≈单元C开局前全剧最低谷（主角赢了每场、输了全局式的至暗）。免费区必须完成：情绪契约确立+单元A 档1/2 两回合，让观众记住"他要讨的那口气是什么"。80集标配三单元；单元间对手换层不换欲。
+**Tying paywalls to the unit chain (mandatory for emotion-flow; revised 2026-09-15)**: a single core conflict burns 20–30 episodes in one unit and must close; it is forbidden to stretch it across the whole series. Tier 1 wall ≈ a small offense-defense shift within Unit A, or just before the first reveal of a trump card; Tier 2 wall ≈ the **A/B unit seam** (the old conflict closes on the spot and exposes a new one, at the moment the protagonist has not yet answered it); Tier 3 wall ≈ the lowest point of the whole series right before Unit C opens (the protagonist wins every scene but loses the whole-game darkest moment). The free zone must complete: the emotion contract is established + Unit A Round 1/2 — so the viewer remembers "what breath he wants to win back." An 80-episode standard is three units; between units the opponent changes layer but not desire.
 
-- **长档换算**：集区间按"1 长档集 ≈ 2 标准集"折算即可，不必逐档对号，只需守住两条不变量——**中点转换落在一级墙区间内**、**三级墙落在单元C开局前的至暗**；台账"单元划分"行同步折半（40集=3单元：A 1～13 / B 14～27 / C 28～40）。
-- **长档免费区更短**：长档单集信息量大，情绪契约确立+档1 回合必须在第 1～2 集内完成，拖到第 5 集才立契约=免费区废掉。
-- **中段小钩不得当付费墙**：小钩只抬价，付费点必须是完整断章公式（掉马前 0.5 秒/绝境二选一）。
+- **Long-tier conversion**: episode ranges can simply be converted by "1 long-tier episode ≈ 2 standard episodes"; no need to match tiers one by one. Only two invariants must hold: **the midpoint turn lands inside the Tier 1 wall range**, and **the Tier 3 wall lands on the darkest moment just before Unit C opens**. The "unit division" row in the ledger is halved in step (40 episodes = 3 units: A 1–13 / B 14–27 / C 28–40).
+- **The long-tier free zone is shorter**: each long-tier episode carries a lot of information, so the emotion contract is set and Round 1 of the tier must be completed within episodes 1–2. Dragging the contract to episode 5 wastes the free zone.
+- **Mid-episode hooks must not serve as paywalls**: a mid-episode hook only raises the stakes; the paywall must be a full cliffhanger formula (0.5 seconds before unmasking / a choose-one-or-die dilemma).
 
-**付费墙三个变体（v4.0 新增——上表基于 80 集真人付费剧模型，2026 年 9 月实际存在以下三种偏离）**：
+**Three paywall variants (v4.0 addition — the table above is based on the 80-episode live-action paid-drama model; three deviations actually exist in September 2026)**:
 
-1. **免费广告分账多季 IP 变体**：AI 漫剧多季 IP **不设付费墙**，靠广告分账 + 多季长尾变现（《聚宝仙盆》已 12 季、《凡人百世书》7 季，TOP30 头部平均 712 集）。蓄水逻辑 = 每集结尾留**世界观悬念**而非情绪卡点，季终设大断章引导下一季；断章可漫剧特有"宝物认主/系统弹窗"。
-2. **投流短集前置变体**：抖音端 30~60 集短剧付费墙**前置到第 3~5 集**（而非 80 集模型的第 10~15 集）——投流获客成本高、需快速回收。代表：《嫌疑人的秘密》卡在"社死围堵"、《三天后穿越》卡在"选媳妇解锁系统奖励"。
-3. **治愈系情感后置变体**：付费墙靠"**会不会在一起**"的情感悬念，而非"反击前 0.5 秒"。治愈系没有"反击"，靠情绪积累拉付费，墙位可比标准模型**后置 2~3 集**；断章用第五公式"情绪反差落地"（克制型切黑）。
+1. **Free ad-revenue multi-season IP variant**: AI comic-drama multi-season IPs **do not set paywalls**; they rely on ad revenue sharing and long-tail monetization across multiple seasons (*Treasure Immortal Basin* has run 12 seasons, and *A Mortal's Hundred-Life Chronicle* 7 seasons; the TOP30 average is 712 episodes). The build-up logic = every episode ends on a **worldbuilding mystery** rather than an emotional break, and the season finale sets a large cliffhanger to lead into the next season; cliffhangers can use comic-drama-specific devices like "treasure recognizes its master / system pop-up."
+2. **Ad-funded short-episode front-loaded variant**: on Douyin, 30–60 episode short dramas move the paywall **forward to episodes 3–5** (rather than the 80-episode model's episodes 10–15) — paid-traffic acquisition costs are high and must be recouped quickly. Examples: *The Suspect's Secret* stops at "social-death surrounding," and *Time-Travel in Three Days* stops at "choosing a bride to unlock a system reward."
+3. **Healing-emotion delayed variant**: the paywall rides on the emotional suspense of "will they end up together," not on "0.5 seconds before the counterattack." Healing dramas have no "counterattack," so they draw payment through accumulated emotion; the wall can sit **2–3 episodes later** than the standard model; cliffhangers use the fifth formula, "emotional-contrast landing" (restrained cut-to-black).
 
-## 三、 单集体量（分档硬约束，validate_episode 机检项）
+## III. Episode Volume (hard constraints by tier, validate_episode machine-check items)
 
-| 档位 | 时长（典型值；可调整） | 正文体量【参考·随时长换算】 | 场景 | 单集拍数 | 对白行 | 机检 |
+| Tier | Duration (typical; adjustable) | Body Volume 【Reference · Scaled to Length】 | Scenes | Beats per Episode | Dialogue Lines | Machine Check |
 |---|---|---|---|---|---|---|
-| **标准档**（默认） | 90～120 秒 | 480～850 / 330～620 | ≤2 | 1 拍（施压→反驳/升级） | ≥4 | `--format standard` |
-| **长档** | **150～195 秒（按内容密度倒推）** | **820～1400 / 660～1150** | **≤3** | **2 拍 + 中段小钩** | **≥8** | `--format long` |
-| 漫剧档 | 60～90 秒 | 330～620 | ≤2 | 1 拍 | ≥4 | `--format manju` |
+| **Standard tier** (default) | 90–120 seconds | 320–570 / 220–415 words | ≤2 | 1 beat (pressure → rebuttal / escalation) | ≥4 | `--format standard` |
+| **Long tier** | **150–195 seconds (reverse-calculated from content density)** | **550–930 / 440–765 words** | **≤3** | **2 beats + mid-episode hook** | **≥8** | `--format long` |
+| Comic-drama tier | 60–90 seconds | 220–415 words | ≤2 | 1 beat | ≥4 | `--format comic` |
 
-- 正文体量口径 = 对白行 + △动作行 + 【本集断章卡点】画面（不计【】字段行与 [场景]/[人物] 标记行），以 `scripts/validate_episode.py` 为准；脚本对含"长档/漫剧"字样的剧本自动分档，也可用 `--format` 显式指定；
-- 语速基准：**参考语速 4.5 字/s（已含动作/留白占比；连续对白时的**局部上限** ≈ 95 字/15 秒 = 6.33 字/s，**不得当作全片均值），E16 按 4.5 字/s 比对（容差 ±20%）；漫剧局部取 6.0 字/s**；任何连续 15 秒窗口台词 ≤95 字（≈6.33 字/s 触顶，机检 E19 WARN）；
-- **密度由戏定（非阈值）**：台词密度是场景功能的副产品——攻防场说满、危机/动作场让画面说、转场与余波可极简；全片对白时间占比宜 60~75%。防注水靠失衡阀 **E19（连续对白≤95字）＋ E21（对白占比≤70%）＋ E24（连续纯对白≤6行必插△动作）**，不靠堆字数。
-- **长档不是把标准档注水拉长**：一集必须装两个往返回合 + 一个中段小钩（写法见 §四）；用标准档单拍结构硬凑 3 分钟 → 机检与人工都判废稿。
-- **现实治愈慢档（v4.0 备注）**：150~195 秒 / **480~850 字**（不套长档 820~1400 上限），适用治愈系赛道（成年人离婚治愈系、成年人情感/治愈系）。对白密度低、留白多、空镜多，断章用第五公式"情绪反差落地"（克制型情绪切黑）而非强悬念公式；付费墙走"治愈系情感后置变体"（见 §二）。
+- Body-volume definition = dialogue lines + △ action lines + the 【Episode Cliffhanger】 frame (excluding the 【】 field lines and the [Scene] / [Cast] marker lines), as defined by `scripts/validate_episode.py`. The script auto-assigns the tier for scripts containing the words "long" or "comic," and `--format` can also specify it explicitly.
+- Speech-rate baseline: **reference speech rate 3.0 words/s (already includes action and pause proportion; the local ceiling for continuous dialogue ≈ 63 words per 15 seconds = 4.2 words/s, which must not be treated as a whole-episode average). E16 checks against 3.0 words/s (±20% tolerance); the comic-drama local figure is 4.0 words/s.** Any continuous 15-second window of dialogue ≤63 words (≈4.2 words/s at the ceiling; machine check E19 WARN).
+- **Density is set by the drama, not by a threshold**: dialogue density is a by-product of scene function — attack-and-defense scenes say it all, crisis/action scenes let the image speak, and transitions and aftershocks can be minimal. Across the episode, the share of dialogue time should be about 60–75%. Padding is prevented by imbalance valves **E19 (continuous dialogue ≤63 words) + E21 (dialogue share ≤70%) + E24 (more than 6 consecutive pure-dialogue lines must have a △ action)**, not by piling on word count.
+- **A long tier is not a standard tier stretched with padding**: each episode must carry two round-trip rounds + one mid-episode hook (see §4 for the method); forcing a three-minute episode out of the single-beat structure of a standard tier → both the machine check and human review reject it as a failed draft.
+- **Realistic healing slow tier (v4.0 note)**: 150–195 seconds / **320–570 words** (does not use the long tier's 550–930 ceiling), applies to healing tracks (Adult Divorce Healing, Adult Romance / Healing). Low dialogue density, lots of negative space, many establishing shots; cliffhangers use the fifth formula "emotional-contrast landing" (restrained emotional cut-to-black) rather than the high-suspense formula; the paywall uses the "healing-emotion delayed variant" (see §II).
 
-### §三·补、 单集「15秒换挡」四拍推进表（v4.9 新增 · 彻底解决单集节奏拖沓）
+### §3·Supplement Single-Episode "15-Second Gear-Shift" Four-Beat Table (new in v4.9 · fully fixes sluggish episode pacing)
 
-为什么观众会觉得"节奏不对、半天不进戏"？因为剧本在同一水平线上反复磨嘴皮子，没有**阶段性换挡（地位/筹码/信息的阶梯跳跃）**！标准档（90~120 秒）单集必须严格按以下**四挡节拍**推进：
+Why do viewers feel "the pacing is off, the drama takes forever to start"? Because the script keeps grinding words on one level, with no **staged gear shifts (leaps in status / chips / information)**! A standard-tier episode (90–120 seconds) must advance strictly through the **four gears** below:
 
-| 时间挡位（标准档 90~120s） | 对应句数与位置 | 必须完成的戏剧动作（换挡任务） | 画面与台词硬指标 |
+| Time Gear (standard tier 90–120 s) | Lines and Position | Dramatic Action Required (gear-shift task) | Hard Image and Dialogue Targets |
 |---|---|---|---|
-| **第 1 挡：0~15 秒**<br>（抓人立事） | 开篇前 4~6 行 | **黄金前3秒强视觉冲突 + 大白话直接挑明本集死线/账目/赌注** | 首行必是强视觉 `△`；前 5 句内必须报出具体数字或死线（如“十万救命钱”“下午三点封门”），禁寒暄铺垫 |
-| **第 2 挡：15~45 秒**<br>（正面交锋） | 中前段 8~12 行 | **反派加码施压 / 亮出恶毒条件 ➔ 主角首轮反刺探或行动反制** | 用 `3~6字` 短促快刀句切碎匀速感；每 2~4 句必有肢体/物证碰撞 `△` |
-| **第 3 挡：45~85 秒**<br>（亮牌翻转） | 中后段 10~14 行 | **亮出核心物证/底牌/铁腕行动，完成【本集结算】（反派当场付代价）** | 必须有**结果可视化 `△`**（如酒柜砸碎、假药当场验出、破产电话打入），反派从嚣张变为恐慌/失面 |
-| **第 4 挡：85~110 秒**<br>（余波钩子） | 结尾 4~6 行 + 断章 | **当场兑现阶段战果 + 突然抛入下一集更大危机或掉马前 0.5 秒** | 严禁停在喊口号总结！必须停在未完动作、突发来电或致命物证露出一角的瞬间切黑 |
+| **Gear 1: 0–15 seconds**<br>(grab attention, set stakes) | First 4–6 lines of the opening | **Golden 3-second strong visual conflict + plain language naming this episode's deadline / ledger / stake directly** | The first line must be a strong visual `△`; within the first 5 sentences, state a concrete number or deadline (e.g., "100,000 in life-saving money," "doors sealed at 3 p.m."); no small talk or warm-up |
+| **Gear 2: 15–45 seconds**<br>(face-to-face clash) | Early-middle section, 8–12 lines | **Villain escalates pressure / lays out a vicious condition ➔ protagonist's first counter-probe or action-based counter** | Use short, sharp knife-cut lines of `2–4 words` to break up even pacing; every 2–4 lines must carry a physical or evidence-contact `△` |
+| **Gear 3: 45–85 seconds**<br>(reveal and flip) | Late-middle section, 10–14 lines | **Reveal the core evidence / trump card / iron-fisted action, completing 【Episode Payoff】 (the villain pays a price on the spot)** | Must include a **visualized result `△`** (e.g., a liquor cabinet smashed, counterfeit drugs tested on the spot, a bankruptcy call comes in); the villain shifts from arrogance to panic or loss of face |
+| **Gear 4: 85–110 seconds**<br>(aftershock hook) | Final 4–6 lines + cliffhanger | **Cash in the stage gains on the spot + suddenly drop a bigger crisis for the next episode or cut 0.5 seconds before unmasking** | Never end on a slogan or a summary! Cut to black at the instant an action is unfinished, an urgent call arrives, or a fatal piece of evidence peeks out |
 
-**防原地打转铁律**：
-1. 同一集内，严禁“第 1 场在某处争吵某事，第 2 场换个地方继续用同样理由争吵同一件事”；
-2. 每隔 15~30 秒，场上的**筹码、证据或双方站位**必须发生一次肉眼可见的变化！
+**Iron rules against spinning in place**:
+1. Within the same episode, it is forbidden that "scene 1 argues about a matter in one place, and scene 2 moves somewhere else and keeps arguing about the same matter with the same reasons";
+2. Every 15–30 seconds, the **chips, evidence, or the two sides' positions** on screen must change in a visible way!
 
-## 四、 长档（150~195 秒弹性）单集写法
+## IV. Long Tier (150–195 seconds, flexible) Episode Writing
 
-> 触发指令：`/全剧大纲 长档 40集`、`/写剧本 长档 第N集`、`/写长档 第N集`、`/连写 长档 1-10`。
-> 一句话原则：**多出来的 90 秒由"升级"填满，不由"重复"填满。**
+> Trigger commands: `/series-outline long 40`, `/write-episode long N`, `/write-long N`, `/serial-write long 1-10`.
+> One-sentence principle: **the extra 90 seconds is filled by escalation, not by repetition.**
 
-### 1. 时间骨架（150～195 秒 · 正文 820～1400 字）
+### 1. Time Skeleton (150–195 seconds · body 550–930 words)
 
-> **时长守恒双闸门（v4.3 按实测语速 4.5 字/s 重校）**：**上限**——【本集时长】必须按"纯台词字数（对白+独白）÷**4.5 字/s（写作目标语速）** ＋ △动作行数×动作拍权重（①对话型1.5s／混合2.5s／②行动型4.0s） ＋ 留白 3~5s"倒推，**4.5 字/s 为校验下限（防虚标保守值，E16 按 4.5 换算）**；**禁止按总字数虚算、禁止用氛围 △ 行凑字数凑时长**（动作行字数与台词字数在时长上不同价），虚标即 FAIL（机检 E16）；**下限**——长档【本集时长】**不得低于 150 秒**，只够 110 秒就不许挂长档名头，须补台词或改标准档（机检 E17）。台词量不足就诚实地降档写短集——下游导演 skill 按台词÷语速拆镜，虚标会在拆解端变成拉伸废镜，标短则直接拿不到长档时长。量化：**纯台词 ≥670 字（150 秒）／≥800 字（180 秒）／870 字＋12~15 动作行（195 秒封顶）；△动作行 ≤15 行**。
+> **Duration-conservation double gate (v4.3, recalibrated against measured speech rate of 3.0 words/s)**: **Upper limit** — 【Episode Length】 must be reverse-calculated as "pure dialogue word count (dialogue + monologue) ÷ **3.0 words/s (writing target speech rate)** + number of △ action lines × action-beat weight (① Dialogue 1.5 s / Mixed 2.5 s / ② Action 4.0 s) + 3–5 s of pause." **3.0 words/s is the validation floor (a conservative value to prevent inflated labeling; E16 converts at 3.0)**. **Forbidden: calculating from total word count, and forbidden to pad the duration with atmospheric △ lines** (action-line words and dialogue words have different time costs); an inflated label is a FAIL (machine check E16). **Lower limit** — the long tier's 【Episode Length】 **may not fall below 150 seconds**; if it only supports 110 seconds, it may not carry the long-tier name and must add dialogue or switch to the standard tier (machine check E17). If there isn't enough dialogue, honestly drop to a shorter tier: downstream director skills split shots by dialogue ÷ speech rate, so an inflated label becomes stretched, wasted shots at the breakdown stage, while an honest short label simply doesn't get long-tier duration. Quantified: **pure dialogue ≥447 words (150 seconds) / ≥533 words (180 seconds) / 580 words + 12–15 action lines (195-second cap); △ action lines ≤15**.
 
-| 段 | 秒位 | 内容 | 硬指标 |
+| Segment | Position (seconds) | Content | Hard Targets |
 |---|---|---|---|
-| 钩子 | 0～8 | 黄金前 3 秒直接切入冲突顶点 | 与标准档同标准，禁铺垫 |
-| 回合A | 8～80 | 施压 ➔ 反驳（第一拍 · 内部走完小四挡） | 反驳必须带代价或新信息，每 2~4 句穿插强视觉 `△` |
-| 中段小钩 | ≈90（全集 50%） | 新信息/新威胁/反转半步，抬价 | **必设**，防 90 秒滑走 |
-| 回合B | 95～170 | 升级施压 ➔ 升级反驳/翻盘未遂 | 施压与反驳各升一档，禁复读回合A |
-| 顶点+断章 | 170～195 | 情绪顶点落地 + 五大断章公式 | 断章必须比标准档更狠 |
+| Hook | 0–8 | Golden 3 seconds cut straight into the peak of conflict | Same standard as the standard tier; no warm-up |
+| Round A | 8–80 | Pressure ➔ rebuttal (first beat · internally runs the mini four-gear sequence) | The rebuttal must carry a cost or new information; every 2–4 lines interleave a strong visual `△` |
+| Mid-episode hook | ≈90 (50% of episode) | New information / new threat / half-step reversal, raising the stakes | **Mandatory**, to prevent the 90-second slide |
+| Round B | 95–170 | Escalated pressure ➔ escalated rebuttal / failed flip | Pressure and rebuttal each escalate one tier; no copy-paste of Round A |
+| Peak + cliffhanger | 170–195 | Emotional peak lands + five major cliffhanger formulas | The cliffhanger must be harsher than in the standard tier |
 
-### 2. 双回合硬规则（六条）
+### 2. Hard Rules for the Two-Round Structure (six rules)
 
-1. **中点必设小钩**：≈90 秒处必须出现新信息或新威胁；`validate_episode.py` 长档模式缺【本集中段小钩】直接 FAIL。
-2. **回合B 双升级**：施压升级（新证据/新代价/新人证）+ 反驳升级（策略/身份/底牌前移），照抄回合A 话术=废稿。
-3. **每 30 秒一个新增量**：新信息、新行动、新代价三者至少一现；连续 30 秒无新增量即注水。
-4. **中段小钩不是断章**：小钩只做"抬价 + 新悬念"，全集最高潮必须留在集尾断章；小钩写成高潮=集尾塌方。
-5. **场景 ≤3 且必须是升级场**：第 2/3 场要换空间、换对手或换压力等级；平移到隔壁房间继续同一段对话不算一场。
-6. **断章优先级**：长档压强更大，优先公式1（身份掉马前一秒）或公式4（绝境二选一）；用公式3（金句落地）时必须配全场静默反应镜头。
+1. **A midpoint hook is mandatory**: at about 90 seconds, new information or a new threat must appear; in long-tier mode `validate_episode.py` fails outright if 【Mid-Episode Hook】 is missing.
+2. **Round B double escalation**: the pressure escalates (new evidence / new cost / new witness) + the rebuttal escalates (strategy / identity / trump cards brought forward); copying Round A's lines = a failed draft.
+3. **One new increment every 30 seconds**: at least one of new information, new action, or new cost must appear; 30 seconds without a new increment is padding.
+4. **A mid-episode hook is not a cliffhanger**: the hook only "raises the stakes + adds a new suspense"; the episode's highest peak must stay at the episode-end cliffhanger; a hook written as a climax = the episode collapses at the end.
+5. **Scenes ≤3, and each must be an escalation scene**: scenes 2/3 must change space, opponent, or pressure level; moving to the next room to continue the same conversation does not count as a new scene.
+6. **Cliffhanger priority**: the long tier carries more pressure, so prefer formula 1 (unmasking one second before) or formula 4 (choose-one-or-die at the brink); when using formula 3 (a punchline lands), it must be paired with a silent reaction shot from the whole room.
 
-### 3. 全剧折算（内容量守恒，1 长档集 ≈ 2 标准集）
+### 3. Full-Series Conversion (content volume conserved, 1 long-tier episode ≈ 2 standard episodes)
 
-四幕占比不变（20 / 35 / 25 / 20），集数减半：
+The four-act proportions stay the same (20 / 35 / 25 / 20), with the episode count halved:
 
-| 幕 | 长档 40 集 | 长档 30 集 | 长档 50 集 | 任务 |
+| Act | Long 40 Ep. | Long 30 Ep. | Long 50 Ep. | Task |
 |---|---|---|---|---|
-| 一幕·入局压迫 | 1～8 | 1～6 | 1～10 | 核爆钩+阶层对立+首轮小反击 |
-| 二幕·升级纠缠 | 9～22 | 7～16 | 11～28 | 双回合主体区 |
-| 三幕·风暴危机 | 23～32 | 17～23 | 29～38 | 反扑+底牌失效+最大信任危机 |
-| 四幕·决战封神 | 33～40 | 24～30 | 39～50 | 底牌全开、伏笔全收、极致释放 |
+| Act 1 · Entry Pressure | 1–8 | 1–6 | 1–10 | Nuclear hook + class opposition + first small counterattack |
+| Act 2 · Escalation and Entanglement | 9–22 | 7–16 | 11–28 | Main body of the two-round structure |
+| Act 3 · Storm and Crisis | 23–32 | 17–23 | 29–38 | Counterattack + trump card fails + greatest trust crisis |
+| Act 4 · Final Battle and Apotheosis | 33–40 | 24–30 | 39–50 | All trump cards revealed, all foreshadowing collected, ultimate release |
 
-**单元链折算**：单矛盾硬帽同步折半为**一单元 10～15 长档集**（30 集=2～3 单元 / 40 集=3 单元 / 50 集=3～4 单元）；40 集标准划分示例——A 1～13 / B 14～27 / C 28～40。付费墙见 §二；台账"单元划分"行按此填（`continuity-ledger.md` §三）。
+**Unit-chain conversion**: a single-conflict hard cap is halved in step to **one unit of 10–15 long-tier episodes** (30 episodes = 2–3 units / 40 episodes = 3 units / 50 episodes = 3–4 units); a standard 40-episode division example: A 1–13 / B 14–27 / C 28–40. For paywalls see §II; fill the ledger's "unit division" row accordingly (`continuity-ledger.md` §III).
 
-### 4. 长档特有崩坏点（写前自检）
+### 4. Long-Tier Specific Failure Points (self-check before writing)
 
-| 崩坏点 | 症状 | 修法 |
+| Failure Point | Symptom | Fix |
 |---|---|---|
-| 中段泄气 | 90 秒后开始复述回合A | 回合B 强制双升级 |
-| 假高潮 | 中段小钩写得比集尾断章更炸 | 小钩只抬价，爆点后移 |
-| 注水凑字 | 为凑 850 字加无新增量对白 | 每 30 秒一个新增量 |
-| 场景超载 | 塞到 5～6 场，全是过场 | 锁 ≤3，砍过场场，只留升级场 |
-| 断章疲软 | 3 分钟拉完只想收尾 | 换公式1/公式4，加静默反应镜头 |
-| 回合打飘 | 两个回合打的是不同矛盾 | 情绪流项目：两回合必须打同一执念（同一单元内） |
+| Midpoint sag | After 90 seconds, it starts re-narrating Round A | Round B forces double escalation |
+| False climax | The midpoint hook is written more explosively than the episode-end cliffhanger | The hook only raises the stakes; move the explosion later |
+| Padding to hit the count | Adds dialogue with no new increment to reach 850 words | One new increment every 30 seconds |
+| Scene overload | Crammed into 5–6 scenes, all transitional | Lock at ≤3, cut transitional scenes, keep only escalation scenes |
+| Limp cliffhanger | After three minutes, the episode is just wrapping up | Switch to formula 1 / formula 4, add a silent reaction shot |
+| Round drift | The two rounds fight different conflicts | Emotion-flow projects: both rounds must fight the same obsession (within the same unit) |
 
-## 五、 剧情流变体（不套往返表时）
+## V. Plot-Flow Variant (when the round-trip table is not used)
 
-悬疑/规则怪谈/智斗：二幕改为**信息阶梯循环**——每 3～5 集一个"新线索→误判→翻案→更大谜团"单元；付费墙改断在"真相即将揭晓的一半"（如亲子鉴定撕开封条露一角）。三幕危机必须是"信息体系本身被证伪"，而非单纯武力压迫。**长档变体**：一集内走完"新线索→误判"两步，翻案留给下一集，中段小钩即"误判坐实"的那半秒。
+Mystery / rule horror / wit battles: in Act 2, switch to a **clue-ladder loop** — each 3–5 episodes form one unit of "new clue → misjudgment → overturn → a bigger mystery"; the paywall instead cuts at "the half-revealed truth is about to surface" (e.g., a paternity test envelope torn open, one corner showing). The Act 3 crisis must be "the information system itself is falsified," not simply physical pressure. **Long-tier variant**: within one episode, complete the two steps "new clue → misjudgment"; leave the overturn for the next episode, and the mid-episode hook is the half-second where "the misjudgment is confirmed."
 
-## 六、 漫剧/竖屏动画适配位（本包用户向）
+## VI. Comic-Drama / Vertical Animation Adaptation Slot (for this package's users)
 
-- 漫剧单集可压至 60～90 秒、正文体量 330～620（配音语速略高、取上限 4.5 字/s、无实拍转场损耗），机检 `--format manju`；
-- **漫剧长档**：130～170 秒、正文体量 660～1150（语速取 5.5 上限、动画同景多机位省转场），场景 ≤3，双回合与中段小钩规则完全同实拍；
-- 场景 ≤2（长档 ≤3）不变，但动画允许"同景多机位"不算换场景；
-- 回合表/付费墙逻辑完全同实拍，不动。
+- Comic-drama episodes can be compressed to 60–90 seconds, body volume 220–415 words (voice-over speech is slightly faster; use the 3.0-words/s ceiling, with no live-action transition loss), machine check `--format comic`;
+- **Comic-drama long tier**: 130–170 seconds, body volume 440–765 words (speech rate at the 3.7-words/s upper bound; animation can reuse the same scene with multiple camera angles to save transitions); ≤3 scenes; the two-round and mid-episode-hook rules are exactly the same as live action;
+- Scenes ≤2 (long tier ≤3) remains unchanged, but animation may treat "same scene, multiple camera angles" as not a scene change;
+- Round table and paywall logic are exactly the same as live action; no changes.

@@ -1,64 +1,64 @@
-# 台账：《项目名》
-当前集: 0
-总集数: 80
-档位: 标准档    # 标准档 60/80/100 集（90～120 秒）｜ 长档 30/40/50 集（150～195 秒弹性）｜ 漫剧档 60～90 秒
-流派: 情绪流/剧情流
-情绪契约: （一句话，全剧不变的那口气）
-单元划分: A(1-__) / B(__-__) / C(__-__)  # 一个矛盾≤30集（长档按内容量折半：一单元 10～15 集）
+# Ledger: "Project Name"
+Current Episode: 0
+Total Episodes: 80
+Tier: Standard    # Standard 60/80/100 eps (90–120 s) | Long 30/40/50 eps (150–195 s flexible) | Comic-drama 60–90 s
+Style: Emotion-flow / Plot-flow
+Emotion Contract: (one sentence: the single breath held across the whole series)
+Unit Split: A(1-__) / B(__-__) / C(__-__)  # One conflict ≤30 eps (long tier halves by content volume: one unit 10–15 eps)
 
-## 伏笔账
-| ID | 内容 | 埋于 | 拟收 | 状态 | 备注 |
+## Foreshadowing Ledger
+| ID | Content | Planted In | Planned Resolution | Status | Notes |
 |---|---|---|---|---|---|
-| FB-01 |  |  |  | 埋 |  |
+| FB-01 |  |  |  | Planted |  |
 
-## 人物账
-| 角色 | 首出 | 状态 | 关系现值 | 变动集 | 备注 |
+## Character Ledger
+| Character | First Appearance | Status | Current Relation | Changed In | Notes |
 |---|---|---|---|---|---|
-|  | 1 | 存活 |  |  |  |
+|  | 1 | Alive |  |  |  |
 
-## 道具账
-| 道具 | 持有 | 状态 | 变动集 |
+## Prop Ledger
+| Prop | Held By | Status | Changed In |
 |---|---|---|---|
 |  |  |  |  |
 
-## 世界观规则账
-| 规则 | 确立集 | 引用集 | 违反 |
+## World Rules Ledger
+| Rule | Established In | Referenced In | Violated |
 |---|---|---|---|
-|  |  |  | 否 |
+|  |  |  | No |
 
-## 往返回合表（情绪流项目必填·每单元一张）
-> 长档项目：集区间按「1 长档集 ≈ 2 标准集」折算；长档一集内含两拍（回合A/回合B）+ 中段小钩，回合尾断章仍按回合记。
-| 回合 | 集区间 | 证据档/内容 | 反驳档/内容 | 回合尾断章 |
+## Back-and-Forth Round Table (required for emotion-flow projects; one per unit)
+> Long-tier projects: episode ranges convert at 1 long ep ≈ 2 standard eps. A long ep holds two beats (Round A / Round B) plus a mid-episode hook; the round-end cliffhanger is still recorded per round.
+| Round | Episode Range | Evidence Slot / Content | Rebuttal Slot / Content | Round-End Cliffhanger |
 |---|---|---|---|---|
-| 1 | 1-3 | 档1： | 档1： |  |
+| 1 | 1-3 | Slot 1: | Slot 1: |  |
 
-## 付费墙落位
-一级墙 第__集（中点转换/首次亮底牌前0.5秒）
-二级墙 第__集
-三级墙 第__集
+## Paywall Placement
+Tier-1 wall, Ep __ (midpoint turn / 0.5s before first trump-card reveal)
+Tier-2 wall, Ep __
+Tier-3 wall, Ep __
 
-## 反转手段轮换矩阵
-> 相邻3集内不得复用同一反转标签（机检S8 WARN）。标签：[A]身份压制 [B]铁证如山 [C]盟友倒戈 [D]降维制裁 [E]诛心破防 [F]纯粹武力 [G]情感剥夺 [H]舆论社死 [I]借刀自噬（G/H/I为女频文戏新增）。
-| 集数 | 反转标签[A-I] | 核心冲突事件 | 攻守方 | 爽点结算 |
+## Twist Rotation Matrix
+> No two episodes within 3 eps may reuse the same twist tag (machine check S8 WARN). Tags: [A] Identity Suppression [B] Ironclad Evidence [C] Ally Betrayal [D] Dimensional Crackdown [E] Heart-Piercing Collapse [F] Pure Force [G] Emotional Deprivation [H] Public Social Death [I] Borrowed-Knife Self-Consumption (G/H/I are additions for female-lead dramas).
+| Episode | Twist Tag[A-I] | Core Conflict Event | Attacker vs Defender | Payoff |
 |---|---|---|---|---|
-| EP01 | [F] 纯粹武力 | 撕支票踢断反派脚踝，女将破门救场 | 主角 vs 反派 | 肢体压制，打破单方面凌辱 |
-| EP02 | [A] 身份压制 | 战神金星亮出，全场军礼膜拜 | 亲信 vs 反派家族 | 阶层逆转，反派当场下跪 |
-| EP03 | [B] 铁证如山 | 亮出三年前伪造借条的原始黑账 | 主角 vs 前妻 | 道德制高点彻底崩塌 |
+| EP01 | [F] Pure Force | Rips up the check and kicks out the villain's ankle; the female general breaks in to save the day | Hero vs villain | Physical suppression; one-sided humiliation broken |
+| EP02 | [A] Identity Suppression | War God Jin Xing reveals herself; the whole hall salutes | Aide vs villain's family | Status reversal; villain kneels on the spot |
+| EP03 | [B] Ironclad Evidence | Reveals the original black ledger of the IOU forged three years ago | Hero vs ex-wife | Moral high ground collapses completely |
 
-## 热台账区（最近5集活跃状态）
-> 连写时仅挂载本区，严控Context；每写完一集把已结案/已下沉行移到冷归档区。
+## Hot Ledger Zone (last 5 episodes of active state)
+> Serial writing mounts only this section to keep Context tight. After each episode, move closed or retired rows to the cold archive.
 
-### 活跃伏笔追踪表（未回收）
-| 伏笔编号 | 埋设集数 | 核心伏线内容 | 预计回收集数 | 状态 |
+### Active Foreshadowing Tracker (unresolved)
+| Foreshadowing ID | Planted In Ep | Core Thread Content | Planned Resolution Ep | Status |
 |---|---|---|---|---|
-| F-001 | EP__ |  | EP__前 | 正常 |
+| F-001 | EP__ |  | Before EP__ | Normal |
 
-### 角色状态表
-| 角色名称 | 当前状态（健康/轻伤/重伤/阵亡） | 所处空间位置 | 持有关键信物 |
+### Character Status Table
+| Character Name | Current Status (Healthy / Light Injury / Serious Injury / Deceased) | Current Location | Key Token Held |
 |---|---|---|---|
 |  |  |  |  |
 
-## 冷归档区（已结案/已下线，连写免传）
-> 已结案伏笔 / 已下线角色在此留痕，连写不回传、不进Context。
-- [已结案] F-___：（伏笔内容），已于第__集结案，不再索引。
-- [已下线] 人物：（角色名），于第__集退场，不再登场。
+## Cold Archive (closed / retired; kept for serial writing without re-sending)
+> Closed foreshadowing and retired characters are logged here. Serial writing does not re-send them or load them into Context.
+- [Closed] F-___: (foreshadowing content), closed in Ep __, no longer indexed.
+- [Retired] Character: (character name), exits in Ep __, no longer appears.
